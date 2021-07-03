@@ -10,17 +10,17 @@
     <version>4.0.0</version>
     <copyright>Joomla!</copyright>
     <license>GNU General Public License version 2 or later; see LICENSE.txt</license>
-   
+
     <description>
        COM_GUIDEDTOUR_XML_DESCRIPTION
     </description>
 
     <namespace path="src/">Joomla\Component\Guidedtour</namespace>
-            
+
     <administration>
-        
+
         <menu link="index.php?option=com_guidedtour">Guided Tour</menu>
-    
+
         <files folder="admin/">
             <folder>services</folder>
             <folder>src</folder>
