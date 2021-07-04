@@ -1,13 +1,16 @@
 <?php
+
 /**
- *File Doc Comment
+ * Parses and verifies the doc comments for files.
+ * File Doc Comment
+ * PHP version 5
  *
- * @category    Component
- * @package     Joomla.Administrator
- * @author      Joomla! 
- * @license     GNU General Public License version 2 or later; see LICENSE.txt
- * @link        admin@joomla.org
- *
+ * @category Component
+ * @package  Joomla.Administrator
+ * @author   Joomla! <admin@joomla.org>
+ * @copyright (C) 2013 Open Source Matters, Inc. <https://www.joomla.org>
+ * @license  GNU General Public License version 2 or later; see LICENSE.txt
+ * @link     admin@joomla.org
  */
 defined('_JEXEC') or die;
 
@@ -20,20 +23,33 @@ use Joomla\CMS\MVC\Factory\MVCFactoryInterface;
 use Joomla\DI\Container;
 use Joomla\DI\ServiceProviderInterface;
 
+
+/**
+ * @copyright (C) 2013 Open Source Matters, Inc. <https://www.joomla.org>
+ */
 return new class implements ServiceProviderInterface
 {
+	/**
+	 * Undocumented function
+	 *
+	 * @param   Container $container function is used
+	 * @return mixed
+	 */
+	public function register(Container $container): void
+	{
+		$container->registerServiceProvider(new MVCFactory('\\Joomla\\Component\\Guidedtour'));
+		$container->registerServiceProvider(new ComponentDispatcherFactory('\\Joomla\\Component\\Guidedtour'));
+		$container->set(
+			/**
+			 * @since none
+			 */
+			ComponentInterface::class,
+			function (Container $container) {
+				$component = new MVCComponent($container->get(ComponentDispatcherFactoryInterface::class));
+				$component->setMVCFactory($container->get(MVCFactoryInterface::class));
 
-    public function register(Container $container): void
-    {
-        $container->registerServiceProvider(new MVCFactory('\\Joomla\\Component\\Guidedtour'));
-        $container->registerServiceProvider(new ComponentDispatcherFactory('\\Joomla\\Component\\Guidedtour'));
-        $container->set(
-            ComponentInterface::class,
-                function (Container $container) {
-                $component = new MVCComponent($container->get(ComponentDispatcherFactoryInterface::class));
-                $component->setMVCFactory($container->get(MVCFactoryInterface::class));
-                return $component;
-            }
-        );
-    }
+				return $component;
+			}
+		);
+	}
 };
