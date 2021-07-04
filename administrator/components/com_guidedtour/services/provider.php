@@ -1,5 +1,14 @@
 <?php
-
+/**
+ *File Doc Comment
+ *
+ * @category    Component
+ * @package     Joomla.Administrator
+ * @author      Joomla! 
+ * @license     GNU General Public License version 2 or later; see LICENSE.txt
+ * @link        admin@joomla.org
+ *
+ */
 defined('_JEXEC') or die;
 
 use Joomla\CMS\Dispatcher\ComponentDispatcherFactoryInterface;
@@ -20,13 +29,11 @@ return new class implements ServiceProviderInterface
         $container->registerServiceProvider(new ComponentDispatcherFactory('\\Joomla\\Component\\Guidedtour'));
         $container->set(
             ComponentInterface::class,
-            function (Container $container) {
+                function (Container $container) {
                 $component = new MVCComponent($container->get(ComponentDispatcherFactoryInterface::class));
                 $component->setMVCFactory($container->get(MVCFactoryInterface::class));
-
                 return $component;
             }
         );
     }
 };
-?>

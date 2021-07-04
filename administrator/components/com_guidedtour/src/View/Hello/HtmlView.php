@@ -10,7 +10,7 @@ use Joomla\CMS\MVC\View\HtmlView as BaseHtmlView;
  */
 class HtmlView extends BaseHtmlView
 {
-    
+    // This is public
     function display($tpl = null)
     {
         parent::display($tpl);
