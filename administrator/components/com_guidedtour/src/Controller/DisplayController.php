@@ -1,33 +1,45 @@
 <?php
-
+/**
+ * @package    Joomla.Administrator
+ * @subpackage com_guidedtour
+ *
+ * @copyright (C) 2009 Open Source Matters, Inc. <https://www.joomla.org>
+ * @license   GNU General Public License version 2 or later; see LICENSE.txt
+ */
 
 namespace Joomla\Component\Guidedtour\Administrator\Controller;
 
 defined('_JEXEC') or die;
 
 use Joomla\CMS\MVC\Controller\BaseController;
+
 /**
- * @package     Joomla.Administrator
- * @subpackage  com_guidedtour
+ * Guidedtour master display controller.
  *
- * @copyright   (C) 2008 Open Source Matters, Inc. <https://www.joomla.org>
- * @license     GNU General Public License version 2 or later; see LICENSE.txt
- */
-/**
- * Default Controller of HelloWorld component
- *
- * @package     Joomla.Administrator
- * @subpackage  com_guidedtour
+ * @since 1.6
  */
 class DisplayController extends BaseController
 {
+     /**
+      * The default view.
+      *
+      * @var   string
+      * @since 1.6
+      */
+     protected $default_view = 'hello';
+
     /**
-     * The default view for the display method.
+     * Method to display a view.
      *
-     * @var string
+     * @param boolean $cachable  If true, the view output will be cached
+     * @param array   $urlparams An array of safe URL parameters and their variable types, for valid values see {@link \JFilterInput::clean()}.
+     *
+     * @return BaseController|boolean  This object to support chaining.
+     *
+     * @since 1.5
      */
 
-    protected $default_view = 'hello';
+   
 
     public function display($cachable = false, $urlparams = array())
     {
