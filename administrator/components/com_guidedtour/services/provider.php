@@ -30,7 +30,7 @@ use Joomla\DI\ServiceProviderInterface;
 return new class implements ServiceProviderInterface
 {
 	/**
-	 * Undocumented function
+	 * Undocumented function_
 	 *
 	 * @param   Container $container function is used
 	 * @return mixed

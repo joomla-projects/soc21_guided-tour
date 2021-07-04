@@ -20,7 +20,7 @@ defined('_JEXEC') or die;
 use Joomla\CMS\MVC\View\HtmlView as BaseHtmlView;
 
 /**
- * Undocumented class
+ * Undocumented class_
  * @copyright (C) 2013 Open Source Matters, Inc. <https://www.joomla.org>
  * @since none
  */

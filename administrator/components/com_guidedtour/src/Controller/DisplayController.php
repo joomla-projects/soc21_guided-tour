@@ -1,7 +1,7 @@
 <?php
 
 /**
- * File Doc Comment
+ * File Doc Comment_
  * PHP version 5
  *
  * @category Component
