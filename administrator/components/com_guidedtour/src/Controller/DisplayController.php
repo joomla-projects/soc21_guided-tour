@@ -40,7 +40,11 @@ class DisplayController extends BaseController
 	 * @var   string
 	 * @since 1.6
 	 */
+<<<<<<< HEAD
 	protected $defaultView = 'guidedtour';
+=======
+	protected $defaultView = 'hello';
+>>>>>>> 0c33e78f5d325425969ca7ad09b11ade69a72e76
 
 	/**
 	 * Method to display a view.
