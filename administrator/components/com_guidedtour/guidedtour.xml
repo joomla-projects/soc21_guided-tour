@@ -17,12 +17,26 @@
 
     <namespace path="src/">Joomla\Component\Guidedtour</namespace>
 
+    <install>        <!-- Runs on install -->
+        <sql>
+            <file driver="mysql" charset="utf8">sql/install.mysql.sql</file>
+        </sql>
+    </install>
+    <uninstall>        <!-- Runs on uninstall -->
+        <sql>
+            <file driver="mysql" charset="utf8">sql/uninstall.mysql.sql</file>
+        </sql>
+    </uninstall>
+
     <administration>
 
         <menu link="index.php?option=com_guidedtour">Guided Tour</menu>
 
         <files folder="admin/">
+            <file>access.xml</file>
+            <file>config.xml</file>
             <folder>services</folder>
+            <folder>sql</folder>
             <folder>src</folder>
             <folder>tmpl</folder>
         </files>
