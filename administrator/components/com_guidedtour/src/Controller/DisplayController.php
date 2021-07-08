@@ -34,14 +34,17 @@ use Joomla\CMS\MVC\Controller\BaseController;
  */
 class DisplayController extends BaseController
 {
+
 	/**
-	 * The default view.
+	 *   Camel case
+	 */
+
+	/**
 	 *
-	 * @var   string
-	 * @since 1.6
+	 *
+	 * @var string
 	 */
 	protected $defaultView = 'guidedtour';
-
 
 	/**
 	 * Method to display a view.
