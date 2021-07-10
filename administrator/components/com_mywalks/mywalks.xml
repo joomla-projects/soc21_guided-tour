@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<extension type="component" method="upgrade">
+	<name>com_mywalks</name>
+	<!-- The following elements are optional and free of formatting conttraints -->
+	<creationDate>August 2019</creationDate>
+	<author>Clifford E Ford</author>
+	<authorEmail>cliff@ford.myzen.co.uk</authorEmail>
+	<authorUrl>http://www.fford.me.uk/</authorUrl>
+	<copyright>Copyright (C) 2019 Clifford E Ford, All rights reserved.</copyright>
+	<license>GNU/GPL Version 2 or later - http://www.gnu.org/licenses/gpl-2.0.html</license>
+	<!--  The version string is recorded in the components table -->
+	<version>0.2.0</version>
+	<!-- The description is optional and defaults to the name -->
+	<description>COM_MYWALKS_XML_DESCRIPTION</description>
+	<namespace path="src">J4xdemos\Component\Mywalks</namespace>
+
+	<install> <!-- Runs on install -->
+		<sql>
+			<file driver="mysql" charset="utf8">sql/install.mysql.sql</file>
+		</sql>
+	</install>
+	<uninstall> <!-- Runs on uninstall -->
+		<sql>
+			<file driver="mysql" charset="utf8">sql/uninstall.mysql.sql</file>
+		</sql>
+	</uninstall>
+
+	<!-- Site Main File Copy Section -->
+	<!-- Note the folder attribute: This attribute describes the folder
+		to copy FROM in the package to install therefore files copied
+		in this section are copied from /site/ in the package -->
+
+	<files folder="site">
+		<folder>src</folder>
+		<folder>tmpl</folder>
+	</files>
+	
+	<languages folder="site">
+		<language tag="en-GB">language/en-GB/com_mywalks.ini</language>
+	</languages>
+	
+	<administration>
+		<files folder="admin">
+			<file>access.xml</file>
+			<file>config.xml</file>
+			<folder>forms</folder>
+			<folder>services</folder>
+			<folder>sql</folder>
+			<folder>src</folder>
+			<folder>tmpl</folder>
+		</files>
+		<languages folder="admin">
+			<language tag="en-GB">language/en-GB/com_mywalks.ini</language>
+			<language tag="en-GB">language/en-GB/com_mywalks.sys.ini</language>
+		</languages>
+		<menu img="class:default" link="option=com_mywalks">com_mywalks</menu>
+	</administration>
+</extension>
