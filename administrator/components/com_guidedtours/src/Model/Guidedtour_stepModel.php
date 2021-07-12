@@ -25,7 +25,7 @@ use Joomla\CMS\Table\Table;
 use Joomla\CMS\Table\TableInterface;
 //use Joomla\CMS\UCM\UCMType;
 //use Joomla\CMS\Workflow\Workflow;
-use J4xdemos\Component\Mywalks\Administrator\Extension\MywalksComponent;
+use Joomla\Component\Guidedtours\Administrator\Extension\GuidedtoursComponent;
 //use Joomla\Component\Content\Administrator\Helper\ContentHelper;
 //use Joomla\Component\Fields\Administrator\Helper\FieldsHelper;
 //use Joomla\Component\Workflow\Administrator\Table\StageTable;
