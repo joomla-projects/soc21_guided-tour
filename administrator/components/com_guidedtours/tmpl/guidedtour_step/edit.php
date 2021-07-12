@@ -45,10 +45,10 @@ $this->useCoreUI = true;
 			<div class="col-md-9">
 				<div class="row">
 					<div class="col-md-6">
-						<?php echo $this->form->renderField('date'); ?>
-						<!-- <?php echo $this->form->renderField('title'); ?> -->
+						<!-- <?php echo $this->form->renderField('date'); ?> -->
+						<?php echo $this->form->renderField('title'); ?>
 						<?php echo $this->form->renderField('weather'); ?>
-						<!-- <?php echo $this->form->renderField('id'); ?> -->
+						<?php echo $this->form->renderField('id'); ?>
 						<!-- <?php $this->form->setValue('walk_id', null, $walk_id); ?> -->
 						<?php echo $this->form->renderField('walk_id'); ?>
 					</div>
