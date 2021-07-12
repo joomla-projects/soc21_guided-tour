@@ -8,7 +8,7 @@
  * @license     GNU General Public License version 2 or later; see LICENSE.txt
  */
 
-namespace J4xdemos\Component\Guidedtours\Administrator\View\Guidedtour_step;
+namespace Joomla\Component\Guidedtours\Administrator\View\Guidedtour_step;
 
 defined('_JEXEC') or die;
 
