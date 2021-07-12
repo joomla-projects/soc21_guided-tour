@@ -8,7 +8,7 @@
  * @license     GNU General Public License version 2 or later; see LICENSE.txt
  */
 
-namespace J4xdemos\Component\Guidedtours\Administrator\Service\HTML;
+namespace Joomla\Component\Guidedtours\Administrator\Service\HTML;
 
 defined('_JEXEC') or die;
 

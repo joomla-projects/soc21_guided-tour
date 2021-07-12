@@ -15,7 +15,7 @@ use Joomla\CMS\HTML\HTMLHelper;
 use Joomla\CMS\Language\Text;
 use Joomla\CMS\Layout\LayoutHelper;
 use Joomla\CMS\Router\Route;
-use J4xdemos\Component\Guidedtours\Administrator\Helper\GuidedtoursHelper;
+use Joomla\Component\Guidedtours\Administrator\Helper\GuidedtoursHelper;
 
 HTMLHelper::_('behavior.multiselect');
 //HTMLHelper::_('behavior.tabstate');
