@@ -8,7 +8,7 @@
  * @license     GNU General Public License version 2 or later; see LICENSE.txt
  */
 
-namespace J4xdemos\Component\Mywalks\Administrator\Model;
+namespace Joomla\Component\Guidedtours\Administrator\Model;
 
 defined('_JEXEC') or die;
 
@@ -28,7 +28,7 @@ use Joomla\Database\ParameterType;
  *
  * @since  1.6
  */
-class Mywalk_datesModel extends ListModel
+class Guidedtour_stepsModel extends ListModel
 {
 	/**
 	 * Constructor.
@@ -71,11 +71,11 @@ class Mywalk_datesModel extends ListModel
 
 		$walk_id = $app->input->get('walk_id', 0, 'int');
 		if (empty($walk_id)) {
-			$walk_id = $app->getUserState('com_mywalks.walk_id');
+			$walk_id = $app->getUserState('com_guidedtours.walk_id');
 		}
 		$this->setState('walk_id', $walk_id);
 		// keep the walk_id for adding new visits
-		$app->setUserState('com_mywalks.walk_id', $walk_id);
+		$app->setUserState('com_guidedtours.walk_id', $walk_id);
 
 		$search = $this->getUserStateFromRequest($this->context . '.filter.search', 'filter_search');
 		$this->setState('filter.search', $search);

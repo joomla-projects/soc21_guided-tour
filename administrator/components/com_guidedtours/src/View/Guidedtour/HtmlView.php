@@ -8,7 +8,7 @@
  * @license     GNU General Public License version 2 or later; see LICENSE.txt
  */
 
-namespace J4xdemos\Component\Mywalks\Administrator\View\Mywalk;
+namespace Joomla\Component\Guidedtours\Administrator\View\Guidedtour;
 
 defined('_JEXEC') or die;
 
@@ -93,21 +93,21 @@ class HtmlView extends BaseHtmlView
 		Factory::getApplication()->input->set('hidemainmenu', true);
 		$isNew      = ($this->item->id == 0);
 
-		$canDo = ContentHelper::getActions('com_mywalks');
+		$canDo = ContentHelper::getActions('com_guidedtours');
 
 		$toolbar = Toolbar::getInstance();
 
 		ToolbarHelper::title(
-			Text::_('Guidedtours - ' . ($isNew ? 'Add Walk' : 'Edit Walk'))
+			Text::_('Guidedtours - ' . ($isNew ? 'Add Tour' : 'Edit Tour'))
 		);
 
 		if ($canDo->get('core.create')) {
 			if ($isNew) {
-				$toolbar->apply('mywalk.save');
+				$toolbar->apply('guidedtour.save');
 			} else {
-				$toolbar->apply('mywalk.apply');
+				$toolbar->apply('guidedtour.apply');
 			}
 		}
-		$toolbar->cancel('mywalk.cancel', 'JTOOLBAR_CLOSE');
+		$toolbar->cancel('guidedtour.cancel', 'JTOOLBAR_CLOSE');
 	}
 }

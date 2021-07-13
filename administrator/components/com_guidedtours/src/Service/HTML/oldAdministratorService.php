@@ -1,4 +1,5 @@
 <?php
+
 /**
  * @package     Mywalks.Administrator
  * @subpackage  com_mywalks
@@ -7,7 +8,7 @@
  * @license     GNU General Public License version 2 or later; see LICENSE.txt
  */
 
-namespace J4xdemos\Component\Mywalks\Administrator\Service\HTML;
+namespace Joomla\Component\Guidedtours\Administrator\Service\HTML;
 
 defined('_JEXEC') or die;
 
@@ -42,10 +43,8 @@ class AdministratorService
 		$html = '';
 
 		// Get the associations
-		if ($associations = Associations::getAssociations('com_mywalks', '#__mywalks', 'com_mywalks.item', $articleid))
-		{
-			foreach ($associations as $tag => $associated)
-			{
+		if ($associations = Associations::getAssociations('com_guidedtours', '#__mywalks', 'com_guidedtours.item', $articleid)) {
+			foreach ($associations as $tag => $associated) {
 				$associations[$tag] = (int) $associated->id;
 			}
 
@@ -65,19 +64,14 @@ class AdministratorService
 				->select('l.title as language_title');
 			$db->setQuery($query);
 
-			try
-			{
+			try {
 				$items = $db->loadObjectList('id');
-			}
-			catch (\RuntimeException $e)
-			{
+			} catch (\RuntimeException $e) {
 				throw new \Exception($e->getMessage(), 500, $e);
 			}
 
-			if ($items)
-			{
-				foreach ($items as &$item)
-				{
+			if ($items) {
+				foreach ($items as &$item) {
 					$text    = $item->lang_sef ? strtoupper($item->lang_sef) : 'XX';
 					$url     = Route::_('index.php?option=com_content&task=article.edit&id=' . (int) $item->id);
 					$tooltip = '<strong>' . htmlspecialchars($item->language_title, ENT_QUOTES, 'UTF-8') . '</strong><br>'
@@ -114,14 +108,11 @@ class AdministratorService
 		$state = ArrayHelper::getValue($states, (int) $value, $states[1]);
 		$icon  = $state[0];
 
-		if ($canChange)
-		{
+		if ($canChange) {
 			$html = '<a href="#" onclick="return Joomla.listItemTask(\'cb' . $i . '\',\'' . $state[1] . '\')" class="tbody-icon hasTooltip'
 				. ($value == 1 ? ' active' : '') . '" title="' . HTMLHelper::_('tooltipText', $state[3])
 				. '"><span class="icon-' . $icon . '" aria-hidden="true"></span></a>';
-		}
-		else
-		{
+		} else {
 			$html = '<a class="tbody-icon hasTooltip disabled' . ($value == 1 ? ' active' : '') . '" title="'
 				. HTMLHelper::_('tooltipText', $state[2]) . '"><span class="icon-' . $icon . '" aria-hidden="true"></span></a>';
 		}

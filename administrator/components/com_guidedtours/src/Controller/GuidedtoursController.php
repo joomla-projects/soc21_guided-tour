@@ -1,4 +1,5 @@
 <?php
+
 /**
  * @package     Mywalks.Administrator
  * @subpackage  com_mywalks
@@ -7,7 +8,7 @@
  * @license     GNU General Public License version 2 or later; see LICENSE.txt
  */
 
-namespace J4xdemos\Component\Mywalks\Administrator\Controller;
+namespace Joomla\Component\Guidedtours\Administrator\Controller;
 
 defined('_JEXEC') or die;
 
@@ -18,7 +19,7 @@ use Joomla\CMS\MVC\Controller\AdminController;
  *
  * @since  1.6
  */
-class MywalksController extends AdminController
+class GuidedtoursController extends AdminController
 {
 	/**
 	 * Proxy for getModel.
@@ -31,7 +32,7 @@ class MywalksController extends AdminController
 	 *
 	 * @since   1.6
 	 */
-	public function getModel($name = 'Mywalk', $prefix = 'Administrator', $config = array('ignore_request' => true))
+	public function getModel($name = 'Guidedtour', $prefix = 'Administrator', $config = array('ignore_request' => true))
 	{
 		return parent::getModel($name, $prefix, $config);
 	}

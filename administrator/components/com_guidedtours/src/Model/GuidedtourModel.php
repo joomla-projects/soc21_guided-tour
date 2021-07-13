@@ -1,4 +1,5 @@
 <?php
+
 /**
  * @package     Mywalks.Administrator
  * @subpackage  com_mywalks
@@ -7,7 +8,7 @@
  * @license     GNU General Public License version 2 or later; see LICENSE.txt
  */
 
-namespace J4xdemos\Component\Mywalks\Administrator\Model;
+namespace Joomla\Component\Guidedtours\Administrator\Model;
 
 defined('_JEXEC') or die;
 
@@ -23,7 +24,7 @@ use Joomla\CMS\Table\Table;
  * @since  1.6
  */
 
-class MywalkModel extends AdminModel
+class GuidedtourModel extends AdminModel
 {
 	/**
 	 * The prefix to use with controller messages.
@@ -31,7 +32,7 @@ class MywalkModel extends AdminModel
 	 * @var    string
 	 * @since  1.6
 	 */
-	protected $text_prefix = 'COM_MYWALKS';
+	protected $text_prefix = 'COM_GUIDEDTOURS';
 
 	/**
 	 * Method to test whether a record can be deleted.
@@ -44,9 +45,8 @@ class MywalkModel extends AdminModel
 	 */
 	protected function canDelete($record)
 	{
-		if (!empty($record->id))
-		{
-			return Factory::getUser()->authorise('core.delete', 'com_mywalks.mywalks.' . (int) $record->id);
+		if (!empty($record->id)) {
+			return Factory::getUser()->authorise('core.delete', 'com_guidedtours.guidedtours.' . (int) $record->id);
 		}
 
 		return false;
@@ -66,9 +66,8 @@ class MywalkModel extends AdminModel
 		$user = Factory::getUser();
 
 		// Check for existing article.
-		if (!empty($record->id))
-		{
-			return $user->authorise('core.edit.state', 'com_mywalks.mywalks.' . (int) $record->id);
+		if (!empty($record->id)) {
+			return $user->authorise('core.edit.state', 'com_guidedtours.guidedtours.' . (int) $record->id);
 		}
 
 		// Default to component settings if neither article nor category known.
@@ -87,13 +86,15 @@ class MywalkModel extends AdminModel
 	 * @since   3.0
 	 * @throws  \Exception
 	 */
+	/**
+	 * This can be changed
+	 */
 	public function getTable($name = '', $prefix = '', $options = array())
 	{
-		$name = 'mywalks';
+		$name = 'guidedtours';
 		$prefix = 'Table';
 
-		if ($table = $this->_createTable($name, $prefix, $options))
-		{
+		if ($table = $this->_createTable($name, $prefix, $options)) {
 			return $table;
 		}
 
@@ -114,10 +115,9 @@ class MywalkModel extends AdminModel
 	public function getForm($data = array(), $loadData = true)
 	{
 		// Get the form.
-		$form = $this->loadForm('com_mywalks.mywalk', 'mywalk', array('control' => 'jform', 'load_data' => $loadData));
+		$form = $this->loadForm('com_guidedtours.guidedtour', 'guidedtour', array('control' => 'jform', 'load_data' => $loadData));
 
-		if (empty($form))
-		{
+		if (empty($form)) {
 			return false;
 		}
 
@@ -135,16 +135,15 @@ class MywalkModel extends AdminModel
 	{
 		// Check the session for previously entered form data.
 		$app = Factory::getApplication();
-		$data = $app->getUserState('com_mywalks.edit.mywalk.data', array());
+		$data = $app->getUserState('com_guidedtours.edit.guidedtour.data', array());
 
-		if (empty($data))
-		{
+		if (empty($data)) {
 			$data = $this->getItem();
 
 			// Pre-select some filters (Status, Category, Language, Access) in edit form if those have been selected in Article Manager: Articles
 		}
 
-		$this->preprocessData('com_mywalks.mywalk', $data);
+		$this->preprocessData('com_guidedtours.guidedtour', $data);
 
 		return $data;
 	}
@@ -159,7 +158,8 @@ class MywalkModel extends AdminModel
 	 *
 	 * @since   4.0.0
 	 */
-	public function publish(&$pks, $value = 1) {
+	public function publish(&$pks, $value = 1)
+	{
 		/* this is a very simple method to change the state of each item selected */
 		$db = $this->getDbo();
 
@@ -167,7 +167,7 @@ class MywalkModel extends AdminModel
 
 		$query->update('`#__mywalks`');
 		$query->set('state = ' . $value);
-		$query->where('id IN (' . implode(',', $pks). ')');
+		$query->where('id IN (' . implode(',', $pks) . ')');
 		$db->setQuery($query);
 		$db->execute();
 	}
