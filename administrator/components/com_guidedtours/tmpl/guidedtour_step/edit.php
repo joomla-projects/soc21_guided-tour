@@ -22,7 +22,7 @@ HTMLHelper::_('behavior.formvalidator');
 HTMLHelper::_('behavior.keepalive');
 
 $app = Factory::getApplication();
-$walk_id = $app->getUserState('com_guidedtours.walk_id');
+$walk_id = $app->getUserState('com_mywalks.walk_id');
 
 if (empty($walk_id)) {
 	throw new GenericDataException("\nThe walk id was not set!\n", 500);
@@ -33,7 +33,7 @@ $this->ignore_fieldsets = array('details', 'item_associations', 'jmetadata');
 $this->useCoreUI = true;
 ?>
 
-<form action="<?php echo Route::_('index.php?option=com_guidedtours&view=guidedtour_step&layout=edit&id=' . (int) $this->item->id); ?>" method="post" name="adminForm" id="mywalk-dates-form" class="form-validate">
+<form action="<?php echo Route::_('index.php?option=com_mywalks&view=mywalk_date&layout=edit&id=' . (int) $this->item->id); ?>" method="post" name="adminForm" id="mywalk-dates-form" class="form-validate">
 
 	<?php echo LayoutHelper::render('joomla.edit.title_alias', $this); ?>
 
@@ -45,10 +45,10 @@ $this->useCoreUI = true;
 			<div class="col-md-9">
 				<div class="row">
 					<div class="col-md-6">
-						<!-- <?php echo $this->form->renderField('date'); ?> -->
-						<?php echo $this->form->renderField('title'); ?>
+						<?php echo $this->form->renderField('date'); ?>
+						<!-- <?php echo $this->form->renderField('title'); ?> -->
 						<?php echo $this->form->renderField('weather'); ?>
-						<?php echo $this->form->renderField('id'); ?>
+						<!-- <?php echo $this->form->renderField('id'); ?> -->
 						<!-- <?php $this->form->setValue('walk_id', null, $walk_id); ?> -->
 						<?php echo $this->form->renderField('walk_id'); ?>
 					</div>
@@ -72,4 +72,4 @@ $this->useCoreUI = true;
 	<input type="hidden" name="walk_id" value="<?php echo $walk_id; ?>">
 	<?php echo HTMLHelper::_('form.token'); ?>
 </form>
-<a href="<?php echo Route::_('index.php?option=com_guidedtours'); ?>">Back to list of Tours list</a>
+<a href="<?php echo Route::_('index.php?option=com_mywalks'); ?>">Back to list of Tours list</a>

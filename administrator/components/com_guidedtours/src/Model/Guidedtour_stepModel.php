@@ -1,5 +1,4 @@
 <?php
-
 /**
  * @package     Mywalks.Administrator
  * @subpackage  com_mywalks
@@ -8,7 +7,7 @@
  * @license     GNU General Public License version 2 or later; see LICENSE.txt
  */
 
-namespace Joomla\Component\Guidedtours\Administrator\Model;
+namespace J4xdemos\Component\Mywalks\Administrator\Model;
 
 defined('_JEXEC') or die;
 
@@ -25,7 +24,7 @@ use Joomla\CMS\Table\Table;
 use Joomla\CMS\Table\TableInterface;
 //use Joomla\CMS\UCM\UCMType;
 //use Joomla\CMS\Workflow\Workflow;
-use Joomla\Component\Guidedtours\Administrator\Extension\GuidedtoursComponent;
+use J4xdemos\Component\Mywalks\Administrator\Extension\MywalksComponent;
 //use Joomla\Component\Content\Administrator\Helper\ContentHelper;
 //use Joomla\Component\Fields\Administrator\Helper\FieldsHelper;
 //use Joomla\Component\Workflow\Administrator\Table\StageTable;
@@ -38,7 +37,7 @@ use Joomla\Registry\Registry;
  * @since  1.6
  */
 
-class Guidedtour_stepModel extends AdminModel
+class Mywalk_dateModel extends AdminModel
 {
 	/**
 	 * The prefix to use with controller messages.
@@ -46,7 +45,7 @@ class Guidedtour_stepModel extends AdminModel
 	 * @var    string
 	 * @since  1.6
 	 */
-	protected $text_prefix = 'COM_GUIDEDTOURS';
+	protected $text_prefix = 'COM_MYWALKS';
 
 	/**
 	 * Method to test whether a record can be deleted.
@@ -59,8 +58,9 @@ class Guidedtour_stepModel extends AdminModel
 	 */
 	protected function canDelete($record)
 	{
-		if (!empty($record->id)) {
-			return Factory::getUser()->authorise('core.delete', 'com_guidedtours.guidedtours.' . (int) $record->id);
+		if (!empty($record->id))
+		{
+			return Factory::getUser()->authorise('core.delete', 'com_mywalks.mywalks.' . (int) $record->id);
 		}
 
 		return false;
@@ -80,8 +80,9 @@ class Guidedtour_stepModel extends AdminModel
 		$user = Factory::getUser();
 
 		// Check for existing article.
-		if (!empty($record->id)) {
-			return $user->authorise('core.edit.state', 'com_guidedtours.guidedtours.' . (int) $record->id);
+		if (!empty($record->id))
+		{
+			return $user->authorise('core.edit.state', 'com_mywalks.mywalks.' . (int) $record->id);
 		}
 
 		// Default to component settings if neither article nor category known.
@@ -102,10 +103,11 @@ class Guidedtour_stepModel extends AdminModel
 	 */
 	public function getTable($name = '', $prefix = '', $options = array())
 	{
-		$name = 'guidedtour_steps';
+		$name = 'mywalk_dates';
 		$prefix = 'Table';
 
-		if ($table = $this->_createTable($name, $prefix, $options)) {
+		if ($table = $this->_createTable($name, $prefix, $options))
+		{
 			return $table;
 		}
 
@@ -122,16 +124,15 @@ class Guidedtour_stepModel extends AdminModel
 	 *
 	 * @since   4.0.0
 	 */
-	public function publish(&$pks, $value = 1)
-	{
+	public function publish(&$pks, $value = 1) {
 		/* this is a very simple method to change the state of each item selected */
 		$db = $this->getDbo();
 
 		$query = $db->getQuery(true);
 
-		$query->update('`#__guidedtour_steps`');
+		$query->update('`#__mywalk_dates`');
 		$query->set('state = ' . $value);
-		$query->where('id IN (' . implode(',', $pks) . ')');
+		$query->where('id IN (' . implode(',', $pks). ')');
 		$db->setQuery($query);
 		$db->execute();
 	}
@@ -150,9 +151,10 @@ class Guidedtour_stepModel extends AdminModel
 	public function getForm($data = array(), $loadData = true)
 	{
 		// Get the form.
-		$form = $this->loadForm('com_guidedtours.guidedtour_step', 'guidedtour_step', array('control' => 'jform', 'load_data' => $loadData));
+		$form = $this->loadForm('com_mywalks.mywalk_date', 'mywalk_date', array('control' => 'jform', 'load_data' => $loadData));
 
-		if (empty($form)) {
+		if (empty($form))
+		{
 			return false;
 		}
 
@@ -170,15 +172,16 @@ class Guidedtour_stepModel extends AdminModel
 	{
 		// Check the session for previously entered form data.
 		$app = Factory::getApplication();
-		$data = $app->getUserState('com_guidedtours.edit.guidedtour_step.data', array());
+		$data = $app->getUserState('com_mywalks.edit.mywalk_date.data', array());
 
-		if (empty($data)) {
+		if (empty($data))
+		{
 			$data = $this->getItem();
 
 			// Pre-select some filters (Status, Category, Language, Access) in edit form if those have been selected in Article Manager: Articles
 		}
 
-		$this->preprocessData('com_guidedtours.guidedtour_step', $data);
+		$this->preprocessData('com_mywalks.mywalk_date', $data);
 
 		return $data;
 	}

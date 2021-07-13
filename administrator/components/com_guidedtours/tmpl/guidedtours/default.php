@@ -25,7 +25,7 @@ $states = array(
 );
 $editIcon = '<span class="fa fa-pen-square me-2" aria-hidden="true"></span>';
 ?>
-<form action="<?php echo Route::_('index.php?option=com_guidedtours'); ?>" method="post" name="adminForm" id="adminForm">
+<form action="<?php echo Route::_('index.php?option=com_mywalks'); ?>" method="post" name="adminForm" id="adminForm">
 	<div class="row">
 		<div class="col-md-12">
 			<div id="j-main-container" class="j-main-container">
@@ -78,7 +78,7 @@ $editIcon = '<span class="fa fa-pen-square me-2" aria-hidden="true"></span>';
 										<?php echo $states[$item->state]; ?>
 									</td>
 									<th scope="row" class="has-context">
-										<a class="hasTooltip" href="<?php echo Route::_('index.php?option=com_guidedtours&task=guidedtour.edit&id=' . $item->id); ?>">
+										<a class="hasTooltip" href="<?php echo Route::_('index.php?option=com_mywalks&task=mywalk.edit&id=' . $item->id); ?>">
 											<?php echo $editIcon; ?><?php echo $this->escape($item->title); ?>
 										</a>
 									</th>
@@ -87,7 +87,7 @@ $editIcon = '<span class="fa fa-pen-square me-2" aria-hidden="true"></span>';
 									</td>
 
 									<td class="">
-										<a href="index.php?option=com_guidedtours&view=guidedtour_steps&walk_id=<?php echo $item->id; ?>">
+										<a href="index.php?option=com_mywalks&view=mywalk_dates&walk_id=<?php echo $item->id; ?>">
 											<?php echo $editIcon; ?><?php echo $item->nvisits; ?></a>
 									</td>
 

@@ -1,5 +1,4 @@
 <?php
-
 /**
  * @package     Mywalks.Administrator
  * @subpackage  com_mywalks
@@ -8,7 +7,7 @@
  * @license     GNU General Public License version 2 or later; see LICENSE.txt
  */
 
-namespace Joomla\Component\Guidedtours\Administrator\Controller;
+namespace J4xdemos\Component\Mywalks\Administrator\Controller;
 
 defined('_JEXEC') or die;
 
@@ -19,7 +18,7 @@ use Joomla\CMS\MVC\Controller\AdminController;
  *
  * @since  1.5
  */
-class Guidedtour_stepsController extends AdminController
+class Mywalk_datesController extends AdminController
 {
 	/**
 	 * The default view.
@@ -27,7 +26,7 @@ class Guidedtour_stepsController extends AdminController
 	 * @var    string
 	 * @since  1.6
 	 */
-	protected $default_view = 'guidedtour_steps';
+	protected $default_view = 'mywalk_dates';
 
 	/**
 	 * Method to display a view.
@@ -46,10 +45,11 @@ class Guidedtour_stepsController extends AdminController
 		$id     = $this->input->getInt('id');
 
 		// Check for edit form.
-		if ($view == 'guidedtour_step' && $layout == 'edit' && !$this->checkEditId('com_guidedtours.edit.guidedtour_step', $id)) {
+		if ($view == 'mywalk_date' && $layout == 'edit' && !$this->checkEditId('com_mywalks.edit.mywalk_date', $id))
+		{
 			// Somehow the person just went to the form - we don't allow that.
 			$this->setMessage(Text::sprintf('JLIB_APPLICATION_ERROR_UNHELD_ID', $id), 'error');
-			$this->setRedirect(Route::_('index.php?option=com_guidedtour&view=guidedtour_stepss', false));
+			$this->setRedirect(Route::_('index.php?option=com_mywalk&view=mywalk_datess', false));
 
 			return false;
 		}
@@ -68,7 +68,7 @@ class Guidedtour_stepsController extends AdminController
 	 *
 	 * @since   1.6
 	 */
-	public function getModel($name = 'Guidedtour_step', $prefix = 'Administrator', $config = array('ignore_request' => true))
+	public function getModel($name = 'Mywalk_date', $prefix = 'Administrator', $config = array('ignore_request' => true))
 	{
 		return parent::getModel($name, $prefix, $config);
 	}

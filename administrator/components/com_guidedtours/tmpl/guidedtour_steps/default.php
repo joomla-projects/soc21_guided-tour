@@ -15,7 +15,7 @@ use Joomla\CMS\HTML\HTMLHelper;
 use Joomla\CMS\Language\Text;
 use Joomla\CMS\Layout\LayoutHelper;
 use Joomla\CMS\Router\Route;
-use Joomla\Component\Guidedtours\Administrator\Helper\GuidedtoursHelper;
+use J4xdemos\Component\Mywalks\Administrator\Helper\MywalksHelper;
 
 HTMLHelper::_('behavior.multiselect');
 //HTMLHelper::_('behavior.tabstate');
@@ -33,7 +33,7 @@ $title = MywalksHelper::getWalkTitle($this->state->get('walk_id'))->title;
 $walk_id = $this->state->get('walk_id')
 ?>
 <h3><?php echo Text::_('List of Steps for Guidedtour ') . ' ' . $walk_id . ': ' . $title; ?></h3>
-<form action="<?php echo Route::_('index.php?option=com_guidedtours&view=guidedtour_steps'); ?>" method="post" name="adminForm" id="adminForm">
+<form action="<?php echo Route::_('index.php?option=com_mywalks&view=mywalk_dates'); ?>" method="post" name="adminForm" id="adminForm">
 	<div class="row">
 		<div class="col-md-12">
 			<div id="j-main-container" class="j-main-container">
@@ -81,7 +81,7 @@ $walk_id = $this->state->get('walk_id')
 										<?php echo $states[$item->state]; ?>
 									</td>
 									<td>
-										<a href="index.php?option=com_guidedtours&task=guidedtour_step.edit&id=<?php echo $item->id; ?>">
+										<a href="index.php?option=com_mywalks&task=mywalk_date.edit&id=<?php echo $item->id; ?>">
 											<?php echo $editIcon; ?><?php echo $item->title; ?></a>
 									</td>
 									<td>
@@ -109,4 +109,4 @@ $walk_id = $this->state->get('walk_id')
 	</div>
 </form>
 
-<a href="<?php echo Route::_('index.php?option=com_guidedtours'); ?>">Back to list of walks</a>
+<a href="<?php echo Route::_('index.php?option=com_mywalks'); ?>">Back to list of walks</a>

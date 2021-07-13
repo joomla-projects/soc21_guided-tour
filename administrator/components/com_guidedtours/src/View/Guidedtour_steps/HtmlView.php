@@ -8,7 +8,7 @@
  * @license     GNU General Public License version 2 or later; see LICENSE.txt
  */
 
-namespace Joomla\Component\Guidedtours\Administrator\View\Guidedtour_steps;
+namespace J4xdemos\Component\Mywalks\Administrator\View\Mywalk_dates;
 
 defined('_JEXEC') or die;
 
@@ -97,15 +97,15 @@ class HtmlView extends BaseHtmlView
 	 */
 	protected function addToolbar()
 	{
-		$canDo = ContentHelper::getActions('com_guidedtours');
+		$canDo = ContentHelper::getActions('com_mywalks');
 		$user  = Factory::getUser();
 
 		$toolbar = Toolbar::getInstance('toolbar');
 
-		ToolbarHelper::title(Text::_('Guided tour - List of Steps'), 'guidedtour_steps');
+		ToolbarHelper::title(Text::_('Guided tour - List of Steps'), 'mywalk_dates');
 
 		if ($canDo->get('core.create')) {
-			$toolbar->addNew('guidedtour_step.add');
+			$toolbar->addNew('mywalk_date.add');
 		}
 
 		if ($canDo->get('core.edit.state')) {
@@ -118,19 +118,19 @@ class HtmlView extends BaseHtmlView
 
 			$childBar = $dropdown->getChildToolbar();
 
-			$childBar->publish('guidedtour_steps.publish')->listCheck(true);
+			$childBar->publish('mywalk_dates.publish')->listCheck(true);
 
-			$childBar->unpublish('guidedtour_steps.unpublish')->listCheck(true);
+			$childBar->unpublish('mywalk_dates.unpublish')->listCheck(true);
 
-			$childBar->archive('guidedtour_steps.archive')->listCheck(true);
+			$childBar->archive('mywalk_dates.archive')->listCheck(true);
 
 			if ($this->state->get('filter.published') != -2) {
-				$childBar->trash('guidedtour_steps.trash')->listCheck(true);
+				$childBar->trash('mywalk_dates.trash')->listCheck(true);
 			}
 		}
 
 		if ($this->state->get('filter.published') == -2 && $canDo->get('core.delete')) {
-			$toolbar->delete('guidedtour_steps.delete')
+			$toolbar->delete('mywalk_dates.delete')
 				->text('JTOOLBAR_EMPTY_TRASH')
 				->message('JGLOBAL_CONFIRM_DELETE')
 				->listCheck(true);
@@ -147,7 +147,7 @@ class HtmlView extends BaseHtmlView
 	protected function getSortFields()
 	{
 		return array(
-			'a.date'         => Text::_('LABEL'),
+			'a.date'         => Text::_('COM_MYWALKS_DATES_VISIT_DATE_LABEL'),
 			'a.id'           => Text::_('JGRID_HEADING_ID'),
 		);
 	}
