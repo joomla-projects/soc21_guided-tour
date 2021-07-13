@@ -10,11 +10,12 @@
 
 defined('_JEXEC') or die;
 
-//use Joomla\CMS\Categories\CategoryFactoryInterface;
+// Use Joomla\CMS\Categories\CategoryFactoryInterface;
 use Joomla\CMS\Component\Router\RouterFactoryInterface;
 use Joomla\CMS\Dispatcher\ComponentDispatcherFactoryInterface;
 use Joomla\CMS\Extension\ComponentInterface;
-//use Joomla\CMS\Extension\MVCComponent;
+
+// Use Joomla\CMS\Extension\MVCComponent;
 use Joomla\CMS\Extension\Service\Provider\CategoryFactory;
 use Joomla\CMS\Extension\Service\Provider\ComponentDispatcherFactory;
 use Joomla\CMS\Extension\Service\Provider\MVCFactory;
@@ -54,6 +55,7 @@ return new class implements ServiceProviderInterface
 
 				$component->setRegistry($container->get(Registry::class));
 				$component->setMVCFactory($container->get(MVCFactoryInterface::class));
+
 				//					$component->setCategoryFactory($container->get(CategoryFactoryInterface::class));
 				$component->setRouterFactory($container->get(RouterFactoryInterface::class));
 

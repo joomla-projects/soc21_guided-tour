@@ -1,11 +1,15 @@
 <?php
 
 /**
- * @package     Mywalks.Administrator
- * @subpackage  com_mywalks
+ * File Doc Comment_
+ * PHP version 5
  *
- * @copyright   Copyright (C) 2005 - 2019 Open Source Matters, Inc. All rights reserved.
- * @license     GNU General Public License version 2 or later; see LICENSE.txt
+ * @category Component
+ * @package  Joomla.Administrator
+ * @author   Joomla! <admin@joomla.org>
+ * @copyright (C) 2013 Open Source Matters, Inc. <https://www.joomla.org>
+ * @license  GNU General Public License version 2 or later; see LICENSE.txt
+ * @link     admin@joomla.org
  */
 
 namespace Joomla\Component\Guidedtours\Administrator\View\Guidedtour;
@@ -71,7 +75,8 @@ class HtmlView extends BaseHtmlView
 		$this->item  = $this->get('Item');
 		$this->state = $this->get('State');
 
-		if (count($errors = $this->get('Errors'))) {
+		if (count($errors = $this->get('Errors')))
+		{
 			throw new GenericDataException(implode("\n", $errors), 500);
 		}
 
@@ -101,13 +106,18 @@ class HtmlView extends BaseHtmlView
 			Text::_('Guidedtours - ' . ($isNew ? 'Add Tour' : 'Edit Tour'))
 		);
 
-		if ($canDo->get('core.create')) {
-			if ($isNew) {
+		if ($canDo->get('core.create'))
+		{
+			if ($isNew)
+			{
 				$toolbar->apply('guidedtour.save');
-			} else {
+			}
+			else
+			{
 				$toolbar->apply('guidedtour.apply');
 			}
 		}
+
 		$toolbar->cancel('guidedtour.cancel', 'JTOOLBAR_CLOSE');
 	}
 }

@@ -1,11 +1,15 @@
 <?php
 
 /**
- * @package     Mywalks.Administrator
- * @subpackage  com_mywalks
+ * File Doc Comment_
+ * PHP version 5
  *
- * @copyright   Copyright (C) 2005 - 2019 Open Source Matters, Inc. All rights reserved.
- * @license     GNU General Public License version 2 or later; see LICENSE.txt
+ * @category Component
+ * @package  Joomla.Administrator
+ * @author   Joomla! <admin@joomla.org>
+ * @copyright (C) 2013 Open Source Matters, Inc. <https://www.joomla.org>
+ * @license  GNU General Public License version 2 or later; see LICENSE.txt
+ * @link     admin@joomla.org
  */
 
 namespace Joomla\Component\Guidedtours\Administrator\Model;
@@ -16,29 +20,42 @@ use Joomla\CMS\Factory;
 use Joomla\CMS\Form\Form;
 use Joomla\CMS\Language\LanguageHelper;
 use Joomla\CMS\Language\Text;
-//use Joomla\CMS\Log\Log;
-use Joomla\CMS\MVC\Model\AdminModel;
-//use Joomla\CMS\Plugin\PluginHelper;
-//use Joomla\CMS\String\PunycodeHelper;
-//use Joomla\CMS\Table\Category;
-use Joomla\CMS\Table\Table;
-use Joomla\CMS\Table\TableInterface;
-//use Joomla\CMS\UCM\UCMType;
-//use Joomla\CMS\Workflow\Workflow;
 use Joomla\Component\Guidedtours\Administrator\Extension\GuidedtoursComponent;
-//use Joomla\Component\Content\Administrator\Helper\ContentHelper;
-//use Joomla\Component\Fields\Administrator\Helper\FieldsHelper;
-//use Joomla\Component\Workflow\Administrator\Table\StageTable;
+use Joomla\CMS\MVC\Model\AdminModel;
+use Joomla\CMS\Table\TableInterface;
+use Joomla\CMS\Table\Table;
 use Joomla\Registry\Registry;
-//use Joomla\Utilities\ArrayHelper;
+
+
+
+/**
+ *  Use Joomla\CMS\Plugin\PluginHelper;
+ *  use Joomla\CMS\String\PunycodeHelper;
+ *  use Joomla\CMS\Table\Category;
+ *  Use Joomla\CMS\Plugin\PluginHelper;
+ *  use Joomla\CMS\String\PunycodeHelper;
+ *  use Joomla\CMS\Table\Category;
+ *  Use Joomla\CMS\Log\Log;
+ *  Use Joomla\CMS\UCM\UCMType;
+ *  use Joomla\CMS\Workflow\Workflow;
+
+ *  Use Joomla\Component\Content\Administrator\Helper\ContentHelper;
+ *  use Joomla\Component\Fields\Administrator\Helper\FieldsHelper;
+ *  use Joomla\Component\Workflow\Administrator\Table\StageTable;
+ *
+ */
+
+
+// Use Joomla\Utilities\ArrayHelper;
 
 /**
  * Item Model for a single walk.
  *
  * @since  1.6
  */
-
+// @codingStandardsIgnoreStart
 class Guidedtour_stepModel extends AdminModel
+// @codingStandardsIgnoreEnd
 {
 	/**
 	 * The prefix to use with controller messages.
@@ -46,8 +63,9 @@ class Guidedtour_stepModel extends AdminModel
 	 * @var    string
 	 * @since  1.6
 	 */
+	// @codingStandardsIgnoreStart
 	protected $text_prefix = 'COM_GUIDEDTOURS';
-
+	// @codingStandardsIgnoreEnd
 	/**
 	 * Method to test whether a record can be deleted.
 	 *
@@ -59,7 +77,8 @@ class Guidedtour_stepModel extends AdminModel
 	 */
 	protected function canDelete($record)
 	{
-		if (!empty($record->id)) {
+		if (!empty($record->id))
+		{
 			return Factory::getUser()->authorise('core.delete', 'com_guidedtours.guidedtours.' . (int) $record->id);
 		}
 
@@ -80,7 +99,8 @@ class Guidedtour_stepModel extends AdminModel
 		$user = Factory::getUser();
 
 		// Check for existing article.
-		if (!empty($record->id)) {
+		if (!empty($record->id))
+		{
 			return $user->authorise('core.edit.state', 'com_guidedtours.guidedtours.' . (int) $record->id);
 		}
 
@@ -105,7 +125,8 @@ class Guidedtour_stepModel extends AdminModel
 		$name = 'guidedtour_steps';
 		$prefix = 'Table';
 
-		if ($table = $this->_createTable($name, $prefix, $options)) {
+		if ($table = $this->_createTable($name, $prefix, $options))
+		{
 			return $table;
 		}
 
@@ -115,16 +136,17 @@ class Guidedtour_stepModel extends AdminModel
 	/**
 	 * Method to change the published state of one or more records.
 	 *
-	 * @param   array    &$pks   A list of the primary keys to change.
+	 * @param   array    $pks    A list of the primary keys to change.
 	 * @param   integer  $value  The value of the published state.
 	 *
-	 * @return  boolean  True on success.
+	 * @return  void     True on success.
 	 *
 	 * @since   4.0.0
 	 */
 	public function publish(&$pks, $value = 1)
 	{
-		/* this is a very simple method to change the state of each item selected */
+		// This is a very simple method to change the state of each item selected
+
 		$db = $this->getDbo();
 
 		$query = $db->getQuery(true);
@@ -152,7 +174,8 @@ class Guidedtour_stepModel extends AdminModel
 		// Get the form.
 		$form = $this->loadForm('com_guidedtours.guidedtour_step', 'guidedtour_step', array('control' => 'jform', 'load_data' => $loadData));
 
-		if (empty($form)) {
+		if (empty($form))
+		{
 			return false;
 		}
 
@@ -172,7 +195,8 @@ class Guidedtour_stepModel extends AdminModel
 		$app = Factory::getApplication();
 		$data = $app->getUserState('com_guidedtours.edit.guidedtour_step.data', array());
 
-		if (empty($data)) {
+		if (empty($data))
+		{
 			$data = $this->getItem();
 
 			// Pre-select some filters (Status, Category, Language, Access) in edit form if those have been selected in Article Manager: Articles

@@ -1,11 +1,15 @@
 <?php
 
 /**
- * @package     Mywalks.Administrator
- * @subpackage  com_mywalks
+ * File Doc Comment_
+ * PHP version 5
  *
- * @copyright   Copyright (C) 2005 - 2019 Open Source Matters, Inc. All rights reserved.
- * @license     GNU General Public License version 2 or later; see LICENSE.txt
+ * @category Component
+ * @package  Joomla.Administrator
+ * @author   Joomla! <admin@joomla.org>
+ * @copyright (C) 2013 Open Source Matters, Inc. <https://www.joomla.org>
+ * @license  GNU General Public License version 2 or later; see LICENSE.txt
+ * @link     admin@joomla.org
  */
 
 namespace Joomla\Component\Guidedtours\Administrator\View\Guidedtour_step;
@@ -26,7 +30,7 @@ use Joomla\CMS\Session\Session;
 use Joomla\CMS\Toolbar\Toolbar;
 use Joomla\CMS\Toolbar\ToolbarHelper;
 
-//\JLoader::register('MywalksHelperRoute', JPATH_SITE . '/components/com_mywalks/helpers/route.php');
+// JLoader::register('MywalksHelperRoute', JPATH_SITE . '/components/com_mywalks/helpers/route.php');
 
 /**
  * View to edit an article.
@@ -87,7 +91,8 @@ class HtmlView extends BaseHtmlView
 		$this->state = $this->get('State');
 
 		// Check for errors.
-		if (count($errors = $this->get('Errors'))) {
+		if (count($errors = $this->get('Errors')))
+		{
 			throw new GenericDataException(implode("\n", $errors), 500);
 		}
 
@@ -112,7 +117,7 @@ class HtmlView extends BaseHtmlView
 		$isNew      = ($this->item->id == 0);
 
 		// Built the actions for new and existing records.
-		//$canDo = $this->canDo;
+		// $canDo = $this->canDo;
 
 		$toolbar = Toolbar::getInstance();
 		$title = $isNew ? 'Add Step' : 'Edit Step';
@@ -120,11 +125,15 @@ class HtmlView extends BaseHtmlView
 		ToolbarHelper::title($title);
 
 		// For new records, check the create permission.
-		if ($isNew) {
+		if ($isNew)
+		{
 			$toolbar->apply('guidedtour_step.save');
-		} else {
+		}
+		else
+		{
 			$toolbar->apply('guidedtour_step.apply');
 		}
+
 		$toolbar->cancel('guidedtour_step.cancel', 'JTOOLBAR_CLOSE');
 	}
 }

@@ -1,11 +1,15 @@
 <?php
 
 /**
- * @package     Mywalks.Administrator
- * @subpackage  com_mywalks
+ * File Doc Comment_
+ * PHP version 5
  *
- * @copyright   Copyright (C) 2005 - 2019 Open Source Matters, Inc. All rights reserved.
- * @license     GNU General Public License version 2 or later; see LICENSE.txt
+ * @category Component
+ * @package  Joomla.Administrator
+ * @author   Joomla! <admin@joomla.org>
+ * @copyright (C) 2013 Open Source Matters, Inc. <https://www.joomla.org>
+ * @license  GNU General Public License version 2 or later; see LICENSE.txt
+ * @link     admin@joomla.org
  */
 
 defined('_JEXEC') or die;
@@ -20,7 +24,12 @@ HTMLHelper::_('behavior.keepalive');
 
 ?>
 
-<form action="<?php echo Route::_('index.php?option=com_guidedtours&view=guidedtour&layout=edit&id=' . (int) $this->item->id); ?>" method="post" name="adminForm" id="mywalks-form" class="form-validate">
+
+<form action="<?php
+				echo Route::_(
+					'index.php?option=com_guidedtours&view=guidedtour&layout=edit&id=' .
+						(int) $this->item->id
+				); ?>" method="post" name="adminForm" id="mywalks-form" class="form-validate">
 
 	<?php echo LayoutHelper::render('joomla.edit.title_alias', $this); ?>
 
