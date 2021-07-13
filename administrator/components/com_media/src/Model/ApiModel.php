@@ -300,7 +300,7 @@ class ApiModel extends BaseDatabaseModel
 		PluginHelper::importPlugin('content');
 
 		// Also include the filesystem plugins, perhaps they support batch processing too
- 		PluginHelper::importPlugin('media-action');
+		PluginHelper::importPlugin('media-action');
 
 		$result = $app->triggerEvent('onContentBeforeSave', ['com_media.file', $object, true, $object]);
 
@@ -350,7 +350,7 @@ class ApiModel extends BaseDatabaseModel
 		PluginHelper::importPlugin('content');
 
 		// Also include the filesystem plugins, perhaps they support batch processing too
- 		PluginHelper::importPlugin('media-action');
+		PluginHelper::importPlugin('media-action');
 
 		$result = $app->triggerEvent('onContentBeforeSave', ['com_media.file', $object, false, $object]);
 
@@ -396,7 +396,7 @@ class ApiModel extends BaseDatabaseModel
 		PluginHelper::importPlugin('content');
 
 		// Also include the filesystem plugins, perhaps they support batch processing too
- 		PluginHelper::importPlugin('media-action');
+		PluginHelper::importPlugin('media-action');
 
 		$result = $app->triggerEvent('onContentBeforeDelete', ['com_media.' . $type, $object]);
 
@@ -538,13 +538,15 @@ class ApiModel extends BaseDatabaseModel
 			$extensions = [];
 
 			// Default to showing all supported formats
-			if (count($mediaTypes) === 0) {
+			if (count($mediaTypes) === 0)
+			{
 				$mediaTypes = ['0', '1', '2', '3'];
 			}
 
 			array_map(
 				function ($mediaType) use (&$types) {
-					switch ($mediaType) {
+					switch ($mediaType)
+					{
 						case '0':
 							$types[] = 'images';
 							break;
@@ -605,8 +607,10 @@ class ApiModel extends BaseDatabaseModel
 				)
 			);
 
-			foreach ($types as $type) {
-				if (in_array($type, ['images', 'audios', 'videos', 'documents'])) {
+			foreach ($types as $type)
+			{
+				if (in_array($type, ['images', 'audios', 'videos', 'documents']))
+				{
 					$extensions = array_merge($extensions, ${$type});
 				}
 			}

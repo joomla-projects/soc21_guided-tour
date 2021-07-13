@@ -44,15 +44,19 @@ $wa->useScript('keepalive')
 				<?php echo $this->form->renderField('only_use_in_subform'); ?>
 				<?php echo $this->form->renderField('default_value'); ?>
 
-				<?php foreach ($this->form->getFieldsets('fieldparams') as $name => $fieldSet) : ?>
-					<?php foreach ($this->form->getFieldset($name) as $field) : ?>
+				<?php foreach ($this->form->getFieldsets('fieldparams') as $name => $fieldSet)
+				:
+					?>
+					<?php foreach ($this->form->getFieldset($name) as $field)
+					:
+						?>
 						<?php echo $field->renderField(); ?>
 					<?php endforeach; ?>
 				<?php endforeach; ?>
 			</div>
 			<div class="col-lg-3">
 				<?php $this->set('fields',
-						array(
+					array(
 							array(
 								'published',
 								'state',
@@ -80,7 +84,10 @@ $wa->useScript('keepalive')
 			</div>
 		</fieldset>
 		<?php echo HTMLHelper::_('uitab.endTab'); ?>
-		<?php if ($this->canDo->get('core.admin')) : ?>
+		<?php
+		if ($this->canDo->get('core.admin'))
+		:
+			?>
 			<?php echo HTMLHelper::_('uitab.addTab', 'myTab', 'rules', Text::_('JGLOBAL_ACTION_PERMISSIONS_LABEL', true)); ?>
 				<fieldset id="fieldset-rules" class="options-form">
 					<legend><?php echo Text::_('JGLOBAL_ACTION_PERMISSIONS_LABEL'); ?></legend>

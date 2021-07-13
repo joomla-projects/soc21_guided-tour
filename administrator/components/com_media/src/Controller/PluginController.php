@@ -144,7 +144,7 @@ class PluginController extends BaseController
 	 * @param   array   $plugins     Array of plugin names
 	 * @param   string  $pluginName  Plugin name to look up
 	 *
-	 * @return bool
+	 * @return boolean
 	 *
 	 * @since  4.0.0
 	 */

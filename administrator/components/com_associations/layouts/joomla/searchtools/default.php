@@ -54,6 +54,7 @@ if (isset($data['view']->filterForm) && !empty($data['view']->filterForm))
 	if (isset($data['view']->total) && (int) $data['view']->total === 0)
 	{
 		$noResults = $data['view']->filterForm->getFieldAttribute('search', 'noresults', '', 'filter');
+
 		if (!empty($noResults))
 		{
 			$noResultsText = Text::_($noResults);
@@ -87,7 +88,10 @@ HTMLHelper::_('searchtools.form', $data['options']['formSelector'], $data['optio
 <div class="js-stools" role="search">
 	<?php // Add the itemtype and language selectors before the form filters. Do not display in modal. ?>
 	<?php $app = Factory::getApplication(); ?>
-	<?php if ($app->input->get('forcedItemType', '', 'string') == '') : ?>
+	<?php
+	if ($app->input->get('forcedItemType', '', 'string') == '')
+:
+		?>
 		<?php $itemTypeField = $data['view']->filterForm->getField('itemtype'); ?>
 		<div class="js-stools-container-selector">
 			<div class="js-stools-field-selector js-stools-itemtype">
@@ -96,7 +100,10 @@ HTMLHelper::_('searchtools.form', $data['options']['formSelector'], $data['optio
 			</div>
 		</div>
 	<?php endif; ?>
-	<?php if ($app->input->get('forcedLanguage', '', 'cmd') == '') : ?>
+	<?php
+	if ($app->input->get('forcedLanguage', '', 'cmd') == '')
+:
+		?>
 		<?php $languageField = $data['view']->filterForm->getField('language'); ?>
 		<div class="js-stools-container-selector">
 			<div class="js-stools-field-selector js-stools-language">
@@ -105,7 +112,10 @@ HTMLHelper::_('searchtools.form', $data['options']['formSelector'], $data['optio
 			</div>
 		</div>
 	<?php endif; ?>
-	<?php if ($data['options']['showSelector']) : ?>
+	<?php
+	if ($data['options']['showSelector'])
+:
+		?>
 	<div class="js-stools-container-selector">
 		<?php echo LayoutHelper::render('joomla.searchtools.default.selector', $data); ?>
 	</div>
@@ -118,11 +128,16 @@ HTMLHelper::_('searchtools.form', $data['options']['formSelector'], $data['optio
 	</div>
 	<!-- Filters div -->
 	<div class="js-stools-container-filters clearfix<?php echo $filtersActiveClass; ?>">
-		<?php if ($data['options']['filterButton']) : ?>
-		<?php echo $this->sublayout('filters', $data); ?>
+		<?php
+		if ($data['options']['filterButton'])
+:
+			?>
+			<?php echo $this->sublayout('filters', $data); ?>
 		<?php endif; ?>
 	</div>
 </div>
-<?php if ($data['options']['showNoResults']) : ?>
+<?php if ($data['options']['showNoResults'])
+:
+	?>
 	<?php echo $this->sublayout('noitems', $data); ?>
-<?php endif; ?>
+<?php endif;

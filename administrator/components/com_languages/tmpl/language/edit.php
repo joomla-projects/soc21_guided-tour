@@ -46,7 +46,9 @@ $wa->useScript('keepalive')
 						</span>
 					</div>
 				</div>
-				<?php if ($this->canDo->get('core.edit.state')) : ?>
+				<?php if ($this->canDo->get('core.edit.state'))
+				:
+					?>
 					<?php echo $this->form->renderField('published'); ?>
 				<?php endif; ?>
 

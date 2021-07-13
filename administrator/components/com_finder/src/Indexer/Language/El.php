@@ -48,7 +48,7 @@ class El extends Language
 	 *
 	 * Reference: http://www.teicrete.gr/users/kutrulis/Glosika/Stixi.htm
 	 *
-	 * @param string $input The input to tokenise.
+	 * @param   string $input The input to tokenise.
 	 *
 	 * @return  array  An array of term strings.
 	 *

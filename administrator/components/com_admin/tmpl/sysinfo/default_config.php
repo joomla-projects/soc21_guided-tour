@@ -30,7 +30,9 @@ use Joomla\CMS\Language\Text;
 			</tr>
 		</thead>
 		<tbody>
-			<?php foreach ($this->config as $key => $value) : ?>
+			<?php foreach ($this->config as $key => $value)
+			:
+				?>
 				<tr>
 					<th scope="row">
 						<?php echo $key; ?>

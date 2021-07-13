@@ -51,18 +51,22 @@ echo HTMLHelper::_(
 <div id="cpanel-modules">
 	<div class="cpanel-modules <?php echo $this->position; ?>">
 		<div class="card-columns">
-		<?php if ($this->quickicons) :
+		<?php if ($this->quickicons)
+		:
 			foreach ($this->quickicons as $iconmodule)
 			{
 				echo ModuleHelper::renderModule($iconmodule, array('style' => 'well'));
 			}
 		endif;
+
 		foreach ($this->modules as $module)
 		{
 			echo ModuleHelper::renderModule($module, array('style' => 'well'));
 		}
 		?>
-		<?php if ($user->authorise('core.manage', 'com_modules')) : ?>
+		<?php if ($user->authorise('core.manage', 'com_modules'))
+		:
+			?>
 			<div class="module-wrapper">
 				<div class="card">
 					<button type="button" data-bs-toggle="modal" data-bs-target="#moduleDashboardAddModal" class="cpanel-add-module">

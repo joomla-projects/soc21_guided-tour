@@ -43,7 +43,10 @@ if ($user->authorise('core.create', 'com_redirect')
 		$this->loadTemplate('batch_body')
 	);
 } ?>
-<?php if ($this->redirectPluginId) : ?>
+<?php
+if ($this->redirectPluginId)
+:
+	?>
 	<?php $link = Route::_('index.php?option=com_plugins&client_id=0&task=plugin.edit&extension_id=' . $this->redirectPluginId . '&tmpl=component&layout=modal'); ?>
 	<?php echo HTMLHelper::_(
 		'bootstrap.renderModal',

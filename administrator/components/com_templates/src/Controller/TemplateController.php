@@ -104,7 +104,8 @@ class TemplateController extends BaseController
 		}
 		else
 		{
-			/* @var \Joomla\Component\Templates\Administrator\Model\TemplateModel $model */
+			// @var \Joomla\Component\Templates\Administrator\Model\TemplateModel $model
+
 			$model = $this->getModel();
 
 			// Change the state of the records.
@@ -150,6 +151,7 @@ class TemplateController extends BaseController
 		$app = $this->app;
 		$this->input->set('installtype', 'folder');
 		$newNameRaw = $this->input->get('new_name', null, 'string');
+
 		// Only accept letters, numbers and underscore for template name
 		$newName    = preg_replace('/[^a-zA-Z0-9_]/', '', $newNameRaw);
 		$templateID = (int) $this->input->getInt('id', 0);
@@ -165,7 +167,8 @@ class TemplateController extends BaseController
 
 		$this->setRedirect('index.php?option=com_templates&view=template&id=' . $templateID . '&file=' . $file);
 
-		/* @var \Joomla\Component\Templates\Administrator\Model\TemplateModel $model */
+		// @var \Joomla\Component\Templates\Administrator\Model\TemplateModel $model
+
 		$model = $this->getModel('Template', 'Administrator');
 		$model->setState('new_name', $newName);
 		$model->setState('tmp_prefix', uniqid('template_copy_'));
@@ -400,7 +403,8 @@ class TemplateController extends BaseController
 		// Check for request forgeries.
 		$this->checkToken('get');
 
-		/* @var \Joomla\Component\Templates\Administrator\Model\TemplateModel $model */
+		// @var \Joomla\Component\Templates\Administrator\Model\TemplateModel $model
+
 		$model    = $this->getModel();
 		$file     = (string) $this->input->getCmd('file', '');
 		$override = (string) InputFilter::getInstance(
@@ -439,7 +443,8 @@ class TemplateController extends BaseController
 		// Check for request forgeries
 		$this->checkToken();
 
-		/* @var \Joomla\Component\Templates\Administrator\Model\TemplateModel $model */
+		// @var \Joomla\Component\Templates\Administrator\Model\TemplateModel $model
+
 		$model = $this->getModel();
 		$id    = (int) $this->input->get('id', 0, 'int');
 		$file  = (string) $this->input->getCmd('file', '');
@@ -491,7 +496,8 @@ class TemplateController extends BaseController
 		// Check for request forgeries
 		$this->checkToken();
 
-		/* @var \Joomla\Component\Templates\Administrator\Model\TemplateModel $model */
+		// @var \Joomla\Component\Templates\Administrator\Model\TemplateModel $model
+
 		$model    = $this->getModel();
 		$id       = (int) $this->input->get('id', 0, 'int');
 		$file     = (string) $this->input->get('file', '', 'cmd');
@@ -552,7 +558,8 @@ class TemplateController extends BaseController
 		// Check for request forgeries
 		$this->checkToken();
 
-		/* @var \Joomla\Component\Templates\Administrator\Model\TemplateModel $model */
+		// @var \Joomla\Component\Templates\Administrator\Model\TemplateModel $model
+
 		$model    = $this->getModel();
 		$id       = (int) $this->input->get('id', 0, 'int');
 		$file     = (string) $this->input->getCmd('file', '');

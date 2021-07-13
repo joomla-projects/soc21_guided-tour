@@ -84,5 +84,5 @@ Factory::getDocument()->getWebAssetManager()
 			'list.attr'   => implode(' ', $selectAttr),
 		)
 	);
-?></joomla-field-fancy-select>
+	?></joomla-field-fancy-select>
 

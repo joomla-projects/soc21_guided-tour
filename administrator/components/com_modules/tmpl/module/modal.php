@@ -20,7 +20,8 @@ $wa->addInlineScript('
           saveCloseButton.classList.remove("hidden");
         }
     });
-');
+'
+);
 
 ?>
 <button id="applyBtn" type="button" class="hidden" onclick="Joomla.submitbutton('module.apply');"></button>

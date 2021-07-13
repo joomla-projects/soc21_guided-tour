@@ -32,7 +32,9 @@ $published = $this->state->get('filter.published');
 		</div>
 	</div>
 	<div class="row">
-		<?php if ($published >= 0) : ?>
+		<?php if ($published >= 0)
+		:
+			?>
 			<div class="form-group col-md-6">
 				<div class="controls">
 					<?php echo LayoutHelper::render('joomla.html.batch.item', ['extension' => 'com_banners']); ?>

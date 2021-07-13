@@ -8,10 +8,11 @@ import { persistedStateOptions } from './plugins/persisted-state.es6';
 
 // A Vuex instance is created by combining the state, mutations, actions, and getters.
 export default createStore({
-  state,
-  getters,
-  actions,
-  mutations,
-  plugins: [createPersistedState(persistedStateOptions)],
-  strict: (process.env.NODE_ENV !== 'production'),
-});
+	state,
+	getters,
+	actions,
+	mutations,
+	plugins: [createPersistedState(persistedStateOptions)],
+	strict: (process.env.NODE_ENV !== 'production'),
+	}
+);

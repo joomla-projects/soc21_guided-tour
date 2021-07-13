@@ -147,7 +147,7 @@ class DiscoverModel extends InstallerModel
 	 *
 	 * Finds uninstalled extensions
 	 *
-	 * @return  int  The count of discovered extensions
+	 * @return  integer  The count of discovered extensions
 	 *
 	 * @since   1.6
 	 */

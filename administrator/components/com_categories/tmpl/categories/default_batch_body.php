@@ -31,7 +31,9 @@ $extension = $this->escape($this->state->get('filter.extension'));
 		</div>
 	</div>
 	<div class="row">
-		<?php if ($published >= 0) : ?>
+		<?php if ($published >= 0)
+		:
+			?>
 			<div class="form-group col-md-6">
 				<div class="controls">
 					<?php echo LayoutHelper::render('joomla.html.batch.item', ['extension' => $extension, 'addRoot' => true]); ?>
@@ -44,7 +46,9 @@ $extension = $this->escape($this->state->get('filter.extension'));
 			</div>
 		</div>
 	</div>
-	<?php if ($extension === 'com_content') : ?>
+	<?php if ($extension === 'com_content')
+	:
+		?>
 	<div class="row">
 		<div class="form-group col-md-6">
 			<div class="control-group">

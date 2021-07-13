@@ -160,7 +160,7 @@ class TemplatesModel extends ListModel
 					'AND',
 					[
 						'LOWER(' . $db->quoteName('a.element') . ') LIKE :element',
-						'LOWER(' .  $db->quoteName('a.name') . ') LIKE :name',
+						'LOWER(' . $db->quoteName('a.name') . ') LIKE :name',
 					],
 					'OR'
 				)

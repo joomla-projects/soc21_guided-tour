@@ -32,7 +32,7 @@ CREATE TABLE IF NOT EXISTS `#__mywalk_dates` (
 `id` int(11) NOT NULL AUTO_INCREMENT PRIMARY KEY,
   `walk_id` int(11) NOT NULL,
   `title` text NOT NULL,
-  `date` date NOT NULL,
+  `date` date  NULL,
   `weather` varchar(256) DEFAULT NULL,
   `state` TINYINT NOT NULL DEFAULT '1',
   KEY `idx_walk` (`walk_id`)

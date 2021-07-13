@@ -50,7 +50,9 @@ if ($clientId === 1)
 	<?php echo LayoutHelper::render('joomla.edit.title_alias', $this); ?>
 
 	<?php // Add the translation of the menu item title when client is administrator ?>
-	<?php if ($clientId === 1 && $this->item->id != 0) : ?>
+	<?php if ($clientId === 1 && $this->item->id != 0)
+	:
+		?>
 		<div class="row title-alias form-vertical mb-3">
 			<div class="col-12">
 				<div class="control-group">
@@ -169,7 +171,9 @@ if ($clientId === 1)
 		echo LayoutHelper::render('joomla.edit.params', $this);
 		?>
 
-		<?php if (!$isModal && $assoc && $this->state->get('item.client_id') != 1) : ?>
+		<?php if (!$isModal && $assoc && $this->state->get('item.client_id') != 1)
+		:
+			?>
 			<?php echo HTMLHelper::_('uitab.addTab', 'myTab', 'associations', Text::_('JGLOBAL_FIELDSET_ASSOCIATIONS')); ?>
 			<fieldset id="fieldset-associations" class="options-form">
 			<legend><?php echo Text::_('JGLOBAL_FIELDSET_ASSOCIATIONS'); ?></legend>
@@ -178,11 +182,15 @@ if ($clientId === 1)
 			</div>
 			</fieldset>
 			<?php echo HTMLHelper::_('uitab.endTab'); ?>
-		<?php elseif ($isModal && $assoc) : ?>
+		<?php elseif ($isModal && $assoc)
+		:
+			?>
 			<div class="hidden"><?php echo LayoutHelper::render('joomla.edit.associations', $this); ?></div>
 		<?php endif; ?>
 
-		<?php if (!empty($this->modules)) : ?>
+		<?php if (!empty($this->modules))
+		:
+			?>
 			<?php echo HTMLHelper::_('uitab.addTab', 'myTab', 'modules', Text::_('COM_MENUS_ITEM_MODULE_ASSIGNMENT')); ?>
 			<fieldset id="fieldset-modules" class="options-form">
 				<legend><?php echo Text::_('COM_MENUS_ITEM_MODULE_ASSIGNMENT'); ?></legend>

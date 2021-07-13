@@ -15,8 +15,12 @@ ksort($this->files, SORT_NATURAL);
 ?>
 
 <ul class="directory-tree treeselect">
-	<?php foreach ($this->files as $key => $value) : ?>
-		<?php if (is_array($value)) : ?>
+	<?php foreach ($this->files as $key => $value)
+	:
+		?>
+		<?php if (is_array($value))
+		:
+			?>
 			<?php
 			$keyArray  = explode('/', $key);
 			$fileArray = explode('/', $this->fileName);
@@ -51,12 +55,16 @@ ksort($this->files, SORT_NATURAL);
 			?>
 			<li class="<?php echo $class; ?>">
 				<a class="folder-url" href="">
-					<span class="icon-folder icon-fw" aria-hidden="true"></span>&nbsp;<?php $explodeArray = explode('/', $key); echo $this->escape(end($explodeArray)); ?>
+					<span class="icon-folder icon-fw" aria-hidden="true"></span>&nbsp;<?php $explodeArray = explode('/', $key);
+					echo $this->escape(end($explodeArray)); ?>
 				</a>
 				<?php echo $this->directoryTree($value); ?>
 			</li>
 		<?php endif; ?>
-		<?php if (is_object($value)) : ?>
+		<?php
+		if (is_object($value))
+		:
+			?>
 			<li>
 				<a class="file" href='<?php echo Route::_('index.php?option=com_templates&view=template&id=' . $this->id . '&file=' . $value->id); ?>'>
 					<span class="icon-file-alt" aria-hidden="true"></span>&nbsp;<?php echo $this->escape($value->name); ?>

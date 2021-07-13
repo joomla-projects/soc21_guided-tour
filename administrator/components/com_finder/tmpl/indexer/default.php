@@ -28,7 +28,9 @@ $wa->useScript('keepalive')
 	<div id="progress" class="progress">
 		<div id="progress-bar" class="progress-bar bg-success" role="progressbar" aria-valuenow="0" aria-valuemin="0" aria-valuemax="100"></div>
 	</div>
-	<?php if (JDEBUG) : ?>
+	<?php if (JDEBUG)
+	:
+		?>
 	<dl id="finder-debug-data" class="row">
 	</dl>
 	<?php endif; ?>

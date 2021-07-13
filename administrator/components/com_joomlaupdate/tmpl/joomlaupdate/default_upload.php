@@ -27,9 +27,14 @@ Text::script('JGLOBAL_SELECTED_UPLOAD_FILE_SIZE', true);
 	<?php echo Text::sprintf('COM_JOOMLAUPDATE_VIEW_DEFAULT_UPLOAD_INTRO', 'https://downloads.joomla.org/latest'); ?>
 </div>
 
-<?php if (count($this->warnings)) : ?>
+<?php if (count($this->warnings))
+:
+	?>
 	<h3><?php echo Text::_('COM_INSTALLER_SUBMENU_WARNINGS'); ?></h3>
-	<?php foreach ($this->warnings as $warning) : ?>
+	<?php
+	foreach ($this->warnings as $warning)
+	:
+		?>
 		<div class="alert alert-warning">
 			<h4 class="alert-heading">
 				<span class="icon-exclamation-triangle" aria-hidden="true"></span>

@@ -169,11 +169,11 @@ class StylesModel extends ListModel
 
 		// Filter by extension enabled.
 		$query->join(
-				'LEFT',
-				$db->quoteName('#__extensions', 'e'),
-				$db->quoteName('e.element') . ' = ' . $db->quoteName('a.template')
+			'LEFT',
+			$db->quoteName('#__extensions', 'e'),
+			$db->quoteName('e.element') . ' = ' . $db->quoteName('a.template')
 				. ' AND ' . $db->quoteName('e.client_id') . ' = ' . $db->quoteName('a.client_id')
-			)
+		)
 			->where(
 				[
 					$db->quoteName('e.enabled') . ' = 1',

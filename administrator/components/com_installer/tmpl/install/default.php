@@ -34,26 +34,36 @@ $tabs = $app->triggerEvent('onInstallerAddInstallationTab', []);
 ?>
 <div id="installer-install" class="clearfix">
 
-	<form enctype="multipart/form-data" action="<?php echo Route::_('index.php?option=com_installer&view=install'); ?>" method="post" name="adminForm" id="adminForm">
+	<form enctype="multipart/form-data" action="<?php echo Route::_('index.php?option=com_installer&view=install');
+	?>" method="post" name="adminForm" id="adminForm">
 		<?php // Render messages set by extension install scripts here ?>
-		<?php if ($this->showMessage) : ?>
+		<?php if ($this->showMessage)
+:
+			?>
 			<?php echo $this->loadTemplate('message'); ?>
 		<?php endif; ?>
 
 		<div class="row">
 			<div class="col-md-12">
 				<div id="j-main-container" class="j-main-container main-card">
-					<?php if (!$tabs) : ?>
+					<?php if (!$tabs)
+:
+						?>
 						<div class="alert alert-warning">
 							<span class="icon-exclamation-circle" aria-hidden="true"></span><span class="visually-hidden"><?php echo Text::_('WARNING'); ?></span>
 							<?php echo Text::_('COM_INSTALLER_NO_INSTALLATION_PLUGINS_FOUND'); ?>
 						</div>
 					<?php endif; ?>
 
-					<?php if ($tabs) : ?>
-						<?php echo HTMLHelper::_('uitab.startTabSet', 'myTab', ['active' => $tabs[0]['name'] ?? '']); ?>
+					<?php if ($tabs)
+:
+						?>
+						<?php echo HTMLHelper::_('uitab.startTabSet', 'myTab', ['active' => $tabs[0]['name'] ?? '']);
+						?>
 						<?php // Show installation tabs ?>
-						<?php foreach ($tabs as $tab) : ?>
+						<?php foreach ($tabs as $tab)
+	:
+							?>
 							<?php echo HTMLHelper::_('uitab.addTab', 'myTab', $tab['name'], $tab['label']); ?>
 							<fieldset class="uploadform option-fieldset options-form">
 								<?php echo $tab['content']; ?>

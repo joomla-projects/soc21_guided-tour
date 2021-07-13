@@ -979,7 +979,7 @@ class ApplicationModel extends FormModel
 	 *
 	 * @param   string  $permission  Need an array with Permissions (component, rule, value and title)
 	 *
-	 * @return  array|bool  A list of result data or false on failure.
+	 * @return  array|boolean  A list of result data or false on failure.
 	 *
 	 * @since   3.5
 	 */

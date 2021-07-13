@@ -132,7 +132,6 @@ class ActionlogsHelper
 			case 'tpl':
 				$source = JPATH_BASE . '/templates/' . substr($extension, 4);
 				break;
-
 		}
 
 		$lang->load($extension, JPATH_ADMINISTRATOR)

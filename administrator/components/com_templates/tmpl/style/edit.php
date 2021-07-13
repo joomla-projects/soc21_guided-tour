@@ -48,7 +48,9 @@ $user = Factory::getUser();
 					$this->fieldset = 'description';
 					$description = LayoutHelper::render('joomla.edit.fieldset', $this);
 					?>
-					<?php if ($description) : ?>
+					<?php if ($description)
+					:
+						?>
 						<p class="readmore">
 							<a href="#" onclick="document.querySelector('#tab-description').click();">
 								<?php echo Text::_('JGLOBAL_SHOW_FULL_DESCRIPTION'); ?>
@@ -76,7 +78,9 @@ $user = Factory::getUser();
 		</div>
 		<?php echo HTMLHelper::_('uitab.endTab'); ?>
 
-		<?php if ($description) : ?>
+		<?php if ($description)
+		:
+			?>
 			<?php echo HTMLHelper::_('uitab.addTab', 'myTab', 'description', Text::_('JGLOBAL_FIELDSET_DESCRIPTION')); ?>
 			<fieldset id="fieldset-description" class="options-form">
 				<legend><?php echo Text::_('JGLOBAL_FIELDSET_DESCRIPTION'); ?></legend>
@@ -93,7 +97,9 @@ $user = Factory::getUser();
 		echo LayoutHelper::render('joomla.edit.params', $this);
 		?>
 
-		<?php if ($user->authorise('core.edit', 'com_menus') && $this->item->client_id == 0 && $this->canDo->get('core.edit.state')) : ?>
+		<?php if ($user->authorise('core.edit', 'com_menus') && $this->item->client_id == 0 && $this->canDo->get('core.edit.state'))
+		:
+			?>
 			<?php echo HTMLHelper::_('uitab.addTab', 'myTab', 'assignment', Text::_('COM_TEMPLATES_MENUS_ASSIGNMENT')); ?>
 			<fieldset id="fieldset-assignment" class="options-form">
 				<legend><?php echo Text::_('COM_TEMPLATES_MENUS_ASSIGNMENT'); ?></legend>

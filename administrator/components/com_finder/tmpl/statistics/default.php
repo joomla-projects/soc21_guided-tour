@@ -26,7 +26,9 @@ use Joomla\CMS\Language\Text;
 			</tr>
 		</thead>
 		<tbody>
-			<?php foreach ($this->data->type_list as $type) : ?>
+			<?php foreach ($this->data->type_list as $type)
+			:
+				?>
 			<tr>
 				<th scope="row">
 					<?php

@@ -63,8 +63,12 @@ $tmpl    = $isModal || $input->get('tmpl', '', 'cmd') === 'component' ? '&tmpl=c
 
 		<div class="row">
 			<div class="col-lg-9">
-				<?php if ($this->item->xml) : ?>
-					<?php if ($this->item->xml->description) : ?>
+				<?php if ($this->item->xml)
+				:
+					?>
+					<?php if ($this->item->xml->description)
+					:
+						?>
 						<h2>
 							<?php
 							if ($this->item->xml)
@@ -105,7 +109,10 @@ $tmpl    = $isModal || $input->get('tmpl', '', 'cmd') === 'component' ? '&tmpl=c
 							}
 							?>
 							<p><?php echo $short_description; ?></p>
-							<?php if ($long_description) : ?>
+							<?php
+							if ($long_description)
+							:
+								?>
 								<p class="readmore">
 									<a href="#" onclick="document.querySelector('#tab-description').click();">
 										<?php echo Text::_('JGLOBAL_SHOW_FULL_DESCRIPTION'); ?>
@@ -114,7 +121,10 @@ $tmpl    = $isModal || $input->get('tmpl', '', 'cmd') === 'component' ? '&tmpl=c
 							<?php endif; ?>
 						</div>
 					<?php endif; ?>
-				<?php else : ?>
+				<?php else
+
+				:
+					?>
 					<div class="alert alert-danger">
 						<span class="icon-exclamation-triangle" aria-hidden="true"></span><span class="visually-hidden"><?php echo Text::_('ERROR'); ?></span>
 						<?php echo Text::_('COM_MODULES_ERR_XML'); ?>
@@ -125,6 +135,7 @@ $tmpl    = $isModal || $input->get('tmpl', '', 'cmd') === 'component' ? '&tmpl=c
 				{
 					echo $this->form->getInput($hasContentFieldName);
 				}
+
 				$this->fieldset = 'basic';
 				$html = LayoutHelper::render('joomla.edit.fieldset', $this);
 				echo $html ? '<hr>' . $html : '';
@@ -146,16 +157,23 @@ $tmpl    = $isModal || $input->get('tmpl', '', 'cmd') === 'component' ? '&tmpl=c
 				);
 
 				?>
-				<?php if ($this->item->client_id == 0) : ?>
+				<?php if ($this->item->client_id == 0)
+				:
+					?>
 					<?php echo LayoutHelper::render('joomla.edit.global', $this); ?>
-				<?php else : ?>
+				<?php else
+
+				:
+					?>
 					<?php echo LayoutHelper::render('joomla.edit.admin_modules', $this); ?>
 				<?php endif; ?>
 			</div>
 		</div>
 		<?php echo HTMLHelper::_('uitab.endTab'); ?>
 
-		<?php if (isset($long_description) && $long_description != '') : ?>
+		<?php if (isset($long_description) && $long_description != '')
+		:
+			?>
 			<?php echo HTMLHelper::_('uitab.addTab', 'myTab', 'description', Text::_('JGLOBAL_FIELDSET_DESCRIPTION')); ?>
 				<div class="card">
 					<div class="card-body">
@@ -165,7 +183,9 @@ $tmpl    = $isModal || $input->get('tmpl', '', 'cmd') === 'component' ? '&tmpl=c
 			<?php echo HTMLHelper::_('uitab.endTab'); ?>
 		<?php endif; ?>
 
-		<?php if ($this->item->client_id == 0) : ?>
+		<?php if ($this->item->client_id == 0)
+		:
+			?>
 			<?php echo HTMLHelper::_('uitab.addTab', 'myTab', 'assignment', Text::_('COM_MODULES_MENU_ASSIGNMENT')); ?>
 			<fieldset id="fieldset-assignment" class="options-form">
 				<legend><?php echo Text::_('COM_MODULES_MENU_ASSIGNMENT'); ?></legend>
@@ -182,7 +202,9 @@ $tmpl    = $isModal || $input->get('tmpl', '', 'cmd') === 'component' ? '&tmpl=c
 		echo LayoutHelper::render('joomla.edit.params', $this);
 		?>
 
-		<?php if ($this->canDo->get('core.admin')) : ?>
+		<?php if ($this->canDo->get('core.admin'))
+		:
+			?>
 			<?php echo HTMLHelper::_('uitab.addTab', 'myTab', 'permissions', Text::_('COM_MODULES_FIELDSET_RULES')); ?>
 			<fieldset id="fieldset-permissions" class="options-form">
 				<legend><?php echo Text::_('COM_MODULES_FIELDSET_RULES'); ?></legend>

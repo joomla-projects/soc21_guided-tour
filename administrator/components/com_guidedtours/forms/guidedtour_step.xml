@@ -19,12 +19,12 @@
 		required="true"
 	 />
 
-		<field
+		<!-- <field
 			name="date"
 			type="calender"
 			label="Date"
 			default="4"
-		/>
+		/> -->
 
 		<field
 			name="weather"

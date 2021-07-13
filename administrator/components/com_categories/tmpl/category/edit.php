@@ -26,6 +26,7 @@ $app = Factory::getApplication();
 $input = $app->input;
 
 $assoc = Associations::isEnabled();
+
 // Are associations implemented for this extension?
 $extensionassoc = array_key_exists('item_associations', $this->form->getFieldsets());
 
@@ -95,7 +96,9 @@ $tmpl    = $isModal || $input->get('tmpl', '', 'cmd') === 'component' ? '&tmpl=c
 
 		<?php echo HTMLHelper::_('uitab.endTab'); ?>
 
-		<?php if (!$isModal && $assoc && $extensionassoc) : ?>
+		<?php if (!$isModal && $assoc && $extensionassoc)
+:
+			?>
 			<?php echo HTMLHelper::_('uitab.addTab', 'myTab', 'associations', Text::_('JGLOBAL_FIELDSET_ASSOCIATIONS')); ?>
 			<fieldset id="fieldset-associations" class="options-form">
 			<legend><?php echo Text::_('JGLOBAL_FIELDSET_ASSOCIATIONS'); ?></legend>
@@ -104,12 +107,15 @@ $tmpl    = $isModal || $input->get('tmpl', '', 'cmd') === 'component' ? '&tmpl=c
 			</div>
 			</fieldset>
 			<?php echo HTMLHelper::_('uitab.endTab'); ?>
-		<?php elseif ($isModal && $assoc && $extensionassoc) : ?>
+		<?php elseif ($isModal && $assoc && $extensionassoc)
+:
+			?>
 			<div class="hidden"><?php echo LayoutHelper::render('joomla.edit.associations', $this); ?></div>
 		<?php endif; ?>
 
-		<?php if ($this->canDo->get('core.admin')) : ?>
-
+		<?php if ($this->canDo->get('core.admin'))
+:
+			?>
 			<?php echo HTMLHelper::_('uitab.addTab', 'myTab', 'rules', Text::_('COM_CATEGORIES_FIELDSET_RULES')); ?>
 			<fieldset id="fieldset-rules" class="options-form">
 				<legend><?php echo Text::_('COM_CATEGORIES_FIELDSET_RULES'); ?></legend>

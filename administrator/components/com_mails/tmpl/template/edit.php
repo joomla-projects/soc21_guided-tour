@@ -7,7 +7,7 @@
  * @license     GNU General Public License version 2 or later; see LICENSE.txt
  */
 
-// no direct access
+// No direct access
 defined('_JEXEC') or die;
 
 use Joomla\CMS\Factory;
@@ -58,7 +58,9 @@ $this->document->addScriptOptions('com_mails', ['templateData' => $this->templat
 			</div>
 		</div>
 
-		<?php if ($fieldBody = $this->form->getField('body')) : ?>
+		<?php if ($fieldBody = $this->form->getField('body'))
+		:
+			?>
 		<div class="row">
 			<div class="col-md-9">
 				<?php echo $this->form->renderField('body'); ?>
@@ -73,7 +75,9 @@ $this->document->addScriptOptions('com_mails', ['templateData' => $this->templat
 		</div>
 		<?php endif; ?>
 
-		<?php if ($fieldHtmlBody = $this->form->getField('htmlbody')) : ?>
+		<?php if ($fieldHtmlBody = $this->form->getField('htmlbody'))
+		:
+			?>
 		<div class="row">
 			<div class="col-md-9">
 				<?php echo $this->form->renderField('htmlbody'); ?>
@@ -88,7 +92,9 @@ $this->document->addScriptOptions('com_mails', ['templateData' => $this->templat
 		</div>
 		<?php endif; ?>
 
-		<?php if ($this->form->getField('attachments')) : ?>
+		<?php if ($this->form->getField('attachments'))
+		:
+			?>
 		<div class="row">
 			<div class="col-md-9">
 				<?php echo $this->form->renderField('attachments'); ?>
@@ -98,8 +104,10 @@ $this->document->addScriptOptions('com_mails', ['templateData' => $this->templat
 
 		<?php echo HTMLHelper::_('uitab.endTab'); ?>
 
-		<?php if (count($this->form->getFieldset('basic'))) : ?>
-		<?php echo LayoutHelper::render('joomla.edit.params', $this); ?>
+		<?php if (count($this->form->getFieldset('basic')))
+		:
+			?>
+			<?php echo LayoutHelper::render('joomla.edit.params', $this); ?>
 		<?php endif; ?>
 
 		<?php echo HTMLHelper::_('uitab.endTabSet'); ?>

@@ -32,7 +32,9 @@ $comUserParams = ComponentHelper::getParams('com_users');
 				<div class="form-group">
 					<?php echo $this->form->getLabel('subject'); ?>
 					<span class="input-group">
-						<?php if (!empty($comUserParams->get('mailSubjectPrefix'))) : ?>
+						<?php if (!empty($comUserParams->get('mailSubjectPrefix')))
+						:
+							?>
 							<span class="input-group-text"><?php echo $comUserParams->get('mailSubjectPrefix'); ?></span>
 						<?php endif; ?>
 						<?php echo $this->form->getInput('subject'); ?>
@@ -41,7 +43,10 @@ $comUserParams = ComponentHelper::getParams('com_users');
 				<div class="form-group">
 					<?php echo $this->form->getLabel('message'); ?>
 					<?php echo $this->form->getInput('message'); ?>
-					<?php if (!empty($comUserParams->get('mailBodySuffix'))) : ?>
+					<?php
+					if (!empty($comUserParams->get('mailBodySuffix')))
+					:
+						?>
 						<div class="mt-1 card">
 							<div class="card-body">
 								<?php echo $comUserParams->get('mailBodySuffix'); ?>

@@ -26,7 +26,9 @@ $displayData = [
 
 echo LayoutHelper::render('joomla.content.emptystate', $displayData);
 
-if ($this->finderPluginId) : ?>
+if ($this->finderPluginId)
+:
+	?>
 	<?php $link = Route::_('index.php?option=com_plugins&client_id=0&task=plugin.edit&extension_id=' . $this->finderPluginId . '&tmpl=component&layout=modal'); ?>
 	<?php echo HTMLHelper::_(
 		'bootstrap.renderModal',
@@ -50,4 +52,4 @@ if ($this->finderPluginId) : ?>
 				. Text::_("JAPPLY") . '</button>'
 		)
 	); ?>
-<?php endif; ?>
+<?php endif;

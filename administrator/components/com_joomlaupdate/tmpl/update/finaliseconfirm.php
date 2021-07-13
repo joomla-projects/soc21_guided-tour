@@ -61,7 +61,9 @@ $twofactormethods = AuthenticationHelper::getTwoFactorMethods();
 				</div>
 			</div>
 		</div>
-		<?php if (count($twofactormethods) > 1) : ?>
+		<?php if (count($twofactormethods) > 1)
+		:
+			?>
 			<div class="control-group">
 				<div class="controls">
 					<div class="input-group">

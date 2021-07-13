@@ -112,7 +112,9 @@ $tmpl    = $isModal || $input->get('tmpl', '', 'cmd') === 'component' ? '&tmpl=c
 		</div>
 		<?php echo HTMLHelper::_('uitab.endTab'); ?>
 
-		<?php if (!$isModal && $assoc) : ?>
+		<?php if (!$isModal && $assoc)
+		:
+			?>
 			<?php echo HTMLHelper::_('uitab.addTab', 'myTab', 'associations', Text::_('JGLOBAL_FIELDSET_ASSOCIATIONS')); ?>
 			<fieldset id="fieldset-associations" class="options-form">
 			<legend><?php echo Text::_('JGLOBAL_FIELDSET_ASSOCIATIONS'); ?></legend>
@@ -121,7 +123,9 @@ $tmpl    = $isModal || $input->get('tmpl', '', 'cmd') === 'component' ? '&tmpl=c
 			</div>
 			</fieldset>
 			<?php echo HTMLHelper::_('uitab.endTab'); ?>
-		<?php elseif ($isModal && $assoc) : ?>
+		<?php elseif ($isModal && $assoc)
+		:
+			?>
 			<div class="hidden"><?php echo LayoutHelper::render('joomla.edit.associations', $this); ?></div>
 		<?php endif; ?>
 

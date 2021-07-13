@@ -36,7 +36,7 @@ $this->useCoreUI = true;
 			</div>
 			<div class="col-lg-3">
 				<?php $this->set('fields',
-						array(
+					array(
 							array(
 								'published',
 								'state',
@@ -62,7 +62,10 @@ $this->useCoreUI = true;
 		<?php echo HTMLHelper::_('uitab.endTab'); ?>
 		<?php $this->set('ignore_fieldsets', array('fieldparams')); ?>
 		<?php echo LayoutHelper::render('joomla.edit.params', $this); ?>
-		<?php if ($this->canDo->get('core.admin')) : ?>
+		<?php
+		if ($this->canDo->get('core.admin'))
+		:
+			?>
 			<?php echo HTMLHelper::_('uitab.addTab', 'myTab', 'rules', Text::_('JGLOBAL_ACTION_PERMISSIONS_LABEL', true)); ?>
 			<fieldset id="fieldset-rules" class="options-form">
 				<legend><?php echo Text::_('JGLOBAL_ACTION_PERMISSIONS_LABEL'); ?></legend>

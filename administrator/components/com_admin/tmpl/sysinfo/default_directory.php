@@ -31,7 +31,9 @@ use Joomla\CMS\Language\Text;
 			</tr>
 		</thead>
 		<tbody>
-			<?php foreach ($this->directory as $dir => $info) : ?>
+			<?php foreach ($this->directory as $dir => $info)
+			:
+				?>
 				<tr>
 					<th scope="row">
 						<?php echo '&#x200E;' . HTMLHelper::_('directory.message', $dir, $info['message']); ?>

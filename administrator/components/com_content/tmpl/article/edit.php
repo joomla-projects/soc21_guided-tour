@@ -76,11 +76,15 @@ $tmpl    = $isModal || $input->get('tmpl', '', 'cmd') === 'component' ? '&tmpl=c
 		<?php echo HTMLHelper::_('uitab.endTab'); ?>
 
 		<?php // Do not show the images and links options if the edit form is configured not to. ?>
-		<?php if ($params->get('show_urls_images_backend') == 1) : ?>
+		<?php if ($params->get('show_urls_images_backend') == 1)
+		:
+			?>
 			<?php echo HTMLHelper::_('uitab.addTab', 'myTab', 'images', Text::_('COM_CONTENT_FIELDSET_URLS_AND_IMAGES')); ?>
 			<div class="row">
 				<div class="col-12 col-lg-6">
-				<?php foreach ($fieldsetsInImages as $fieldset) : ?>
+				<?php foreach ($fieldsetsInImages as $fieldset)
+				:
+					?>
 					<fieldset id="fieldset-<?php echo $fieldset; ?>" class="options-form">
 						<legend><?php echo Text::_($this->form->getFieldsets()[$fieldset]->label); ?></legend>
 						<div>
@@ -90,7 +94,9 @@ $tmpl    = $isModal || $input->get('tmpl', '', 'cmd') === 'component' ? '&tmpl=c
 				<?php endforeach; ?>
 				</div>
 				<div class="col-12 col-lg-6">
-				<?php foreach ($fieldsetsInLinks as $fieldset) : ?>
+				<?php foreach ($fieldsetsInLinks as $fieldset)
+				:
+					?>
 					<fieldset id="fieldset-<?php echo $fieldset; ?>" class="options-form">
 						<legend><?php echo Text::_($this->form->getFieldsets()[$fieldset]->label); ?></legend>
 						<div>
@@ -104,12 +110,16 @@ $tmpl    = $isModal || $input->get('tmpl', '', 'cmd') === 'component' ? '&tmpl=c
 			<?php echo HTMLHelper::_('uitab.endTab'); ?>
 		<?php endif; ?>
 
-		<?php if ($params->get('show_article_options', 1) == 1) : ?>
+		<?php if ($params->get('show_article_options', 1) == 1)
+		:
+			?>
 			<?php echo LayoutHelper::render('joomla.edit.params', $this); ?>
 		<?php endif; ?>
 
 		<?php // Do not show the publishing options if the edit form is configured not to. ?>
-		<?php if ($params->get('show_publishing_options', 1) == 1) : ?>
+		<?php if ($params->get('show_publishing_options', 1) == 1)
+		:
+			?>
 			<?php echo HTMLHelper::_('uitab.addTab', 'myTab', 'publishing', Text::_('COM_CONTENT_FIELDSET_PUBLISHING')); ?>
 			<div class="row">
 				<div class="col-12 col-lg-6">
@@ -132,7 +142,9 @@ $tmpl    = $isModal || $input->get('tmpl', '', 'cmd') === 'component' ? '&tmpl=c
 			<?php echo HTMLHelper::_('uitab.endTab'); ?>
 		<?php endif; ?>
 
-		<?php if (!$isModal && $assoc && $params->get('show_associations_edit', 1) == 1) : ?>
+		<?php if (!$isModal && $assoc && $params->get('show_associations_edit', 1) == 1)
+		:
+			?>
 			<?php echo HTMLHelper::_('uitab.addTab', 'myTab', 'associations', Text::_('JGLOBAL_FIELDSET_ASSOCIATIONS')); ?>
 			<fieldset id="fieldset-associations" class="options-form">
 			<legend><?php echo Text::_('JGLOBAL_FIELDSET_ASSOCIATIONS'); ?></legend>
@@ -141,11 +153,15 @@ $tmpl    = $isModal || $input->get('tmpl', '', 'cmd') === 'component' ? '&tmpl=c
 			</div>
 			</fieldset>
 			<?php echo HTMLHelper::_('uitab.endTab'); ?>
-		<?php elseif ($isModal && $assoc) : ?>
+		<?php elseif ($isModal && $assoc)
+		:
+			?>
 			<div class="hidden"><?php echo LayoutHelper::render('joomla.edit.associations', $this); ?></div>
 		<?php endif; ?>
 
-		<?php if ($this->canDo->get('core.admin') && $params->get('show_configure_edit_options', 1) == 1) : ?>
+		<?php if ($this->canDo->get('core.admin') && $params->get('show_configure_edit_options', 1) == 1)
+		:
+			?>
 			<?php echo HTMLHelper::_('uitab.addTab', 'myTab', 'editor', Text::_('COM_CONTENT_SLIDER_EDITOR_CONFIG')); ?>
 			<fieldset id="fieldset-editor" class="options-form">
 				<legend><?php echo Text::_('COM_CONTENT_SLIDER_EDITOR_CONFIG'); ?></legend>
@@ -156,7 +172,9 @@ $tmpl    = $isModal || $input->get('tmpl', '', 'cmd') === 'component' ? '&tmpl=c
 			<?php echo HTMLHelper::_('uitab.endTab'); ?>
 		<?php endif; ?>
 
-		<?php if ($this->canDo->get('core.admin') && $params->get('show_permissions', 1) == 1) : ?>
+		<?php if ($this->canDo->get('core.admin') && $params->get('show_permissions', 1) == 1)
+		:
+			?>
 			<?php echo HTMLHelper::_('uitab.addTab', 'myTab', 'permissions', Text::_('COM_CONTENT_FIELDSET_RULES')); ?>
 			<fieldset id="fieldset-rules" class="options-form">
 				<legend><?php echo Text::_('COM_CONTENT_FIELDSET_RULES'); ?></legend>
@@ -170,7 +188,9 @@ $tmpl    = $isModal || $input->get('tmpl', '', 'cmd') === 'component' ? '&tmpl=c
 		<?php echo HTMLHelper::_('uitab.endTabSet'); ?>
 
 		<?php // Creating 'id' hiddenField to cope with com_associations sidebyside loop ?>
-		<?php if ($params->get('show_publishing_options', 1) == 0) : ?>
+		<?php if ($params->get('show_publishing_options', 1) == 0)
+		:
+			?>
 			<?php $hidden_fields = $this->form->getInput('id'); ?>
 			<div class="hidden"><?php echo $hidden_fields; ?></div>
 		<?php endif; ?>

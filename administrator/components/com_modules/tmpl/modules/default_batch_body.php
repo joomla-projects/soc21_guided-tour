@@ -41,13 +41,17 @@ $this->document->getWebAssetManager()
 <div class="p-3">
 	<p><?php echo Text::_('COM_MODULES_BATCH_TIP'); ?></p>
 	<div class="row">
-		<?php if ($clientId != 1) : ?>
+		<?php if ($clientId != 1)
+		:
+			?>
 			<div class="form-group col-md-6">
 				<div class="controls">
 					<?php echo LayoutHelper::render('joomla.html.batch.language', array()); ?>
 				</div>
 			</div>
-		<?php elseif ($clientId == 1 && ModuleHelper::isAdminMultilang()) : ?>
+		<?php elseif ($clientId == 1 && ModuleHelper::isAdminMultilang())
+		:
+			?>
 			<div class="form-group col-md-6">
 				<div class="controls">
 					<?php echo LayoutHelper::render('joomla.html.batch.adminlanguage', array()); ?>
@@ -61,7 +65,9 @@ $this->document->getWebAssetManager()
 		</div>
 	</div>
 	<div class="row">
-		<?php if ($published >= 0) : ?>
+		<?php if ($published >= 0)
+		:
+			?>
 			<div class="col-md-6">
 				<div class="controls">
 					<label id="batch-choose-action-lbl" for="batch-choose-action">
@@ -76,7 +82,7 @@ $this->document->getWebAssetManager()
 						</div>
 					</div>
 				</div>
-			<?php endif; ?>
+		<?php endif; ?>
 		</div>
 	</div>
 </div>

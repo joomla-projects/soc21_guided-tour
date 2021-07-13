@@ -26,7 +26,9 @@ HTMLHelper::_('behavior.formvalidator');
 		action="<?php echo Route::_('index.php?option=com_banners&task=tracks.display&format=raw&' . Session::getFormToken() . '=1'); ?>"
 		method="post">
 
-		<?php foreach ($this->form->getFieldset() as $field) : ?>
+		<?php foreach ($this->form->getFieldset() as $field)
+		:
+			?>
 			<?php echo $this->form->renderField($field->fieldname); ?>
 		<?php endforeach; ?>
 

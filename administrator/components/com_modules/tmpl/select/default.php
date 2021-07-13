@@ -22,7 +22,8 @@ $function  = $app->input->getCmd('function');
 $wa = $this->document->getWebAssetManager();
 $wa->useScript('com_modules.admin-module-search');
 
-if ($function) :
+if ($function)
+:
 	$wa->useScript('com_modules.admin-select-modal');
 endif;
 
@@ -57,7 +58,9 @@ endif;
 			<?php echo Text::_('COM_MODULES_TYPE_CHOOSE'); ?>
 		</h2>
 		<div class="main-card card-columns p-4" id="comModulesSelectResultsContainer">
-			<?php foreach ($this->items as &$item) : ?>
+			<?php foreach ($this->items as &$item)
+:
+				?>
 				<?php // Prepare variables for the link. ?>
 					<?php $link = 'index.php?option=com_modules&task=module.add&client_id=' . $this->state->get('client_id', 0) . $this->modalLink . '&eid=' . $item->extension_id; ?>
 					<?php $name = $this->escape($item->name); ?>

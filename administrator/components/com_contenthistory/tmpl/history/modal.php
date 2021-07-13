@@ -62,7 +62,10 @@ $wa->useScript('com_contenthistory.admin-history-modal');
 			</thead>
 			<tbody>
 			<?php $i = 0; ?>
-			<?php foreach ($this->items as $item) : ?>
+			<?php
+			foreach ($this->items as $item)
+			:
+				?>
 				<tr class="row<?php echo $i % 2; ?>">
 					<td class="text-center">
 						<?php echo HTMLHelper::_('grid.id', $i, $item->version_id, false, 'cid', 'cb', $item->save_date); ?>
@@ -72,7 +75,9 @@ $wa->useScript('com_contenthistory.admin-history-modal');
 							href="<?php echo Route::_('index.php?option=com_contenthistory&view=preview&layout=preview&tmpl=component&' . Session::getFormToken() . '=1&version_id=' . $item->version_id); ?>">
 							<?php echo HTMLHelper::_('date', $item->save_date, Text::_('DATE_FORMAT_LC6')); ?>
 						</a>
-						<?php if ($item->sha1_hash == $hash) : ?>
+						<?php if ($item->sha1_hash == $hash)
+						:
+							?>
 							<span class="icon-star" aria-hidden="true"></span><span class="visually-hidden"><?php echo Text::_('JCURRENT'); ?></span>
 						<?php endif; ?>
 					</th>
@@ -80,12 +85,17 @@ $wa->useScript('com_contenthistory.admin-history-modal');
 						<?php echo htmlspecialchars($item->version_note); ?>
 					</td>
 					<td>
-						<?php if ($item->keep_forever) : ?>
+						<?php if ($item->keep_forever)
+						:
+							?>
 							<button type="button" class="btn btn-secondary btn-sm" onclick="return Joomla.listItemTask('cb<?php echo $i; ?>','history.keep')">
 								<?php echo Text::_('JYES'); ?>
 								&nbsp;<span class="icon-lock" aria-hidden="true"></span>
 							</button>
-						<?php else : ?>
+						<?php else
+
+						:
+							?>
 							<button type="buttton" class="btn btn-secondary btn-sm" onclick="return Joomla.listItemTask('cb<?php echo $i; ?>','history.keep')">
 								<?php echo Text::_('JNO'); ?>
 							</button>
@@ -103,7 +113,7 @@ $wa->useScript('com_contenthistory.admin-history-modal');
 			</tbody>
 		</table>
 
-		<?php // load the pagination. ?>
+		<?php // Load the pagination. ?>
 		<?php echo $this->pagination->getListFooter(); ?>
 
 		<input type="hidden" name="task" value="">

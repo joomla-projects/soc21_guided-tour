@@ -58,7 +58,7 @@ class MessagesModel extends BaseDatabaseModel
 	 *
 	 * @param   integer  $id  The item id
 	 *
-	 * @return  Object
+	 * @return  object
 	 *
 	 * @since   3.2
 	 */

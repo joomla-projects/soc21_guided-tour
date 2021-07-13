@@ -38,18 +38,22 @@ $tmpl     = $isModal || $input->get('tmpl', '', 'cmd') === 'component' ? '&tmpl=
 
 		<div class="row mt-2">
 			<div class="col-lg-9">
-				<?php if ($this->item->xml) : ?>
-					<?php if ($this->item->xml->description) : ?>
+				<?php if ($this->item->xml)
+				:
+					?>
+					<?php if ($this->item->xml->description)
+					:
+						?>
 						<h2>
 						<?php
-							if ($this->item->xml)
-							{
-								echo ($text = (string) $this->item->xml->name) ? Text::_($text) : $this->item->name;
-							}
-							else
-							{
-								echo Text::_('COM_PLUGINS_XML_ERR');
-							}
+						if ($this->item->xml)
+						{
+							echo ($text = (string) $this->item->xml->name) ? Text::_($text) : $this->item->name;
+						}
+						else
+						{
+							echo Text::_('COM_PLUGINS_XML_ERR');
+						}
 						?>
 						</h2>
 						<div class="info-labels mb-1">
@@ -83,7 +87,10 @@ $tmpl     = $isModal || $input->get('tmpl', '', 'cmd') === 'component' ? '&tmpl=
 							}
 							?>
 							<p><?php echo $short_description; ?></p>
-							<?php if ($long_description) : ?>
+							<?php
+							if ($long_description)
+							:
+								?>
 								<p class="readmore">
 									<a href="#" onclick="document.querySelector('#tab-description').click();">
 										<?php echo Text::_('JGLOBAL_SHOW_FULL_DESCRIPTION'); ?>
@@ -92,12 +99,15 @@ $tmpl     = $isModal || $input->get('tmpl', '', 'cmd') === 'component' ? '&tmpl=
 							<?php endif; ?>
 						</div>
 					<?php endif; ?>
-					<?php else : ?>
+				<?php else
+
+				:
+					?>
 						<div class="alert alert-danger">
 						<span class="icon-exclamation-triangle" aria-hidden="true"></span><span class="visually-hidden"><?php echo Text::_('ERROR'); ?></span>
 							<?php echo Text::_('COM_PLUGINS_XML_ERR'); ?>
 						</div>
-					<?php endif; ?>
+				<?php endif; ?>
 				<?php
 				$this->fieldset = 'basic';
 				$html = LayoutHelper::render('joomla.edit.fieldset', $this);
@@ -120,7 +130,9 @@ $tmpl     = $isModal || $input->get('tmpl', '', 'cmd') === 'component' ? '&tmpl=
 		</div>
 		<?php echo HTMLHelper::_('uitab.endTab'); ?>
 
-		<?php if (isset($long_description) && $long_description != '') : ?>
+		<?php if (isset($long_description) && $long_description != '')
+		:
+			?>
 			<?php echo HTMLHelper::_('uitab.addTab', 'myTab', 'description', Text::_('JGLOBAL_FIELDSET_DESCRIPTION')); ?>
 			<?php echo $long_description; ?>
 			<?php echo HTMLHelper::_('uitab.endTab'); ?>

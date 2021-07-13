@@ -40,7 +40,9 @@ $wa->useScript('keepalive')
 		<?php echo HTMLHelper::_('uitab.addTab', 'myTab', 'details', Text::_('COM_FINDER_EDIT_FILTER')); ?>
 		<div class="row">
 			<div class="col-lg-9">
-				<?php if ($this->total > 0) : ?>
+				<?php if ($this->total > 0)
+				:
+					?>
 					<div class="well">
 						<?php echo $this->form->renderField('map_count'); ?>
 					</div>
