@@ -102,7 +102,7 @@ class Guidedtour_stepModel extends AdminModel
 	 */
 	public function getTable($name = '', $prefix = '', $options = array())
 	{
-		$name = 'mywalk_dates';
+		$name = 'guidedtour_steps';
 		$prefix = 'Table';
 
 		if ($table = $this->_createTable($name, $prefix, $options)) {
