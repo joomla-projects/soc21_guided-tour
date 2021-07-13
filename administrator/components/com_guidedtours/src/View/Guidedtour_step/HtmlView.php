@@ -8,7 +8,7 @@
  * @license     GNU General Public License version 2 or later; see LICENSE.txt
  */
 
-namespace Joomla\Component\Guidedtours\Administrator\View\Guidedtour_step;
+namespace J4xdemos\Component\Mywalks\Administrator\View\Mywalk_date;
 
 defined('_JEXEC') or die;
 
@@ -121,10 +121,10 @@ class HtmlView extends BaseHtmlView
 
 		// For new records, check the create permission.
 		if ($isNew) {
-			$toolbar->apply('guidedtour_date.save');
+			$toolbar->apply('mywalk_date.save');
 		} else {
-			$toolbar->apply('guidedtour_date.apply');
+			$toolbar->apply('mywalk_date.apply');
 		}
-		$toolbar->cancel('guidedtour_date.cancel', 'JTOOLBAR_CLOSE');
+		$toolbar->cancel('mywalk_date.cancel', 'JTOOLBAR_CLOSE');
 	}
 }

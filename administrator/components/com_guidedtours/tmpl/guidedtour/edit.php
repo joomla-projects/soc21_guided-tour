@@ -20,7 +20,7 @@ HTMLHelper::_('behavior.keepalive');
 
 ?>
 
-<form action="<?php echo Route::_('index.php?option=com_guidedtours&view=guidedtour&layout=edit&id=' . (int) $this->item->id); ?>" method="post" name="adminForm" id="mywalks-form" class="form-validate">
+<form action="<?php echo Route::_('index.php?option=com_mywalks&view=mywalk&layout=edit&id=' . (int) $this->item->id); ?>" method="post" name="adminForm" id="mywalks-form" class="form-validate">
 
 	<?php echo LayoutHelper::render('joomla.edit.title_alias', $this); ?>
 
@@ -52,4 +52,4 @@ HTMLHelper::_('behavior.keepalive');
 	<input type="hidden" name="task" value="">
 	<?php echo HTMLHelper::_('form.token'); ?>
 </form>
-<a href="<?php echo Route::_('index.php?option=com_guidedtours'); ?>">Back to list of walks</a>
+<a href="<?php echo Route::_('index.php?option=com_mywalks'); ?>">Back to list of walks</a>

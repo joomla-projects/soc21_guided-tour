@@ -8,7 +8,7 @@
  * @license     GNU General Public License version 2 or later; see LICENSE.txt
  */
 
-namespace Joomla\Component\Guidedtours\Administrator\View\Guidedtours;
+namespace J4xdemos\Component\Mywalks\Administrator\View\Mywalks;
 
 defined('_JEXEC') or die;
 
@@ -98,12 +98,12 @@ class HtmlView extends BaseHtmlView
 		// Get the toolbar object instance
 		$toolbar = Toolbar::getInstance('toolbar');
 
-		ToolbarHelper::title(Text::_('Guidedtour - List of Tours'), 'guidedtours');
+		ToolbarHelper::title(Text::_('Guidedtour - List of Tours'), 'mywalks');
 
-		$canDo = ContentHelper::getActions('com_guidedtours');
+		$canDo = ContentHelper::getActions('com_mywalks');
 
 		if ($canDo->get('core.create')) {
-			$toolbar->addNew('guidedtour.add');
+			$toolbar->addNew('mywalk.add');
 		}
 
 		if ($canDo->get('core.edit.state')) {
@@ -116,19 +116,19 @@ class HtmlView extends BaseHtmlView
 
 			$childBar = $dropdown->getChildToolbar();
 
-			$childBar->publish('guidedtours.publish')->listCheck(true);
+			$childBar->publish('mywalks.publish')->listCheck(true);
 
-			$childBar->unpublish('guidedtours.unpublish')->listCheck(true);
+			$childBar->unpublish('mywalks.unpublish')->listCheck(true);
 
-			$childBar->archive('guidedtours.archive')->listCheck(true);
+			$childBar->archive('mywalks.archive')->listCheck(true);
 
 			if ($this->state->get('filter.published') != -2) {
-				$childBar->trash('guidedtours.trash')->listCheck(true);
+				$childBar->trash('mywalks.trash')->listCheck(true);
 			}
 		}
 
 		if ($this->state->get('filter.published') == -2 && $canDo->get('core.delete')) {
-			$toolbar->delete('guidedtours.delete')
+			$toolbar->delete('mywalks.delete')
 				->text('JTOOLBAR_EMPTY_TRASH')
 				->message('JGLOBAL_CONFIRM_DELETE')
 				->listCheck(true);

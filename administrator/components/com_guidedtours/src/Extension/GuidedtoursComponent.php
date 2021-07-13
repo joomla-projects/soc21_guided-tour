@@ -1,5 +1,4 @@
 <?php
-
 /**
  * @package     Joomla.Administrator
  * @subpackage  com_mywalks
@@ -8,7 +7,7 @@
  * @license     GNU General Public License version 2 or later; see LICENSE.txt
  */
 
-namespace Joomla\Component\Guidedtours\Administrator\Extension;
+namespace J4xdemos\Component\Mywalks\Administrator\Extension;
 
 defined('JPATH_PLATFORM') or die;
 
@@ -26,9 +25,8 @@ use Psr\Container\ContainerInterface;
  *
  * @since  4.0.0
  */
-class GuidedtoursComponent extends MVCComponent implements
-	BootableExtensionInterface,
-	RouterServiceInterface
+class MywalksComponent extends MVCComponent implements
+BootableExtensionInterface, RouterServiceInterface
 {
 	use RouterServiceTrait;
 	use HTMLRegistryAwareTrait;

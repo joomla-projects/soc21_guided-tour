@@ -8,7 +8,7 @@
  * @license     GNU General Public License version 2 or later; see LICENSE.txt
  */
 
-namespace Joomla\Component\Guidedtours\Administrator\Model;
+namespace J4xdemos\Component\Mywalks\Administrator\Model;
 
 defined('_JEXEC') or die;
 
@@ -28,7 +28,7 @@ use Joomla\Database\ParameterType;
  *
  * @since  1.6
  */
-class GuidedtoursModel extends ListModel
+class MywalksModel extends ListModel
 {
 	/**
 	 * Constructor.
@@ -114,10 +114,10 @@ class GuidedtoursModel extends ListModel
 		$query->select(
 			$this->getState(
 				'list.select',
-				'a.*, (SELECT count(`date`) from #__guidedtour_steps WHERE walk_id = a.id) AS nvisits'
+				'a.*, (SELECT count(`date`) from #__mywalk_dates WHERE walk_id = a.id) AS nvisits'
 			)
 		);
-		$query->from('#__guidedtours AS a');
+		$query->from('#__mywalks AS a');
 
 		// Filter by published state
 		$published = (string) $this->getState('filter.published');

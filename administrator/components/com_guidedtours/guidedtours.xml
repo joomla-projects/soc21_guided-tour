@@ -1,45 +1,48 @@
-<?xml version="1.0" encoding="utf-8"?>
+<?xml version="1.0" encoding="UTF-8"?>
 <extension type="component" method="upgrade">
-
-
-    <name>com_guidedtours</name>
-    <creationDate>July 2021</creationDate>
+	<name>com_guidedtours</name>
+    <creationDate>August 2021</creationDate>
     <author>Joomla! Project</author>
     <authorEmail>admin@joomla.org</authorEmail>
     <authorUrl>www.joomla.org</authorUrl>
     <version>4.0.0</version>
     <copyright>Joomla!</copyright>
     <license>GNU General Public License version 2 or later; see LICENSE.txt</license>
+	<!-- The description is optional and defaults to the name -->
+	<description>COM_GUIDEDTOURS_XML_DESCRIPTION</description>
+	<namespace path="src/">Joomla\Component\Guidedtours</namespace>
 
-    <description>
-       COM_GUIDEDTOURS_XML_DESCRIPTION
-    </description>
+	<install> <!-- Runs on install -->
+		<sql>
+			<file driver="mysql" charset="utf8">sql/install.mysql.sql</file>
+		</sql>
+	</install>
+	<uninstall> <!-- Runs on uninstall -->
+		<sql>
+			<file driver="mysql" charset="utf8">sql/uninstall.mysql.sql</file>
+		</sql>
+	</uninstall>
 
-    <namespace path="src/">Joomla\Component\Guidedtours</namespace>
+	<!-- Site Main File Copy Section -->
+	<!-- Note the folder attribute: This attribute describes the folder
+		to copy FROM in the package to install therefore files copied
+		in this section are copied from /site/ in the package -->
 
-    <install>        <!-- Runs on install -->
-        <sql>
-            <file driver="mysql" charset="utf8">sql/install.mysql.sql</file>
-        </sql>
-    </install>
-    <uninstall>        <!-- Runs on uninstall -->
-        <sql>
-            <file driver="mysql" charset="utf8">sql/uninstall.mysql.sql</file>
-        </sql>
-    </uninstall>
 
-    <administration>
 
-        <menu link="index.php?option=com_guidedtours" img="class:default">Guided Tours By JS</menu>
+	
+		<administration>
 
-        <files >
-            <file>access.xml</file>
-            <file>config.xml</file>
-            <folder>services</folder>
-            <folder>sql</folder>
-            <folder>src</folder>
-            <folder>tmpl</folder>
-        </files>
-    </administration>
-
+			<menu link="index.php?option=com_guidedtours" img="class:default">Guided Tours By JS</menu>
+	
+			<files >
+				<file>access.xml</file>
+				<file>config.xml</file>
+				<folder>services</folder>
+				<folder>sql</folder>
+				<folder>src</folder>
+				<folder>tmpl</folder>
+			</files>
+		</administration>
+	
 </extension>

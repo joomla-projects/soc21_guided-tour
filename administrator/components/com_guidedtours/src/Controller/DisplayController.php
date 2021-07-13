@@ -1,5 +1,4 @@
 <?php
-
 /**
  * @package     Mywalks.Administrator
  * @subpackage  com_mywalks
@@ -8,7 +7,7 @@
  * @license     GNU General Public License version 2 or later; see LICENSE.txt
  */
 
-namespace Joomla\Component\Guidedtours\Administrator\Controller;
+namespace J4xdemos\Component\Mywalks\Administrator\Controller;
 
 defined('_JEXEC') or die;
 
@@ -27,7 +26,7 @@ class DisplayController extends BaseController
 	 * @var    string
 	 * @since  1.6
 	 */
-	protected $default_view = 'guidedtours';
+	protected $default_view = 'mywalks';
 
 	/**
 	 * Method to display a view.

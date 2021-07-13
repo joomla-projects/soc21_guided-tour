@@ -1,5 +1,4 @@
 <?php
-
 /**
  * @package     Mywalks.Administrator
  * @subpackage  com_mywalks
@@ -8,7 +7,7 @@
  * @license     GNU General Public License version 2 or later; see LICENSE.txt
  */
 
-namespace Joomla\Component\Guidedtours\Administrator\Helper;
+namespace J4xdemos\Component\Mywalks\Administrator\Helper;
 
 defined('_JEXEC') or die;
 
@@ -19,11 +18,12 @@ use Joomla\CMS\Factory;
  *
  * @since  4.0
  */
-class GuidedtoursHelper
+class MywalksHelper
 {
 	public static function getWalkTitle($id)
 	{
-		if (empty($id)) {
+		if (empty($id))
+		{
 			// throw an error or ...
 			return false;
 		}

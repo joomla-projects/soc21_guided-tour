@@ -1,5 +1,4 @@
 <?php
-
 /**
  * @package     Mywalks.Administrator
  * @subpackage  com_mywalks
@@ -8,7 +7,7 @@
  * @license     GNU General Public License version 2 or later; see LICENSE.txt
  */
 
-namespace Joomla\Component\Guidedtours\Administrator\Table;
+namespace J4xdemos\Component\Mywalks\Administrator\Table;
 
 defined('JPATH_PLATFORM') or die;
 
@@ -20,7 +19,7 @@ use Joomla\Database\DatabaseDriver;
  *
  * @since  1.5
  */
-class Guidedtour_stepsTable extends Table
+class Mywalk_datesTable extends Table
 {
 	/**
 	 * Constructor
@@ -31,6 +30,6 @@ class Guidedtour_stepsTable extends Table
 	 */
 	public function __construct(DatabaseDriver $db)
 	{
-		parent::__construct('#__guidedtour_steps', 'id', $db);
+		parent::__construct('#__mywalk_dates', 'id', $db);
 	}
 }

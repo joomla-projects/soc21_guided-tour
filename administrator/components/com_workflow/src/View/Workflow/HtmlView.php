@@ -1,4 +1,5 @@
 <?php
+
 /**
  * @package     Joomla.Administrator
  * @subpackage  com_workflow
@@ -6,6 +7,7 @@
  * @copyright   (C) 2018 Open Source Matters, Inc. <https://www.joomla.org>
  * @license     GNU General Public License version 2 or later; see LICENSE.txt
  */
+
 namespace Joomla\Component\Workflow\Administrator\View\Workflow;
 
 \defined('_JEXEC') or die;
@@ -87,8 +89,7 @@ class HtmlView extends BaseHtmlView
 		$this->item       = $this->get('Item');
 
 		// Check for errors.
-		if (count($errors = $this->get('Errors')))
-		{
+		if (count($errors = $this->get('Errors'))) {
 			throw new GenericDataException(implode("\n", $errors), 500);
 		}
 
@@ -98,8 +99,7 @@ class HtmlView extends BaseHtmlView
 
 		$this->extension = array_shift($parts);
 
-		if (!empty($parts))
-		{
+		if (!empty($parts)) {
 			$this->section = array_shift($parts);
 		}
 
@@ -131,11 +131,9 @@ class HtmlView extends BaseHtmlView
 
 		$toolbarButtons = [];
 
-		if ($isNew)
-		{
+		if ($isNew) {
 			// For new records, check the create permission.
-			if ($canDo->get('core.create'))
-			{
+			if ($canDo->get('core.create')) {
 				ToolbarHelper::apply('workflow.apply');
 				$toolbarButtons = [['save', 'workflow.save'], ['save2new', 'workflow.save2new']];
 			}
@@ -148,20 +146,16 @@ class HtmlView extends BaseHtmlView
 			ToolbarHelper::cancel(
 				'workflow.cancel'
 			);
-		}
-		else
-		{
+		} else {
 			// Since it's an existing record, check the edit permission, or fall back to edit own if the owner.
 			$itemEditable = $canDo->get('core.edit') || ($canDo->get('core.edit.own') && $this->item->created_by == $userId);
 
-			if ($itemEditable)
-			{
+			if ($itemEditable) {
 				ToolbarHelper::apply('workflow.apply');
 				$toolbarButtons = [['save', 'workflow.save']];
 
 				// We can save this record, but check the create permission to see if we can return to make a new one.
-				if ($canDo->get('core.create'))
-				{
+				if ($canDo->get('core.create')) {
 					$toolbarButtons[] = ['save2new', 'workflow.save2new'];
 					$toolbarButtons[] = ['save2copy', 'workflow.save2copy'];
 				}
