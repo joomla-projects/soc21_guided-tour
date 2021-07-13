@@ -1,4 +1,5 @@
 <?php
+
 /**
  * @package     Mywalks.Administrator
  * @subpackage  com_mywalks
@@ -7,7 +8,7 @@
  * @license     GNU General Public License version 2 or later; see LICENSE.txt
  */
 
-namespace J4xdemos\Component\Mywalks\Administrator\Table;
+namespace Joomla\Component\Guidedtours\Administrator\Table;
 
 defined('JPATH_PLATFORM') or die;
 
@@ -19,7 +20,7 @@ use Joomla\Database\DatabaseDriver;
  *
  * @since  1.5
  */
-class MywalksTable extends Table
+class GuidedtoursTable extends Table
 {
 	/**
 	 * Constructor

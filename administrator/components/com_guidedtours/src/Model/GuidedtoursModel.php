@@ -8,7 +8,7 @@
  * @license     GNU General Public License version 2 or later; see LICENSE.txt
  */
 
-namespace J4xdemos\Component\Mywalks\Administrator\Model;
+namespace Joomla\Component\Guidedtours\Administrator\Model;
 
 defined('_JEXEC') or die;
 
@@ -28,7 +28,7 @@ use Joomla\Database\ParameterType;
  *
  * @since  1.6
  */
-class MywalksModel extends ListModel
+class GuidedtoursModel extends ListModel
 {
 	/**
 	 * Constructor.

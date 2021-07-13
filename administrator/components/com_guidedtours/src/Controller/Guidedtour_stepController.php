@@ -1,4 +1,5 @@
 <?php
+
 /**
  * @package     Mywalks.Administrator
  * @subpackage  com_mywalks
@@ -7,7 +8,7 @@
  * @license     GNU General Public License version 2 or later; see LICENSE.txt
  */
 
-namespace J4xdemos\Component\Mywalks\Administrator\Controller;
+namespace Joomla\Component\Guidedtours\Administrator\Controller;
 
 defined('_JEXEC') or die;
 
@@ -18,9 +19,10 @@ use Joomla\CMS\MVC\Controller\FormController;
  *
  * @since  1.6
  */
-class Mywalk_dateController extends FormController
+class Guidedtour_stepController extends FormController
 {
-	public function cancel($key = null) {
-		$this->setRedirect('index.php?option=com_mywalks&view=mywalk_dates');
+	public function cancel($key = null)
+	{
+		$this->setRedirect('index.php?option=com_guidedtours&view=guidedtour_steps');
 	}
 }
