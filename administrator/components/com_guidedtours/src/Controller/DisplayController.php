@@ -1,11 +1,15 @@
 <?php
 
 /**
- * @package     Mywalks.Administrator
- * @subpackage  com_mywalks
+ * File Doc Comment_
+ * PHP version 5
  *
- * @copyright   Copyright (C) 2005 - 2019 Open Source Matters, Inc. All rights reserved.
- * @license     GNU General Public License version 2 or later; see LICENSE.txt
+ * @category Component
+ * @package  Joomla.Administrator
+ * @author   Joomla! <admin@joomla.org>
+ * @copyright (C) 2013 Open Source Matters, Inc. <https://www.joomla.org>
+ * @license  GNU General Public License version 2 or later; see LICENSE.txt
+ * @link     admin@joomla.org
  */
 
 namespace Joomla\Component\Guidedtours\Administrator\Controller;
@@ -27,7 +31,9 @@ class DisplayController extends BaseController
 	 * @var    string
 	 * @since  1.6
 	 */
+	// @codingStandardsIgnoreStart
 	protected $default_view = 'guidedtours';
+	// @codingStandardsIgnoreEnd
 
 	/**
 	 * Method to display a view.

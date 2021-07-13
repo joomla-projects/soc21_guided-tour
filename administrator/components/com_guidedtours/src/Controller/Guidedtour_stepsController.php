@@ -1,11 +1,15 @@
 <?php
 
 /**
- * @package     Mywalks.Administrator
- * @subpackage  com_mywalks
+ * File Doc Comment_
+ * PHP version 5
  *
- * @copyright   Copyright (C) 2005 - 2019 Open Source Matters, Inc. All rights reserved.
- * @license     GNU General Public License version 2 or later; see LICENSE.txt
+ * @category Component
+ * @package  Joomla.Administrator
+ * @author   Joomla! <admin@joomla.org>
+ * @copyright (C) 2013 Open Source Matters, Inc. <https://www.joomla.org>
+ * @license  GNU General Public License version 2 or later; see LICENSE.txt
+ * @link     admin@joomla.org
  */
 
 namespace Joomla\Component\Guidedtours\Administrator\Controller;
@@ -19,7 +23,9 @@ use Joomla\CMS\MVC\Controller\AdminController;
  *
  * @since  1.5
  */
+// @codingStandardsIgnoreStart
 class Guidedtour_stepsController extends AdminController
+// @codingStandardsIgnoreEnd
 {
 	/**
 	 * The default view.
@@ -27,8 +33,9 @@ class Guidedtour_stepsController extends AdminController
 	 * @var    string
 	 * @since  1.6
 	 */
+	// @codingStandardsIgnoreStart
 	protected $default_view = 'guidedtour_steps';
-
+	// @codingStandardsIgnoreEnd
 	/**
 	 * Method to display a view.
 	 *
@@ -41,12 +48,15 @@ class Guidedtour_stepsController extends AdminController
 	 */
 	public function display($cachable = false, $urlparams = array())
 	{
+		// @codingStandardsIgnoreStart
 		$view   = $this->input->get('view', $this->default_view);
+		// @codingStandardsIgnoreEnd
 		$layout = $this->input->get('layout', 'default');
 		$id     = $this->input->getInt('id');
 
 		// Check for edit form.
-		if ($view == 'guidedtour_step' && $layout == 'edit' && !$this->checkEditId('com_guidedtours.edit.guidedtour_step', $id)) {
+		if ($view == 'guidedtour_step' && $layout == 'edit' && !$this->checkEditId('com_guidedtours.edit.guidedtour_step', $id))
+		{
 			// Somehow the person just went to the form - we don't allow that.
 			$this->setMessage(Text::sprintf('JLIB_APPLICATION_ERROR_UNHELD_ID', $id), 'error');
 			$this->setRedirect(Route::_('index.php?option=com_guidedtour&view=guidedtour_stepss', false));

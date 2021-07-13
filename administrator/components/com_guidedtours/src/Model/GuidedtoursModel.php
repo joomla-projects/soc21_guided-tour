@@ -1,11 +1,15 @@
 <?php
 
 /**
- * @package     Mywalks.Administrator
- * @subpackage  com_mywalks
+ * File Doc Comment_
+ * PHP version 5
  *
- * @copyright   Copyright (C) 2005 - 2019 Open Source Matters, Inc. All rights reserved.
- * @license     GNU General Public License version 2 or later; see LICENSE.txt
+ * @category Component
+ * @package  Joomla.Administrator
+ * @author   Joomla! <admin@joomla.org>
+ * @copyright (C) 2013 Open Source Matters, Inc. <https://www.joomla.org>
+ * @license  GNU General Public License version 2 or later; see LICENSE.txt
+ * @link     admin@joomla.org
  */
 
 namespace Joomla\Component\Guidedtours\Administrator\Model;
@@ -40,7 +44,8 @@ class GuidedtoursModel extends ListModel
 	 */
 	public function __construct($config = array())
 	{
-		if (empty($config['filter_fields'])) {
+		if (empty($config['filter_fields']))
+		{
 			$config['filter_fields'] = array(
 				'id', 'a.id',
 				'title', 'a.title',
@@ -122,17 +127,21 @@ class GuidedtoursModel extends ListModel
 		// Filter by published state
 		$published = (string) $this->getState('filter.published');
 
-		if (is_numeric($published)) {
+		if (is_numeric($published))
+		{
 			$query->where($db->quoteName('a.state') . ' = :published');
 			$query->bind(':published', $published, ParameterType::INTEGER);
-		} elseif ($published === '') {
+		}
+		elseif ($published === '')
+		{
 			$query->where('(' . $db->quoteName('a.state') . ' = 0 OR ' . $db->quoteName('a.state') . ' = 1)');
 		}
 
 		// Filter by search in title.
 		$search = $this->getState('filter.search');
 
-		if (!empty($search)) {
+		if (!empty($search))
+		{
 			$search = $db->quote('%' . str_replace(' ', '%', $db->escape(trim($search), true) . '%'));
 			$query->where('(a.title LIKE ' . $search . ')');
 		}

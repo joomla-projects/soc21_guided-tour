@@ -1,11 +1,15 @@
 <?php
 
 /**
- * @package     Mywalks.Administrator
- * @subpackage  com_mywalks
+ * File Doc Comment_
+ * PHP version 5
  *
- * @copyright   Copyright (C) 2005 - 2019 Open Source Matters, Inc. All rights reserved.
- * @license     GNU General Public License version 2 or later; see LICENSE.txt
+ * @category Component
+ * @package  Joomla.Administrator
+ * @author   Joomla! <admin@joomla.org>
+ * @copyright (C) 2013 Open Source Matters, Inc. <https://www.joomla.org>
+ * @license  GNU General Public License version 2 or later; see LICENSE.txt
+ * @link     admin@joomla.org
  */
 
 namespace Joomla\Component\Guidedtours\Administrator\Model;
@@ -28,7 +32,9 @@ use Joomla\Database\ParameterType;
  *
  * @since  1.6
  */
+// @codingStandardsIgnoreStart
 class Guidedtour_stepsModel extends ListModel
+// @codingStandardsIgnoreEnd
 {
 	/**
 	 * Constructor.
@@ -40,7 +46,8 @@ class Guidedtour_stepsModel extends ListModel
 	 */
 	public function __construct($config = array())
 	{
-		if (empty($config['filter_fields'])) {
+		if (empty($config['filter_fields']))
+		{
 			$config['filter_fields'] = array(
 				'id', 'a.id',
 				'walk_id', 'a.walk_id',
@@ -68,13 +75,17 @@ class Guidedtour_stepsModel extends ListModel
 	protected function populateState($ordering = 'a.id', $direction = 'asc')
 	{
 		$app = Factory::getApplication();
-
+		// @codingStandardsIgnoreStart
 		$walk_id = $app->input->get('walk_id', 0, 'int');
+		// @codingStandardsIgnoreEnd
+		// @codingStandardsIgnoreStart
 		if (empty($walk_id)) {
 			$walk_id = $app->getUserState('com_guidedtours.walk_id');
 		}
+
 		$this->setState('walk_id', $walk_id);
-		// keep the walk_id for adding new visits
+
+		// Keep the walk_id for adding new visits
 		$app->setUserState('com_guidedtours.walk_id', $walk_id);
 
 		$search = $this->getUserStateFromRequest($this->context . '.filter.search', 'filter_search');
@@ -82,7 +93,7 @@ class Guidedtour_stepsModel extends ListModel
 
 		$published = $this->getUserStateFromRequest($this->context . '.filter.published', 'filter_published', '');
 		$this->setState('filter.published', $published);
-
+		// @codingStandardsIgnoreEnd
 		// List state information.
 		parent::populateState($ordering, $direction);
 	}
@@ -131,8 +142,8 @@ class Guidedtour_stepsModel extends ListModel
 			)
 		);
 		$query->from('#__mywalk_dates AS a');
-
-		// the walk id should be passed in url or hidden form variables
+		// @codingStandardsIgnoreStart
+		// The walk id should be passed in url or hidden form variables
 		$walk_id     = $this->getState('walk_id');
 		$query->where('walk_id = ' . $walk_id);
 
@@ -151,6 +162,7 @@ class Guidedtour_stepsModel extends ListModel
 		$orderDirn = $this->state->get('list.direction', 'ASC');
 
 		$query->order($db->escape($orderCol) . ' ' . $db->escape($orderDirn));
+
 		return $query;
 	}
 
@@ -169,3 +181,4 @@ class Guidedtour_stepsModel extends ListModel
 		return $items;
 	}
 }
+// @codingStandardsIgnoreEnd
