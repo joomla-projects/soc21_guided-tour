@@ -25,7 +25,7 @@ $app = Factory::getApplication();
 $walk_id = $app->getUserState('com_guidedtours.walk_id');
 
 if (empty($walk_id)) {
-	throw new GenericDataException("\nThe walk id was not set!\n", 500);
+	throw new GenericDataException("\nThe Tour id was not set!\n", 500);
 }
 
 // Fieldsets to not automatically render by /layouts/joomla/edit/params.php
@@ -33,7 +33,7 @@ $this->ignore_fieldsets = array('details', 'item_associations', 'jmetadata');
 $this->useCoreUI = true;
 ?>
 
-<form action="<?php echo Route::_('index.php?option=com_guidedtours&view=guidedtour_step&layout=edit&id=' . (int) $this->item->id); ?>" method="post" name="adminForm" id="mywalk-dates-form" class="form-validate">
+<form action="<?php echo Route::_('index.php?option=com_guidedtours&view=guidedtour_step&layout=edit&id=' . (int) $this->item->id); ?>" method="post" name="adminForm" id="guidedtour-steps-form" class="form-validate">
 
 	<?php echo LayoutHelper::render('joomla.edit.title_alias', $this); ?>
 
