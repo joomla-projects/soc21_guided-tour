@@ -61,4 +61,3 @@ HTMLHelper::_('behavior.keepalive');
 	<input type="hidden" name="task" value="">
 	<?php echo HTMLHelper::_('form.token'); ?>
 </form>
-<a href="<?php echo Route::_('index.php?option=com_guidedtours'); ?>">Back to list of walks</a>
