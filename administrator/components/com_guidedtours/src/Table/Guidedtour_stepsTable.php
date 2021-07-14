@@ -20,13 +20,11 @@ use Joomla\CMS\Table\Table;
 use Joomla\Database\DatabaseDriver;
 
 /**
- * Mywalk_dates table
+ * Guidedtour_steps table
  *
  * @since  1.5
  */
-// @codingStandardsIgnoreStart
 class Guidedtour_stepsTable extends Table
-// @codingStandardsIgnoreEnd
 {
 	/**
 	 * Constructor

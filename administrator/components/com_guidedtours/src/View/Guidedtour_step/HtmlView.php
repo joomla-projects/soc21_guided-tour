@@ -30,7 +30,7 @@ use Joomla\CMS\Session\Session;
 use Joomla\CMS\Toolbar\Toolbar;
 use Joomla\CMS\Toolbar\ToolbarHelper;
 
-// JLoader::register('MywalksHelperRoute', JPATH_SITE . '/components/com_mywalks/helpers/route.php');
+//\JLoader::register('MywalksHelperRoute', JPATH_SITE . '/components/com_guidedtours/helpers/route.php');
 
 /**
  * View to edit an article.
@@ -91,8 +91,7 @@ class HtmlView extends BaseHtmlView
 		$this->state = $this->get('State');
 
 		// Check for errors.
-		if (count($errors = $this->get('Errors')))
-		{
+		if (count($errors = $this->get('Errors'))) {
 			throw new GenericDataException(implode("\n", $errors), 500);
 		}
 
@@ -117,7 +116,7 @@ class HtmlView extends BaseHtmlView
 		$isNew      = ($this->item->id == 0);
 
 		// Built the actions for new and existing records.
-		// $canDo = $this->canDo;
+		//$canDo = $this->canDo;
 
 		$toolbar = Toolbar::getInstance();
 		$title = $isNew ? 'Add Step' : 'Edit Step';
@@ -125,15 +124,11 @@ class HtmlView extends BaseHtmlView
 		ToolbarHelper::title($title);
 
 		// For new records, check the create permission.
-		if ($isNew)
-		{
+		if ($isNew) {
 			$toolbar->apply('guidedtour_step.save');
-		}
-		else
-		{
+		} else {
 			$toolbar->apply('guidedtour_step.apply');
 		}
-
 		$toolbar->cancel('guidedtour_step.cancel', 'JTOOLBAR_CLOSE');
 	}
 }

@@ -19,20 +19,12 @@ defined('_JEXEC') or die;
 use Joomla\CMS\MVC\Controller\FormController;
 
 /**
- * Controller for a single guidedtour
+ * Controller for a single mywalk
  *
  * @since  1.6
  */
-// @codingStandardsIgnoreStart
 class Guidedtour_stepController extends FormController
-// @codingStandardsIgnoreEnd
 {
-	/**
-	 * Cancel function here
-	 *
-	 * @param   this is the param =  $key for function cancel
-	 * @return void
-	 */
 	public function cancel($key = null)
 	{
 		$this->setRedirect('index.php?option=com_guidedtours&view=guidedtour_steps');

@@ -12,6 +12,7 @@
  * @link     admin@joomla.org
  */
 
+
 namespace Joomla\Component\Guidedtours\Administrator\View\Guidedtours;
 
 defined('_JEXEC') or die;
@@ -24,7 +25,7 @@ use Joomla\CMS\Toolbar\Toolbar;
 use Joomla\CMS\Toolbar\ToolbarHelper;
 
 /**
- * View class for a list of mywalks.
+ * View class for a list of guidedtours.
  *
  * @since  1.6
  */
@@ -81,8 +82,7 @@ class HtmlView extends BaseHtmlView
 		$this->activeFilters = $this->get('ActiveFilters');
 
 		// Check for errors.
-		if (count($errors = $this->get('Errors')))
-		{
+		if (count($errors = $this->get('Errors'))) {
 			throw new GenericDataException(implode("\n", $errors), 500);
 		}
 
@@ -107,13 +107,11 @@ class HtmlView extends BaseHtmlView
 
 		$canDo = ContentHelper::getActions('com_guidedtours');
 
-		if ($canDo->get('core.create'))
-		{
+		if ($canDo->get('core.create')) {
 			$toolbar->addNew('guidedtour.add');
 		}
 
-		if ($canDo->get('core.edit.state'))
-		{
+		if ($canDo->get('core.edit.state')) {
 			$dropdown = $toolbar->dropdownButton('status-group')
 				->text('JTOOLBAR_CHANGE_STATUS')
 				->toggleSplit(false)
@@ -129,14 +127,12 @@ class HtmlView extends BaseHtmlView
 
 			$childBar->archive('guidedtours.archive')->listCheck(true);
 
-			if ($this->state->get('filter.published') != -2)
-			{
+			if ($this->state->get('filter.published') != -2) {
 				$childBar->trash('guidedtours.trash')->listCheck(true);
 			}
 		}
 
-		if ($this->state->get('filter.published') == -2 && $canDo->get('core.delete'))
-		{
+		if ($this->state->get('filter.published') == -2 && $canDo->get('core.delete')) {
 			$toolbar->delete('guidedtours.delete')
 				->text('JTOOLBAR_EMPTY_TRASH')
 				->message('JGLOBAL_CONFIRM_DELETE')

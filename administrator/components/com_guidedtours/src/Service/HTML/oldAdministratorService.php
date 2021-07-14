@@ -1,5 +1,5 @@
 <?php
-// @codingStandardsIgnoreStart
+
 /**
  * File Doc Comment_
  * PHP version 5
@@ -25,7 +25,7 @@ use Joomla\CMS\Router\Route;
 use Joomla\Utilities\ArrayHelper;
 
 /**
- * Mywalks HTML helper
+ * guidedtours HTML helper
  *
  * @since  3.0
  */
@@ -124,4 +124,3 @@ class AdministratorService
 		return $html;
 	}
 }
-// @codingStandardsIgnoreEnd

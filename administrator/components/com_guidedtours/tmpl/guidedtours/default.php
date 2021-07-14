@@ -1,5 +1,5 @@
 <?php
-// @codingStandardsIgnoreStart
+
 /**
  * File Doc Comment_
  * PHP version 5
@@ -11,7 +11,6 @@
  * @license  GNU General Public License version 2 or later; see LICENSE.txt
  * @link     admin@joomla.org
  */
-
 defined('_JEXEC') or die;
 
 use Joomla\CMS\HTML\HTMLHelper;
@@ -34,15 +33,12 @@ $editIcon = '<span class="fa fa-pen-square me-2" aria-hidden="true"></span>';
 		<div class="col-md-12">
 			<div id="j-main-container" class="j-main-container">
 				<?php echo LayoutHelper::render('joomla.searchtools.default', array('view' => $this)); ?>
-				<?php
-				if (empty($this->items)) :
-				?>
+				<?php if (empty($this->items)) : ?>
 					<div class="alert alert-info">
 						<span class="fa fa-info-circle" aria-hidden="true"></span><span class="sr-only"><?php echo Text::_('INFO'); ?></span>
 						<?php echo Text::_('JGLOBAL_NO_MATCHING_RESULTS'); ?>
 					</div>
-				<?php else :
-				?>
+				<?php else : ?>
 					<table class="table" id="mywalksList">
 						<caption id="captionTable">
 							<?php echo Text::_('List'); ?>, <?php echo Text::_('JGLOBAL_SORTED_BY'); ?>
@@ -75,7 +71,6 @@ $editIcon = '<span class="fa fa-pen-square me-2" aria-hidden="true"></span>';
 						<tbody>
 							<?php
 							$n = count($this->items);
-
 							foreach ($this->items as $i => $item) :
 							?>
 								<tr class="row<?php echo $i % 2; ?>">
@@ -108,7 +103,7 @@ $editIcon = '<span class="fa fa-pen-square me-2" aria-hidden="true"></span>';
 						</tbody>
 					</table>
 
-					<?php // Load the pagination.
+					<?php // load the pagination. 
 					?>
 					<?php echo $this->pagination->getListFooter(); ?>
 
@@ -120,4 +115,3 @@ $editIcon = '<span class="fa fa-pen-square me-2" aria-hidden="true"></span>';
 		</div>
 	</div>
 </form>
-<!-- // @codingStandardsIgnoreEnd -->

@@ -36,9 +36,7 @@ class GuidedtourModel extends AdminModel
 	 * @var    string
 	 * @since  1.6
 	 */
-	// @codingStandardsIgnoreStart
 	protected $text_prefix = 'COM_GUIDEDTOURS';
-	// @codingStandardsIgnoreEnd
 
 	/**
 	 * Method to test whether a record can be deleted.
@@ -51,8 +49,7 @@ class GuidedtourModel extends AdminModel
 	 */
 	protected function canDelete($record)
 	{
-		if (!empty($record->id))
-		{
+		if (!empty($record->id)) {
 			return Factory::getUser()->authorise('core.delete', 'com_guidedtours.guidedtours.' . (int) $record->id);
 		}
 
@@ -73,8 +70,7 @@ class GuidedtourModel extends AdminModel
 		$user = Factory::getUser();
 
 		// Check for existing article.
-		if (!empty($record->id))
-		{
+		if (!empty($record->id)) {
 			return $user->authorise('core.edit.state', 'com_guidedtours.guidedtours.' . (int) $record->id);
 		}
 
@@ -94,21 +90,12 @@ class GuidedtourModel extends AdminModel
 	 * @since   3.0
 	 * @throws  \Exception
 	 */
-	/**
-	 * this is function for getTable
-	 *
-	 * @param   string   $name     which get the name of table
-	 * @param   string   $prefix   type of file
-	 * @param   array    $options  null
-	 * @return  integer            this is return tag
-	 */
 	public function getTable($name = '', $prefix = '', $options = array())
 	{
 		$name = 'guidedtours';
 		$prefix = 'Table';
 
-		if ($table = $this->_createTable($name, $prefix, $options))
-		{
+		if ($table = $this->_createTable($name, $prefix, $options)) {
 			return $table;
 		}
 
@@ -131,8 +118,7 @@ class GuidedtourModel extends AdminModel
 		// Get the form.
 		$form = $this->loadForm('com_guidedtours.guidedtour', 'guidedtour', array('control' => 'jform', 'load_data' => $loadData));
 
-		if (empty($form))
-		{
+		if (empty($form)) {
 			return false;
 		}
 
@@ -152,8 +138,7 @@ class GuidedtourModel extends AdminModel
 		$app = Factory::getApplication();
 		$data = $app->getUserState('com_guidedtours.edit.guidedtour.data', array());
 
-		if (empty($data))
-		{
+		if (empty($data)) {
 			$data = $this->getItem();
 
 			// Pre-select some filters (Status, Category, Language, Access) in edit form if those have been selected in Article Manager: Articles
@@ -167,17 +152,16 @@ class GuidedtourModel extends AdminModel
 	/**
 	 * Method to change the published state of one or more records.
 	 *
-	 * @param   array     $pks    A list of the primary keys to change.
-	 * @param   integer   $value  The value of the published state.
+	 * @param   array    &$pks   A list of the primary keys to change.
+	 * @param   integer  $value  The value of the published state.
 	 *
-	 * @return  void  True on success.
+	 * @return  boolean  True on success.
 	 *
 	 * @since   4.0.0
 	 */
 	public function publish(&$pks, $value = 1)
 	{
-		// This is a very simple method to change the state of each item selected
-
+		/* this is a very simple method to change the state of each item selected */
 		$db = $this->getDbo();
 
 		$query = $db->getQuery(true);

@@ -26,7 +26,7 @@ use Joomla\CMS\HTML\HTMLRegistryAwareTrait;
 use Psr\Container\ContainerInterface;
 
 /**
- * Component class for com_mywalks
+ * Component class for com_guidedtours
  *
  * @since  4.0.0
  */
@@ -52,6 +52,6 @@ class GuidedtoursComponent extends MVCComponent implements
 	 */
 	public function boot(ContainerInterface $container)
 	{
-		// $this->getRegistry()->register('mywalksadministrator', new AdministratorService);
+		//$this->getRegistry()->register('mywalksadministrator', new AdministratorService);
 	}
 }

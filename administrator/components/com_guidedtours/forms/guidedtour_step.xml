@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <form>
 
-	<fieldset name="details" label="COM_MYWALKS_MYWALK_DATE_TAB_DETAILS">
+	<fieldset name="details" label="COM_GUIDEDTOURS_GUIDEDTOUR_DATE_TAB_DETAILS">
 		<field
 			name="id"
 			type="number"

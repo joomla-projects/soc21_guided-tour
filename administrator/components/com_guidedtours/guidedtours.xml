@@ -33,7 +33,7 @@
 	
 		<administration>
 
-			<menu link="index.php?option=com_guidedtours" img="class:default">Guided Tours By JS</menu>
+			<menu link="index.php?option=com_guidedtours" img="class:default">Guided Tours</menu>
 	
 			<files >
 				<file>access.xml</file>

@@ -12,6 +12,7 @@
  * @link     admin@joomla.org
  */
 
+
 namespace Joomla\Component\Guidedtours\Administrator\View\Guidedtour_steps;
 
 defined('_JEXEC') or die;
@@ -26,7 +27,7 @@ use Joomla\CMS\Toolbar\Toolbar;
 use Joomla\CMS\Toolbar\ToolbarHelper;
 
 /**
- * View class for a list of mywalk_dates.
+ * View class for a list of guidedtour_steps.
  *
  * @since  1.6
  */
@@ -83,8 +84,7 @@ class HtmlView extends BaseHtmlView
 		$this->activeFilters = $this->get('ActiveFilters');
 
 		// Check for errors.
-		if (count($errors = $this->get('Errors')))
-		{
+		if (count($errors = $this->get('Errors'))) {
 			throw new GenericDataException(implode("\n", $errors), 500);
 		}
 
@@ -109,13 +109,11 @@ class HtmlView extends BaseHtmlView
 
 		ToolbarHelper::title(Text::_('Guided tour - List of Steps'), 'guidedtour_steps');
 
-		if ($canDo->get('core.create'))
-		{
+		if ($canDo->get('core.create')) {
 			$toolbar->addNew('guidedtour_step.add');
 		}
 
-		if ($canDo->get('core.edit.state'))
-		{
+		if ($canDo->get('core.edit.state')) {
 			$dropdown = $toolbar->dropdownButton('status-group')
 				->text('JTOOLBAR_CHANGE_STATUS')
 				->toggleSplit(false)
@@ -131,14 +129,12 @@ class HtmlView extends BaseHtmlView
 
 			$childBar->archive('guidedtour_steps.archive')->listCheck(true);
 
-			if ($this->state->get('filter.published') != -2)
-			{
+			if ($this->state->get('filter.published') != -2) {
 				$childBar->trash('guidedtour_steps.trash')->listCheck(true);
 			}
 		}
 
-		if ($this->state->get('filter.published') == -2 && $canDo->get('core.delete'))
-		{
+		if ($this->state->get('filter.published') == -2 && $canDo->get('core.delete')) {
 			$toolbar->delete('guidedtour_steps.delete')
 				->text('JTOOLBAR_EMPTY_TRASH')
 				->message('JGLOBAL_CONFIRM_DELETE')
@@ -156,7 +152,7 @@ class HtmlView extends BaseHtmlView
 	protected function getSortFields()
 	{
 		return array(
-			'a.date'         => Text::_('LABEL'),
+			'a.date'         => Text::_('COM_GUIDEDTOURS_DATES_VISIT_DATE_LABEL'),
 			'a.id'           => Text::_('JGRID_HEADING_ID'),
 		);
 	}

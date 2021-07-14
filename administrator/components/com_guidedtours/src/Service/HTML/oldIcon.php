@@ -1,5 +1,5 @@
 <?php
-// @codingStandardsIgnoreStart
+
 /**
  * File Doc Comment_
  * PHP version 5
@@ -245,4 +245,3 @@ class Icon
 		return '<button type="button" onclick="window.print();return false;">' . $text . '</button>';
 	}
 }
-// @codingStandardsIgnoreEnd

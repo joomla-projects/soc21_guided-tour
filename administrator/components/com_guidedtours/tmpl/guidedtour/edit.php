@@ -11,7 +11,6 @@
  * @license  GNU General Public License version 2 or later; see LICENSE.txt
  * @link     admin@joomla.org
  */
-
 defined('_JEXEC') or die;
 
 use Joomla\CMS\HTML\HTMLHelper;
@@ -24,12 +23,7 @@ HTMLHelper::_('behavior.keepalive');
 
 ?>
 
-
-<form action="<?php
-				echo Route::_(
-					'index.php?option=com_guidedtours&view=guidedtour&layout=edit&id=' .
-						(int) $this->item->id
-				); ?>" method="post" name="adminForm" id="mywalks-form" class="form-validate">
+<form action="<?php echo Route::_('index.php?option=com_guidedtours&view=guidedtour&layout=edit&id=' . (int) $this->item->id); ?>" method="post" name="adminForm" id="guidedtours-form" class="form-validate">
 
 	<?php echo LayoutHelper::render('joomla.edit.title_alias', $this); ?>
 
