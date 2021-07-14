@@ -4,12 +4,12 @@
  * File Doc Comment_
  * PHP version 5
  *
- * @category Component
- * @package  Joomla.Administrator
- * @author   Joomla! <admin@joomla.org>
+ * @category  Component
+ * @package   Joomla.Administrator
+ * @author    Joomla! <admin@joomla.org>
  * @copyright (C) 2013 Open Source Matters, Inc. <https://www.joomla.org>
- * @license  GNU General Public License version 2 or later; see LICENSE.txt
- * @link     admin@joomla.org
+ * @license   GNU General Public License version 2 or later; see LICENSE.txt
+ * @link      admin@joomla.org
  */
 
 namespace Joomla\Component\Guidedtours\Administrator\Extension;
@@ -28,7 +28,7 @@ use Psr\Container\ContainerInterface;
 /**
  * Component class for com_guidedtours
  *
- * @since  4.0.0
+ * @since 4.0.0
  */
 class GuidedtoursComponent extends MVCComponent implements
 	BootableExtensionInterface,
@@ -44,14 +44,14 @@ class GuidedtoursComponent extends MVCComponent implements
 	 * If required, some initial set up can be done from services of the container, eg.
 	 * registering HTML services.
 	 *
-	 * @param   ContainerInterface  $container  The container
+	 * @param   ContainerInterface $container The container
 	 *
-	 * @return  void
+	 * @return void
 	 *
-	 * @since   4.0.0
+	 * @since 4.0.0
 	 */
 	public function boot(ContainerInterface $container)
 	{
-		//$this->getRegistry()->register('mywalksadministrator', new AdministratorService);
+		// $this->getRegistry()->register('mywalksadministrator', new AdministratorService);
 	}
 }

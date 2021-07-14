@@ -882,3 +882,50 @@ CREATE TABLE IF NOT EXISTS `#__action_logs_users` (
   PRIMARY KEY (`user_id`),
   KEY `idx_notify` (`notify`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 DEFAULT COLLATE=utf8mb4_unicode_ci;
+
+
+
+
+--
+-- Table structure for table `#__mywalks`(Guided Tours)
+--
+
+CREATE TABLE IF NOT EXISTS `#__mywalks` (
+    `id` int(11) NOT NULL AUTO_INCREMENT PRIMARY KEY,
+  `title` varchar(64) NOT NULL,
+  `description` text NOT NULL,
+  `distance` decimal(10,0) NOT NULL,
+  `state` TINYINT NOT NULL DEFAULT '1'
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 DEFAULT COLLATE utf8mb4_unicode_ci;
+
+--
+-- Dumping data for table `#__mywalks`(Guided Tours)
+--
+
+/* INSERT IGNORE INTO `#__mywalks` (`id`, `title`, `description`, `distance`) VALUES
+(1, 'Title', 'Description', '5', 1, 1, 0, 0, NULL, NULL, NULL, ''), */
+
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `#__mywalk_dates`(Guided Tours)
+--
+
+CREATE TABLE IF NOT EXISTS `#__mywalk_dates` (
+  `id` int(11) NOT NULL AUTO_INCREMENT PRIMARY KEY,
+  `walk_id` int(11) NOT NULL,
+  `date` date NOT NULL,
+  `title` text NOT NULL,
+  `weather` varchar(256) DEFAULT NULL,
+  `state` TINYINT NOT NULL DEFAULT '1',
+  KEY `idx_walk` (`walk_id`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 DEFAULT COLLATE utf8mb4_unicode_ci;
+
+--
+-- Dumping data for table `#__mywalk_dates`(Guided Tours)
+--
+
+/* INSERT IGNORE INTO `#__mywalk_dates` (`id`, `walk_id`,`title`, `date`, `weather`) VALUES
+(1, 1,'Title', '2019-05-12', 'Description'), */
+

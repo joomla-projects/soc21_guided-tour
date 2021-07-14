@@ -4,12 +4,12 @@
  * File Doc Comment_
  * PHP version 5
  *
- * @category Component
- * @package  Joomla.Administrator
- * @author   Joomla! <admin@joomla.org>
+ * @category  Component
+ * @package   Joomla.Administrator
+ * @author    Joomla! <admin@joomla.org>
  * @copyright (C) 2013 Open Source Matters, Inc. <https://www.joomla.org>
- * @license  GNU General Public License version 2 or later; see LICENSE.txt
- * @link     admin@joomla.org
+ * @license   GNU General Public License version 2 or later; see LICENSE.txt
+ * @link      admin@joomla.org
  */
 
 namespace Joomla\Component\Guidedtours\Administrator\View\Guidedtour_step;
@@ -30,59 +30,59 @@ use Joomla\CMS\Session\Session;
 use Joomla\CMS\Toolbar\Toolbar;
 use Joomla\CMS\Toolbar\ToolbarHelper;
 
-//\JLoader::register('MywalksHelperRoute', JPATH_SITE . '/components/com_guidedtours/helpers/route.php');
+// JLoader::register('MywalksHelperRoute', JPATH_SITE . '/components/com_guidedtours/helpers/route.php');
 
 /**
  * View to edit an article.
  *
- * @since  1.6
+ * @since 1.6
  */
 class HtmlView extends BaseHtmlView
 {
 	/**
 	 * The \JForm object
 	 *
-	 * @var  \JForm
+	 * @var \JForm
 	 */
 	protected $form;
 
 	/**
 	 * The active item
 	 *
-	 * @var  object
+	 * @var object
 	 */
 	protected $item;
 
 	/**
 	 * The model state
 	 *
-	 * @var  object
+	 * @var object
 	 */
 	protected $state;
 
 	/**
 	 * The actions the user is authorised to perform
 	 *
-	 * @var  \JObject
+	 * @var \JObject
 	 */
 	protected $canDo;
 
 	/**
 	 * Pagebreak TOC alias
 	 *
-	 * @var  string
+	 * @var string
 	 */
 	protected $eName;
 
 	/**
 	 * Execute and display a template script.
 	 *
-	 * @param   string  $tpl  The name of the template file to parse; automatically searches through the template paths.
+	 * @param   string $tpl The name of the template file to parse; automatically searches through the template paths.
 	 *
-	 * @return  mixed  A string if successful, otherwise an Error object.
+	 * @return mixed  A string if successful, otherwise an Error object.
 	 *
 	 * @throws \Exception
-	 * @since   1.6
+	 * @since  1.6
 	 */
 	public function display($tpl = null)
 	{
@@ -91,7 +91,8 @@ class HtmlView extends BaseHtmlView
 		$this->state = $this->get('State');
 
 		// Check for errors.
-		if (count($errors = $this->get('Errors'))) {
+		if (count($errors = $this->get('Errors')))
+		{
 			throw new GenericDataException(implode("\n", $errors), 500);
 		}
 
@@ -103,10 +104,10 @@ class HtmlView extends BaseHtmlView
 	/**
 	 * Add the page title and toolbar.
 	 *
-	 * @return  void
+	 * @return void
 	 *
 	 * @throws \Exception
-	 * @since   1.6
+	 * @since  1.6
 	 */
 	protected function addToolbar()
 	{
@@ -116,7 +117,7 @@ class HtmlView extends BaseHtmlView
 		$isNew      = ($this->item->id == 0);
 
 		// Built the actions for new and existing records.
-		//$canDo = $this->canDo;
+		// $canDo = $this->canDo;
 
 		$toolbar = Toolbar::getInstance();
 		$title = $isNew ? 'Add Step' : 'Edit Step';
@@ -124,11 +125,15 @@ class HtmlView extends BaseHtmlView
 		ToolbarHelper::title($title);
 
 		// For new records, check the create permission.
-		if ($isNew) {
+		if ($isNew)
+		{
 			$toolbar->apply('guidedtour_step.save');
-		} else {
+		}
+		else
+		{
 			$toolbar->apply('guidedtour_step.apply');
 		}
+
 		$toolbar->cancel('guidedtour_step.cancel', 'JTOOLBAR_CLOSE');
 	}
 }

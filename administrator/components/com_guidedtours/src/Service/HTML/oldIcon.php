@@ -4,12 +4,12 @@
  * File Doc Comment_
  * PHP version 5
  *
- * @category Component
- * @package  Joomla.Administrator
- * @author   Joomla! <admin@joomla.org>
+ * @category  Component
+ * @package   Joomla.Administrator
+ * @author    Joomla! <admin@joomla.org>
  * @copyright (C) 2013 Open Source Matters, Inc. <https://www.joomla.org>
- * @license  GNU General Public License version 2 or later; see LICENSE.txt
- * @link     admin@joomla.org
+ * @license   GNU General Public License version 2 or later; see LICENSE.txt
+ * @link      admin@joomla.org
  */
 
 namespace Joomla\Component\Content\Administrator\Service\HTML;
@@ -30,25 +30,25 @@ use Joomla\Registry\Registry;
 /**
  * Content Component HTML Helper
  *
- * @since  4.0.0
+ * @since 4.0.0
  */
 class Icon
 {
 	/**
 	 * The application
 	 *
-	 * @var    CMSApplication
+	 * @var CMSApplication
 	 *
-	 * @since  4.0.0
+	 * @since 4.0.0
 	 */
 	private $application;
 
 	/**
 	 * Service constructor
 	 *
-	 * @param   CMSApplication  $application  The application
+	 * @param   CMSApplication $application The application
 	 *
-	 * @since   4.0.0
+	 * @since 4.0.0
 	 */
 	public function __construct(CMSApplication $application)
 	{
@@ -58,14 +58,14 @@ class Icon
 	/**
 	 * Method to generate a link to the create item page for the given category
 	 *
-	 * @param   object    $category  The category information
-	 * @param   Registry  $params    The item parameters
-	 * @param   array     $attribs   Optional attributes for the link
-	 * @param   boolean   $legacy    True to use legacy images, false to use icomoon based graphic
+	 * @param   object   $category The category information
+	 * @param   Registry $params   The item parameters
+	 * @param   array    $attribs  Optional attributes for the link
+	 * @param   boolean  $legacy   True to use legacy images, false to use icomoon based graphic
 	 *
-	 * @return  string  The HTML markup for the create item link
+	 * @return string  The HTML markup for the create item link
 	 *
-	 * @since  4.0.0
+	 * @since 4.0.0
 	 */
 	public function create($category, $params, $attribs = array(), $legacy = false)
 	{
@@ -76,9 +76,12 @@ class Icon
 		$text = LayoutHelper::render('joomla.content.icons.create', array('params' => $params, 'legacy' => $legacy));
 
 		// Add the button classes to the attribs array
-		if (isset($attribs['class'])) {
+		if (isset($attribs['class']))
+		{
 			$attribs['class'] .= ' btn btn-primary';
-		} else {
+		}
+		else
+		{
 			$attribs['class'] = 'btn btn-primary';
 		}
 
@@ -92,14 +95,14 @@ class Icon
 	/**
 	 * Method to generate a link to the email item page for the given article
 	 *
-	 * @param   object    $article  The article information
-	 * @param   Registry  $params   The item parameters
-	 * @param   array     $attribs  Optional attributes for the link
-	 * @param   boolean   $legacy   True to use legacy images, false to use icomoon based graphic
+	 * @param   object   $article The article information
+	 * @param   Registry $params  The item parameters
+	 * @param   array    $attribs Optional attributes for the link
+	 * @param   boolean  $legacy  True to use legacy images, false to use icomoon based graphic
 	 *
-	 * @return  string  The HTML markup for the email item link
+	 * @return string  The HTML markup for the email item link
 	 *
-	 * @since  4.0.0
+	 * @since 4.0.0
 	 */
 	public function email($article, $params, $attribs = array(), $legacy = false)
 	{
@@ -128,14 +131,14 @@ class Icon
 	 * This icon will not display in a popup window, nor if the article is trashed.
 	 * Edit access checks must be performed in the calling code.
 	 *
-	 * @param   object    $article  The article information
-	 * @param   Registry  $params   The item parameters
-	 * @param   array     $attribs  Optional attributes for the link
-	 * @param   boolean   $legacy   True to use legacy images, false to use icomoon based graphic
+	 * @param   object   $article The article information
+	 * @param   Registry $params  The item parameters
+	 * @param   array    $attribs Optional attributes for the link
+	 * @param   boolean  $legacy  True to use legacy images, false to use icomoon based graphic
 	 *
-	 * @return  string	The HTML for the article edit icon.
+	 * @return void      The HTML for the article edit icon.
 	 *
-	 * @since  4.0.0
+	 * @since 4.0.0
 	 */
 	public function edit($article, $params, $attribs = array(), $legacy = false)
 	{
@@ -143,12 +146,14 @@ class Icon
 		$uri  = Uri::getInstance();
 
 		// Ignore if in a popup window.
-		if ($params && $params->get('popup')) {
+		if ($params && $params->get('popup'))
+		{
 			return;
 		}
 
 		// Ignore if the state is negative (trashed).
-		if (!in_array($article->state, [Workflow::CONDITION_UNPUBLISHED, Workflow::CONDITION_PUBLISHED])) {
+		if (!in_array($article->state, [Workflow::CONDITION_UNPUBLISHED, Workflow::CONDITION_PUBLISHED]))
+		{
 			return;
 		}
 
@@ -156,16 +161,16 @@ class Icon
 		$attribs['class'] = 'dropdown-item';
 
 		// Show checked_out icon if the article is checked out by a different user
-		if (
-			property_exists($article, 'checked_out')
+		if (property_exists($article, 'checked_out')
 			&& property_exists($article, 'checked_out_time')
 			&& $article->checked_out > 0
 			&& $article->checked_out != $user->get('id')
-		) {
+		)
+		{
 			$checkoutUser = Factory::getUser($article->checked_out);
 			$date         = HTMLHelper::_('date', $article->checked_out_time);
 			$tooltip      = Text::_('JLIB_HTML_CHECKED_OUT') . ' :: ' . Text::sprintf('COM_CONTENT_CHECKED_OUT_BY', $checkoutUser->name)
-				. ' <br> ' . $date;
+			. ' <br> ' . $date;
 
 			$text = LayoutHelper::render('joomla.content.icons.edit_lock', array('tooltip' => $tooltip, 'legacy' => $legacy));
 
@@ -177,9 +182,12 @@ class Icon
 		$contentUrl = \ContentHelperRoute::getArticleRoute($article->slug, $article->catid, $article->language);
 		$url        = $contentUrl . '&task=article.edit&a_id=' . $article->id . '&return=' . base64_encode($uri);
 
-		if ($article->state == Workflow::CONDITION_UNPUBLISHED) {
+		if ($article->state == Workflow::CONDITION_UNPUBLISHED)
+		{
 			$overlib = Text::_('JUNPUBLISHED');
-		} else {
+		}
+		else
+		{
 			$overlib = Text::_('JPUBLISHED');
 		}
 
@@ -202,14 +210,14 @@ class Icon
 	/**
 	 * Method to generate a popup link to print an article
 	 *
-	 * @param   object    $article  The article information
-	 * @param   Registry  $params   The item parameters
-	 * @param   array     $attribs  Optional attributes for the link
-	 * @param   boolean   $legacy   True to use legacy images, false to use icomoon based graphic
+	 * @param   object   $article The article information
+	 * @param   Registry $params  The item parameters
+	 * @param   array    $attribs Optional attributes for the link
+	 * @param   boolean  $legacy  True to use legacy images, false to use icomoon based graphic
 	 *
-	 * @return  string  The HTML markup for the popup link
+	 * @return string  The HTML markup for the popup link
 	 *
-	 * @since  4.0.0
+	 * @since 4.0.0
 	 */
 	public function print_popup($article, $params, $attribs = array(), $legacy = false)
 	{
@@ -231,12 +239,12 @@ class Icon
 	/**
 	 * Method to generate a link to print an article
 	 *
-	 * @param   Registry  $params  The item parameters
-	 * @param   boolean   $legacy  True to use legacy images, false to use icomoon based graphic
+	 * @param   Registry $params The item parameters
+	 * @param   boolean  $legacy True to use legacy images, false to use icomoon based graphic
 	 *
-	 * @return  string  The HTML markup for the popup link
+	 * @return string  The HTML markup for the popup link
 	 *
-	 * @since  4.0.0
+	 * @since 4.0.0
 	 */
 	public function print_screen($params, $legacy = false)
 	{

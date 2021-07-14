@@ -4,12 +4,12 @@
  * File Doc Comment_
  * PHP version 5
  *
- * @category Component
- * @package  Joomla.Administrator
- * @author   Joomla! <admin@joomla.org>
+ * @category  Component
+ * @package   Joomla.Administrator
+ * @author    Joomla! <admin@joomla.org>
  * @copyright (C) 2013 Open Source Matters, Inc. <https://www.joomla.org>
- * @license  GNU General Public License version 2 or later; see LICENSE.txt
- * @link     admin@joomla.org
+ * @license   GNU General Public License version 2 or later; see LICENSE.txt
+ * @link      admin@joomla.org
  */
 
 namespace Joomla\Component\Guidedtours\Administrator\View\Guidedtour;
@@ -27,47 +27,47 @@ use Joomla\CMS\Toolbar\ToolbarHelper;
 /**
  * View to edit an article.
  *
- * @since  1.6
+ * @since 1.6
  */
 class HtmlView extends BaseHtmlView
 {
 	/**
 	 * The \JForm object
 	 *
-	 * @var  \JForm
+	 * @var \JForm
 	 */
 	protected $form;
 
 	/**
 	 * The active item
 	 *
-	 * @var  object
+	 * @var object
 	 */
 	protected $item;
 
 	/**
 	 * The model state
 	 *
-	 * @var  object
+	 * @var object
 	 */
 	protected $state;
 
 	/**
 	 * The actions the user is authorised to perform
 	 *
-	 * @var  \JObject
+	 * @var \JObject
 	 */
 	protected $canDo;
 
 	/**
 	 * Execute and display a template script.
 	 *
-	 * @param   string  $tpl  The name of the template file to parse; automatically searches through the template paths.
+	 * @param   string $tpl The name of the template file to parse; automatically searches through the template paths.
 	 *
-	 * @return  mixed  A string if successful, otherwise an Error object.
+	 * @return mixed  A string if successful, otherwise an Error object.
 	 *
 	 * @throws \Exception
-	 * @since   1.6
+	 * @since  1.6
 	 */
 	public function display($tpl = null)
 	{
@@ -75,7 +75,8 @@ class HtmlView extends BaseHtmlView
 		$this->item  = $this->get('Item');
 		$this->state = $this->get('State');
 
-		if (count($errors = $this->get('Errors'))) {
+		if (count($errors = $this->get('Errors')))
+		{
 			throw new GenericDataException(implode("\n", $errors), 500);
 		}
 
@@ -87,10 +88,10 @@ class HtmlView extends BaseHtmlView
 	/**
 	 * Add the page title and toolbar.
 	 *
-	 * @return  void
+	 * @return void
 	 *
 	 * @throws \Exception
-	 * @since   1.6
+	 * @since  1.6
 	 */
 	protected function addToolbar()
 	{
@@ -105,13 +106,18 @@ class HtmlView extends BaseHtmlView
 			Text::_('Guidedtours - ' . ($isNew ? 'Add Tour' : 'Edit Tour'))
 		);
 
-		if ($canDo->get('core.create')) {
-			if ($isNew) {
+		if ($canDo->get('core.create'))
+		{
+			if ($isNew)
+			{
 				$toolbar->apply('guidedtour.save');
-			} else {
+			}
+			else
+			{
 				$toolbar->apply('guidedtour.apply');
 			}
 		}
+
 		$toolbar->cancel('guidedtour.cancel', 'JTOOLBAR_CLOSE');
 	}
 }

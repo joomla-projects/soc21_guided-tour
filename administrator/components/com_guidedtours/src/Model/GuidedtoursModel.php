@@ -4,12 +4,12 @@
  * File Doc Comment_
  * PHP version 5
  *
- * @category Component
- * @package  Joomla.Administrator
- * @author   Joomla! <admin@joomla.org>
+ * @category  Component
+ * @package   Joomla.Administrator
+ * @author    Joomla! <admin@joomla.org>
  * @copyright (C) 2013 Open Source Matters, Inc. <https://www.joomla.org>
- * @license  GNU General Public License version 2 or later; see LICENSE.txt
- * @link     admin@joomla.org
+ * @license   GNU General Public License version 2 or later; see LICENSE.txt
+ * @link      admin@joomla.org
  */
 
 namespace Joomla\Component\Guidedtours\Administrator\Model;
@@ -30,25 +30,26 @@ use Joomla\Database\ParameterType;
 /**
  * Methods supporting a list of mywalks records.
  *
- * @since  1.6
+ * @since 1.6
  */
 class GuidedtoursModel extends ListModel
 {
 	/**
 	 * Constructor.
 	 *
-	 * @param   array  $config  An optional associative array of configuration settings.
+	 * @param   array $config An optional associative array of configuration settings.
 	 *
-	 * @since   1.6
-	 * @see     \Joomla\CMS\MVC\Controller\BaseController
+	 * @since 1.6
+	 * @see   \Joomla\CMS\MVC\Controller\BaseController
 	 */
 	public function __construct($config = array())
 	{
-		if (empty($config['filter_fields'])) {
+		if (empty($config['filter_fields']))
+		{
 			$config['filter_fields'] = array(
-				'id', 'a.id',
-				'title', 'a.title',
-				'state', 'a.state',
+			'id', 'a.id',
+			'title', 'a.title',
+			'state', 'a.state',
 			);
 		}
 
@@ -60,12 +61,12 @@ class GuidedtoursModel extends ListModel
 	 *
 	 * Note. Calling getState in this method will result in recursion.
 	 *
-	 * @param   string  $ordering   An optional ordering field.
-	 * @param   string  $direction  An optional direction (asc|desc).
+	 * @param   string $ordering  An optional ordering field.
+	 * @param   string $direction An optional direction (asc|desc).
 	 *
-	 * @return  void
+	 * @return void
 	 *
-	 * @since   1.6
+	 * @since 1.6
 	 */
 	protected function populateState($ordering = 'a.id', $direction = 'asc')
 	{
@@ -86,11 +87,11 @@ class GuidedtoursModel extends ListModel
 	 * different modules that might need different sets of data or different
 	 * ordering requirements.
 	 *
-	 * @param   string  $id  A prefix for the store id.
+	 * @param   string $id A prefix for the store id.
 	 *
-	 * @return  string  A store id.
+	 * @return string  A store id.
 	 *
-	 * @since   1.6
+	 * @since 1.6
 	 */
 	protected function getStoreId($id = '')
 	{
@@ -104,9 +105,9 @@ class GuidedtoursModel extends ListModel
 	/**
 	 * Build an SQL query to load the list data.
 	 *
-	 * @return  \Joomla\Database\DatabaseQuery
+	 * @return \Joomla\Database\DatabaseQuery
 	 *
-	 * @since   1.6
+	 * @since 1.6
 	 */
 	protected function getListQuery()
 	{
@@ -126,17 +127,21 @@ class GuidedtoursModel extends ListModel
 		// Filter by published state
 		$published = (string) $this->getState('filter.published');
 
-		if (is_numeric($published)) {
+		if (is_numeric($published))
+		{
 			$query->where($db->quoteName('a.state') . ' = :published');
 			$query->bind(':published', $published, ParameterType::INTEGER);
-		} elseif ($published === '') {
+		}
+		elseif ($published === '')
+		{
 			$query->where('(' . $db->quoteName('a.state') . ' = 0 OR ' . $db->quoteName('a.state') . ' = 1)');
 		}
 
 		// Filter by search in title.
 		$search = $this->getState('filter.search');
 
-		if (!empty($search)) {
+		if (!empty($search))
+		{
 			$search = $db->quote('%' . str_replace(' ', '%', $db->escape(trim($search), true) . '%'));
 			$query->where('(a.title LIKE ' . $search . ')');
 		}
@@ -154,9 +159,9 @@ class GuidedtoursModel extends ListModel
 	 * Method to get a list of walks.
 	 * Overridden to add a check for access levels.
 	 *
-	 * @return  mixed  An array of data items on success, false on failure.
+	 * @return mixed  An array of data items on success, false on failure.
 	 *
-	 * @since   4.0.0
+	 * @since 4.0.0
 	 */
 	public function getItems()
 	{

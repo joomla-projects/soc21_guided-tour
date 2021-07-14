@@ -4,12 +4,12 @@
  * File Doc Comment_
  * PHP version 5
  *
- * @category Component
- * @package  Joomla.Administrator
- * @author   Joomla! <admin@joomla.org>
+ * @category  Component
+ * @package   Joomla.Administrator
+ * @author    Joomla! <admin@joomla.org>
  * @copyright (C) 2013 Open Source Matters, Inc. <https://www.joomla.org>
- * @license  GNU General Public License version 2 or later; see LICENSE.txt
- * @link     admin@joomla.org
+ * @license   GNU General Public License version 2 or later; see LICENSE.txt
+ * @link      admin@joomla.org
  */
 
 defined('_JEXEC') or die;
@@ -28,7 +28,8 @@ HTMLHelper::_('behavior.keepalive');
 $app = Factory::getApplication();
 $walk_id = $app->getUserState('com_guidedtours.walk_id');
 
-if (empty($walk_id)) {
+if (empty($walk_id))
+{
 	throw new GenericDataException("\nThe Tour id was not set!\n", 500);
 }
 
