@@ -7,7 +7,10 @@ CREATE TABLE IF NOT EXISTS `#__mywalks` (
 `id` int(11) NOT NULL AUTO_INCREMENT PRIMARY KEY,
   `title` varchar(64) NOT NULL,
   `distance` int(11) NOT NULL,
+<<<<<<< HEAD
   `date` date  NULL,
+=======
+>>>>>>> 4953c34fb8fe64271c2948657ea11cbb4040d708
   `description` text NOT NULL,
   `state` TINYINT NOT NULL DEFAULT '1'
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE utf8mb4_unicode_ci;

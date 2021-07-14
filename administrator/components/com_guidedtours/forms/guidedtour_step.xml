@@ -19,12 +19,20 @@
 		required="true"
 	 />
 
+<<<<<<< HEAD
 		<!-- <field
+=======
+		<field
+>>>>>>> 4953c34fb8fe64271c2948657ea11cbb4040d708
 			name="date"
 			type="calender"
 			label="Date"
 			default="4"
+<<<<<<< HEAD
 		/> -->
+=======
+		/>
+>>>>>>> 4953c34fb8fe64271c2948657ea11cbb4040d708
 
 		<field
 			name="weather"
