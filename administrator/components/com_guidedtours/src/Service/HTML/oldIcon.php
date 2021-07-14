@@ -76,12 +76,9 @@ class Icon
 		$text = LayoutHelper::render('joomla.content.icons.create', array('params' => $params, 'legacy' => $legacy));
 
 		// Add the button classes to the attribs array
-		if (isset($attribs['class']))
-		{
+		if (isset($attribs['class'])) {
 			$attribs['class'] .= ' btn btn-primary';
-		}
-		else
-		{
+		} else {
 			$attribs['class'] = 'btn btn-primary';
 		}
 
@@ -136,7 +133,9 @@ class Icon
 	 * @param   array    $attribs Optional attributes for the link
 	 * @param   boolean  $legacy  True to use legacy images, false to use icomoon based graphic
 	 *
-	 * @return void      The HTML for the article edit icon.
+
+	 * @return string    The HTML for the article edit icon.
+
 	 *
 	 * @since 4.0.0
 	 */
@@ -146,14 +145,12 @@ class Icon
 		$uri  = Uri::getInstance();
 
 		// Ignore if in a popup window.
-		if ($params && $params->get('popup'))
-		{
+		if ($params && $params->get('popup')) {
 			return;
 		}
 
 		// Ignore if the state is negative (trashed).
-		if (!in_array($article->state, [Workflow::CONDITION_UNPUBLISHED, Workflow::CONDITION_PUBLISHED]))
-		{
+		if (!in_array($article->state, [Workflow::CONDITION_UNPUBLISHED, Workflow::CONDITION_PUBLISHED])) {
 			return;
 		}
 
@@ -161,16 +158,16 @@ class Icon
 		$attribs['class'] = 'dropdown-item';
 
 		// Show checked_out icon if the article is checked out by a different user
-		if (property_exists($article, 'checked_out')
+		if (
+			property_exists($article, 'checked_out')
 			&& property_exists($article, 'checked_out_time')
 			&& $article->checked_out > 0
 			&& $article->checked_out != $user->get('id')
-		)
-		{
+		) {
 			$checkoutUser = Factory::getUser($article->checked_out);
 			$date         = HTMLHelper::_('date', $article->checked_out_time);
 			$tooltip      = Text::_('JLIB_HTML_CHECKED_OUT') . ' :: ' . Text::sprintf('COM_CONTENT_CHECKED_OUT_BY', $checkoutUser->name)
-			. ' <br> ' . $date;
+				. ' <br> ' . $date;
 
 			$text = LayoutHelper::render('joomla.content.icons.edit_lock', array('tooltip' => $tooltip, 'legacy' => $legacy));
 
@@ -182,12 +179,9 @@ class Icon
 		$contentUrl = \ContentHelperRoute::getArticleRoute($article->slug, $article->catid, $article->language);
 		$url        = $contentUrl . '&task=article.edit&a_id=' . $article->id . '&return=' . base64_encode($uri);
 
-		if ($article->state == Workflow::CONDITION_UNPUBLISHED)
-		{
+		if ($article->state == Workflow::CONDITION_UNPUBLISHED) {
 			$overlib = Text::_('JUNPUBLISHED');
-		}
-		else
-		{
+		} else {
 			$overlib = Text::_('JPUBLISHED');
 		}
 

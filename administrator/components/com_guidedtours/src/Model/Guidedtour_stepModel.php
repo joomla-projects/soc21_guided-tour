@@ -20,6 +20,7 @@ use Joomla\CMS\Factory;
 use Joomla\CMS\Form\Form;
 use Joomla\CMS\Language\LanguageHelper;
 use Joomla\CMS\Language\Text;
+
 use Joomla\CMS\MVC\Model\AdminModel;
 use Joomla\CMS\Table\TableInterface;
 use Joomla\CMS\Table\Table;
@@ -42,6 +43,7 @@ use Joomla\Registry\Registry;
 
  * Use Joomla\Utilities\ArrayHelper;
  */
+
 
 
 /**
@@ -71,8 +73,7 @@ class Guidedtour_stepModel extends AdminModel
 	 */
 	protected function canDelete($record)
 	{
-		if (!empty($record->id))
-		{
+		if (!empty($record->id)) {
 			return Factory::getUser()->authorise('core.delete', 'com_guidedtours.guidedtours.' . (int) $record->id);
 		}
 
@@ -93,8 +94,7 @@ class Guidedtour_stepModel extends AdminModel
 		$user = Factory::getUser();
 
 		// Check for existing article.
-		if (!empty($record->id))
-		{
+		if (!empty($record->id)) {
 			return $user->authorise('core.edit.state', 'com_guidedtours.guidedtours.' . (int) $record->id);
 		}
 
@@ -119,8 +119,7 @@ class Guidedtour_stepModel extends AdminModel
 		$name = 'guidedtour_steps';
 		$prefix = 'Table';
 
-		if ($table = $this->_createTable($name, $prefix, $options))
-		{
+		if ($table = $this->_createTable($name, $prefix, $options)) {
 			return $table;
 		}
 
@@ -130,10 +129,17 @@ class Guidedtour_stepModel extends AdminModel
 	/**
 	 * Method to change the published state of one or more records.
 	 *
+<<<<<<< HEAD
 	 * @param   array   $pks   A list of the primary keys to change.
 	 * @param   integer $value The value of the published state.
 	 *
 	 * @return void             True on success.
+=======
+	 * @param   array   &$pks  A list of the primary keys to change.
+	 * @param   integer $value The value of the published state.
+	 *
+	 * @return boolean  True on success.
+>>>>>>> c46c744f6d (modified com_guidedtours)
 	 *
 	 * @since 4.0.0
 	 */
@@ -168,8 +174,7 @@ class Guidedtour_stepModel extends AdminModel
 		// Get the form.
 		$form = $this->loadForm('com_guidedtours.guidedtour_step', 'guidedtour_step', array('control' => 'jform', 'load_data' => $loadData));
 
-		if (empty($form))
-		{
+		if (empty($form)) {
 			return false;
 		}
 
@@ -189,8 +194,7 @@ class Guidedtour_stepModel extends AdminModel
 		$app = Factory::getApplication();
 		$data = $app->getUserState('com_guidedtours.edit.guidedtour_step.data', array());
 
-		if (empty($data))
-		{
+		if (empty($data)) {
 			$data = $this->getItem();
 
 			// Pre-select some filters (Status, Category, Language, Access) in edit form if those have been selected in Article Manager: Articles

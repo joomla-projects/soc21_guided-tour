@@ -25,12 +25,14 @@ use Joomla\CMS\MVC\Controller\FormController;
  */
 class Guidedtour_stepController extends FormController
 {
+
 	/**
 	 * Cancel function for the display Controller
 	 *
 	 * @param   the param = $key which is used in the cancel function
 	 * @return void
 	 */
+
 	public function cancel($key = null)
 	{
 		$this->setRedirect('index.php?option=com_guidedtours&view=guidedtour_steps');
