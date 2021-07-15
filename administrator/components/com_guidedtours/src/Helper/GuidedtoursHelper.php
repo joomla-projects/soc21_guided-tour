@@ -25,17 +25,10 @@ use Joomla\CMS\Factory;
  */
 class GuidedtoursHelper
 {
-
-	/**
-	 * function for helper class
-	 *
-	 * @param   the param = $id for the getWalkTitle function
-	 * @return boolean
-	 */
-
 	public static function getWalkTitle($id)
 	{
-		if (empty($id)) {
+		if (empty($id))
+		{
 			// Throw an error or ...
 			return false;
 		}

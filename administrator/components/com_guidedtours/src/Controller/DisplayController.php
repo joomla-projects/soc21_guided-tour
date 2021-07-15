@@ -14,7 +14,7 @@
 
 namespace Joomla\Component\Guidedtours\Administrator\Controller;
 
-defined('_JEXEC') or die;
+\defined('_JEXEC') or die;
 
 use Joomla\CMS\MVC\Controller\BaseController;
 
@@ -31,7 +31,7 @@ class DisplayController extends BaseController
 	 * @var   string
 	 * @since 1.6
 	 */
-	protected $default_view = 'guidedtours';
+	protected $default_view = 'tours';
 
 	/**
 	 * Method to display a view.
