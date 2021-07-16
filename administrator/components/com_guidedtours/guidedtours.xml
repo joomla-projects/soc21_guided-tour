@@ -12,16 +12,7 @@
 	<description>COM_GUIDEDTOURS_XML_DESCRIPTION</description>
 	<namespace path="src/">Joomla\Component\Guidedtours</namespace>
 
-	<install> <!-- Runs on install -->
-		<sql>
-			<file driver="mysql" charset="utf8">sql/install.mysql.sql</file>
-		</sql>
-	</install>
-	<uninstall> <!-- Runs on uninstall -->
-		<sql>
-			<file driver="mysql" charset="utf8">sql/uninstall.mysql.sql</file>
-		</sql>
-	</uninstall>
+	
 
 	<!-- Site Main File Copy Section -->
 	<!-- Note the folder attribute: This attribute describes the folder
@@ -39,7 +30,6 @@
 				<file>access.xml</file>
 				<file>config.xml</file>
 				<folder>services</folder>
-				<folder>sql</folder>
 				<folder>src</folder>
 				<folder>tmpl</folder>
 			</files>

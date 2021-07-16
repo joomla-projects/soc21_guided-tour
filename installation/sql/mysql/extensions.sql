@@ -886,46 +886,53 @@ CREATE TABLE IF NOT EXISTS `#__action_logs_users` (
 
 
 
+
 --
--- Table structure for table `#__mywalks`(Guided Tours)
+-- Table structure for table `#__mywalks`
 --
 
 CREATE TABLE IF NOT EXISTS `#__mywalks` (
-    `id` int(11) NOT NULL AUTO_INCREMENT PRIMARY KEY,
-  `title` varchar(64) NOT NULL,
+  `id` int NOT NULL AUTO_INCREMENT PRIMARY KEY,
   `description` text NOT NULL,
-  `distance` decimal(10,0) NOT NULL,
+  `title` varchar(255) NOT NULL,
+  `date` DATE NOT NULL DEFAULT CURRENT_TIMESTAMP ,
+  `alias` varchar(400) CHARACTER SET utf8mb4 COLLATE utf8mb4_bin NOT NULL,
+  `published` tinyint NOT NULL DEFAULT 1,
+  `ordering` int NOT NULL DEFAULT 0,
+  `created` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP ,
+  `created_by` int unsigned NOT NULL DEFAULT 0,
+  `modified` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP ,
+  `modified_by` int unsigned NOT NULL DEFAULT 0,
   `state` TINYINT NOT NULL DEFAULT '1'
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 DEFAULT COLLATE utf8mb4_unicode_ci;
 
 --
--- Dumping data for table `#__mywalks`(Guided Tours)
+-- Dumping data for table `#__mywalks`
 --
 
-/* INSERT IGNORE INTO `#__mywalks` (`id`, `title`, `description`, `distance`) VALUES
-(1, 'Title', 'Description', '5', 1, 1, 0, 0, NULL, NULL, NULL, ''), */
-
-
--- --------------------------------------------------------
+--------------------------------------------
 
 --
--- Table structure for table `#__mywalk_dates`(Guided Tours)
+-- Table structure for table `#__mywalk_dates`
 --
 
 CREATE TABLE IF NOT EXISTS `#__mywalk_dates` (
-  `id` int(11) NOT NULL AUTO_INCREMENT PRIMARY KEY,
+  `id` int NOT NULL AUTO_INCREMENT PRIMARY KEY,
   `walk_id` int(11) NOT NULL,
-  `date` date NOT NULL,
-  `title` text NOT NULL,
-  `weather` varchar(256) DEFAULT NULL,
+  `description` text NOT NULL,
+  `title` varchar(255) NOT NULL,
+  `date` DATE NOT NULL DEFAULT CURRENT_TIMESTAMP ,
+  `alias` varchar(400) CHARACTER SET utf8mb4 COLLATE utf8mb4_bin NOT NULL,
+  `published` tinyint NOT NULL DEFAULT 1,
+  `ordering` int NOT NULL DEFAULT 0,
+  `created` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP,
+  `created_by` int unsigned NOT NULL DEFAULT 0,
+  `modified` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP,
+  `modified_by` int unsigned NOT NULL DEFAULT 0,
   `state` TINYINT NOT NULL DEFAULT '1',
   KEY `idx_walk` (`walk_id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 DEFAULT COLLATE utf8mb4_unicode_ci;
 
 --
--- Dumping data for table `#__mywalk_dates`(Guided Tours)
+-- Dumping data for table `#__mywalk_dates`
 --
-
-/* INSERT IGNORE INTO `#__mywalk_dates` (`id`, `walk_id`,`title`, `date`, `weather`) VALUES
-(1, 1,'Title', '2019-05-12', 'Description'), */
-

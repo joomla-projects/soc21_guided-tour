@@ -157,7 +157,7 @@ class HtmlView extends BaseHtmlView
 	protected function getSortFields()
 	{
 		return array(
-			'a.date'         => Text::_('COM_GUIDEDTOURS_DATES_VISIT_DATE_LABEL'),
+
 			'a.id'           => Text::_('JGRID_HEADING_ID'),
 		);
 	}

@@ -49,8 +49,14 @@ class StepsModel extends ListModel
 			$config['filter_fields'] = array(
 				'id', 'a.id',
 				'walk_id', 'a.walk_id',
-				'date', 'a.date',
-				'weather', 'a.weather',
+				'title', 'a.title',
+				'description', 'a.description',
+				'alias', 'a.alias',
+				'published', 'a.published',
+				'ordering', 'a.ordering',
+				'created_by', 'a.created_by',
+				'modified', 'a.modified',
+				'modified_by', 'a.modified_by',
 				'state', 'a.state',
 			);
 		}
