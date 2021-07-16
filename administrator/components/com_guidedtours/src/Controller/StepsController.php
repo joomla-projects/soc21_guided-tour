@@ -50,7 +50,8 @@ class StepsController extends AdminController
 		$id     = $this->input->getInt('id');
 
 		// Check for edit form.
-		if ($view == 'step' && $layout == 'edit' && !$this->checkEditId('com_guidedtours.edit.step', $id)) {
+		if ($view == 'step' && $layout == 'edit' && !$this->checkEditId('com_guidedtours.edit.step', $id))
+		{
 			// Somehow the person just went to the form - we don't allow that.
 			$this->setMessage(Text::sprintf('JLIB_APPLICATION_ERROR_UNHELD_ID', $id), 'error');
 			$this->setRedirect(Route::_('index.php?option=com_guidedtour&view=stepss', false));

@@ -49,7 +49,8 @@ class TourModel extends AdminModel
 	 */
 	protected function canDelete($record)
 	{
-		if (!empty($record->id)) {
+		if (!empty($record->id))
+		{
 			return Factory::getUser()->authorise('core.delete', 'com_guidedtours.tours.' . (int) $record->id);
 		}
 
@@ -70,7 +71,8 @@ class TourModel extends AdminModel
 		$user = Factory::getUser();
 
 		// Check for existing article.
-		if (!empty($record->id)) {
+		if (!empty($record->id))
+		{
 			return $user->authorise('core.edit.state', 'com_guidedtours.tours.' . (int) $record->id);
 		}
 
@@ -95,7 +97,8 @@ class TourModel extends AdminModel
 		$name = 'tours';
 		$prefix = 'Table';
 
-		if ($table = $this->_createTable($name, $prefix, $options)) {
+		if ($table = $this->_createTable($name, $prefix, $options))
+		{
 			return $table;
 		}
 
@@ -118,7 +121,8 @@ class TourModel extends AdminModel
 		// Get the form.
 		$form = $this->loadForm('com_guidedtours.tour', 'tour', array('control' => 'jform', 'load_data' => $loadData));
 
-		if (empty($form)) {
+		if (empty($form))
+		{
 			return false;
 		}
 
@@ -138,7 +142,8 @@ class TourModel extends AdminModel
 		$app = Factory::getApplication();
 		$data = $app->getUserState('com_guidedtours.edit.tour.data', array());
 
-		if (empty($data)) {
+		if (empty($data))
+		{
 			$data = $this->getItem();
 
 			// Pre-select some filters (Status, Category, Language, Access) in edit form if those have been selected in Article Manager: Articles

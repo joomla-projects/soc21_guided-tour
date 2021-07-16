@@ -20,26 +20,21 @@ use Joomla\CMS\Factory;
 use Joomla\CMS\Form\Form;
 use Joomla\CMS\Language\LanguageHelper;
 use Joomla\CMS\Language\Text;
-
-// Use Joomla\CMS\Log\Log;
+use Joomla\Registry\Registry;
 use Joomla\CMS\MVC\Model\AdminModel;
-
-// Use Joomla\CMS\Plugin\PluginHelper;
-// use Joomla\CMS\String\PunycodeHelper;
-// use Joomla\CMS\Table\Category;
 use Joomla\CMS\Table\Table;
 use Joomla\CMS\Table\TableInterface;
-
-// Use Joomla\CMS\UCM\UCMType;
-// use Joomla\CMS\Workflow\Workflow;
 use Joomla\Component\Guidedtours\Administrator\Extension\GuidedtoursComponent;
-
-// Use Joomla\Component\Content\Administrator\Helper\ContentHelper;
-// use Joomla\Component\Fields\Administrator\Helper\FieldsHelper;
-// use Joomla\Component\Workflow\Administrator\Table\StageTable;
-use Joomla\Registry\Registry;
-
-// Use Joomla\Utilities\ArrayHelper;
+use Joomla\CMS\Log\Log;
+use Joomla\CMS\Plugin\PluginHelper;
+use Joomla\CMS\String\PunycodeHelper;
+use Joomla\CMS\Table\Category;
+use Joomla\CMS\UCM\UCMType;
+use Joomla\CMS\Workflow\Workflow;
+use Joomla\Component\Content\Administrator\Helper\ContentHelper;
+use Joomla\Component\Fields\Administrator\Helper\FieldsHelper;
+use Joomla\Component\Workflow\Administrator\Table\StageTable;
+use Joomla\Utilities\ArrayHelper;
 
 /**
  * Item Model for a single walk.
@@ -68,7 +63,8 @@ class StepModel extends AdminModel
 	 */
 	protected function canDelete($record)
 	{
-		if (!empty($record->id)) {
+		if (!empty($record->id))
+		{
 			return Factory::getUser()->authorise('core.delete', 'com_guidedtours.tours.' . (int) $record->id);
 		}
 
@@ -89,7 +85,8 @@ class StepModel extends AdminModel
 		$user = Factory::getUser();
 
 		// Check for existing article.
-		if (!empty($record->id)) {
+		if (!empty($record->id))
+		{
 			return $user->authorise('core.edit.state', 'com_guidedtours.tours.' . (int) $record->id);
 		}
 
@@ -114,7 +111,8 @@ class StepModel extends AdminModel
 		$name = 'steps';
 		$prefix = 'Table';
 
-		if ($table = $this->_createTable($name, $prefix, $options)) {
+		if ($table = $this->_createTable($name, $prefix, $options))
+		{
 			return $table;
 		}
 
@@ -162,7 +160,8 @@ class StepModel extends AdminModel
 		// Get the form.
 		$form = $this->loadForm('com_guidedtours.step', 'step', array('control' => 'jform', 'load_data' => $loadData));
 
-		if (empty($form)) {
+		if (empty($form))
+		{
 			return false;
 		}
 
@@ -182,7 +181,8 @@ class StepModel extends AdminModel
 		$app = Factory::getApplication();
 		$data = $app->getUserState('com_guidedtours.edit.step.data', array());
 
-		if (empty($data)) {
+		if (empty($data))
+		{
 			$data = $this->getItem();
 
 			// Pre-select some filters (Status, Category, Language, Access) in edit form if those have been selected in Article Manager: Articles

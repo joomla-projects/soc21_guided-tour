@@ -28,7 +28,8 @@ HTMLHelper::_('behavior.keepalive');
 $app = Factory::getApplication();
 $walk_id = $app->getUserState('com_guidedtours.walk_id');
 
-if (empty($walk_id)) {
+if (empty($walk_id))
+{
 	throw new GenericDataException("\nThe Tour id was not set!\n", 500);
 }
 
@@ -38,27 +39,21 @@ $this->useCoreUI = true;
 ?>
 
 <form action="<?php echo Route::_('index.php?option=com_guidedtours&view=step&layout=edit&id=' . (int) $this->item->id); ?>" method="post" name="adminForm" id="guidedtour-dates-form" class="form-validate">
-
 	<?php echo LayoutHelper::render('joomla.edit.title_alias', $this); ?>
 
 	<div>
 		<?php echo HTMLHelper::_('uitab.startTabSet', 'myTab', array('active' => 'details')); ?>
 
-		<?php echo HTMLHelper::_('uitab.addTab', 'myTab', 'details', Text::_('Details for Tour Step')); ?>
+		<?php echo HTMLHelper::_('uitab.addTab', 'myTab', 'details', Text::_('Details')); ?>
 		<div class="row">
 			<div class="col-md-9">
-				<div class="row">
-					<div class="col-md-6">
-						<?php echo $this->form->renderField('date'); ?>
-						<!-- <?php echo $this->form->renderField('title'); ?> -->
-						<?php echo $this->form->renderField('weather'); ?>
-						<!-- <?php echo $this->form->renderField('id'); ?> -->
-						<!-- <?php $this->form->setValue('walk_id', null, $walk_id); ?> -->
-						<?php echo $this->form->renderField('walk_id'); ?>
-					</div>
-					<div class="col-md-6">
-					</div>
-				</div>
+				<!-- <div class="row"> -->
+				<!-- <div class="col-md-6"> -->
+				<?php echo $this->form->renderField('description'); ?>
+				<!-- <?php echo $this->form->renderField('distance'); ?> -->
+				<!-- <?php echo $this->form->renderField('id'); ?> -->
+				<!-- </div> -->
+				<!-- </div> -->
 			</div>
 			<div class="col-md-3">
 				<div class="card card-light">
@@ -69,10 +64,20 @@ $this->useCoreUI = true;
 			</div>
 		</div>
 		<?php echo HTMLHelper::_('uitab.endTab'); ?>
+		<?php echo HTMLHelper::_('uitab.addTab', 'myTab', 'publishing', Text::_('JGLOBAL_FIELDSET_PUBLISHING')); ?>
+		<div class="row">
+			<div class="col-12 col-lg-6">
+				<fieldset id="fieldset-publishingdata" class="options-form">
+					<legend><?php echo Text::_('JGLOBAL_FIELDSET_PUBLISHING'); ?></legend>
+					<div>
+						<?php echo LayoutHelper::render('joomla.edit.publishingdata', $this); ?>
+					</div>
+				</fieldset>
+			</div>
+			<?php echo HTMLHelper::_('uitab.endTab'); ?>
 
-		<?php echo HTMLHelper::_('uitab.endTabSet'); ?>
-	</div>
-	<input type="hidden" name="task" value="">
-	<input type="hidden" name="walk_id" value="<?php echo $walk_id; ?>">
-	<?php echo HTMLHelper::_('form.token'); ?>
+
+		</div>
+		<input type="hidden" name="task" value="">
+		<?php echo HTMLHelper::_('form.token'); ?>
 </form>

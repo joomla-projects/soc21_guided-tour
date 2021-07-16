@@ -75,7 +75,8 @@ class HtmlView extends BaseHtmlView
 		$this->item  = $this->get('Item');
 		$this->state = $this->get('State');
 
-		if (count($errors = $this->get('Errors'))) {
+		if (count($errors = $this->get('Errors')))
+		{
 			throw new GenericDataException(implode("\n", $errors), 500);
 		}
 
@@ -105,10 +106,14 @@ class HtmlView extends BaseHtmlView
 			Text::_('Guidedtours - ' . ($isNew ? 'Add Tour' : 'Edit Tour'))
 		);
 
-		if ($canDo->get('core.create')) {
-			if ($isNew) {
+		if ($canDo->get('core.create'))
+		{
+			if ($isNew)
+			{
 				$toolbar->apply('tour.save');
-			} else {
+			}
+			else
+			{
 				$toolbar->apply('tour.apply');
 			}
 		}

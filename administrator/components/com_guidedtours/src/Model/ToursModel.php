@@ -44,7 +44,8 @@ class ToursModel extends ListModel
 	 */
 	public function __construct($config = array())
 	{
-		if (empty($config['filter_fields'])) {
+		if (empty($config['filter_fields']))
+		{
 			$config['filter_fields'] = array(
 				'id', 'a.id',
 				'title', 'a.title',
@@ -126,17 +127,21 @@ class ToursModel extends ListModel
 		// Filter by published state
 		$published = (string) $this->getState('filter.published');
 
-		if (is_numeric($published)) {
+		if (is_numeric($published))
+		{
 			$query->where($db->quoteName('a.state') . ' = :published');
 			$query->bind(':published', $published, ParameterType::INTEGER);
-		} elseif ($published === '') {
+		}
+		elseif ($published === '')
+		{
 			$query->where('(' . $db->quoteName('a.state') . ' = 0 OR ' . $db->quoteName('a.state') . ' = 1)');
 		}
 
 		// Filter by search in title.
 		$search = $this->getState('filter.search');
 
-		if (!empty($search)) {
+		if (!empty($search))
+		{
 			$search = $db->quote('%' . str_replace(' ', '%', $db->escape(trim($search), true) . '%'));
 			$query->where('(a.title LIKE ' . $search . ')');
 		}

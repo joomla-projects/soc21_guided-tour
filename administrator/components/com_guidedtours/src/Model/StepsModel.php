@@ -44,7 +44,8 @@ class StepsModel extends ListModel
 	 */
 	public function __construct($config = array())
 	{
-		if (empty($config['filter_fields'])) {
+		if (empty($config['filter_fields']))
+		{
 			$config['filter_fields'] = array(
 				'id', 'a.id',
 				'walk_id', 'a.walk_id',
@@ -75,7 +76,8 @@ class StepsModel extends ListModel
 
 		$walk_id = $app->input->get('walk_id', 0, 'int');
 
-		if (empty($walk_id)) {
+		if (empty($walk_id))
+		{
 			$walk_id = $app->getUserState('com_guidedtours.walk_id');
 		}
 
@@ -146,10 +148,13 @@ class StepsModel extends ListModel
 		// Filter by published state
 		$published = (string) $this->getState('filter.published');
 
-		if (is_numeric($published)) {
+		if (is_numeric($published))
+		{
 			$query->where($db->quoteName('a.state') . ' = :published');
 			$query->bind(':published', $published, ParameterType::INTEGER);
-		} elseif ($published === '') {
+		}
+		elseif ($published === '')
+		{
 			$query->where('(' . $db->quoteName('a.state') . ' = 0 OR ' . $db->quoteName('a.state') . ' = 1)');
 		}
 

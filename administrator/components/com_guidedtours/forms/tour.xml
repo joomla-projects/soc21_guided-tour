@@ -10,15 +10,7 @@
 		readonly="true"
 	/>
 
-	<field
-		name="hits"
-		type="text"
-		label="JGLOBAL_HITS"
-		default="0"
-		class="readonly"
-		readonly="true"
-		filter="unset"
-	/>
+
 
 	<field
 		name="asset_id"
