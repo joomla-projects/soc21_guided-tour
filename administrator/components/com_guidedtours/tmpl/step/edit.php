@@ -26,9 +26,9 @@ HTMLHelper::_('behavior.formvalidator');
 HTMLHelper::_('behavior.keepalive');
 
 $app = Factory::getApplication();
-$walk_id = $app->getUserState('com_guidedtours.walk_id');
+$tour_id = $app->getUserState('com_guidedtours.tour_id');
 
-if (empty($walk_id))
+if (empty($tour_id))
 {
 	throw new GenericDataException("\nThe Tour id was not set!\n", 500);
 }

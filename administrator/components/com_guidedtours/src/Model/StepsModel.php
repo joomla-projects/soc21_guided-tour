@@ -48,7 +48,7 @@ class StepsModel extends ListModel
 		{
 			$config['filter_fields'] = array(
 				'id', 'a.id',
-				'walk_id', 'a.walk_id',
+				'tour_id', 'a.tour_id',
 				'title', 'a.title',
 				'description', 'a.description',
 				'alias', 'a.alias',
@@ -80,17 +80,17 @@ class StepsModel extends ListModel
 	{
 		$app = Factory::getApplication();
 
-		$walk_id = $app->input->get('walk_id', 0, 'int');
+		$tour_id = $app->input->get('tour_id', 0, 'int');
 
-		if (empty($walk_id))
+		if (empty($tour_id))
 		{
-			$walk_id = $app->getUserState('com_guidedtours.walk_id');
+			$tour_id = $app->getUserState('com_guidedtours.tour_id');
 		}
 
-		$this->setState('walk_id', $walk_id);
+		$this->setState('tour_id', $tour_id);
 
-		// Keep the walk_id for adding new visits
-		$app->setUserState('com_guidedtours.walk_id', $walk_id);
+		// Keep the tour_id for adding new visits
+		$app->setUserState('com_guidedtours.tour_id', $tour_id);
 
 		$search = $this->getUserStateFromRequest($this->context . '.filter.search', 'filter_search');
 		$this->setState('filter.search', $search);
@@ -145,11 +145,11 @@ class StepsModel extends ListModel
 				'a.*'
 			)
 		);
-		$query->from('#__mywalk_dates AS a');
+		$query->from('#__guidedtour_steps AS a');
 
-		// The walk id should be passed in url or hidden form variables
-		$walk_id     = $this->getState('walk_id');
-		$query->where('walk_id = ' . $walk_id);
+		// The tour id should be passed in url or hidden form variables
+		$tour_id     = $this->getState('tour_id');
+		$query->where('tour_id = ' . $tour_id);
 
 		// Filter by published state
 		$published = (string) $this->getState('filter.published');

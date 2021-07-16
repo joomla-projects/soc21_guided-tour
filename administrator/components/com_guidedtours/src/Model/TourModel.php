@@ -23,7 +23,7 @@ use Joomla\CMS\MVC\Model\AdminModel;
 use Joomla\CMS\Table\Table;
 
 /**
- * Item Model for a single walk.
+ * Item Model for a single tour.
  *
  * @since 1.6
  */
@@ -172,7 +172,7 @@ class TourModel extends AdminModel
 
 		$query = $db->getQuery(true);
 
-		$query->update('`#__mywalks`');
+		$query->update('`#__guidedtours`');
 		$query->set('state = ' . $value);
 		$query->where('id IN (' . implode(',', $pks) . ')');
 		$db->setQuery($query);

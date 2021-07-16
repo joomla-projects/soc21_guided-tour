@@ -20,7 +20,7 @@ use Joomla\CMS\Table\Table;
 use Joomla\Database\DatabaseDriver;
 
 /**
- * Mywalks table
+ * Guidedtours table
  *
  * @since 1.5
  */
@@ -35,6 +35,6 @@ class ToursTable extends Table
 	 */
 	public function __construct(DatabaseDriver $db)
 	{
-		parent::__construct('#__mywalks', 'id', $db);
+		parent::__construct('#__guidedtours', 'id', $db);
 	}
 }

@@ -19,7 +19,7 @@ namespace Joomla\Component\Guidedtours\Administrator\Controller;
 use Joomla\CMS\MVC\Controller\AdminController;
 
 /**
- * Mywalks list controller class.
+ * Guidedtours list controller class.
  *
  * @since 1.6
  */

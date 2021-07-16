@@ -1,9 +1,8 @@
-
 --
--- Table structure for table `#__mywalks`
+-- Table structure for table `#__guidedtours`
 --
 
-CREATE TABLE IF NOT EXISTS `#__mywalks` (
+CREATE TABLE IF NOT EXISTS `#__guidedtours` (
   `id` int NOT NULL AUTO_INCREMENT PRIMARY KEY,
   `description` text NOT NULL,
   `title` varchar(255) NOT NULL,
@@ -16,21 +15,15 @@ CREATE TABLE IF NOT EXISTS `#__mywalks` (
   `modified` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP ,
   `modified_by` int unsigned NOT NULL DEFAULT 0,
   `state` TINYINT NOT NULL DEFAULT '1'
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 DEFAULT COLLATE utf8mb4_unicode_ci;
-
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 DEFAULT COLLATE=utf8mb4_unicode_ci;
+  
 --
--- Dumping data for table `#__mywalks`
---
-
---------------------------------------------
-
---
--- Table structure for table `#__mywalk_dates`
+-- Table structure for table `#__guidedtour_steps`
 --
 
-CREATE TABLE IF NOT EXISTS `#__mywalk_dates` (
+CREATE TABLE IF NOT EXISTS `#__guidedtour_steps` (
   `id` int NOT NULL AUTO_INCREMENT PRIMARY KEY,
-  `walk_id` int(11) NOT NULL,
+  `tour_id` int(11) NOT NULL,
   `description` text NOT NULL,
   `title` varchar(255) NOT NULL,
   `date` DATE NOT NULL DEFAULT CURRENT_TIMESTAMP ,
@@ -42,9 +35,7 @@ CREATE TABLE IF NOT EXISTS `#__mywalk_dates` (
   `modified` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP,
   `modified_by` int unsigned NOT NULL DEFAULT 0,
   `state` TINYINT NOT NULL DEFAULT '1',
-  KEY `idx_walk` (`walk_id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 DEFAULT COLLATE utf8mb4_unicode_ci;
+  KEY `idx_tour` (`tour_id`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 DEFAULT COLLATE=utf8mb4_unicode_ci;
 
---
--- Dumping data for table `#__mywalk_dates`
---
+

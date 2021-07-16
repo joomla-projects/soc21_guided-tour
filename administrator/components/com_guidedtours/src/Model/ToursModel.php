@@ -28,7 +28,7 @@ use Joomla\Utilities\ArrayHelper;
 use Joomla\Database\ParameterType;
 
 /**
- * Methods supporting a list of mywalks records.
+ * Methods supporting a list of guidedtours records.
  *
  * @since 1.6
  */
@@ -127,10 +127,10 @@ class ToursModel extends ListModel
 		$query->select(
 			$this->getState(
 				'list.select',
-				'a.*, (SELECT count(`date`) from #__mywalk_dates WHERE walk_id = a.id) AS nvisits'
+				'a.*, (SELECT count(`date`) from #__guidedtour_steps WHERE tour_id = a.id) AS nvisits'
 			)
 		);
-		$query->from('#__mywalks AS a');
+		$query->from('#__guidedtours AS a');
 
 		// Filter by published state
 		$published = (string) $this->getState('filter.published');
@@ -164,7 +164,7 @@ class ToursModel extends ListModel
 	}
 
 	/**
-	 * Method to get a list of walks.
+	 * Method to get a list of tours.
 	 * Overridden to add a check for access levels.
 	 *
 	 * @return mixed  An array of data items on success, false on failure.

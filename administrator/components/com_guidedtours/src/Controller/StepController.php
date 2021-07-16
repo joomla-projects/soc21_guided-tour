@@ -19,7 +19,7 @@ namespace Joomla\Component\Guidedtours\Administrator\Controller;
 use Joomla\CMS\MVC\Controller\FormController;
 
 /**
- * Controller for a single mywalk
+ * Controller for a single tour
  *
  * @since 1.6
  */

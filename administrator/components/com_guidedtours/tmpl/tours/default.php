@@ -42,7 +42,7 @@ $editIcon = '<span class="fa fa-pen-square me-2" aria-hidden="true"></span>';
 					</div>
 				<?php else :
 				?>
-					<table class="table" id="mywalksList">
+					<table class="table" id="mytoursList">
 						<caption id="captionTable">
 							<?php echo Text::_('List'); ?>, <?php echo Text::_('JGLOBAL_SORTED_BY'); ?>
 						</caption>
@@ -94,7 +94,7 @@ $editIcon = '<span class="fa fa-pen-square me-2" aria-hidden="true"></span>';
 									</td>
 
 									<td class="">
-										<a href="index.php?option=com_guidedtours&view=steps&walk_id=<?php echo $item->id; ?>">
+										<a href="index.php?option=com_guidedtours&view=steps&tour_id=<?php echo $item->id; ?>">
 											<?php echo $editIcon; ?><?php echo $item->nvisits; ?></a>
 									</td>
 

@@ -12,16 +12,11 @@
 	<description>COM_GUIDEDTOURS_XML_DESCRIPTION</description>
 	<namespace path="src/">Joomla\Component\Guidedtours</namespace>
 
-	
-
 	<!-- Site Main File Copy Section -->
 	<!-- Note the folder attribute: This attribute describes the folder
 		to copy FROM in the package to install therefore files copied
 		in this section are copied from /site/ in the package -->
 
-
-
-	
 		<administration>
 
 			<menu link="index.php?option=com_guidedtours" img="class:default">Guided Tours</menu>

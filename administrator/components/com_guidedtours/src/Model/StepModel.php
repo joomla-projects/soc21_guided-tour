@@ -37,7 +37,7 @@ use Joomla\Component\Workflow\Administrator\Table\StageTable;
 use Joomla\Utilities\ArrayHelper;
 
 /**
- * Item Model for a single walk.
+ * Item Model for a single tour.
  *
  * @since 1.6
  */
@@ -137,7 +137,7 @@ class StepModel extends AdminModel
 
 		$query = $db->getQuery(true);
 
-		$query->update('`#__mywalk_dates`');
+		$query->update('`#__guidedtour_steps`');
 		$query->set('state = ' . $value);
 		$query->where('id IN (' . implode(',', $pks) . ')');
 		$db->setQuery($query);

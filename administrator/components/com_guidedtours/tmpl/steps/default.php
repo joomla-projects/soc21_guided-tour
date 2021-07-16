@@ -34,10 +34,10 @@ $states = array(
 	'-2' => Text::_('JTRASHED')
 );
 $editIcon = '<span class="fa fa-pen-square me-2" aria-hidden="true"></span>';
-$title = GuidedtoursHelper::getWalkTitle($this->state->get('walk_id'))->title;
-$walk_id = $this->state->get('walk_id')
+$title = GuidedtoursHelper::getTourTitle($this->state->get('tour_id'))->title;
+$tour_id = $this->state->get('tour_id')
 ?>
-<h3><?php echo Text::_('List of Steps for Guidedtour ') . ' ' . $walk_id . ': ' . $title; ?></h3>
+<h3><?php echo Text::_('List of Steps for Guidedtour ') . ' ' . $tour_id . ': ' . $title; ?></h3>
 <form action="<?php echo Route::_('index.php?option=com_guidedtours&view=steps'); ?>" method="post" name="adminForm" id="adminForm">
 	<div class="row">
 		<div class="col-md-12">
@@ -52,7 +52,7 @@ $walk_id = $this->state->get('walk_id')
 					</div>
 				<?php else :
 				?>
-					<table class="table" id="mywalksList">
+					<table class="table" id="mytoursList">
 						<caption id="captionTable">
 							<?php echo Text::_('#'); ?>, <?php echo Text::_('JGLOBAL_SORTED_BY'); ?>
 						</caption>
@@ -111,7 +111,7 @@ $walk_id = $this->state->get('walk_id')
 				<?php endif; ?>
 				<input type="hidden" name="task" value="">
 				<input type="hidden" name="boxchecked" value="0">
-				<input type="hidden" name="walk_id" value="<?php echo $walk_id; ?>">
+				<input type="hidden" name="tour_id" value="<?php echo $tour_id; ?>">
 				<?php echo HTMLHelper::_('form.token'); ?>
 			</div>
 		</div>

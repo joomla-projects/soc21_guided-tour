@@ -25,7 +25,7 @@ use Joomla\CMS\Factory;
  */
 class GuidedtoursHelper
 {
-	public static function getWalkTitle($id)
+	public static function getTourTitle($id)
 	{
 		if (empty($id))
 		{
@@ -36,7 +36,7 @@ class GuidedtoursHelper
 		$db = Factory::getDbo();
 		$query = $db->getQuery(true);
 		$query->select('title');
-		$query->from('#__mywalks');
+		$query->from('#__guidedtours');
 		$query->where('id = ' . $id);
 		$db->setQuery($query);
 

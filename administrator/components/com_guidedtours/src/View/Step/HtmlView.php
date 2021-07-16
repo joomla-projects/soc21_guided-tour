@@ -30,7 +30,7 @@ use Joomla\CMS\Session\Session;
 use Joomla\CMS\Toolbar\Toolbar;
 use Joomla\CMS\Toolbar\ToolbarHelper;
 
-// JLoader::register('MywalksHelperRoute', JPATH_SITE . '/components/com_guidedtours/helpers/route.php');
+// JLoader::register('ToursHelperRoute', JPATH_SITE . '/components/com_guidedtours/helpers/route.php');
 
 /**
  * View to edit an article.

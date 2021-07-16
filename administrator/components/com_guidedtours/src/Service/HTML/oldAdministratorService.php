@@ -47,7 +47,7 @@ class AdministratorService
 		$html = '';
 
 		// Get the associations
-		if ($associations = Associations::getAssociations('com_guidedtours', '#__mywalks', 'com_guidedtours.item', $articleid))
+		if ($associations = Associations::getAssociations('com_guidedtours', '#__guidedtours', 'com_guidedtours.item', $articleid))
 		{
 			foreach ($associations as $tag => $associated)
 			{
@@ -60,7 +60,7 @@ class AdministratorService
 				->select('c.*')
 				->select('l.sef as lang_sef')
 				->select('l.lang_code')
-				->from('#__mywalkst as c')
+				->from('#__guidedtourst as c')
 				->select('cat.title as category_title')
 				->join('LEFT', '#__categories as cat ON cat.id=c.catid')
 				->where('c.id IN (' . implode(',', array_values($associations)) . ')')

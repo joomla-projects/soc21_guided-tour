@@ -52,6 +52,6 @@ class GuidedtoursComponent extends MVCComponent implements
 	 */
 	public function boot(ContainerInterface $container)
 	{
-		// $this->getRegistry()->register('mywalksadministrator', new AdministratorService);
+		// $this->getRegistry()->register('guidedtoursadministrator', new AdministratorService);
 	}
 }
