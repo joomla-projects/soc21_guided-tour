@@ -47,13 +47,13 @@ $this->useCoreUI = true;
 		<?php echo HTMLHelper::_('uitab.addTab', 'myTab', 'details', Text::_('Details')); ?>
 		<div class="row">
 			<div class="col-md-9">
-				<!-- <div class="row"> -->
-				<!-- <div class="col-md-6"> -->
+
 				<?php echo $this->form->renderField('description'); ?>
 				<!-- <?php echo $this->form->renderField('distance'); ?> -->
 				<!-- <?php echo $this->form->renderField('id'); ?> -->
-				<!-- </div> -->
-				<!-- </div> -->
+				<?php $this->form->setValue('tour_id', null, $tour_id); ?>
+				<?php echo $this->form->renderField('tour_id'); ?>
+
 			</div>
 			<div class="col-md-3">
 				<div class="card card-light">
@@ -66,7 +66,7 @@ $this->useCoreUI = true;
 		<?php echo HTMLHelper::_('uitab.endTab'); ?>
 		<?php echo HTMLHelper::_('uitab.addTab', 'myTab', 'publishing', Text::_('JGLOBAL_FIELDSET_PUBLISHING')); ?>
 		<div class="row">
-			<div class="col-12 col-lg-6">
+			<div class="col-12 col-lg-8">
 				<fieldset id="fieldset-publishingdata" class="options-form">
 					<legend><?php echo Text::_('JGLOBAL_FIELDSET_PUBLISHING'); ?></legend>
 					<div>
@@ -75,9 +75,19 @@ $this->useCoreUI = true;
 				</fieldset>
 			</div>
 			<?php echo HTMLHelper::_('uitab.endTab'); ?>
-
+			<?php echo HTMLHelper::_('uitab.addTab', 'myTab', 'permissions', Text::_('Permissions')); ?>
+			<div class="row">
+				<div class="col-12 col-lg">
+					<fieldset id="fieldset-rules" class="options-form">
+						<legend><?php echo Text::_('Permissions'); ?></legend>
+						<?php echo $this->form->getInput('rules'); ?>
+					</fieldset>
+				</div>
+				<?php echo HTMLHelper::_('uitab.endTab'); ?>
+			</div>
 
 		</div>
 		<input type="hidden" name="task" value="">
+		<input type="hidden" name="tour_id" value="<?php echo $tour_id; ?>">
 		<?php echo HTMLHelper::_('form.token'); ?>
 </form>

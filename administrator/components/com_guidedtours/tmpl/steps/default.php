@@ -94,7 +94,7 @@ $tour_id = $this->state->get('tour_id')
 											<?php echo $editIcon; ?><?php echo $item->title; ?></a>
 									</td>
 									<td>
-										<?php echo $item->weather; ?>
+										<?php echo $item->description; ?>
 									</td>
 									<td>
 										<?php echo $item->id; ?>

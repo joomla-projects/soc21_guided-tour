@@ -49,7 +49,6 @@ class ToursModel extends ListModel
 			$config['filter_fields'] = array(
 				'id', 'a.id',
 				'title', 'a.title',
-				'date', 'a.date',
 				'description', 'a.description',
 				'alias', 'a.alias',
 				'published', 'a.published',
@@ -127,7 +126,7 @@ class ToursModel extends ListModel
 		$query->select(
 			$this->getState(
 				'list.select',
-				'a.*, (SELECT count(`date`) from #__guidedtour_steps WHERE tour_id = a.id) AS nvisits'
+				'a.*, (SELECT count(`description`) from #__guidedtour_steps WHERE tour_id = a.id) AS steps'
 			)
 		);
 		$query->from('#__guidedtours AS a');

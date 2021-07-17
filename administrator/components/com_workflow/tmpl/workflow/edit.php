@@ -35,7 +35,9 @@ $lang     = Factory::getLanguage()->getTag();
 	<?php echo LayoutHelper::render('joomla.edit.title_alias', $this); ?>
 
 	<?php // Add the translation of the workflow item title when client is administrator ?>
-	<?php if ($clientId === 0 && $this->item->id != 0) : ?>
+	<?php if ($clientId === 0 && $this->item->id != 0)
+	:
+		?>
 		<div class="row title-alias form-vertical mb-3">
 			<div class="col-md-6">
 				<div class="control-group">
@@ -69,8 +71,9 @@ $lang     = Factory::getLanguage()->getTag();
 		</div>
 		<?php echo HTMLHelper::_('uitab.endTab'); ?>
 
-		<?php if ($user->authorise('core.admin', $this->extension)) : ?>
-
+		<?php if ($user->authorise('core.admin', $this->extension))
+		:
+			?>
 			<?php echo HTMLHelper::_('uitab.addTab', 'myTab', 'permissions', Text::_('COM_WORKFLOW_RULES_TAB')); ?>
 			<fieldset id="fieldset-rules" class="options-form">
 				<legend><?php echo Text::_('COM_WORKFLOW_RULES_TAB'); ?></legend>

@@ -239,7 +239,21 @@
 			</fieldset>
 		</fieldset>
 	</fields>
-
+	<fieldset name="permissions" label="JCONFIG_PERMISSIONS_LABEL">
+		<field
+			name="asset_id"
+			type="hidden"
+			filter="unset"
+		/>
+		<field
+			name="rules"
+			type="rules"
+			label="JCONFIG_PERMISSIONS_LABEL"
+			validate="rules"
+			filter="rules"
+			section="stage"
+		/>
+	</fieldset>
 	<fields name="metadata" label="JGLOBAL_FIELDSET_METADATA_OPTIONS">
 
 		<fieldset name="jmetadata" label="JGLOBAL_FIELDSET_METADATA_OPTIONS">

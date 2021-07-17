@@ -1,4 +1,5 @@
 <?php
+
 /**
  * @package     Joomla.Administrator
  * @subpackage  com_workflow
@@ -6,6 +7,7 @@
  * @copyright   (C) 2018 Open Source Matters, Inc. <https://www.joomla.org>
  * @license     GNU General Public License version 2 or later; see LICENSE.txt
  */
+
 namespace Joomla\Component\Workflow\Administrator\View\Stage;
 
 \defined('_JEXEC') or die;
@@ -119,9 +121,9 @@ class HtmlView extends BaseHtmlView
 		$userId     = $user->id;
 		$isNew      = empty($this->item->id);
 
-		$canDo = StageHelper::getActions($this->extension, 'stage', $this->item->id);
+		$canDo = StepHelper::getActions($this->extension, 'step', $this->item->id);
 
-		ToolbarHelper::title(empty($this->item->id) ? Text::_('COM_WORKFLOW_STAGE_ADD') : Text::_('COM_WORKFLOW_STAGE_EDIT'), 'address');
+		ToolbarHelper::title(empty($this->item->id) ? Text::_('COM_WORKFLOW_STEP_ADD') : Text::_('COM_WORKFLOW_STEP_EDIT'), 'address');
 
 		$toolbarButtons = [];
 
@@ -130,8 +132,8 @@ class HtmlView extends BaseHtmlView
 			// For new records, check the create permission.
 			if ($canDo->get('core.create'))
 			{
-				ToolbarHelper::apply('stage.apply');
-				$toolbarButtons = [['save', 'stage.save'], ['save2new', 'stage.save2new']];
+				ToolbarHelper::apply('step.apply');
+				$toolbarButtons = [['save', 'step.save'], ['save2new', 'step.save2new']];
 			}
 
 			ToolbarHelper::saveGroup(
@@ -140,7 +142,7 @@ class HtmlView extends BaseHtmlView
 			);
 
 			ToolbarHelper::cancel(
-				'stage.cancel'
+				'step.cancel'
 			);
 		}
 		else
@@ -150,14 +152,14 @@ class HtmlView extends BaseHtmlView
 
 			if ($itemEditable)
 			{
-				ToolbarHelper::apply('stage.apply');
-				$toolbarButtons = [['save', 'stage.save']];
+				ToolbarHelper::apply('step.apply');
+				$toolbarButtons = [['save', 'step.save']];
 
 				// We can save this record, but check the create permission to see if we can return to make a new one.
 				if ($canDo->get('core.create'))
 				{
-					$toolbarButtons[] = ['save2new', 'stage.save2new'];
-					$toolbarButtons[] = ['save2copy', 'stage.save2copy'];
+					$toolbarButtons[] = ['save2new', 'step.save2new'];
+					$toolbarButtons[] = ['save2copy', 'step.save2copy'];
 				}
 			}
 
@@ -166,10 +168,10 @@ class HtmlView extends BaseHtmlView
 				'btn-success'
 			);
 
-			ToolbarHelper::cancel(
-				'stage.cancel',
-				'JTOOLBAR_CLOSE'
-			);
+					ToolbarHelper::cancel(
+						'step.cancel',
+						'JTOOLBAR_CLOSE'
+					);
 		}
 
 		ToolbarHelper::divider();

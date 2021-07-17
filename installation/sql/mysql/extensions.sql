@@ -883,24 +883,38 @@ CREATE TABLE IF NOT EXISTS `#__action_logs_users` (
   KEY `idx_notify` (`notify`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 DEFAULT COLLATE=utf8mb4_unicode_ci;
 
+-- --------------------------------------------------------
+
 --
 -- Table structure for table `#__guidedtours`
 --
 
 CREATE TABLE IF NOT EXISTS `#__guidedtours` (
-  `id` int NOT NULL AUTO_INCREMENT PRIMARY KEY,
-  `description` text NOT NULL,
+  `id` int NOT NULL AUTO_INCREMENT,
+  `asset_id` int DEFAULT 0,
   `title` varchar(255) NOT NULL,
-  `date` DATE NOT NULL DEFAULT CURRENT_TIMESTAMP ,
   `alias` varchar(400) CHARACTER SET utf8mb4 COLLATE utf8mb4_bin NOT NULL,
-  `published` tinyint NOT NULL DEFAULT 1,
+  `description` text NOT NULL,
   `ordering` int NOT NULL DEFAULT 0,
-  `created` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP ,
-  `created_by` int unsigned NOT NULL DEFAULT 0,
-  `modified` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP ,
-  `modified_by` int unsigned NOT NULL DEFAULT 0,
-  `state` TINYINT NOT NULL DEFAULT '1'
+  `created` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP(),
+  `created_by` int NOT NULL DEFAULT 0,
+  `modified` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP(),
+  `modified_by` int NOT NULL DEFAULT 0,
+  `checked_out_time` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP() ,
+  `checked_out` int NOT NULL DEFAULT 0,
+  `published` tinyint(4) NOT NULL DEFAULT 0,
+  `state` tinyint(4) NOT NULL DEFAULT '1',
+  PRIMARY KEY (`id`),
+  KEY `idx_asset_id` (`asset_id`),
+  KEY `idx_title` (`title`(191)),
+  KEY `idx_created` (`created`),
+  KEY `idx_created_by` (`created_by`),
+  KEY `idx_modified` (`modified`),
+  KEY `idx_modified_by` (`modified_by`),
+  KEY `idx_checked_out` (`checked_out`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 DEFAULT COLLATE=utf8mb4_unicode_ci;
+
+-- --------------------------------------------------------
   
 --
 -- Table structure for table `#__guidedtour_steps`
@@ -908,17 +922,19 @@ CREATE TABLE IF NOT EXISTS `#__guidedtours` (
 
 CREATE TABLE IF NOT EXISTS `#__guidedtour_steps` (
   `id` int NOT NULL AUTO_INCREMENT PRIMARY KEY,
-  `tour_id` int(11) NOT NULL,
-  `description` text NOT NULL,
+  `tour_id` int(11) NOT NULL DEFAULT 0,
   `title` varchar(255) NOT NULL,
-  `date` DATE NOT NULL DEFAULT CURRENT_TIMESTAMP ,
   `alias` varchar(400) CHARACTER SET utf8mb4 COLLATE utf8mb4_bin NOT NULL,
-  `published` tinyint NOT NULL DEFAULT 1,
+  `published` tinyint(4) NOT NULL DEFAULT 1,
+  `description` text NOT NULL,
   `ordering` int NOT NULL DEFAULT 0,
-  `created` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP,
+  `created` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP(),
   `created_by` int unsigned NOT NULL DEFAULT 0,
-  `modified` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP,
+  `modified` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP(),
   `modified_by` int unsigned NOT NULL DEFAULT 0,
-  `state` TINYINT NOT NULL DEFAULT '1',
+  `state` tinyint(4) NOT NULL DEFAULT '1',
   KEY `idx_tour` (`tour_id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 DEFAULT COLLATE=utf8mb4_unicode_ci;
+
+
+

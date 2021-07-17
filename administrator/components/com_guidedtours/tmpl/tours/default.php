@@ -95,7 +95,7 @@ $editIcon = '<span class="fa fa-pen-square me-2" aria-hidden="true"></span>';
 
 									<td class="">
 										<a href="index.php?option=com_guidedtours&view=steps&tour_id=<?php echo $item->id; ?>">
-											<?php echo $editIcon; ?><?php echo $item->nvisits; ?></a>
+											<?php echo $editIcon; ?><?php echo $item->steps; ?></a>
 									</td>
 
 
