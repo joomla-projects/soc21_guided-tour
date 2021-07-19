@@ -56,7 +56,7 @@ $this->useCoreUI = true;
 				<?php echo $this->form->renderField('url'); ?>
 				<?php echo $this->form->renderField('overlay'); ?>
 				<?php $this->form->setValue('tour_id', null, $tour_id); ?>
-				<!-- <?php echo $this->form->renderField('tour_id'); ?> -->
+				<?php echo $this->form->renderField('tour_id'); ?>
 
 			</div>
 			<div class="col-md-3">

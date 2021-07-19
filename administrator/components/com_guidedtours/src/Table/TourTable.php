@@ -82,6 +82,11 @@ class TourTable extends Table
 			$this->modified = $this->created;
 		}
 
+		if (!(int) $this->checked_out_time)
+		{
+			$this->checked_out_time = $this->created;
+		}
+
 		if (empty($this->modified_by))
 		{
 			$this->modified_by = $this->created_by;
