@@ -198,8 +198,8 @@
 		translate_label="false"
 		filter="rules"
 		validate="rules"
-		component="com_content"
-		section="category"
+		component="com_guidedtours"
+		section="tour"
 	/>
 
 	<fields name="params">
@@ -245,14 +245,14 @@
 			type="hidden"
 			filter="unset"
 		/>
-		<field
+		<!-- <field
 			name="rules"
 			type="rules"
 			label="JCONFIG_PERMISSIONS_LABEL"
 			validate="rules"
 			filter="rules"
 			section="stage"
-		/>
+		/> -->
 	</fieldset>
 	<fields name="metadata" label="JGLOBAL_FIELDSET_METADATA_OPTIONS">
 

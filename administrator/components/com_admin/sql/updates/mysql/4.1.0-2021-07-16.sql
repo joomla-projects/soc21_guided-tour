@@ -9,11 +9,11 @@ CREATE TABLE IF NOT EXISTS `#__guidedtours` (
   `alias` varchar(400) CHARACTER SET utf8mb4 COLLATE utf8mb4_bin NOT NULL,
   `description` text NOT NULL,
   `ordering` int NOT NULL DEFAULT 0,
-  `created` datetime NOT NULL,
+  `created` datetime NOT NULL DEFAULT 0,
   `created_by` int NOT NULL DEFAULT 0,
-  `modified` datetime NOT NULL,
+  `modified` datetime NOT NULL DEFAULT 0,
   `modified_by` int NOT NULL DEFAULT 0,
-  `checked_out_time` datetime NOT NULL,
+  `checked_out_time` datetime NOT NULL DEFAULT 0,
   `checked_out` int NOT NULL DEFAULT 0,
   `published` tinyint NOT NULL DEFAULT 0,
   `state` tinyint NOT NULL DEFAULT '1',
@@ -41,9 +41,15 @@ CREATE TABLE IF NOT EXISTS `#__guidedtour_steps` (
   `published` tinyint NOT NULL DEFAULT 0,
   `description` text NOT NULL,
   `ordering` int NOT NULL DEFAULT 0,
-  `created` datetime NOT NULL,
+  `step-no` int NOT NULL DEFAULT 0,
+  `position` varchar(255) NOT NULL,
+  `target` varchar(255) NOT NULL,
+  `offset` varchar(255) NOT NULL,
+  `url` varchar(255) NOT NULL,
+  `overlay` tinyint NOT NULL  DEFAULT 0,
+  `created` datetime NOT NULL DEFAULT 0,
   `created_by` int unsigned NOT NULL DEFAULT 0,
-  `modified` datetime NOT NULL,
+  `modified` datetime NOT NULL DEFAULT 0,
   `modified_by` int unsigned NOT NULL DEFAULT 0,
   `state` tinyint NOT NULL DEFAULT '1',
   KEY `idx_tour` (`tour_id`)
@@ -51,7 +57,3 @@ CREATE TABLE IF NOT EXISTS `#__guidedtour_steps` (
 
 INSERT INTO `#__extensions` (`package_id`, `name`, `type`, `element`, `folder`, `client_id`, `enabled`, `access`, `protected`, `locked`, `manifest_cache`, `params`, `custom_data`, `checked_out`, `checked_out_time`, `ordering`, `state`) VALUES
 (0, 'com_guidedtours', 'component', 'com_guidedtours', '', 1, 1, 0, 0, 1, '', '{}', '', 0, NULL, 0, 0);
-
-
-
-
