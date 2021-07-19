@@ -51,7 +51,7 @@ class TourModel extends AdminModel
 	{
 		if (!empty($record->id))
 		{
-			return Factory::getUser()->authorise('core.delete', 'com_guidedtours.tours.' . (int) $record->id);
+			return Factory::getUser()->authorise('core.delete', 'com_guidedtours.tour.' . (int) $record->id);
 		}
 
 		return false;
@@ -73,7 +73,7 @@ class TourModel extends AdminModel
 		// Check for existing article.
 		if (!empty($record->id))
 		{
-			return $user->authorise('core.edit.state', 'com_guidedtours.tours.' . (int) $record->id);
+			return $user->authorise('core.edit.state', 'com_guidedtours.tour.' . (int) $record->id);
 		}
 
 		// Default to component settings if neither article nor category known.
@@ -94,7 +94,7 @@ class TourModel extends AdminModel
 	 */
 	public function getTable($name = '', $prefix = '', $options = array())
 	{
-		$name = 'tours';
+		$name = 'tour';
 		$prefix = 'Table';
 
 		if ($table = $this->_createTable($name, $prefix, $options))

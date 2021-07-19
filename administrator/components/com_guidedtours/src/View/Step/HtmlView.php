@@ -16,21 +16,13 @@ namespace Joomla\Component\Guidedtours\Administrator\View\Step;
 
 defined('_JEXEC') or die;
 
-use Joomla\CMS\Component\ComponentHelper;
 use Joomla\CMS\Factory;
 use Joomla\CMS\Helper\ContentHelper;
-use Joomla\CMS\HTML\HTMLHelper;
-use Joomla\CMS\Language\Associations;
-use Joomla\CMS\Language\Multilanguage;
 use Joomla\CMS\Language\Text;
 use Joomla\CMS\MVC\View\GenericDataException;
 use Joomla\CMS\MVC\View\HtmlView as BaseHtmlView;
-use Joomla\CMS\Router\Route;
-use Joomla\CMS\Session\Session;
 use Joomla\CMS\Toolbar\Toolbar;
 use Joomla\CMS\Toolbar\ToolbarHelper;
-
-// JLoader::register('ToursHelperRoute', JPATH_SITE . '/components/com_guidedtours/helpers/route.php');
 
 /**
  * View to edit an article.
@@ -68,13 +60,6 @@ class HtmlView extends BaseHtmlView
 	protected $canDo;
 
 	/**
-	 * Pagebreak TOC alias
-	 *
-	 * @var string
-	 */
-	protected $eName;
-
-	/**
 	 * Execute and display a template script.
 	 *
 	 * @param   string $tpl The name of the template file to parse; automatically searches through the template paths.
@@ -90,7 +75,6 @@ class HtmlView extends BaseHtmlView
 		$this->item  = $this->get('Item');
 		$this->state = $this->get('State');
 
-		// Check for errors.
 		if (count($errors = $this->get('Errors')))
 		{
 			throw new GenericDataException(implode("\n", $errors), 500);
@@ -112,28 +96,40 @@ class HtmlView extends BaseHtmlView
 	protected function addToolbar()
 	{
 		Factory::getApplication()->input->set('hidemainmenu', true);
-		$user       = Factory::getUser();
-		$userId     = $user->id;
 		$isNew      = ($this->item->id == 0);
 
-		// Built the actions for new and existing records.
-		// $canDo = $this->canDo;
+		$canDo = ContentHelper::getActions('com_guidedtours');
 
 		$toolbar = Toolbar::getInstance();
-		$title = $isNew ? 'Add Step' : 'Edit Step';
-		$title = Text::_('Guided tour - ' . $title);
-		ToolbarHelper::title($title);
 
-		// For new records, check the create permission.
-		if ($isNew)
+		ToolbarHelper::title(
+			Text::_('Guidedtours - ' . ($isNew ? 'Add Step' : 'Edit Step'))
+		);
+
+		if ($isNew && $canDo->get('core.create'))
 		{
-			$toolbar->apply('step.save');
+			// The tour.apply task maps to the save() method in TourController
+			ToolbarHelper::apply('step.apply');
+
+			$toolbarButtons[] = ['save', 'step.save'];
 		}
 		else
 		{
-			$toolbar->apply('step.apply');
+			if (!$isNew && $canDo->get('core.edit'))
+			{
+				ToolbarHelper::apply('step.apply');
+				$toolbarButtons[] = ['save', 'step.save'];
+
+				// TODO | ? : Do we need save2new and save2copy? If yes, need to support in the Model,
+				// 			  here and the Controller.
+			}
 		}
 
-		$toolbar->cancel('step.cancel', 'JTOOLBAR_CLOSE');
+		ToolbarHelper::saveGroup(
+			$toolbarButtons,
+			'btn-success'
+		);
+
+		ToolbarHelper::cancel('step.cancel', $isNew ? 'JTOOLBAR_CANCEL' : 'JTOOLBAR_CLOSE');
 	}
 }

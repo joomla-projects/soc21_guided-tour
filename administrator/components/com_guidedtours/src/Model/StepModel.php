@@ -108,7 +108,7 @@ class StepModel extends AdminModel
 	 */
 	public function getTable($name = '', $prefix = '', $options = array())
 	{
-		$name = 'steps';
+		$name = 'step';
 		$prefix = 'Table';
 
 		if ($table = $this->_createTable($name, $prefix, $options))

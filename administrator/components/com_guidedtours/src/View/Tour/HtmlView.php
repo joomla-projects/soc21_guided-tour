@@ -106,18 +106,30 @@ class HtmlView extends BaseHtmlView
 			Text::_('Guidedtours - ' . ($isNew ? 'Add Tour' : 'Edit Tour'))
 		);
 
-		if ($canDo->get('core.create'))
+		if ($isNew && $canDo->get('core.create'))
 		{
-			if ($isNew)
+			// The tour.apply task maps to the save() method in TourController
+			ToolbarHelper::apply('tour.apply');
+
+			$toolbarButtons[] = ['save', 'tour.save'];
+		}
+		else
+		{
+			if (!$isNew && $canDo->get('core.edit'))
 			{
-				$toolbar->apply('tour.save');
-			}
-			else
-			{
-				$toolbar->apply('tour.apply');
+				ToolbarHelper::apply('tour.apply');
+				$toolbarButtons[] = ['save', 'tour.save'];
+
+				// TODO | ? : Do we need save2new and save2copy? If yes, need to support in the Model,
+				// 			  here and the Controller.
 			}
 		}
 
-		$toolbar->cancel('tour.cancel', 'JTOOLBAR_CLOSE');
+		ToolbarHelper::saveGroup(
+			$toolbarButtons,
+			'btn-success'
+		);
+
+		ToolbarHelper::cancel('tour.cancel', $isNew ? 'JTOOLBAR_CANCEL' : 'JTOOLBAR_CLOSE');
 	}
 }
