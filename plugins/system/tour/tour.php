@@ -14,9 +14,13 @@
 
 defined('_JEXEC') or die;
 
+use Joomla\CMS\Factory;
+use Joomla\CMS\Language\Text;
 use Joomla\CMS\Plugin\CMSPlugin;
-use Joomla\Event\Event;
-use Joomla\Event\SubscriberInterface;
+use Joomla\CMS\HTML\HTMLHelper;
+use Joomla\CMS\Uri\Uri;
+use Joomla\CMS\WebAsset\WebAssetManager;
+use Joomla\CMS\Component\ComponentHelper;
 
 /**
  * PlgSystemTour
@@ -50,6 +54,7 @@ class PlgSystemTour extends CMSPlugin implements SubscriberInterface
 	{
 		return [
 			'onBeforeRender' => 'onBeforeRender',
+			'onBeforeCompileHead' => 'onBeforeCompileHead',
 		];
 	}
 
@@ -67,7 +72,7 @@ class PlgSystemTour extends CMSPlugin implements SubscriberInterface
 		if ($this->app->isClient('administrator'))
 		{
 			// Get an instance of the Toolbar
-			$toolbar = JToolbar::getInstance('toolbar');
+			$toolbar = Toolbar::getInstance('toolbar');
 		}
 	}
 	/**
@@ -79,14 +84,41 @@ class PlgSystemTour extends CMSPlugin implements SubscriberInterface
 	 */
 	public function onBeforeCompileHead()
 	{
-		/**
-		 * @return void
-		 */
+		// Only going to run these in the backend for now
 		if ($this->app->isClient('administrator'))
 		{
-			/**
-			 * TODO
-			 */
+			HTMLHelper::_(
+				'script',
+				Uri::root() . '/node_modules/shepherd.js/dist/js/shepherd.min.js',
+				array('version' => 'auto', 'relative' => true)
+			);
+
+			HTMLHelper::_(
+				'stylesheet',
+				Uri::root() . '/node_modules/shepherd.js/dist/css/shepherd-theme-arrow.css',
+				array('version' => 'auto', 'relative' => true)
+			);
+
+			// Spliting the URL for get param of the layout,view,option etc
+			$input = Factory::getApplication()->input;
+			$this->loadLanguage();
+			Factory::getDocument()->addScriptOptions(
+				'tour-guide',
+				array(
+					'urlOption' => $input->get('option'),
+					'urlView' => $input->get('view'),
+					'urlLayout' => $input->get('layout'),
+					'langtag'  => Factory::getLanguage()->getTag(),
+					'baseUrl' => Uri::root(),
+					'btnName' => Text::_('COM_PLG_TOUR_START_TOUR_BTN'),
+				)
+			);
+
+			HTMLHelper::_(
+				'script',
+				Uri::root() . 'build/media-source/plg_system_tour/js/guide.js',
+				array('version' => 'auto', 'relative' => true)
+			);
 		}
 	}
 }
