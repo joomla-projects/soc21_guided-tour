@@ -106,8 +106,9 @@ INSERT INTO `#__assets` (`id`, `parent_id`, `lft`, `rgt`, `level`, `name`, `titl
 (86, 18, 122, 123, 2, 'com_modules.module.96', 'Popular Articles', '{}'),
 (87, 18, 124, 125, 2, 'com_modules.module.97', 'Recently Added Articles', '{}'),
 (88, 18, 126, 127, 2, 'com_modules.module.98', 'Logged-in Users', '{}'),
-(89, 1, 161, 162, 1, 'com_content.guidedtours.1', 'COM_GUIDEDTOURS_BASIC_GUIDEDTOUR', '{}'),
-(90, 1, 163, 164, 1, 'plg_system_tour', 'tour', '{}');
+(89, 1, 161, 162, 2, 'com_content.guidedtours.1', 'COM_GUIDEDTOURS_BASIC_GUIDEDTOUR', '{}'),
+(90, 1, 163, 164, 3, 'plg_system_tour', 'tour', '{}');
+
 
 -- --------------------------------------------------------
 
@@ -183,6 +184,8 @@ INSERT INTO `#__extensions` (`package_id`, `name`, `type`, `element`, `folder`, 
 (0, 'com_workflow', 'component', 'com_workflow', '', 1, 1, 0, 1, 1, '', '{}', ''),
 (0, 'com_mails', 'component', 'com_mails', '', 1, 1, 1, 1, 1, '', '', ''),
 (0, 'com_guidedtours', 'component', 'com_guidedtours', '', 1, 1, 0, 0, 1, '', '{}', '');
+
+
 
 -- Libraries
 INSERT INTO `#__extensions` (`package_id`, `name`, `type`, `element`, `folder`, `client_id`, `enabled`, `access`, `protected`, `locked`, `manifest_cache`, `params`, `custom_data`) VALUES
@@ -369,7 +372,9 @@ INSERT INTO `#__extensions` (`package_id`, `name`, `type`, `element`, `folder`, 
 (0, 'plg_workflow_featuring', 'plugin', 'featuring', 'workflow', 0, 1, 1, 0, 1, '', '{}', '', 1, 0),
 (0, 'plg_workflow_notification', 'plugin', 'notification', 'workflow', 0, 1, 1, 0, 1, '', '{}', '', 2, 0),
 (0, 'plg_workflow_publishing', 'plugin', 'publishing', 'workflow', 0, 1, 1, 0, 1, '', '{}', '', 3, 0),
-(0, 'plg_system_tour', 'plugin', 'guidedtours', 'system', 0, 1, 1, 0, 1, '', '{}', '', 0, NULL, 0, 0);
+(0, 'plg_system_tour', 'plugin', 'tour', 'system', 0, 1, 1, 0, 1, '', '{}', '', 1, 0);
+
+
 
 
 -- Templates

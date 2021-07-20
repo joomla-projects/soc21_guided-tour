@@ -1,4 +1,5 @@
 <?php
+
 /**
  * @package     Joomla.Installation
  * @subpackage  Application
@@ -13,7 +14,7 @@ defined('_JEXEC') or die;
  * Joomla system checks.
  */
 
-const JDEBUG = false;
+const JDEBUG = true;
 
 /*
  * Check if a configuration file already exists.
@@ -21,7 +22,8 @@ const JDEBUG = false;
 
 if (file_exists(JPATH_CONFIGURATION . '/configuration.php')
 	&& (filesize(JPATH_CONFIGURATION . '/configuration.php') > 10)
-	&& !file_exists(JPATH_INSTALLATION . '/index.php'))
+	&& !file_exists(JPATH_INSTALLATION . '/index.php')
+)
 {
 	header('Location: ../index.php');
 	exit();
