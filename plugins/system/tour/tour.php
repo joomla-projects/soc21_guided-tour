@@ -58,8 +58,7 @@ class PlgSystemTour extends CMSPlugin implements SubscriberInterface
 	public function onBeforeRender()
 	{
 		// Run in backend
-		if ($this->app->isClient('administrator'))
-		{
+		if ($this->app->isClient('administrator')) {
 			// Get an instance of the Toolbar
 			$toolbar = Toolbar::getInstance('toolbar');
 		}
@@ -75,8 +74,7 @@ class PlgSystemTour extends CMSPlugin implements SubscriberInterface
 	public function onBeforeCompileHead()
 	{
 		// Only going to run these in the backend for now
-		if ($this->app->isClient('administrator'))
-		{
+		if ($this->app->isClient('administrator')) {
 			// Spliting the URL for get param of the layout,view,option etc
 			$input = Factory::getApplication()->input;
 			$this->loadLanguage();
@@ -94,7 +92,17 @@ class PlgSystemTour extends CMSPlugin implements SubscriberInterface
 
 			HTMLHelper::_(
 				'script',
-				Uri::root() . 'media/plg_system_tour/js/guide.js',
+				Uri::root() . 'build/media_source/plg_system_tour/js/guide.js',
+				array('version' => 'auto', 'relative' => true)
+			);
+			HTMLHelper::_(
+				'script',
+				Uri::root() . 'build/media_source/plg_system_tour/js/guide.js',
+				array('version' => 'auto', 'relative' => true)
+			);
+			HTMLHelper::_(
+				'stylesheet',
+				Uri::root() . 'build/media_source/plg_system_tour/js/guide.js',
 				array('version' => 'auto', 'relative' => true)
 			);
 		}
