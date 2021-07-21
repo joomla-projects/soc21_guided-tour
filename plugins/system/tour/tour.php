@@ -11,33 +11,24 @@
  * @license   GNU General Public License version 2 or later; see LICENSE.txt
  * @link      admin@joomla.org
  */
-
 defined('_JEXEC') or die;
 
-use Joomla\CMS\Factory;
-use Joomla\CMS\Language\Text;
 use Joomla\CMS\Plugin\CMSPlugin;
+use Joomla\Event\SubscriberInterface;
+use Joomla\CMS\Factory;
+use Joomla\CMS\Toolbar\Toolbar;
+use Joomla\CMS\Language\Text;
+use Joomla\CMS\Input\Input;
 use Joomla\CMS\HTML\HTMLHelper;
 use Joomla\CMS\Uri\Uri;
-use Joomla\CMS\WebAsset\WebAssetManager;
-use Joomla\CMS\Component\ComponentHelper;
 
 /**
  * PlgSystemTour
  *
  * @since  __DEPLOY_VERSION__
  */
-
 class PlgSystemTour extends CMSPlugin implements SubscriberInterface
 {
-	/**
-	 * Load the language file on instantiation
-	 *
-	 * @var    boolean
-	 * @since  3.1
-	 */
-	protected $autoloadLanguage = true;
-
 	/**
 	 * Application object.
 	 *
@@ -46,25 +37,23 @@ class PlgSystemTour extends CMSPlugin implements SubscriberInterface
 	 */
 	protected $app;
 	/**
-	 * Returns an array of events this subscriber will listen to.
+	 * function for getSubscribedEvents : new Joomla 4 feature
 	 *
-	 * @return  array
+	 * @return array
 	 */
 	public static function getSubscribedEvents(): array
 	{
 		return [
 			'onBeforeRender' => 'onBeforeRender',
-			'onBeforeCompileHead' => 'onBeforeCompileHead',
+			'onBeforeCompileHead' => 'onBeforeCompileHead'
 		];
 	}
-
 	/**
-	 * Plugin method is the array value in the getSubscribedEvents method
-	 * The plugin then modifies the Event object (if it's not immutable)
-	 */
-
-	/**
-	 * @return void
+	 * Listener for the `onBeforeRender` event
+	 *
+	 * @return  void
+	 *
+	 * @since   __DEPLOY_VERSION__
 	 */
 	public function onBeforeRender()
 	{
@@ -75,6 +64,7 @@ class PlgSystemTour extends CMSPlugin implements SubscriberInterface
 			$toolbar = Toolbar::getInstance('toolbar');
 		}
 	}
+
 	/**
 	 * Listener for the `onBeforeCompileHead` event
 	 *
@@ -87,18 +77,6 @@ class PlgSystemTour extends CMSPlugin implements SubscriberInterface
 		// Only going to run these in the backend for now
 		if ($this->app->isClient('administrator'))
 		{
-			HTMLHelper::_(
-				'script',
-				Uri::root() . '/node_modules/shepherd.js/dist/js/shepherd.min.js',
-				array('version' => 'auto', 'relative' => true)
-			);
-
-			HTMLHelper::_(
-				'stylesheet',
-				Uri::root() . '/node_modules/shepherd.js/dist/css/shepherd-theme-arrow.css',
-				array('version' => 'auto', 'relative' => true)
-			);
-
 			// Spliting the URL for get param of the layout,view,option etc
 			$input = Factory::getApplication()->input;
 			$this->loadLanguage();
@@ -116,7 +94,7 @@ class PlgSystemTour extends CMSPlugin implements SubscriberInterface
 
 			HTMLHelper::_(
 				'script',
-				Uri::root() . 'build/media-source/plg_system_tour/js/guide.js',
+				Uri::root() . 'media/plg_system_tour/js/guide.js',
 				array('version' => 'auto', 'relative' => true)
 			);
 		}
