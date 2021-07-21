@@ -58,7 +58,8 @@ class PlgSystemTour extends CMSPlugin implements SubscriberInterface
 	public function onBeforeRender()
 	{
 		// Run in backend
-		if ($this->app->isClient('administrator')) {
+		if ($this->app->isClient('administrator'))
+		{
 			// Get an instance of the Toolbar
 			$toolbar = Toolbar::getInstance('toolbar');
 		}
@@ -74,7 +75,8 @@ class PlgSystemTour extends CMSPlugin implements SubscriberInterface
 	public function onBeforeCompileHead()
 	{
 		// Only going to run these in the backend for now
-		if ($this->app->isClient('administrator')) {
+		if ($this->app->isClient('administrator'))
+		{
 			// Spliting the URL for get param of the layout,view,option etc
 			$input = Factory::getApplication()->input;
 			$this->loadLanguage();
