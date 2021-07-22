@@ -67,8 +67,11 @@ class PlgSystemTour extends CMSPlugin implements SubscriberInterface
 		// Run in backend
 		if ($this->app->isClient('administrator'))
 		{
-			// Get an instance of the Toolbar
 			$toolbar = Toolbar::getInstance('toolbar');
+			/**
+			 * Booting of the Component
+			 */
+			$model = $this->app->bootComponent('com_guidedtours')->getMVCFactory()->createModel('Steps', 'Administrator', ['ignore_request' => true]);
 		}
 	}
 

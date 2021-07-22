@@ -26,8 +26,8 @@ Joomla = window.Joomla || {};
             text: `Creating a Shepherd tour is easy. too!\
             Just create a \`Tour\` instance, and add as many steps as you want.`,
             attachTo: {
-                element: '.d-flex align-items-center',
-                on: 'bottom'
+                element: '.sidebar-item-title',
+                on: 'right'
             },
             buttons: [{
                     action() {
@@ -45,6 +45,7 @@ Joomla = window.Joomla || {};
             ],
             id: 'creating'
         });
+
         document.getElementById("startTourBtn").addEventListener('click', function() {
             tour.start();
         });
