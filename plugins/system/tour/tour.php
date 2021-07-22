@@ -18,7 +18,6 @@ use Joomla\Event\SubscriberInterface;
 use Joomla\CMS\Factory;
 use Joomla\CMS\Toolbar\Toolbar;
 use Joomla\CMS\Language\Text;
-use Joomla\CMS\Input\Input;
 use Joomla\CMS\HTML\HTMLHelper;
 use Joomla\CMS\Uri\Uri;
 
@@ -29,6 +28,14 @@ use Joomla\CMS\Uri\Uri;
  */
 class PlgSystemTour extends CMSPlugin implements SubscriberInterface
 {
+	/**
+	 * Load the language file on instantiation
+	 *
+	 * @var    boolean
+	 * @since  3.1
+	 */
+	protected $autoloadLanguage = true;
+
 	/**
 	 * Application object.
 	 *
@@ -74,10 +81,19 @@ class PlgSystemTour extends CMSPlugin implements SubscriberInterface
 	 */
 	public function onBeforeCompileHead()
 	{
-		// Only going to run these in the backend for now
+
 		if ($this->app->isClient('administrator'))
 		{
-			// Spliting the URL for get param of the layout,view,option etc
+			HTMLHelper::_(
+				'script',
+				Uri::root() . 'node_modules/shepherd.js/dist/js/shepherd.min.js',
+				array('version' => 'auto', 'relative' => true)
+			);
+			HTMLHelper::_(
+				'stylesheet',
+				Uri::root() . 'node_modules/shepherd.js/dist/css/shepherd.css',
+				array('version' => 'auto', 'relative' => true)
+			);
 			$input = Factory::getApplication()->input;
 			$this->loadLanguage();
 			Factory::getDocument()->addScriptOptions(
@@ -94,16 +110,6 @@ class PlgSystemTour extends CMSPlugin implements SubscriberInterface
 
 			HTMLHelper::_(
 				'script',
-				Uri::root() . 'build/media_source/plg_system_tour/js/guide.js',
-				array('version' => 'auto', 'relative' => true)
-			);
-			HTMLHelper::_(
-				'script',
-				Uri::root() . 'build/media_source/plg_system_tour/js/guide.js',
-				array('version' => 'auto', 'relative' => true)
-			);
-			HTMLHelper::_(
-				'stylesheet',
 				Uri::root() . 'build/media_source/plg_system_tour/js/guide.js',
 				array('version' => 'auto', 'relative' => true)
 			);
