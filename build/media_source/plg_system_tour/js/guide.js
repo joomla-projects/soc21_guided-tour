@@ -9,6 +9,8 @@ Joomla = window.Joomla || {};
         btn.innerHTML = '<span class="fas fa-car-side" aria-hidden="true"></span>' + 'Take the Tour' + '</button>';
         document.getElementById('toolbar').appendChild(btn);
 
+
+
         const tour = new Shepherd.Tour({
             defaultStepOptions: {
                 cancelIcon: {

@@ -84,16 +84,6 @@ class PlgSystemTour extends CMSPlugin implements SubscriberInterface
 
 		if ($this->app->isClient('administrator'))
 		{
-			HTMLHelper::_(
-				'script',
-				Uri::root() . 'node_modules/shepherd.js/dist/js/shepherd.min.js',
-				array('version' => 'auto', 'relative' => true)
-			);
-			HTMLHelper::_(
-				'stylesheet',
-				Uri::root() . 'node_modules/shepherd.js/dist/css/shepherd.css',
-				array('version' => 'auto', 'relative' => true)
-			);
 			$input = Factory::getApplication()->input;
 			$this->loadLanguage();
 			Factory::getDocument()->addScriptOptions(
@@ -111,6 +101,21 @@ class PlgSystemTour extends CMSPlugin implements SubscriberInterface
 			HTMLHelper::_(
 				'script',
 				Uri::root() . 'build/media_source/plg_system_tour/js/guide.js',
+				array('version' => 'auto', 'relative' => true)
+			);
+			HTMLHelper::_(
+				'script',
+				Uri::root() . 'build/media_source/plg_system_tour/js/shepherd.min.js',
+				array('version' => 'auto', 'relative' => true)
+			);
+			HTMLHelper::_(
+				'script',
+				Uri::root() . 'build/media_source/plg_system_tour/js/popper.min.js',
+				array('version' => 'auto', 'relative' => true)
+			);
+			HTMLHelper::_(
+				'stylesheet',
+				Uri::root() . 'build/media_source/plg_system_tour/css/shepherd.css',
 				array('version' => 'auto', 'relative' => true)
 			);
 		}
