@@ -21,6 +21,12 @@ use Joomla\CMS\Language\Text;
 use Joomla\CMS\HTML\HTMLHelper;
 use Joomla\CMS\Uri\Uri;
 
+use Joomla\Component\Guidedtours\Administrator\Model;
+
+use Joomla\CMS\Application\CMSApplication;
+use Joomla\CMS\Component\ComponentHelper;
+use Joomla\CMS\Environment\Browser;
+
 /**
  * PlgSystemTour
  *
@@ -67,11 +73,39 @@ class PlgSystemTour extends CMSPlugin implements SubscriberInterface
 		// Run in backend
 		if ($this->app->isClient('administrator'))
 		{
-			$toolbar = Toolbar::getInstance('toolbar');
 			/**
-			 * Booting of the Component
+			 * Booting of the Component to get the
 			 */
-			$model = $this->app->bootComponent('com_guidedtours')->getMVCFactory()->createModel('Steps', 'Administrator', ['ignore_request' => true]);
+			$model = $this->app->bootComponent('com_guidedtours')->getMVCFactory()->createModel('Tours', 'Administrator', ['ignore_request' => true]);
+			/**
+			 * Loading the Model
+			 */
+			/**
+			 * $model->setState('id', (int) $this->params->get('id'));
+			 * $model->setState('title', $this->params->get('title'));
+			 * $model->setState('description', $this->params->get('description'));
+			 */
+
+			$guidedTours = $model->getItems();
+
+			// $cnt = 0;
+
+			$toolbar = Toolbar::getInstance('toolbar');
+			$dropdown = $toolbar->dropdownButton('guidedtours')
+				->text('Take the Tour')
+				->toggleSplit(false)
+				->icon('fas fa-car-side')
+				->buttonClass('btn btn-action')
+				->listCheck(true);
+
+			$childBar = $dropdown->getChildToolbar();
+
+			foreach ($guidedTours as $a)
+			{
+				$childBar->separatorButton($a->title)
+					->text($a->title)
+					->buttonClass('btn btn-success btn-lg');
+			}
 		}
 	}
 
@@ -87,25 +121,12 @@ class PlgSystemTour extends CMSPlugin implements SubscriberInterface
 
 		if ($this->app->isClient('administrator'))
 		{
-			$input = Factory::getApplication()->input;
-			$this->loadLanguage();
-			Factory::getDocument()->addScriptOptions(
-				'tour-guide',
-				array(
-					'urlOption' => $input->get('option'),
-					'urlView' => $input->get('view'),
-					'urlLayout' => $input->get('layout'),
-					'langtag'  => Factory::getLanguage()->getTag(),
-					'baseUrl' => Uri::root(),
-					'btnName' => Text::_('COM_PLG_TOUR_START_TOUR_BTN'),
-				)
-			);
-
 			HTMLHelper::_(
 				'script',
 				Uri::root() . 'build/media_source/plg_system_tour/js/guide.js',
 				array('version' => 'auto', 'relative' => true)
 			);
+
 			HTMLHelper::_(
 				'script',
 				Uri::root() . 'build/media_source/plg_system_tour/js/shepherd.min.js',
