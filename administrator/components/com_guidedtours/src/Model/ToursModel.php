@@ -47,16 +47,16 @@ class ToursModel extends ListModel
 		if (empty($config['filter_fields']))
 		{
 			$config['filter_fields'] = array(
-				'id', 'a.id',
-				'title', 'a.title',
-				'description', 'a.description',
-				'alias', 'a.alias',
-				'published', 'a.published',
-				'ordering', 'a.ordering',
-				'created_by', 'a.created_by',
-				'modified', 'a.modified',
-				'modified_by', 'a.modified_by',
-				'state', 'a.state',
+			'id', 'a.id',
+			'title', 'a.title',
+			'description', 'a.description',
+			'alias', 'a.alias',
+			'published', 'a.published',
+			'ordering', 'a.ordering',
+			'created_by', 'a.created_by',
+			'modified', 'a.modified',
+			'modified_by', 'a.modified_by',
+			'state', 'a.state',
 			);
 		}
 

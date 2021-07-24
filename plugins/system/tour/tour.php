@@ -74,24 +74,31 @@ class PlgSystemTour extends CMSPlugin implements SubscriberInterface
 		if ($this->app->isClient('administrator'))
 		{
 			/**
-			 * Booting of the Component to get the
+			 * Booting of the Component to get the data in JSON Format
 			 */
-			$model = $this->app->bootComponent('com_guidedtours')->getMVCFactory()->createModel('Tours', 'Administrator', ['ignore_request' => true]);
-			/**
-			 * Loading the Model
-			 */
-			/**
-			 * $model->setState('id', (int) $this->params->get('id'));
-			 * $model->setState('title', $this->params->get('title'));
-			 * $model->setState('description', $this->params->get('description'));
-			 */
+			$myTours = $this->app->bootComponent('com_guidedtours')->getMVCFactory()->createModel('Tours', 'Administrator', ['ignore_request' => true]);
+			$mySteps = $this->app->bootComponent('com_guidedtours')->getMVCFactory()->createModel('Steps', 'Administrator', ['ignore_request' => true]);
 
-			$guidedTours = $model->getItems();
-
-			// $cnt = 0;
+			$tours = $myTours->getItems();
+			$steps = $mySteps->getItems();
+			/**
+			 *
+			 * Foreach ($steps as $a) {
+			 *	$ans = $a->title;
+			 *	$ans2 = $a->tour_id;
+			 *	$aa = json_encode($ans);
+			 *	$ab = json_encode($ans2);
+			 *	print_r($aa);
+			 *	print_r($ab);
+			 *  }
+			 * foreach ($tours as $a) {
+			 * $ans = $a->title;
+			 * print_r($ans);
+			 * }
+			 */
 
 			$toolbar = Toolbar::getInstance('toolbar');
-			$dropdown = $toolbar->dropdownButton('guidedtours')
+			$dropdown = $toolbar->dropdownButton()
 				->text('Take the Tour')
 				->toggleSplit(false)
 				->icon('fas fa-car-side')
@@ -100,12 +107,18 @@ class PlgSystemTour extends CMSPlugin implements SubscriberInterface
 
 			$childBar = $dropdown->getChildToolbar();
 
-			foreach ($guidedTours as $a)
+			foreach ($tours as $a)
 			{
 				$childBar->separatorButton($a->title)
 					->text($a->title)
-					->buttonClass('btn btn-success btn-lg');
+					->buttonClass('btn btn-success ');
 			}
+
+			/**
+			 * Factory::getDocument()->addScriptOptions('plgSystemTour', $this->plgSystemTour);
+			 *Text::script doesn't have a sprintf equivalent so work around this
+			 *
+			 */
 		}
 	}
 

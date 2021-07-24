@@ -158,7 +158,7 @@ class HtmlView extends BaseHtmlView
 	{
 		return array(
 
-			'a.id'           => Text::_('JGRID_HEADING_ID'),
+		'a.id'           => Text::_('JGRID_HEADING_ID'),
 		);
 	}
 }

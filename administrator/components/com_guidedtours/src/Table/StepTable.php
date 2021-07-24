@@ -42,12 +42,12 @@ class StepTable extends Table
 	/**
 	 * Overloaded store function
 	 *
-	 * @param   boolean  $updateNulls  True to update fields even if they are null.
+	 * @param   boolean $updateNulls True to update fields even if they are null.
 	 *
-	 * @return  mixed  False on failure, positive integer on success.
+	 * @return mixed  False on failure, positive integer on success.
 	 *
-	 * @see     Table::store()
-	 * @since   4.0.0
+	 * @see   Table::store()
+	 * @since 4.0.0
 	 */
 	public function store($updateNulls = true)
 	{

@@ -137,7 +137,6 @@ class StepsModel extends ListModel
 		// Create a new query object.
 		$db    = $this->getDbo();
 		$query = $db->getQuery(true);
-		$user  = Factory::getUser();
 
 		// Select the required fields from the table.
 		$query->select(
@@ -148,11 +147,27 @@ class StepsModel extends ListModel
 		);
 		$query->from('#__guidedtour_steps AS a');
 
-		// The tour id should be passed in url or hidden form variables
-		$tour_id     = $this->getState('tour_id');
-		$query->where('tour_id = ' . $tour_id);
+		/**
+		 * The tour id should be passed in url or hidden form variables
+		 */
 
-		// Filter by published state
+		/**
+		 *  Filter Tour ID by levels
+		 */
+		$tour_id     = $this->getState('filter.tour_id');
+
+		if (is_numeric($tour_id))
+		{
+			$tour_id = (int) $tour_id;
+			$query->where($db->quoteName('a.tour_id') . ' = :tour_id')
+				->bind(':tour_id', $tour_id, ParameterType::INTEGER);
+		}
+		elseif (is_array($tour_id))
+		{
+			$tour_id = ArrayHelper::toInteger($tour_id);
+			$query->whereIn($db->quoteName('a.tour_id'), $tour_id);
+		}
+
 		$published = (string) $this->getState('filter.published');
 
 		if (is_numeric($published))
@@ -163,6 +178,15 @@ class StepsModel extends ListModel
 		elseif ($published === '')
 		{
 			$query->where('(' . $db->quoteName('a.state') . ' = 0 OR ' . $db->quoteName('a.state') . ' = 1)');
+		}
+
+		// Filter by search in title.
+		$search = $this->getState('filter.search');
+
+		if (!empty($search))
+		{
+			$search = $db->quote('%' . str_replace(' ', '%', $db->escape(trim($search), true) . '%'));
+			$query->where('(a.title LIKE ' . $search . ')');
 		}
 
 		// Add the list ordering clause.
