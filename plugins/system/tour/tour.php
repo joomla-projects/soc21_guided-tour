@@ -15,17 +15,10 @@ defined('_JEXEC') or die;
 
 use Joomla\CMS\Plugin\CMSPlugin;
 use Joomla\Event\SubscriberInterface;
-use Joomla\CMS\Factory;
 use Joomla\CMS\Toolbar\Toolbar;
-use Joomla\CMS\Language\Text;
 use Joomla\CMS\HTML\HTMLHelper;
 use Joomla\CMS\Uri\Uri;
-
-use Joomla\Component\Guidedtours\Administrator\Model;
-
-use Joomla\CMS\Application\CMSApplication;
-use Joomla\CMS\Component\ComponentHelper;
-use Joomla\CMS\Environment\Browser;
+use Joomla\CMS\Factory;
 
 /**
  * PlgSystemTour
@@ -49,6 +42,14 @@ class PlgSystemTour extends CMSPlugin implements SubscriberInterface
 	 * @since  __DEPLOY_VERSION__
 	 */
 	protected $app;
+
+	/**
+	 * Application object.
+	 *
+	 * @var    JApplicationCms
+	 * @since  __DEPLOY_VERSION__
+	 */
+	protected $guide;
 	/**
 	 * function for getSubscribedEvents : new Joomla 4 feature
 	 *
@@ -81,21 +82,21 @@ class PlgSystemTour extends CMSPlugin implements SubscriberInterface
 
 			$tours = $myTours->getItems();
 			$steps = $mySteps->getItems();
-			/**
-			 *
-			 * Foreach ($steps as $a) {
-			 *	$ans = $a->title;
-			 *	$ans2 = $a->tour_id;
-			 *	$aa = json_encode($ans);
-			 *	$ab = json_encode($ans2);
-			 *	print_r($aa);
-			 *	print_r($ab);
-			 *  }
-			 * foreach ($tours as $a) {
-			 * $ans = $a->title;
-			 * print_r($ans);
-			 * }
-			 */
+
+			foreach ($tours as $tour)
+			{
+				foreach ($steps as $step)
+				{
+					if ($tour->id == $step->tour_id)
+					{
+						// TODO
+					}
+				}
+			}
+
+			$document = Factory::getDocument();
+			$document->addScriptOptions('tours', $tours);
+			$document->addScriptOptions('steps', $steps);
 
 			$toolbar = Toolbar::getInstance('toolbar');
 			$dropdown = $toolbar->dropdownButton()
@@ -111,14 +112,8 @@ class PlgSystemTour extends CMSPlugin implements SubscriberInterface
 			{
 				$childBar->separatorButton($a->title)
 					->text($a->title)
-					->buttonClass('btn btn-success ');
+					->buttonClass('btn btn-primary ');
 			}
-
-			/**
-			 * Factory::getDocument()->addScriptOptions('plgSystemTour', $this->plgSystemTour);
-			 *Text::script doesn't have a sprintf equivalent so work around this
-			 *
-			 */
 		}
 	}
 
