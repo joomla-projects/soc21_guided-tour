@@ -82,21 +82,33 @@ class PlgSystemTour extends CMSPlugin implements SubscriberInterface
 
 			$tours = $myTours->getItems();
 			$steps = $mySteps->getItems();
+			$document = Factory::getDocument();
+
+			$newsteps = [];
+
+			foreach ($steps as $step)
+			{
+				if (!isset($newsteps[$step->tour_id]))
+				{
+					$newsteps[$step->tour_id] = [];
+				}
+
+				$newsteps[$step->tour_id][] = $step;
+			}
 
 			foreach ($tours as $tour)
 			{
-				foreach ($steps as $step)
+				$tour->steps = [];
+
+				if (isset($newsteps[$tour->id]))
 				{
-					if ($tour->id == $step->tour_id)
-					{
-						// TODO
-					}
+					$tour->steps = $newsteps[$tour->id];
 				}
 			}
 
-			$document = Factory::getDocument();
-			$document->addScriptOptions('tours', $tours);
-			$document->addScriptOptions('steps', $steps);
+			$mySteps = json_encode($newsteps);
+
+			$document->addScriptOptions('mySteps', $mySteps);
 
 			$toolbar = Toolbar::getInstance('toolbar');
 			$dropdown = $toolbar->dropdownButton()
