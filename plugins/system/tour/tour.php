@@ -106,7 +106,7 @@ class PlgSystemTour extends CMSPlugin implements SubscriberInterface
 				}
 			}
 
-			$mySteps = json_encode($newsteps);
+			$mySteps = json_encode($tours);
 
 			$document->addScriptOptions('mySteps', $mySteps);
 
