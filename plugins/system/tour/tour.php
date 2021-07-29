@@ -115,16 +115,16 @@ class PlgSystemTour extends CMSPlugin implements SubscriberInterface
 				->text('Take the Tour')
 				->toggleSplit(false)
 				->icon('fas fa-car-side')
-				->buttonClass('btn btn-action')
-				->listCheck(true);
+				->buttonClass('btn btn-action');
 
 			$childBar = $dropdown->getChildToolbar();
 
 			foreach ($tours as $a)
 			{
-				$childBar->separatorButton($a->title)
+				$childBar->basicButton('tour')
 					->text($a->title)
-					->buttonClass('btn btn-primary ');
+					->attributes(['data-id' => $a->id])
+					->buttonClass('btn btn-primary');
 			}
 		}
 	}
