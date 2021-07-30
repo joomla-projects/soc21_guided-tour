@@ -3,6 +3,7 @@ Joomla = window.Joomla || {};
     document.addEventListener('DOMContentLoaded', function() {
         var mySteps = Joomla.getOptions('mySteps');
         const obj = JSON.parse(mySteps);
+        console.log(obj.steps);
         // console.log(obj);
 
         // console.log(one);
