@@ -3,7 +3,7 @@ Joomla = window.Joomla || {};
     document.addEventListener('DOMContentLoaded', function() {
         var mySteps = Joomla.getOptions('mySteps');
         const obj = JSON.parse(mySteps);
-        console.log(obj.steps);
+        // console.log(obj[2].steps.length);
         // console.log(obj);
 
         // console.log(one);
@@ -52,7 +52,31 @@ Joomla = window.Joomla || {};
                     ],
                     id: 'creating'
                 });
-
+                for (index = 0; index < (obj[mainID].steps.length); index++) {
+                    tour.addStep({
+                        title: obj[mainID].steps[index].title,
+                        text: obj[mainID].steps[index].description,
+                        attachTo: {
+                            element: '.hero-example',
+                            on: 'bottom'
+                        },
+                        buttons: [{
+                                action() {
+                                    return this.back();
+                                },
+                                classes: 'shepherd-button-secondary',
+                                text: 'Back'
+                            },
+                            {
+                                action() {
+                                    return this.next();
+                                },
+                                text: 'Next'
+                            }
+                        ],
+                        id: obj[mainID].steps[index].id
+                    });
+                }
                 tour.start();
             });
         }
