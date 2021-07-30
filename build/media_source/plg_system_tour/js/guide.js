@@ -2,7 +2,11 @@ Joomla = window.Joomla || {};
 (function(Joomla, window) {
     document.addEventListener('DOMContentLoaded', function() {
         var mySteps = Joomla.getOptions('mySteps');
+        const obj = JSON.parse(mySteps);
+        // console.log(obj);
 
+        // console.log(one);
+        // console.log(obj[0].steps);
         // Accessing the 'data-id' 
         // 1. for each tour element
         // 2. get attribute id of each tour
@@ -11,7 +15,7 @@ Joomla = window.Joomla || {};
         for (var i = 0; i < btnGoods.length; i++) {
             btnGoods[i].addEventListener('click', function() {
                 var dataID = this.getAttribute('data-id');
-                console.log(dataID);
+                var mainID = obj.findIndex(x => x.id === dataID);
 
                 // Integrating ShepherdJS
                 const tour = new Shepherd.Tour({
@@ -25,9 +29,8 @@ Joomla = window.Joomla || {};
                 });
 
                 tour.addStep({
-                    title: 'Creating a Shepherd Tour',
-                    text: `Creating a Shepherd tour is easy. too!\
-                    Just create a \`Tour\` instance, and add as many steps as you want.`,
+                    title: obj[mainID].title,
+                    text: obj[mainID].description,
                     attachTo: {
                         element: '.hero-example',
                         on: 'bottom'
@@ -48,10 +51,8 @@ Joomla = window.Joomla || {};
                     ],
                     id: 'creating'
                 });
-                document.getElementsByClassName(".button-tour").addEventListener('click', function() {
-                    tour.start();
-                });
 
+                tour.start();
             });
         }
     });
