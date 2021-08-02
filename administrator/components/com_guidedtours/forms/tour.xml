@@ -143,7 +143,32 @@
 		section="tour"
 	/>
 
-	
+	<!-- <fields name="params">
+		<fieldset name="basic">
+			
+			<field
+				name="forbiddenlist"
+				type="GuidedtoursComponentSections"
+				label="JGUIDEDTOURS_EXTENSION_FORBIDDEN_LABEL"
+				description="JGUIDEDTOURS_EXTENSION_FORBIDDEN_DESCRIPTION"
+				multiple="multiple"
+				layout="joomla.form.field.list-fancy-select"
+			/>
+		</fieldset>
+	</fields> -->
+	<field
+				name="allowedlist"
+				type="Contenttype"
+				label="JGUIDEDTOURS_EXTENSION_ALLOWED_LABEL"
+				description="JGUIDEDTOURS_EXTENSION_ALLOWED_DESCRIPTION"
+				multiple="multiple"
+				layout="joomla.form.field.list-fancy-select"
+				filter="JComponentHelper::filterText"
+				buttons="true"
+				hide="readmore,pagebreak"
+			>
+			<option value="*">JALL</option>
+		</field>
 	<fieldset name="permissions" label="JCONFIG_PERMISSIONS_LABEL">
 		<field
 			name="asset_id"
