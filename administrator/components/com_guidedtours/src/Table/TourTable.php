@@ -28,6 +28,14 @@ use Joomla\Database\DatabaseDriver;
 class TourTable extends Table
 {
 	/**
+	 * An array of key names to be json encoded in the bind function
+	 *
+	 * @var    array
+	 * @since  3.3
+	 */
+	protected $_jsonEncode = array('extensions');
+
+	/**
 	 * Constructor
 	 *
 	 * @param   DatabaseDriver $db Database connector object
@@ -39,10 +47,11 @@ class TourTable extends Table
 		parent::__construct('#__guidedtours', 'id', $db);
 	}
 
+
 	/**
 	 * Overloaded store function
 	 *
-	 * @param   boolean $updateNulls True to update fields even if they are null.
+	 * @param   boolean $updateNulls True to update extensions even if they are null.
 	 *
 	 * @return mixed  False on failure, positive integer on success.
 	 *

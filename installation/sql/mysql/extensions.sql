@@ -896,6 +896,7 @@ CREATE TABLE IF NOT EXISTS `#__guidedtours` (
   `alias` varchar(400) CHARACTER SET utf8mb4 COLLATE utf8mb4_bin NOT NULL,
   `description` text NOT NULL,
   `ordering` int NOT NULL DEFAULT 0,
+  `extensions` text NOT NULL,
   `created` datetime NOT NULL,
   `created_by` int NOT NULL DEFAULT 0,
   `modified` datetime NOT NULL,

@@ -79,9 +79,19 @@ class PlgSystemTour extends CMSPlugin implements SubscriberInterface
 			 */
 			$myTours = $this->app->bootComponent('com_guidedtours')->getMVCFactory()->createModel('Tours', 'Administrator', ['ignore_request' => true]);
 			$mySteps = $this->app->bootComponent('com_guidedtours')->getMVCFactory()->createModel('Steps', 'Administrator', ['ignore_request' => true]);
+			$theCurrentExtension = $this->app->input->get('option');
+			$myTours->setState('list.extensions', $theCurrentExtension);
+
+			// $myTours->setState('filter.published', 1);
 
 			$tours = $myTours->getItems();
 			$steps = $mySteps->getItems();
+
+			// $myTours->setState('filter.extensions', $theCurrentExtension);
+			// print_r($theCurrentExtension);
+
+			// Print_r($theCurrentExtension);
+
 			$document = Factory::getDocument();
 
 			$newsteps = [];

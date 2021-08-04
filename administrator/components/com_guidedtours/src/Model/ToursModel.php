@@ -47,16 +47,17 @@ class ToursModel extends ListModel
 		if (empty($config['filter_fields']))
 		{
 			$config['filter_fields'] = array(
-			'id', 'a.id',
-			'title', 'a.title',
-			'description', 'a.description',
-			'alias', 'a.alias',
-			'published', 'a.published',
-			'ordering', 'a.ordering',
-			'created_by', 'a.created_by',
-			'modified', 'a.modified',
-			'modified_by', 'a.modified_by',
-			'state', 'a.state',
+				'id', 'a.id',
+				'title', 'a.title',
+				'description', 'a.description',
+				'alias', 'a.alias',
+				'published', 'a.published',
+				'ordering', 'a.ordering',
+				'extensions', 'a.extensions',
+				'created_by', 'a.created_by',
+				'modified', 'a.modified',
+				'modified_by', 'a.modified_by',
+				'state', 'a.state',
 			);
 		}
 
@@ -153,7 +154,19 @@ class ToursModel extends ListModel
 			$query->where('(a.title LIKE ' . $search . ')');
 		}
 
-		// Add the list ordering clause.
+		// $search = $this->getState('filter.search');
+		$extensions = $this->getState('list.extensions');
+
+		if (!empty($extensions))
+		{
+			$extensions = '%' . str_replace(' ', '%', trim($extensions)) . '%';
+			$query->where(
+				$db->quoteName('a.extensions') . ' LIKE :extension1 OR ' . $db->quoteName('a.*') . ' LIKE :extension2'
+			)
+				->bind([':extension1', ':extension2'], $extensions);
+			print_r($extensions);
+		}
+
 		$orderCol  = $this->state->get('list.ordering', 'a.id');
 		$orderDirn = $this->state->get('list.direction', 'ASC');
 
