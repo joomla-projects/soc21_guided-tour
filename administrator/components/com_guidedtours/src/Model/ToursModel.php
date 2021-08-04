@@ -161,12 +161,13 @@ class ToursModel extends ListModel
 		{
 			$extensions = '%' . str_replace(' ', '%', trim($extensions)) . '%';
 			$query->where(
-				$db->quoteName('a.extensions') . ' LIKE :extension1 OR ' . $db->quoteName('a.*') . ' LIKE :extension2'
+				'(' . $db->quoteName('a.extensions') . ' LIKE :extensions1 )'
 			)
-				->bind([':extension1', ':extension2'], $extensions);
-			print_r($extensions);
+				->bind([':extensions1'], $extensions);
 		}
 
+		// $extensions = $this->state->get('filter.extensions');
+		// print_r($extensions);
 		$orderCol  = $this->state->get('list.ordering', 'a.id');
 		$orderDirn = $this->state->get('list.direction', 'ASC');
 
