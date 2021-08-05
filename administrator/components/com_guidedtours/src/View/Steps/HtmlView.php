@@ -108,7 +108,7 @@ class HtmlView extends BaseHtmlView
 
 		$toolbar = Toolbar::getInstance('toolbar');
 
-		ToolbarHelper::title(Text::_('Guided tour - List of Steps'), 'steps');
+		ToolbarHelper::title(Text::_('Guided Tour - List of Steps'), 'steps');
 
 		if ($canDo->get('core.create'))
 		{
@@ -158,7 +158,7 @@ class HtmlView extends BaseHtmlView
 	{
 		return array(
 
-		'a.id'           => Text::_('JGRID_HEADING_ID'),
+			'a.id'           => Text::_('JGRID_HEADING_ID'),
 		);
 	}
 }

@@ -37,7 +37,7 @@ $editIcon = '<span class="fa fa-pen-square me-2" aria-hidden="true"></span>';
 $title = GuidedtoursHelper::getTourTitle($this->state->get('tour_id'))->title;
 $tour_id = $this->state->get('tour_id')
 ?>
-<h3><?php echo Text::_('List of Steps for Guidedtour ') . ' ' . $tour_id . ': ' . $title; ?></h3>
+<h3><?php echo Text::_('List of Steps for Guided Tour ') . ' ' . $tour_id . ': ' . $title; ?></h3>
 <form action="<?php echo Route::_('index.php?option=com_guidedtours&view=steps'); ?>" method="post" name="adminForm" id="adminForm">
 	<div class="row">
 		<div class="col-md-12">
@@ -56,25 +56,22 @@ $tour_id = $this->state->get('tour_id')
 				:
 					?>
 					<table class="table" id="mytoursList">
-						<caption id="captionTable">
-							<?php echo Text::_('#'); ?>, <?php echo Text::_('JGLOBAL_SORTED_BY'); ?>
-						</caption>
 						<thead>
 							<tr>
-								<td style="width:1%" class="text-center">
+								<td>
 									<?php echo HTMLHelper::_('grid.checkall'); ?>
 								</td>
-								<th scope="col" style="width:1%; min-width:85px" class="text-center">
+								<th scope="col">
 									<?php echo HTMLHelper::_('searchtools.sort', 'JSTATUS', 'a.published', $listDirn, $listOrder); ?>
 								</th>
-								<th scope="col" style="width:20%">
+								<th scope="col">
 									<?php echo HTMLHelper::_('searchtools.sort', 'JGLOBAL_TITLE', 'a.title', $listDirn, $listOrder); ?>
 								</th>
-								<th scope="col" style="width:20%">
+								<th scope="col">
 									<?php echo HTMLHelper::_('searchtools.sort', 'Description', 'a.description', $listDirn, $listOrder); ?>
 								</th>
 
-								<th scope="col" style="width:5%" class="d-none d-md-table-cell">
+								<th scope="col">
 									<?php echo HTMLHelper::_('searchtools.sort', 'JGRID_HEADING_ID', 'a.id', $listDirn, $listOrder); ?>
 								</th>
 							</tr>
@@ -87,7 +84,7 @@ $tour_id = $this->state->get('tour_id')
 							:
 								?>
 								<tr class="row<?php echo $i; ?>">
-									<td class="text-center">
+									<td>
 										<?php echo HTMLHelper::_('grid.id', $i, $item->id); ?>
 									</td>
 									<td>

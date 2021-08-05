@@ -18,23 +18,9 @@ defined('_JEXEC') or die;
 
 use Joomla\CMS\Factory;
 use Joomla\CMS\Form\Form;
-use Joomla\CMS\Language\LanguageHelper;
 use Joomla\CMS\Language\Text;
-use Joomla\Registry\Registry;
 use Joomla\CMS\MVC\Model\AdminModel;
 use Joomla\CMS\Table\Table;
-use Joomla\CMS\Table\TableInterface;
-use Joomla\Component\Guidedtours\Administrator\Extension\GuidedtoursComponent;
-use Joomla\CMS\Log\Log;
-use Joomla\CMS\Plugin\PluginHelper;
-use Joomla\CMS\String\PunycodeHelper;
-use Joomla\CMS\Table\Category;
-use Joomla\CMS\UCM\UCMType;
-use Joomla\CMS\Workflow\Workflow;
-use Joomla\Component\Content\Administrator\Helper\ContentHelper;
-use Joomla\Component\Fields\Administrator\Helper\FieldsHelper;
-use Joomla\Component\Workflow\Administrator\Table\StageTable;
-use Joomla\Utilities\ArrayHelper;
 
 /**
  * Item Model for a single tour.

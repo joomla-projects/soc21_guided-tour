@@ -46,30 +46,27 @@ $editIcon = '<span class="fa fa-pen-square me-2" aria-hidden="true"></span>';
 				:
 					?>
 					<table class="table" id="mytoursList">
-						<caption id="captionTable">
-							<?php echo Text::_('List'); ?>, <?php echo Text::_('JGLOBAL_SORTED_BY'); ?>
-						</caption>
 						<thead>
 							<tr>
-								<td style="width:1%" class="text-center">
+								<td class="text-center">
 									<?php echo HTMLHelper::_('grid.checkall'); ?>
 								</td>
-								<th scope="col" style="width:1%; min-width:85px" class="text-center">
+								<th scope="col">
 									<?php echo HTMLHelper::_('searchtools.sort', 'JSTATUS', 'a.state', $listDirn, $listOrder); ?>
 								</th>
-								<th scope="col" style="width:20%">
+								<th scope="col">
 									<?php echo HTMLHelper::_('searchtools.sort', 'Tour Title', 'a.title', $listDirn, $listOrder); ?>
 								</th>
-								<th scope="col" style="width:20%">
+								<th scope="col">
 									<?php echo HTMLHelper::_('searchtools.sort', 'Description', 'a.description', $listDirn, $listOrder); ?>
 								</th>
 
-								<th scope="col" style="width:10%">
+								<th scope="col">
 									<?php echo HTMLHelper::_('searchtools.sort', 'Steps', 'a.distance', $listDirn, $listOrder); ?>
 								</th>
 
 
-								<th scope="col" style="width:5%" class="d-none d-md-table-cell">
+								<th scope="col">
 									<?php echo HTMLHelper::_('searchtools.sort', 'JGRID_HEADING_ID', 'a.id', $listDirn, $listOrder); ?>
 								</th>
 							</tr>
