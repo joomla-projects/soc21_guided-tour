@@ -36,8 +36,7 @@ class ToursModel extends ListModel
 	 */
 	public function __construct($config = array())
 	{
-		if (empty($config['filter_fields']))
-		{
+		if (empty($config['filter_fields'])) {
 			$config['filter_fields'] = array(
 				'id', 'a.id',
 				'title', 'a.title',
@@ -127,38 +126,34 @@ class ToursModel extends ListModel
 		// Filter by published state
 		$published = (string) $this->getState('filter.published');
 
-		if (is_numeric($published))
-		{
+		if (is_numeric($published)) {
 			$query->where($db->quoteName('a.state') . ' = :published');
 			$query->bind(':published', $published, ParameterType::INTEGER);
-		}
-		elseif ($published === '')
-		{
+		} elseif ($published === '') {
 			$query->where('(' . $db->quoteName('a.state') . ' = 0 OR ' . $db->quoteName('a.state') . ' = 1)');
 		}
 
 		// Filter by search in title.
 		$search = $this->getState('filter.search');
 
-		if (!empty($search))
-		{
+		if (!empty($search)) {
 			$search = $db->quote('%' . str_replace(' ', '%', $db->escape(trim($search), true) . '%'));
 			$query->where('(a.title LIKE ' . $search . ')');
 		}
 
+		// Filter by extensions in Component
 		$extensions = $this->getState('list.extensions');
 
-		if (!empty($extensions))
-		{
-			$extensions = $db->quote('%' . str_replace(' ', '%', $db->escape(trim($extensions), true) . '%'), false);
-			$all = $db->quote('%' . str_replace(' ', '%', $db->escape('*', true) . '%'), false);
+		if (!empty($extensions)) {
+			$extensions = '%' . $extensions . '%';
+			$all = '%*%';
 			$query->where(
-				'(' . $db->quoteName('a.extensions') . ' LIKE ' . $all . 'OR' . $db->quoteName('a.extensions') . ' LIKE ' . $extensions . ')'
-			);
+				'(' . $db->quoteName('a.extensions') . ' LIKE :all  OR ' . $db->quoteName('a.extensions') . ' LIKE :extensions)'
+			)
+				->bind([':all'], $all)
+				->bind([':extensions'], $extensions);
 		}
 
-		// $extensions = $this->state->get('filter.extensions');
-		// print_r($extensions);
 		$orderCol  = $this->state->get('list.ordering', 'a.id');
 		$orderDirn = $this->state->get('list.direction', 'ASC');
 
