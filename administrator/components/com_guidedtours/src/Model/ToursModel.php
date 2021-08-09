@@ -146,16 +146,15 @@ class ToursModel extends ListModel
 			$query->where('(a.title LIKE ' . $search . ')');
 		}
 
-		// $search = $this->getState('filter.search');
 		$extensions = $this->getState('list.extensions');
 
 		if (!empty($extensions))
 		{
-			$extensions = '%' . str_replace(' ', '%', trim($extensions)) . '%';
+			$extensions = $db->quote('%' . str_replace(' ', '%', $db->escape(trim($extensions), true) . '%'), false);
+			$all = $db->quote('%' . str_replace(' ', '%', $db->escape('*', true) . '%'), false);
 			$query->where(
-				'(' . $db->quoteName('a.extensions') . ' LIKE :extensions1 )'
-			)
-				->bind([':extensions1'], $extensions);
+				'(' . $db->quoteName('a.extensions') . ' LIKE ' . $all . 'OR' . $db->quoteName('a.extensions') . ' LIKE ' . $extensions . ')'
+			);
 		}
 
 		// $extensions = $this->state->get('filter.extensions');

@@ -24,14 +24,17 @@ Joomla = window.Joomla || {};
                         cancelIcon: {
                             enabled: true
                         },
-                        classes: 'class-1 class-2',
+                        classes: 'class-1 class-2 shepherd-theme-arrows',
                         scrollTo: { behavior: 'smooth', block: 'center' }
-                    }
+                    },
+                    // Will use overlay effect to highlight the tour
+                    useModalOverlay: true
                 });
 
                 tour.addStep({
                     title: obj[mainID].title,
                     text: obj[mainID].description,
+                    classes: 'intro-step shepherd-theme-arrows',
                     attachTo: {
                         element: '.hero-example',
                         on: 'bottom'
@@ -40,7 +43,7 @@ Joomla = window.Joomla || {};
                             action() {
                                 return this.back();
                             },
-                            classes: 'shepherd-button-secondary',
+                            classes: 'shepherd-button-secondary shepherd-theme-arrows',
                             text: 'Back'
                         },
                         {
@@ -56,6 +59,7 @@ Joomla = window.Joomla || {};
                     tour.addStep({
                         title: obj[mainID].steps[index].title,
                         text: obj[mainID].steps[index].description,
+                        classes: 'intro-step shepherd-theme-arrows',
                         attachTo: {
                             element: '.hero-example',
                             on: 'bottom'
