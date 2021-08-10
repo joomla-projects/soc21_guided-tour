@@ -4,7 +4,6 @@ Joomla = window.Joomla || {};
         var mySteps = Joomla.getOptions('mySteps');
         const obj = JSON.parse(mySteps);
         // console.log(obj[2].steps.length);
-        // console.log(obj);
 
         // console.log(one);
         // console.log(obj[0].steps);
@@ -56,13 +55,14 @@ Joomla = window.Joomla || {};
                     id: 'creating'
                 });
                 for (index = 0; index < (obj[mainID].steps.length); index++) {
+                    // alert(obj[mainID].steps[0].target);
                     tour.addStep({
                         title: obj[mainID].steps[index].title,
                         text: obj[mainID].steps[index].description,
-                        classes: 'intro-step shepherd-theme-arrows',
+                        classes: 'intro-step shepherd-theme-arrows highlightClass',
                         attachTo: {
-                            element: '.hero-example',
-                            on: 'bottom'
+                            element: obj[mainID].steps[index].target,
+                            on: obj[mainID].steps[index].position
                         },
                         buttons: [{
                                 action() {
