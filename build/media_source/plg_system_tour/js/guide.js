@@ -3,14 +3,7 @@ Joomla = window.Joomla || {};
     document.addEventListener('DOMContentLoaded', function() {
         var mySteps = Joomla.getOptions('mySteps');
         const obj = JSON.parse(mySteps);
-        // console.log(obj[2].steps.length);
 
-        // console.log(one);
-        // console.log(obj[0].steps);
-        // Accessing the 'data-id' 
-        // 1. for each tour element
-        // 2. get attribute id of each tour
-        // 3. assign the onClick event and do what you want with that attribute id
         let btnGoods = document.querySelectorAll('.button-tour');
         for (var i = 0; i < btnGoods.length; i++) {
             btnGoods[i].addEventListener('click', function() {
@@ -35,7 +28,6 @@ Joomla = window.Joomla || {};
                     text: obj[mainID].description,
                     classes: 'intro-step shepherd-theme-arrows',
                     attachTo: {
-                        element: '.hero-example',
                         on: 'bottom'
                     },
                     buttons: [{
@@ -55,33 +47,45 @@ Joomla = window.Joomla || {};
                     id: 'creating'
                 });
                 for (index = 0; index < (obj[mainID].steps.length); index++) {
-                    // alert(obj[mainID].steps[0].target);
-                    tour.addStep({
-                        title: obj[mainID].steps[index].title,
-                        text: obj[mainID].steps[index].description,
-                        classes: 'intro-step shepherd-theme-arrows highlightClass',
-                        attachTo: {
-                            element: obj[mainID].steps[index].target,
-                            on: obj[mainID].steps[index].position
-                        },
-                        buttons: [{
-                                action() {
-                                    return this.back();
-                                },
-                                classes: 'shepherd-button-secondary',
-                                text: 'Back'
+                    var currentURL = window.location.href;
+                    if (obj[mainID].steps[index].url !== currentURL) {
+                        console.log(obj[mainID].steps[index].id[index]);
+                        sessionStorage.setItem("id", obj[mainID].steps[index].id);
+                        tour.addStep({
+                            title: obj[mainID].steps[index].title,
+                            text: obj[mainID].steps[index].description,
+                            classes: 'intro-step shepherd-theme-arrows highlightClass',
+                            attachTo: {
+                                element: obj[mainID].steps[index].target,
+                                on: obj[mainID].steps[index].position
                             },
-                            {
-                                action() {
-                                    return this.next();
+                            buttons: [{
+                                    action() {
+                                        return this.back();
+                                    },
+                                    classes: 'shepherd-button-secondary',
+                                    text: 'Back'
                                 },
-                                text: 'Next'
-                            }
-                        ],
-                        id: obj[mainID].steps[index].id
-                    });
+                                {
+                                    action() {
+                                        return this.next();
+                                    },
+                                    text: 'Next'
+                                }
+                            ],
+                            id: obj[mainID].steps[index].id
+                        });
+                    } else {
+                        // action: function() {
+                        //     window.location.href = obj[mainID].steps[index].url;
+                        //     return tour.next();
+                        // },
+                        break;
+                    }
                 }
+                // var newIndex = sessionStorage.getItem()
                 tour.start();
+
             });
         }
     });
