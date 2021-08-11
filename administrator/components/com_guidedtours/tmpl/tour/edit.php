@@ -33,15 +33,9 @@ HTMLHelper::_('behavior.keepalive');
 		<?php echo HTMLHelper::_('uitab.addTab', 'myTab', 'details', Text::_('Details')); ?>
 		<div class="row">
 			<div class="col-lg">
-				<!-- <div class="row"> -->
-				<!-- <div class="col-md-6"> -->
 				<?php echo $this->form->renderField('description'); ?>
 				<?php echo $this->form->renderField('extensions'); ?>
-				<!-- <?php echo $this->form->renderField('distance'); ?> -->
-				<!-- <?php echo $this->form->renderField('id'); ?> -->
-
-
-
+				<?php echo $this->form->renderField('url'); ?>
 			</div>
 			<div class="col-md-3">
 				<div class="card card-light">

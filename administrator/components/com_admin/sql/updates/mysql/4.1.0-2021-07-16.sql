@@ -10,6 +10,7 @@ CREATE TABLE IF NOT EXISTS `#__guidedtours` (
   `description` text NOT NULL,
   `ordering` int NOT NULL DEFAULT 0,
   `extensions` text NOT NULL,
+  `url` varchar(255) NOT NULL,
   `created` datetime NOT NULL,
   `created_by` int NOT NULL DEFAULT 0,
   `modified` datetime NOT NULL,

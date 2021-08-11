@@ -128,9 +128,18 @@
 		>
 		<option value="*">JALL</option>
 	</field>
-
 	
-
+	
+	<field
+		name="url"
+		type="url"
+		label="URL"
+		default="1"
+		size="40"
+		filter="url"
+		validate="url"
+	/>
+	
 	<field
 		name="rules"
 		type="rules"
