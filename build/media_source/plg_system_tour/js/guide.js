@@ -3,7 +3,7 @@ Joomla = window.Joomla || {};
     document.addEventListener('DOMContentLoaded', function() {
         var mySteps = Joomla.getOptions('mySteps');
         const obj = JSON.parse(mySteps);
-
+        // console.log(obj);
         let btnGoods = document.querySelectorAll('.button-tour');
         for (var i = 0; i < btnGoods.length; i++) {
             btnGoods[i].addEventListener('click', function() {
@@ -46,46 +46,86 @@ Joomla = window.Joomla || {};
                     ],
                     id: 'creating'
                 });
-                for (index = 0; index < (obj[mainID].steps.length); index++) {
-                    var currentURL = window.location.href;
-                    if (obj[mainID].steps[index].url !== currentURL) {
-                        console.log(obj[mainID].steps[index].id[index]);
-                        sessionStorage.setItem("id", obj[mainID].steps[index].id);
-                        tour.addStep({
-                            title: obj[mainID].steps[index].title,
-                            text: obj[mainID].steps[index].description,
-                            classes: 'intro-step shepherd-theme-arrows highlightClass',
-                            attachTo: {
-                                element: obj[mainID].steps[index].target,
-                                on: obj[mainID].steps[index].position
-                            },
-                            buttons: [{
-                                    action() {
-                                        return this.back();
-                                    },
-                                    classes: 'shepherd-button-secondary',
-                                    text: 'Back'
-                                },
-                                {
-                                    action() {
-                                        return this.next();
-                                    },
-                                    text: 'Next'
-                                }
-                            ],
-                            id: obj[mainID].steps[index].id
-                        });
-                    } else {
-                        // action: function() {
-                        //     window.location.href = obj[mainID].steps[index].url;
-                        //     return tour.next();
-                        // },
-                        break;
-                    }
-                }
-                // var newIndex = sessionStorage.getItem()
-                tour.start();
 
+
+
+                // ----------------------------------------------------------------------------
+                var currentURL = window.location.href;
+                // var referrer = document.referrer;
+                // console.log(referrer);
+                var length = obj[mainID].steps.length
+                console.log(length);
+                // while () {
+                if (!sessionStorage.getItem("id")) {
+                    for (index = 0; index < (obj[mainID].steps.length); index++) {
+                        if (currentURL == obj[mainID].steps[index].url) {
+                            sessionStorage.setItem("id", obj[mainID].steps[index].id);
+
+                            tour.addStep({
+                                title: obj[mainID].steps[index].title,
+                                text: obj[mainID].steps[index].description,
+                                classes: 'intro-step shepherd-theme-arrows highlightClass',
+                                attachTo: {
+                                    element: obj[mainID].steps[index].target,
+                                    on: obj[mainID].steps[index].position
+                                },
+                                buttons: [{
+                                        action() {
+                                            return this.back();
+                                        },
+                                        classes: 'shepherd-button-secondary',
+                                        text: 'Back'
+                                    },
+                                    {
+                                        action() {
+                                            return this.next();
+                                        },
+                                        text: 'Next'
+                                    }
+                                ],
+                                id: obj[mainID].steps[index].id
+                            });
+                        }
+                    }
+                    tour.start();
+
+                } else {
+                    var data = sessionStorage.getItem("id")
+                    var newIndex = obj[mainID].steps.findIndex(item => item.id == data);
+
+                    for (index = newIndex; index < ((obj[mainID].steps.length) - newIndex); newIndex++) {
+                        if (currentURL == obj[mainID].steps[index].url) {
+                            sessionStorage.setItem("id", obj[mainID].steps[index].id);
+
+                            tour.addStep({
+                                title: obj[mainID].steps[index].title,
+                                text: obj[mainID].steps[index].description,
+                                classes: 'intro-step shepherd-theme-arrows highlightClass',
+                                attachTo: {
+                                    element: obj[mainID].steps[index].target,
+                                    on: obj[mainID].steps[index].position
+                                },
+                                buttons: [{
+                                        action() {
+                                            return this.back();
+                                        },
+                                        classes: 'shepherd-button-secondary',
+                                        text: 'Back'
+                                    },
+                                    {
+                                        action() {
+                                            return this.next();
+                                        },
+                                        text: 'Next'
+                                    }
+                                ],
+                                id: obj[mainID].steps[index].id
+                            });
+                        }
+                    }
+                    tour.start();
+                }
+                // }
             });
         }
     });
