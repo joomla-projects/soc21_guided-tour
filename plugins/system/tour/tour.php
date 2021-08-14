@@ -168,6 +168,11 @@ class PlgSystemTour extends CMSPlugin implements SubscriberInterface
 				Uri::root() . 'build/media_source/plg_system_tour/css/shepherd.css',
 				array('version' => 'auto', 'relative' => true)
 			);
+			HTMLHelper::_(
+				'stylesheet',
+				Uri::root() . 'build/media_source/plg_system_tour/css/shepherd.min.css',
+				array('version' => 'auto', 'relative' => true)
+			);
 		}
 	}
 }

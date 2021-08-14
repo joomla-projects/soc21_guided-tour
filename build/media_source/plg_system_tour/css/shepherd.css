@@ -124,7 +124,7 @@
 }
 
 .shepherd-enabled.shepherd-element {
-    opacity: 1;
+    opacity: 0.01;
     visibility: visible
 }
 
@@ -152,7 +152,7 @@
 .shepherd-arrow:before {
     content: "";
     transform: rotate(45deg);
-    background: #fff
+    background: rgb(185, 38, 38)
 }
 
 .shepherd-element[data-popper-placement^=top]>.shepherd-arrow {
@@ -176,7 +176,7 @@
 }
 
 .shepherd-element.shepherd-has-title[data-popper-placement^=bottom]>.shepherd-arrow:before {
-    background-color: #e6e6e6
+    background-color: rgb(185, 38, 38)
 }
 
 .shepherd-target-click-disabled.shepherd-enabled.shepherd-target,
@@ -199,7 +199,7 @@
 
 .shepherd-modal-overlay-container.shepherd-modal-is-visible {
     height: 100vh;
-    opacity: .5;
+    opacity: .43335151;
     transition: all .3s ease-out, height 0s 0s, opacity .3s 0s
 }
 
