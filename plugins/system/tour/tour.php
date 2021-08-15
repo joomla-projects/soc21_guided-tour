@@ -120,7 +120,7 @@ class PlgSystemTour extends CMSPlugin implements SubscriberInterface
 			$dropdown = $toolbar->dropdownButton()
 				->text('Take the Tour')
 				->toggleSplit(false)
-				->icon('fas fa-car-side')
+				->icon('fa fa-map-signs')
 				->buttonClass('btn btn-action');
 
 			$childBar = $dropdown->getChildToolbar();

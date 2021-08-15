@@ -48,7 +48,7 @@ Joomla = window.Joomla || {};
                             text: 'Next'
                         }
                     ],
-                    id: 'creating'
+                    id: obj[mainID].id,
                 });
 
                 if (!sessionStorage.getItem("id")) {
@@ -101,7 +101,7 @@ Joomla = window.Joomla || {};
         if (sessionStorage.getItem("tourid")) {
             var newID = sessionStorage.getItem("id");
             var newTourID = sessionStorage.getItem("tourid");
-            var mlength = obj[newTourID].steps.length;
+
             for (index = newID; index < (obj[newTourID].steps.length) - newTourID; index++) {
 
                 tour.addStep({
