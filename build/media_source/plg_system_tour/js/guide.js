@@ -4,26 +4,25 @@ Joomla = window.Joomla || {};
         var mySteps = Joomla.getOptions('mySteps');
         const obj = JSON.parse(mySteps);
 
-        const tour = new Shepherd.Tour({
-            defaultStepOptions: {
-                cancelIcon: {
-                    enabled: true
-                },
-                classes: 'class-1 class-2 shepherd-theme-arrows',
-                scrollTo: { behavior: 'smooth', block: 'center' }
-            },
-            useModalOverlay: true,
-            keyboardNavigation: true,
-        });
-
         let btnGoods = document.querySelectorAll('.button-tour');
         for (var i = 0; i < btnGoods.length; i++) {
             btnGoods[i].addEventListener('click', function() {
                 var dataID = this.getAttribute('data-id');
                 var mainID = obj.findIndex(x => x.id === dataID);
                 sessionStorage.setItem("tourid", mainID);
-
+                const tour = new Shepherd.Tour({
+                    defaultStepOptions: {
+                        cancelIcon: {
+                            enabled: true
+                        },
+                        classes: 'class-1 class-2 shepherd-theme-arrows',
+                        scrollTo: { behavior: 'smooth', block: 'center' }
+                    },
+                    useModalOverlay: true,
+                    keyboardNavigation: true,
+                });
                 var currentURL = window.location.href;
+                console.log(currentURL);
                 if (currentURL != obj[mainID].url) {
                     window.location.href = obj[mainID].url;
                 }
@@ -88,7 +87,17 @@ Joomla = window.Joomla || {};
                 }
             });
         }
-
+        const tour = new Shepherd.Tour({
+            defaultStepOptions: {
+                cancelIcon: {
+                    enabled: true
+                },
+                classes: 'class-1 class-2 shepherd-theme-arrows',
+                scrollTo: { behavior: 'smooth', block: 'center' }
+            },
+            useModalOverlay: true,
+            keyboardNavigation: true,
+        });
         if (sessionStorage.getItem("tourid")) {
             var newID = sessionStorage.getItem("id");
             var newTourID = sessionStorage.getItem("tourid");
