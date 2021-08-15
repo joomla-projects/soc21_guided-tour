@@ -12,7 +12,8 @@ Joomla = window.Joomla || {};
                 classes: 'class-1 class-2 shepherd-theme-arrows',
                 scrollTo: { behavior: 'smooth', block: 'center' }
             },
-            useModalOverlay: true
+            useModalOverlay: true,
+            keyboardNavigation: true,
         });
 
         let btnGoods = document.querySelectorAll('.button-tour');
@@ -21,13 +22,10 @@ Joomla = window.Joomla || {};
                 var dataID = this.getAttribute('data-id');
                 var mainID = obj.findIndex(x => x.id === dataID);
                 sessionStorage.setItem("tourid", mainID);
-                console.log(obj[mainID]);
 
                 var currentURL = window.location.href;
                 if (currentURL != obj[mainID].url) {
                     window.location.href = obj[mainID].url;
-                    console.log(obj[mainID].url);
-                    console.log(currentURL);
                 }
 
                 tour.addStep({
@@ -81,7 +79,8 @@ Joomla = window.Joomla || {};
                                         text: 'Next'
                                     }
                                 ],
-                                id: obj[mainID].steps[index].id
+                                id: obj[mainID].steps[index].id,
+                                arrow: true,
                             });
                         }
                     }
@@ -93,9 +92,8 @@ Joomla = window.Joomla || {};
         if (sessionStorage.getItem("tourid")) {
             var newID = sessionStorage.getItem("id");
             var newTourID = sessionStorage.getItem("tourid");
-
+            var mlength = obj[newTourID].steps.length;
             for (index = newID; index < (obj[newTourID].steps.length) - newTourID; index++) {
-                console.log("I am here");
 
                 tour.addStep({
                     title: obj[newTourID].steps[index].title,
@@ -105,6 +103,7 @@ Joomla = window.Joomla || {};
                         element: obj[newTourID].steps[index].target,
                         on: obj[newTourID].steps[index].position
                     },
+
                     buttons: [{
                             action() {
                                 return this.back();
@@ -117,11 +116,13 @@ Joomla = window.Joomla || {};
                                 return this.next();
                             },
                             text: 'Next'
-                        }
+                        },
                     ],
-                    id: obj[newTourID].steps[index].id
+                    id: obj[newTourID].steps[index].id,
+                    arrow: true,
                 });
             }
+
             tour.start();
             sessionStorage.clear();
         }
