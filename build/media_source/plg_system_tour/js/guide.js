@@ -54,7 +54,9 @@ Joomla = window.Joomla || {};
                 if (!sessionStorage.getItem("id")) {
                     for (index = 0; index < (obj[mainID].steps.length); index++) {
                         if (currentURL == obj[mainID].steps[index].url) {
+                            console.log(obj[mainID].steps[index].url);
                             sessionStorage.setItem("id", obj[mainID].steps[index].id);
+                            var cnt = 0;
 
                             tour.addStep({
                                 title: obj[mainID].steps[index].title,
@@ -81,6 +83,10 @@ Joomla = window.Joomla || {};
                                 id: obj[mainID].steps[index].id,
                                 arrow: true,
                             });
+                            if (obj[mainID].steps[index].id !== 0) {
+                                cnt++;
+                                break;
+                            }
                         }
                     }
                     tour.start();
