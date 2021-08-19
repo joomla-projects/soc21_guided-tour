@@ -25,6 +25,7 @@ use Joomla\CMS\MVC\View\GenericDataException;
 use Joomla\CMS\MVC\View\HtmlView as BaseHtmlView;
 use Joomla\CMS\Toolbar\Toolbar;
 use Joomla\CMS\Toolbar\ToolbarHelper;
+use Joomla\CMS\Router\Route;
 
 /**
  * View class for a list of guidedtour_steps.
@@ -109,6 +110,14 @@ class HtmlView extends BaseHtmlView
 		$toolbar = Toolbar::getInstance('toolbar');
 
 		ToolbarHelper::title(Text::_('Guided Tour - List of Steps'), 'steps');
+
+		$arrow  = Factory::getLanguage()->isRtl() ? 'arrow-right' : 'arrow-left';
+
+		ToolbarHelper::link(
+			Route::_('index.php?option=com_guidedtours'),
+			'JTOOLBAR_BACK',
+			$arrow
+		);
 
 		if ($canDo->get('core.create'))
 		{
