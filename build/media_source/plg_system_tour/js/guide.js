@@ -104,7 +104,7 @@ Joomla = window.Joomla || {};
             useModalOverlay: true,
             keyboardNavigation: true,
         });
-        if (sessionStorage.getItem("tourid")) {
+        if (sessionStorage.getItem("tourid") && sessionStorage.getItem("id")) {
             var newID = sessionStorage.getItem("id");
             var newTourID = sessionStorage.getItem("tourid");
 
@@ -140,6 +140,8 @@ Joomla = window.Joomla || {};
 
             tour.start();
             sessionStorage.clear();
+        } else {
+
         }
     });
 }(Joomla, window));
