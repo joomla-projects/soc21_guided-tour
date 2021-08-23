@@ -7,6 +7,7 @@
 		label="JGLOBAL_FIELD_ID_LABEL"
 		class="readonly"
 		readonly="true"
+		default="0"
 	/>
 
 
@@ -136,6 +137,7 @@
 		size="40"
 		filter="url"
 		validate="url"
+		default="1"
 	/>
 	
 	<field

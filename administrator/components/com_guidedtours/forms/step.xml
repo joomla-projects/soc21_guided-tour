@@ -5,12 +5,14 @@
 		name="id"
 		type="text"
 		label="JGLOBAL_FIELD_ID_LABEL"
+		default="0"
 		/>
-	
-	<field
+		
+		<field
 		name="step-no"
 		type="hidden"
 		label="Step ID"
+		default="1"
 	/>
 
 	<field
@@ -23,7 +25,6 @@
 		name="target"
 		type="text"
 		label="Target"
-		description="add `#` before ID Name and `.` before className"
 	/>
 	
 	<field
@@ -31,6 +32,7 @@
 		type="url"
 		label="URL"
 		size="30"
+		default="1"
 		filter="url"
 		validate="url"
 	/>
