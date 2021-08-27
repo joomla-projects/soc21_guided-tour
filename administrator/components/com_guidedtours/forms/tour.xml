@@ -170,6 +170,7 @@
 				layout="joomla.form.field.list-fancy-select"
 				buttons="true"
 				hide="readmore,pagebreak"
+				default="*"
 	>
 	<option value="*">JALL</option>
 		</field>
