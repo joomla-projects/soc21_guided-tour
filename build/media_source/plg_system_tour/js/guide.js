@@ -54,6 +54,12 @@ Joomla = window.Joomla || {};
                                     return this.next();
                                 },
                                 text: 'Next'
+                            },
+                            {
+                                action() {
+                                    return this.complete();
+                                },
+                                text: 'Complete'
                             }
                         ],
                         id: obj[mainID].id,
@@ -87,11 +93,10 @@ Joomla = window.Joomla || {};
             for (index = 0; index < obj[mainID].steps.length; index++) {
                 // if (currentURL == obj[mainID].steps[index].url) {
 
-                var newInt = parseInt(objSteps[index].id);
-                // console.log("Ananya");
-                if (objSteps[index].multipage == '1') {
-                    sessionStorage.setItem('stepID', objSteps[index].multipage);
-                }
+                // var newInt = parseInt(objSteps[index].id);
+                // if (objSteps[index].multipage == '1') {
+                //     sessionStorage.setItem('stepID', objSteps[index].multipage);
+                // }
                 tour.addStep({
                     title: obj[mainID].steps[index].title,
                     text: obj[mainID].steps[index].description,
@@ -103,28 +108,18 @@ Joomla = window.Joomla || {};
 
 
                     },
-                    // beforeShowPromise: () => new Promise((resolve) => {
 
-                    //     let currentStep = '';
-                    //     setTimeout(() => {
-                    //         currentStep = tour.steps[index];
-                    //         if (currentStep.hasAttribute(obj[mainID].steps[index].position)) {
-                    //             tour.next();
+                    // getCurrentStepIndex: function() {
+                    //     return GuidedTourUtils.findWithAttr(Shepherd.activeTour.steps, "id", Shepherd.activeTour.getCurrentStep().id);
+                    // },
+                    // findWithAttr: function(obj[mainID].steps, attr, value) {
+                    //     for (var i = 0; i < obj[mainID].steps.length; i += 1) {
+                    //         if (array[i][attr] === value) {
+                    //             return i;
                     //         }
-                    //     }, 100);
-                    //     resolve();
-                    // }),
-                    getCurrentStepIndex: function() {
-                        return GuidedTourUtils.findWithAttr(Shepherd.activeTour.steps, "id", Shepherd.activeTour.getCurrentStep().id);
-                    },
-                    findWithAttr: function(array, attr, value) {
-                        for (var i = 0; i < array.length; i += 1) {
-                            if (array[i][attr] === value) {
-                                return i;
-                            }
-                        }
-                        return -1;
-                    },
+                    //     }
+                    //     return -1;
+                    // },
 
                     buttons: [{
                             action() {
@@ -138,6 +133,12 @@ Joomla = window.Joomla || {};
                                 return this.next();
                             },
                             text: 'Next'
+                        },
+                        {
+                            action() {
+                                return this.complete();
+                            },
+                            text: 'Complete'
                         }
                     ],
                     id: obj[mainID].steps[index].id,
@@ -152,19 +153,12 @@ Joomla = window.Joomla || {};
                             progress.style['margin-right'] = '1px';
                             progress.innerText = `${tour.steps.indexOf(tour.currentStep) + 1}/${tour.steps.length}`;
                             header.insertBefore(progress, currentStepElement.querySelector('.shepherd-cancel-icon'));
+                            var thisId = `${tour.steps.indexOf(tour.currentStep) + 1}`;
+                            sessionStorage.setItem('stepID', thisId);
                         }
-                    },
-                    // beforeShowPromise: function() {
-                    //     return new Promise(function(resolve) {
-                    //         if (tour.steps.indexOf(obj[mainID].steps[index].title) == tour.steps.length - 1) {
-                    //             tour.trigger('complete');
-                    //             tour.done();
-                    //         } else {
 
-                    //             tour.show(index + 1);
-                    //         }
-                    //     });
-                    // },
+                    },
+
 
                 });
                 // }
@@ -195,9 +189,9 @@ Joomla = window.Joomla || {};
         //         });
         //     }
         // }
-        for (i = 0; i < obj[mainID].steps.length; i++) {
+        // for (i = 0; i < obj[mainID].steps.length; i++) {
 
-        }
+        // }
         tour.start();
     });
 }(Joomla, window));
