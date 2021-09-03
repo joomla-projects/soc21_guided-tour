@@ -110,6 +110,8 @@ Joomla = window.Joomla || {};
                                     progress.innerText = `${tour.steps.indexOf(tour.currentStep) + 1}/${tour.steps.length}`;
                                     header.insertBefore(progress, currentStepElement.querySelector('.shepherd-cancel-icon'));
                                     var thisId = `${tour.steps.indexOf(tour.currentStep) + 1}`;
+                                    var Id = `${tour.steps.id}`;
+                                    console.log(Id);
                                     sessionStorage.setItem('stepID', thisId);
                                 }
 
