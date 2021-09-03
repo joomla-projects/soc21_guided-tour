@@ -110,9 +110,10 @@ Joomla = window.Joomla || {};
                                     progress.innerText = `${tour.steps.indexOf(tour.currentStep) + 1}/${tour.steps.length}`;
                                     header.insertBefore(progress, currentStepElement.querySelector('.shepherd-cancel-icon'));
                                     var thisId = `${tour.steps.indexOf(tour.currentStep) + 1}`;
-                                    var Id = `${tour.steps.id}`;
-                                    console.log(Id);
+                                    var Id = `${tour.currentStep.id}` - '0';
+
                                     sessionStorage.setItem('stepID', thisId);
+                                    sessionStorage.setItem('newstepID', Id);
                                 }
 
                             },
@@ -127,6 +128,7 @@ Joomla = window.Joomla || {};
         }
         var mainID = sessionStorage.getItem('tourid');
         var newIndex = sessionStorage.getItem('stepID');
+        var newId = sessionStorage.getItem('newstepID');
         newIndex = newIndex - 1;
         const tour = new Shepherd.Tour({
             defaultStepOptions: {
@@ -144,8 +146,8 @@ Joomla = window.Joomla || {};
         });
 
 
-        if (mainID && newIndex) {
-            for (index = newIndex; index < obj[mainID].steps.length - newIndex; index++) {
+        if (mainID && newId) {
+            for (index = newId; index < obj[mainID].steps.length; index++) {
 
                 tour.addStep({
                     title: obj[mainID].steps[index].title,
@@ -191,7 +193,10 @@ Joomla = window.Joomla || {};
                             progress.innerText = `${tour.steps.indexOf(tour.currentStep) + 1}/${tour.steps.length}`;
                             header.insertBefore(progress, currentStepElement.querySelector('.shepherd-cancel-icon'));
                             var thisId = `${tour.steps.indexOf(tour.currentStep) + 1}`;
+                            var Id = `${tour.currentStep.id}` - '0';
+
                             sessionStorage.setItem('stepID', thisId);
+                            sessionStorage.setItem('newstepID', Id);
                         }
 
                     },
