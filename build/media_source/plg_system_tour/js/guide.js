@@ -198,10 +198,7 @@ Joomla = window.Joomla || {};
                             sessionStorage.setItem('stepID', thisId);
                             sessionStorage.setItem('newstepID', Id);
                         }
-
                     },
-
-
                 });
             }
         }
