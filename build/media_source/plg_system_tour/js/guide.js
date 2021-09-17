@@ -13,7 +13,7 @@ Joomla = window.Joomla || {};
                 var dataID = this.getAttribute('data-id');
                 var mainID = obj.findIndex(x => x.id === dataID);
                 sessionStorage.setItem("tourid", mainID);
-
+                console.log("MLH");
                 var currentURL = window.location.href;
 
                 if (currentURL != obj[mainID].url) {
@@ -21,6 +21,10 @@ Joomla = window.Joomla || {};
                 }
                 const tour = new Shepherd.Tour({
                     defaultStepOptions: {
+                        scrollTo: true,
+                        modalOverlayOpeningPadding: 10,
+                        modalOverlayOpeningRadius: 5,
+                        classes: 'shadow',
                         cancelIcon: {
                             enabled: true
                         },
@@ -62,7 +66,6 @@ Joomla = window.Joomla || {};
                         id: obj[mainID].id,
                     });
 
-                    // ----------------------------------------------------
                     for (index = 0; index < obj[mainID].steps.length; index++) {
 
                         tour.addStep({
@@ -77,26 +80,7 @@ Joomla = window.Joomla || {};
 
                             },
 
-                            buttons: [{
-                                    action() {
-                                        return this.back();
-                                    },
-                                    classes: 'shepherd-button-secondary',
-                                    text: 'Back'
-                                },
-                                {
-                                    action() {
-                                        return this.next();
-                                    },
-                                    text: 'Next'
-                                },
-                                {
-                                    action() {
-                                        return this.complete();
-                                    },
-                                    text: 'Complete'
-                                }
-                            ],
+                            buttons: buttons,
                             id: obj[mainID].steps[index].id,
                             arrow: true,
                             showOn: obj[mainID].steps[index].position,
@@ -120,10 +104,13 @@ Joomla = window.Joomla || {};
 
 
                         });
+
                     }
+
                 }
 
                 tour.start();
+
             });
         }
         var mainID = sessionStorage.getItem('tourid');
@@ -148,6 +135,35 @@ Joomla = window.Joomla || {};
 
         if (mainID && newId) {
             for (index = newId; index < obj[mainID].steps.length; index++) {
+                var buttons = [];
+                var len = tour.steps.length;
+                if (index > 0) {
+                    buttons.push({
+                        text: 'Back',
+                        classes: 'shepherd-button-secondary',
+                        action: function() {
+                            return tour.back();
+                        }
+                    });
+                }
+                // no next button on last step
+                if (index != (len - 1)) {
+                    buttons.push({
+                        text: 'Next',
+                        classes: 'shepherd-button-primary',
+                        action: function() {
+                            return tour.next();
+                        }
+                    });
+                } else {
+                    buttons.push({
+                        text: 'Close',
+                        classes: 'shepherd-button-primary',
+                        action: function() {
+                            return tour.hide();
+                        }
+                    });
+                }
 
                 tour.addStep({
                     title: obj[mainID].steps[index].title,
@@ -160,26 +176,7 @@ Joomla = window.Joomla || {};
 
 
                     },
-                    buttons: [{
-                            action() {
-                                return this.back();
-                            },
-                            classes: 'shepherd-button-secondary',
-                            text: 'Back'
-                        },
-                        {
-                            action() {
-                                return this.next();
-                            },
-                            text: 'Next'
-                        },
-                        {
-                            action() {
-                                return this.complete();
-                            },
-                            text: 'Complete'
-                        }
-                    ],
+                    buttons: buttons,
                     id: obj[mainID].steps[index].id,
                     arrow: true,
                     showOn: obj[mainID].steps[index].position,
@@ -199,10 +196,15 @@ Joomla = window.Joomla || {};
                             sessionStorage.setItem('newstepID', Id);
                         }
                     },
+
                 });
+                // no back button at the start
+
+
             }
         }
 
         tour.start();
+
     });
 }(Joomla, window));
