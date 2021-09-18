@@ -67,7 +67,35 @@ Joomla = window.Joomla || {};
                     });
 
                     for (index = 0; index < obj[mainID].steps.length; index++) {
+                        var buttons = [];
+                        var len = tour.steps.length;
+                        if (index > 0) {
+                            buttons.push({
+                                text: 'Back',
+                                classes: 'shepherd-button-secondary',
+                                action: function() {
+                                    return tour.back();
+                                }
+                            });
+                        }
 
+                        if (index != (len - 1)) {
+                            buttons.push({
+                                text: 'Next',
+                                classes: 'shepherd-button-primary',
+                                action: function() {
+                                    return tour.next();
+                                }
+                            });
+                        } else {
+                            buttons.push({
+                                text: 'Close',
+                                classes: 'shepherd-button-primary',
+                                action: function() {
+                                    return tour.hide();
+                                }
+                            });
+                        }
                         tour.addStep({
                             title: obj[mainID].steps[index].title,
                             text: obj[mainID].steps[index].description,
@@ -146,7 +174,7 @@ Joomla = window.Joomla || {};
                         }
                     });
                 }
-                // no next button on last step
+
                 if (index != (len - 1)) {
                     buttons.push({
                         text: 'Next',
@@ -198,8 +226,6 @@ Joomla = window.Joomla || {};
                     },
 
                 });
-                // no back button at the start
-
 
             }
         }
