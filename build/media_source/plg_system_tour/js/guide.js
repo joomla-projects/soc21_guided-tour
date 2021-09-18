@@ -3,9 +3,7 @@ Joomla = window.Joomla || {};
     document.addEventListener('DOMContentLoaded', function() {
 
         var myTours = Joomla.getOptions('myTours');
-        var mySteps = Joomla.getOptions('mySteps');
         var obj = JSON.parse(myTours);
-        var objSteps = JSON.parse(mySteps);
 
         let btnGoods = document.querySelectorAll('.button-tour');
         for (var i = 0; i < btnGoods.length; i++) {
@@ -13,7 +11,6 @@ Joomla = window.Joomla || {};
                 var dataID = this.getAttribute('data-id');
                 var mainID = obj.findIndex(x => x.id === dataID);
                 sessionStorage.setItem("tourid", mainID);
-                console.log("MLH");
                 var currentURL = window.location.href;
 
                 if (currentURL != obj[mainID].url) {
@@ -55,12 +52,6 @@ Joomla = window.Joomla || {};
                                     return this.next();
                                 },
                                 text: 'Next'
-                            },
-                            {
-                                action() {
-                                    return this.complete();
-                                },
-                                text: 'Complete'
                             }
                         ],
                         id: obj[mainID].id,
@@ -102,10 +93,7 @@ Joomla = window.Joomla || {};
                             classes: 'intro-step shepherd-theme-arrows',
                             attachTo: {
                                 element: obj[mainID].steps[index].target,
-
                                 on: obj[mainID].steps[index].position,
-
-
                             },
 
                             buttons: buttons,
@@ -123,20 +111,13 @@ Joomla = window.Joomla || {};
                                     header.insertBefore(progress, currentStepElement.querySelector('.shepherd-cancel-icon'));
                                     var thisId = `${tour.steps.indexOf(tour.currentStep) + 1}`;
                                     var Id = `${tour.currentStep.id}` - '0';
-
                                     sessionStorage.setItem('stepID', thisId);
                                     sessionStorage.setItem('newstepID', Id);
                                 }
-
                             },
-
-
                         });
-
                     }
-
                 }
-
                 tour.start();
 
             });
@@ -155,11 +136,7 @@ Joomla = window.Joomla || {};
             },
             useModalOverlay: true,
             keyboardNavigation: true,
-            popperOptions: {
-                modifiers: [{ name: 'offset', options: { offset: [0, 12] } }]
-            }
         });
-
 
         if (mainID && newId) {
             for (index = newId; index < obj[mainID].steps.length; index++) {
@@ -174,7 +151,6 @@ Joomla = window.Joomla || {};
                         }
                     });
                 }
-
                 if (index != (len - 1)) {
                     buttons.push({
                         text: 'Next',
@@ -185,7 +161,7 @@ Joomla = window.Joomla || {};
                     });
                 } else {
                     buttons.push({
-                        text: 'Close',
+                        text: 'Complete',
                         classes: 'shepherd-button-primary',
                         action: function() {
                             return tour.hide();
@@ -199,17 +175,13 @@ Joomla = window.Joomla || {};
                     classes: 'intro-step shepherd-theme-arrows',
                     attachTo: {
                         element: obj[mainID].steps[index].target,
-
                         on: obj[mainID].steps[index].position,
-
-
                     },
                     buttons: buttons,
                     id: obj[mainID].steps[index].id,
                     arrow: true,
                     showOn: obj[mainID].steps[index].position,
                     when: {
-
                         show() {
                             const currentStepElement = tour.currentStep.el;
                             const header = currentStepElement.querySelector('.shepherd-header');
@@ -219,14 +191,11 @@ Joomla = window.Joomla || {};
                             header.insertBefore(progress, currentStepElement.querySelector('.shepherd-cancel-icon'));
                             var thisId = `${tour.steps.indexOf(tour.currentStep) + 1}`;
                             var Id = `${tour.currentStep.id}` - '0';
-
                             sessionStorage.setItem('stepID', thisId);
                             sessionStorage.setItem('newstepID', Id);
                         }
                     },
-
                 });
-
             }
         }
 
