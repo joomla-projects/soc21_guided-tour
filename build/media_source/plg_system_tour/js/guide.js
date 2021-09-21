@@ -4,7 +4,6 @@ Joomla = window.Joomla || {};
 
         var myTours = Joomla.getOptions('myTours');
         var obj = JSON.parse(myTours);
-        // shepherd-cancel-icon
         let btnGoods = document.querySelectorAll('.button-tour');
         for (var i = 0; i < btnGoods.length; i++) {
             btnGoods[i].addEventListener('click', function() {
@@ -15,6 +14,10 @@ Joomla = window.Joomla || {};
 
                 if (currentURL != obj[mainID].url) {
                     window.location.href = obj[mainID].url;
+                }
+                var overlay = true;
+                if (obj[mainID].overlay == 0) {
+                    overlay = false;
                 }
                 const tour = new Shepherd.Tour({
                     defaultStepOptions: {
@@ -28,7 +31,7 @@ Joomla = window.Joomla || {};
                         classes: 'class-1 class-2 shepherd-theme-arrows',
                         scrollTo: { behavior: 'smooth', block: 'center' }
                     },
-                    useModalOverlay: true,
+                    useModalOverlay: overlay,
                     keyboardNavigation: true,
                 });
 
