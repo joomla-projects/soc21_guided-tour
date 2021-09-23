@@ -955,7 +955,7 @@ CREATE TABLE IF NOT EXISTS `#__guidedtour_steps` (
 -- Dumping data for table `#__guidedtour_steps`
 --
 
-INSERT INTO `#__guidedtour_steps` (`id`, `tour_id`, `title`, `alias`, `published`, `description`, `ordering`, `step-no`, `position`, `target`, `url`, `multipage`, `created`, `created_by`, `modified`, `modified_by`, `state`) VALUES
+INSERT INTO `#__guidedtour_steps` (`id`, `tour_id`, `title`, `alias`, `published`, `description`, `ordering`, `step-no`, `position`, `target`, `url`, `created`, `created_by`, `modified`, `modified_by`, `state`) VALUES
 (1, 1, 'Click here!', '', 1, '<p>This Tour will show you that how you can create a new Guided Tour in Joomla! Backend</p>', 0, 1, 'bottom', '.button-new', '', '2021-09-17 18:35:44', 430, '2021-09-17 18:35:44', 430, 1),
 (2, 1, 'Add title for your Tour.', '', 1, '<p>Here you have to add the title of your Tour Step. </p>', 0, 1, 'bottom', '#jform_title', '', '2021-09-17 18:37:55', 430, '2021-09-17 18:37:55', 430, 1),
 (3, 1, 'Add Content', '', 1, '<p>Add the content of your Tour here!</p>', 0, 1, 'bottom', '#details', '', '2021-09-17 18:39:09', 430, '2021-09-17 18:39:09', 430, 1),
@@ -965,7 +965,7 @@ INSERT INTO `#__guidedtour_steps` (`id`, `tour_id`, `title`, `alias`, `published
 (7, 1, 'save and close', '', 1, '', 0, 1, 'bottom', '#save-group-children-save', '', '2021-09-17 18:46:52', 430, '2021-09-17 18:50:35', 430, 1),
 (8, 1, 'Create steps for your Tour', '', 1, '<p>Click on steps icon in the right</p>', 0, 1, 'right', '.btn-info ', '', '2021-09-17 18:52:03', 430, '2021-09-17 18:53:08', 430, 1),
 (9, 1, 'Click here!', '', 1, '<p>Click here to create a new Step for your Tour</p>', 0, 1, 'bottom', '.button-new', '', '2021-09-17 18:55:27', 430, '2021-09-17 18:55:27', 430, 1),
-(10, 1, 'Add title for your Tour.', '', 1, '<p>Here you have to add the title of your Tour Step. </p>', 0, 1, 'bottom', '#jform_title', '', 0, '2021-09-17 18:56:31', 430, '2021-09-17 18:56:31', 430, 1),
+(10, 1, 'Add title for your Tour.', '', 1, '<p>Here you have to add the title of your Tour Step. </p>', 0, 1, 'bottom', '#jform_title', '', '2021-09-17 18:56:31', 430, '2021-09-17 18:56:31', 430, 1),
 (11, 1, 'Add Content', '', 1, '<p>Add the content of your Tour here!</p>', 0, 1, 'bottom', '#details', '', '2021-09-17 18:57:19', 430, '2021-09-17 18:57:19', 430, 1),
 (12, 1, 'Position ', '', 1, '<p>here add the position of the Step you want. e.g. right, left, top, bottom.</p>', 0, 1, 'bottom', '#jform_position', '', '2021-09-17 18:58:54', 430, '2021-09-17 18:58:54', 430, 1),
 (13, 1, 'Target', '', 1, '<p>add the ID name or Class name of the element where you want to attach your Tour.</p>', 0, 1, 'bottom', '#jform_target', '', '2021-09-17 19:00:01', 430, '2021-09-17 19:00:01', 430, 1),

@@ -9,10 +9,6 @@
 		COM_GUIDEDTOURS_XML_DESCRIPTION
 	</description>
 	<namespace path="src">Joomla\Component\Guidedtours</namespace>
-	<media destination=">" folder="media">
-		<folder>js</folder>
-		<folder>css</folder>
-	</media>
 	<administration>
 		<filename>access.xml</filename>
 		<filename>config.xml</filename>
