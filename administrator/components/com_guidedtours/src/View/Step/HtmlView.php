@@ -96,40 +96,66 @@ class HtmlView extends BaseHtmlView
 	protected function addToolbar()
 	{
 		Factory::getApplication()->input->set('hidemainmenu', true);
-		$isNew      = ($this->item->id == 0);
+
+		$user       = Factory::getUser();
+		$userId     = $user->id;
+		$isNew      = empty($this->item->id);
 
 		$canDo = ContentHelper::getActions('com_guidedtours');
 
 		$toolbar = Toolbar::getInstance();
 
 		ToolbarHelper::title(
-			Text::_('Guidedtours - ' . ($isNew ? 'Add Step' : 'Edit Step'))
+			Text::_('Guided Tour - ' . ($isNew ? 'Add Step' : 'Edit Step'))
 		);
 
-		if ($isNew && $canDo->get('core.create'))
-		{
-			// The tour.apply task maps to the save() method in TourController
-			ToolbarHelper::apply('step.apply');
+		$toolbarButtons = [];
 
-			$toolbarButtons[] = ['save', 'step.save'];
+		if ($isNew)
+		{
+			// For new records, check the create permission.
+			if ($canDo->get('core.create'))
+			{
+				ToolbarHelper::apply('step.apply');
+				$toolbarButtons = [['save', 'step.save'], ['save2new', 'tour.save2new']];
+			}
+
+			ToolbarHelper::saveGroup(
+				$toolbarButtons,
+				'btn-success'
+			);
+
+			ToolbarHelper::cancel(
+				'step.cancel'
+			);
 		}
 		else
 		{
-			if (!$isNew && $canDo->get('core.edit'))
+			// Since it's an existing record, check the edit permission, or fall back to edit own if the owner.
+			$itemEditable = $canDo->get('core.edit') || ($canDo->get('core.edit.own') && $this->item->created_by == $userId);
+
+			if ($itemEditable)
 			{
 				ToolbarHelper::apply('step.apply');
-				$toolbarButtons[] = ['save', 'step.save'];
+				$toolbarButtons = [['save', 'step.save']];
 
-				// TODO | ? : Do we need save2new and save2copy? If yes, need to support in the Model,
-				//               here and the Controller.
+				// We can save this record, but check the create permission to see if we can return to make a new one.
+				if ($canDo->get('core.create'))
+				{
+					$toolbarButtons[] = ['save2new', 'step.save2new'];
+					$toolbarButtons[] = ['save2copy', 'step.save2copy'];
+				}
 			}
+
+			ToolbarHelper::saveGroup(
+				$toolbarButtons,
+				'btn-success'
+			);
+
+					ToolbarHelper::cancel(
+						'step.cancel',
+						'JTOOLBAR_CLOSE'
+					);
 		}
-
-		ToolbarHelper::saveGroup(
-			$toolbarButtons,
-			'btn-success'
-		);
-
-		ToolbarHelper::cancel('step.cancel', $isNew ? 'JTOOLBAR_CANCEL' : 'JTOOLBAR_CLOSE');
 	}
 }
