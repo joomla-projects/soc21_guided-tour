@@ -48,7 +48,6 @@ CREATE TABLE IF NOT EXISTS `#__guidedtour_steps` (
   `position` varchar(255) NOT NULL,
   `target` varchar(255) NOT NULL,
   `url` varchar(255) NOT NULL,
-  `multipage` tinyint NOT NULL  DEFAULT 0,
   `created` datetime NOT NULL,
   `created_by` int unsigned NOT NULL DEFAULT 0,
   `modified` datetime NOT NULL,
