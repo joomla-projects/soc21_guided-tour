@@ -150,28 +150,28 @@ class PlgSystemTour extends CMSPlugin implements SubscriberInterface
 		{
 			HTMLHelper::_(
 				'script',
-				Uri::root() . 'build/media_source/plg_system_tour/js/guide.js',
+				Uri::root() . 'media/plg_system_tour/js/guide.js',
 				array('version' => 'auto', 'relative' => true)
 			);
 
 			HTMLHelper::_(
 				'script',
-				Uri::root() . 'build/media_source/plg_system_tour/js/shepherd.min.js',
+				Uri::root() . 'media/plg_system_tour/js/shepherd.min.js',
 				array('version' => 'auto', 'relative' => true)
 			);
 			HTMLHelper::_(
 				'script',
-				Uri::root() . 'build/media_source/plg_system_tour/js/popper.min.js',
+				Uri::root() . 'media/plg_system_tour/js/popper.min.js',
 				array('version' => 'auto', 'relative' => true)
 			);
 			HTMLHelper::_(
 				'stylesheet',
-				Uri::root() . 'build/media_source/plg_system_tour/css/shepherd.css',
+				Uri::root() . 'media/plg_system_tour/css/shepherd.css',
 				array('version' => 'auto', 'relative' => true)
 			);
 			HTMLHelper::_(
 				'stylesheet',
-				Uri::root() . 'build/media_source/plg_system_tour/css/shepherd.min.css',
+				Uri::root() . 'media/plg_system_tour/css/shepherd.min.css',
 				array('version' => 'auto', 'relative' => true)
 			);
 		}

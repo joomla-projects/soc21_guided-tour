@@ -86,6 +86,11 @@ class TourTable extends Table
 			$this->created_by = $user->id;
 		}
 
+		if (empty($this->extensions))
+		{
+			$this->extensions = "*";
+		}
+
 		if (!(int) $this->modified)
 		{
 			$this->modified = $this->created;

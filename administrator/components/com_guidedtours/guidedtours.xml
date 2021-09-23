@@ -1,33 +1,29 @@
-<?xml version="1.0" encoding="UTF-8"?>
+<?xml version="1.0" encoding="utf-8"?>
 <extension type="component" method="upgrade">
-	<name>com_guidedtours</name>
-    <creationDate>August 2021</creationDate>
-    <author>Joomla! Project</author>
-    <authorEmail>admin@joomla.org</authorEmail>
-    <authorUrl>www.joomla.org</authorUrl>
-    <version>4.0.0</version>
-    <copyright>Joomla!</copyright>
-    <license>GNU General Public License version 2 or later; see LICENSE.txt</license>
-	<!-- The description is optional and defaults to the name -->
-	<description>COM_GUIDEDTOURS_XML_DESCRIPTION</description>
-	<namespace path="src/">Joomla\Component\Guidedtours</namespace>
-
-	<!-- Site Main File Copy Section -->
-	<!-- Note the folder attribute: This attribute describes the folder
-		to copy FROM in the package to install therefore files copied
-		in this section are copied from /site/ in the package -->
-
-		<administration>
-
-			<menu link="index.php?option=com_guidedtours" img="class:default">Guided Tours</menu>
-	
-			<files >
-				<file>access.xml</file>
-				<file>config.xml</file>
-				<folder>services</folder>
-				<folder>src</folder>
-				<folder>tmpl</folder>
-			</files>
-		</administration>
-	
+	<name>COM_GUIDEDTOURS</name>
+	<creationDate>July 2021</creationDate>
+	<author>Joomla! Project</author>
+	<license>GNU General Public License version 2 or later; see LICENSE.txt</license>
+	<version>4.1.0</version>
+	<description>
+		COM_GUIDEDTOURS_XML_DESCRIPTION
+	</description>
+	<namespace path="src">Joomla\Component\Guidedtours</namespace>
+	<media destination=">" folder="media">
+		<folder>js</folder>
+		<folder>css</folder>
+	</media>
+	<administration>
+		<filename>access.xml</filename>
+		<filename>config.xml</filename>
+		<filename>guidedtours.xml</filename>
+		<folder>forms</folder>
+		<folder>services</folder>
+		<folder>src</folder>
+		<folder>tmpl</folder>
+		<languages folder="administrator">
+			<language tag="en-GB">language/en-GB/com_guidedtours.ini</language>
+			<language tag="en-GB">language/en-GB/com_guidedtours.sys.ini</language>
+		</languages>
+	</administration>
 </extension>

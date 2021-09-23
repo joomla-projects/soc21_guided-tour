@@ -163,7 +163,7 @@
 	<field
 				name="extensions"
 				type="Components"
-				label="Plugin Selector"
+				label="Component Selector"
 				description="Will show the tour only for selected extensions. If used tours won't be displayed at other extensions."
 				multiple="multiple"
 				layout="joomla.form.field.list-fancy-select"

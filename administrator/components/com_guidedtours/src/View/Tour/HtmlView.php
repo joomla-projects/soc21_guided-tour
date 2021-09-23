@@ -103,7 +103,7 @@ class HtmlView extends BaseHtmlView
 		$toolbar = Toolbar::getInstance();
 
 		ToolbarHelper::title(
-			Text::_('Guidedtours - ' . ($isNew ? 'Add Tour' : 'Edit Tour'))
+			Text::_('Guided Tour - ' . ($isNew ? 'Add Tour' : 'Edit Tour'))
 		);
 
 		if ($isNew && $canDo->get('core.create'))
