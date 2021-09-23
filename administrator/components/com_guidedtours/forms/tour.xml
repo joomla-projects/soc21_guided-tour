@@ -137,6 +137,7 @@
 		size="40"
 		filter="url"
 		validate="url"
+		description="Enter the URL of the page from where you want to Start the Tour"
 	/>
 	
 	<field
@@ -155,6 +156,7 @@
 			label="Overlay"
 			layout="joomla.form.field.radio.switcher"
 			default="0"
+			description="adds the CSS overlay effect to the Tour"
 			>
 			<option value="0">JNO</option>
 			<option value="1">JYES</option>

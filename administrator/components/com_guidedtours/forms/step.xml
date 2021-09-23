@@ -19,12 +19,15 @@
 		name="position"
 		type="text"
 		label="Position"
+		default="bottom"
+		description="add the Position where you want to display your step. e.g. bottom, top, right, left"
 	/>
 
 	<field
 		name="target"
 		type="text"
 		label="Target"
+		description="add the ClassName or ID of the element where you want to attach your Step Element"
 	/>
 	
 	<field
