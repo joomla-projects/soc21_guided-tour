@@ -60,7 +60,7 @@ if ($saveOrder && !empty($this->items))
 
 		<!-- If no steps -->
 		<?php if (empty($this->items))
-:
+		:
 			?>
 			<!-- No steps -->
 			<div class="alert alert-info">
@@ -71,7 +71,7 @@ if ($saveOrder && !empty($this->items))
 
 		<!-- If there are steps, we start with the table -->
 		<?php if (!empty($this->items))
-:
+		:
 			?>
 			<!-- Steps table starts here -->
 			<table class="table" id="categoryList">
@@ -93,7 +93,7 @@ if ($saveOrder && !empty($this->items))
 							<?php echo HTMLHelper::_('searchtools.sort', '', 'a.ordering', $listDirn, $listOrder, null, 'asc', 'JGRID_HEADING_ORDERING', 'icon-sort'); ?>
 						</th>
 						<th scope="col" class="d-none d-md-table-cell text-center">
-							<?php echo HTMLHelper::_('searchtools.sort', 'JSTATUS', 'w.published', $listDirn, $listOrder); ?>
+							<?php echo HTMLHelper::_('searchtools.sort', 'JSTATUS', 'a.state', $listDirn, $listOrder); ?>
 						</th>
 						<th scope="col" class="d-none d-md-table-cell text-center">
 							<?php echo HTMLHelper::_('searchtools.sort', 'JTOUR_TITLE', 'a.title', $listDirn, $listOrder); ?>
@@ -109,12 +109,12 @@ if ($saveOrder && !empty($this->items))
 
 				<!-- Table body begins -->
 				<tbody <?php if ($saveOrder)
-	:
+				:
 					?> class="js-draggable" data-url="<?php echo $saveOrderingUrl; ?>" data-direction="<?php echo strtolower($listDirn); ?>" data-nested="true" <?php
 					   endif; ?>>
 					<?php
 					foreach ($this->items as $i => $item)
-	:
+					:
 						$canCreate = $user->authorise('core.create', 'com_guidedtours');
 						$canEdit = $user->authorise('core.edit', 'com_guidedtours');
 						$canChange = $user->authorise('core.edit.state', 'com_guidedtours');
@@ -133,12 +133,12 @@ if ($saveOrder && !empty($this->items))
 								$iconClass = '';
 
 								if (!$canChange)
-		{
+								{
 									$iconClass = ' inactive';
 								}
 								elseif (!$saveOrder)
-		{
-										$iconClass = ' inactive" title="' . Text::_('JORDERINGDISABLED');
+								{
+									$iconClass = ' inactive" title="' . Text::_('JORDERINGDISABLED');
 								}
 								?>
 
@@ -147,7 +147,7 @@ if ($saveOrder && !empty($this->items))
 								</span>
 
 								<?php if ($canChange && $saveOrder)
-		:
+								:
 									?>
 									<input type="text" class="hidden text-area-order" name="order[]" size="5" value="<?php echo $item->ordering; ?>">
 								<?php endif; ?>
@@ -161,20 +161,24 @@ if ($saveOrder && !empty($this->items))
 							<!-- Step name, edit link, and note (@todo: should it be moved?) -->
 							<th scope="row">
 								<?php if ($canEdit)
-		:
+								:
 									?>
 									<a href="<?php echo Route::_('index.php?option=com_guidedtours&task=step.edit&id=' . $item->id); ?>" title="<?php echo Text::_('JACTION_EDIT'); ?> <?php echo $this->escape($item->title); ?>"> <?php echo $this->escape($item->title); ?></a>
-								<?php else:
+								<?php else
+
+								:
 									?>
 									<?php echo $this->escape($item->title); ?>
 								<?php endif; ?>
 
 								<span class="small">
 									<?php if (empty($item->note))
-		:
+									:
 										?>
 										<?php echo Text::_('COM_GUIDEDTOURS_NO_NOTE'); ?>
-									<?php else:
+									<?php else
+
+									:
 										?>
 										<?php echo Text::sprintf('JGLOBAL_LIST_NOTE', $this->escape($item->note)); ?>
 									<?php endif; ?>
