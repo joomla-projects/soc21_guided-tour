@@ -64,7 +64,7 @@ $tour_id = $this->state->get('tour_id')
 									<?php echo HTMLHelper::_('searchtools.sort', 'JGLOBAL_TITLE', 'a.title', $listDirn, $listOrder); ?>
 								</th>
 								<th scope="col">
-									<?php echo HTMLHelper::_('searchtools.sort', 'Description', 'a.description', $listDirn, $listOrder); ?>
+									<?php echo HTMLHelper::_('searchtools.sort', 'JTOUR_DESCRIPTION', 'a.description', $listDirn, $listOrder); ?>
 								</th>
 
 								<th scope="col">

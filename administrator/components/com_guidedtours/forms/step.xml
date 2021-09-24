@@ -11,29 +11,29 @@
 		<field
 		name="step-no"
 		type="hidden"
-		label="Step ID"
+		label="COM_GUIDEDTOURS_STEPID_LABEL"
 		default="1"
 	/>
 
 	<field
 		name="position"
 		type="text"
-		label="Position"
+		label="COM_GUIDEDTOURS_POSITION_LABEL"
 		default="bottom"
-		description="add the Position where you want to display your step. e.g. bottom, top, right, left"
+		description="COM_GUIDEDTOURS_POSITION_DESC"
 	/>
 
 	<field
 		name="target"
 		type="text"
-		label="Target"
-		description="add the ClassName or ID of the element where you want to attach your Step Element"
+		label="COM_GUIDEDTOURS_TARGET_LABEL"
+		description="COM_GUIDEDTOURS_TARGET_DESC"
 	/>
 	
 	<field
 		name="url"
 		type="url"
-		label="URL"
+		label="COM_GUIDEDTOURS_URL_LABEL"
 		size="30"
 		default="1"
 		filter="url"
@@ -43,7 +43,7 @@
 	<field
 			name="tour_id"
 			type="hidden"
-			label="Tour ID"
+			label="COM_GUIDEDTOURS_TOURID_LABEL"
 			class="readonly"
 			readonly="true"
 		/>

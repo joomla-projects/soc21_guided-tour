@@ -52,14 +52,14 @@ $editIcon = '<span class="fa fa-pen-square me-2" aria-hidden="true"></span>';
 									<?php echo HTMLHelper::_('searchtools.sort', 'JSTATUS', 'w.published', $listDirn, $listOrder); ?>
 								</th>
 								<th scope="col">
-									<?php echo HTMLHelper::_('searchtools.sort', 'Tour Title', 'a.title', $listDirn, $listOrder); ?>
+									<?php echo HTMLHelper::_('searchtools.sort', 'JTOUR_TITLE', 'a.title', $listDirn, $listOrder); ?>
 								</th>
 								<th scope="col">
-									<?php echo HTMLHelper::_('searchtools.sort', 'Description', 'a.description', $listDirn, $listOrder); ?>
+									<?php echo HTMLHelper::_('searchtools.sort', 'JTOUR_DESCRIPTION', 'a.description', $listDirn, $listOrder); ?>
 								</th>
 
 								<th scope="col">
-									<?php echo HTMLHelper::_('searchtools.sort', 'Steps', 'a.distance', $listDirn, $listOrder); ?>
+									<?php echo HTMLHelper::_('searchtools.sort', 'JTOUR_STEPS', 'a.distance', $listDirn, $listOrder); ?>
 								</th>
 
 
