@@ -108,7 +108,7 @@ class TourTable extends Table
 
 		if ($this->default == '1')
 		{
-			// Verify that the default is unique for this workflow
+			// Verify that the default is unique for this Tour
 			if ($table->load(array('default' => '1')))
 			{
 				$table->default = 0;
