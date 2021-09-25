@@ -10,29 +10,6 @@
 	</description>
 	<namespace path="src">Joomla\Component\Guidedtours</namespace>
 	<administration>
-		<menu img="class:bookmark">com_guidedtours</menu>
-		<submenu>
-			<!--
-				Note that all & must be escaped to &amp; for the file to be valid
-				XML and be parsed by the installer
-			-->
-			<menu
-				link="option=com_tours"
-				view="tours"
-				img="class:banners"
-				alt="Banners/Banners"
-				>
-				com_banners_banners
-			</menu>
-			<menu
-				link="option=com_categories&amp;extension=com_banners"
-				view="categories"
-				img="class:banners-cat"
-				alt="Banners/Categories"
-				>
-				com_banners_categories
-			</menu>
-		</submenu>
 		<filename>access.xml</filename>
 		<filename>config.xml</filename>
 		<filename>guidedtours.xml</filename>
