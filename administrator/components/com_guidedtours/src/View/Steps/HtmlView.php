@@ -26,6 +26,7 @@ use Joomla\CMS\MVC\View\HtmlView as BaseHtmlView;
 use Joomla\CMS\Toolbar\Toolbar;
 use Joomla\CMS\Toolbar\ToolbarHelper;
 use Joomla\CMS\Router\Route;
+use Joomla\Component\Guidedtours\Administrator\Helper\GuidedtoursHelper;
 
 /**
  * View class for a list of guidedtour_steps.
@@ -108,9 +109,9 @@ class HtmlView extends BaseHtmlView
 		$user  = Factory::getUser();
 
 		$toolbar = Toolbar::getInstance('toolbar');
-
-		ToolbarHelper::title(Text::_('Guided Tour - List of Steps'), 'steps');
-
+		$tour_id = $this->state->get('tour_id');
+		$title = GuidedtoursHelper::getTourTitle($this->state->get('tour_id'))->title;
+		ToolbarHelper::title(Text::_('COM_GUIDEDTOURS_STEPS_LIST') . ' ' . $tour_id . ' : ' . $title);
 		$arrow  = Factory::getLanguage()->isRtl() ? 'arrow-right' : 'arrow-left';
 
 		ToolbarHelper::link(
