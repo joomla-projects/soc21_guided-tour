@@ -7,7 +7,7 @@
 			name="search"
 			type="text"
 			label="SEARCH"
-			description="SEARCH"
+			description="COM_GUIDEDTOURS_STEP_FILTER_SEARCH_DESC"
 			hint="JSEARCH_FILTER"
 		/>
 
