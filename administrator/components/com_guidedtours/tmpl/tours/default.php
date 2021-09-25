@@ -85,26 +85,26 @@ if ($saveOrder && !empty($this->items))
 				<!-- Tours table header -->
 				<thead>
 					<tr>
-						<td class="d-none d-md-table-cell text-center">
+						<td class="d-none d-md-table-cell">
 							<?php echo HTMLHelper::_('grid.checkall'); ?>
 						</td>
 						<!-- Ordering?-->
-						<th scope="col" class="d-none d-md-table-cell text-center">
+						<th scope="col" class="d-none d-md-table-cell">
 							<?php echo HTMLHelper::_('searchtools.sort', '', 'a.ordering', $listDirn, $listOrder, null, 'asc', 'JGRID_HEADING_ORDERING', 'icon-sort'); ?>
 						</th>
-						<th scope="col" class="d-none d-md-table-cell text-center">
+						<th scope="col" class="d-none d-md-table-cell">
 							<?php echo HTMLHelper::_('searchtools.sort', 'JSTATUS', 'a.state', $listDirn, $listOrder); ?>
 						</th>
-						<th scope="col" class="d-none d-md-table-cell text-center">
+						<th scope="col" class="d-none d-md-table-cell">
 							<?php echo HTMLHelper::_('searchtools.sort', 'JTOUR_TITLE', 'a.title', $listDirn, $listOrder); ?>
 						</th>
-						<th scope="col" class="d-none d-md-table-cell text-center">
+						<th scope="col" class="d-none d-md-table-cell">
 							<?php echo HTMLHelper::_('searchtools.sort', 'JTOUR_DESCRIPTION', 'a.description', $listDirn, $listOrder); ?>
 						</th>
-						<th scope="col" class="d-none d-md-table-cell text-center">
-							<?php echo HTMLHelper::_('searchtools.sort', 'JTOUR_STEPS', 'a.distance', $listDirn, $listOrder); ?>
+						<th scope="col" class="d-none d-md-table-cell">
+							<?php echo HTMLHelper::_('searchtools.sort', 'JTOUR_STEPS', 'a.steps', $listDirn, $listOrder); ?>
 						</th>
-						<th scope="col" class="d-none d-md-table-cell text-center">
+						<th scope="col" class="d-none d-md-table-cell">
 							<?php echo HTMLHelper::_('searchtools.sort', 'JGRID_HEADING_ID', 'a.id', $listDirn, $listOrder); ?>
 						</th>
 					</tr>

@@ -5,9 +5,7 @@
 	<author>Joomla! Project</author>
 	<license>GNU General Public License version 2 or later; see LICENSE.txt</license>
 	<version>4.1.0</version>
-	<description>
-		COM_GUIDEDTOURS_XML_DESCRIPTION
-	</description>
+	<description>COM_GUIDEDTOURS_XML_DESCRIPTION</description>
 	<namespace path="src">Joomla\Component\Guidedtours</namespace>
 	<administration>
 		<filename>access.xml</filename>
