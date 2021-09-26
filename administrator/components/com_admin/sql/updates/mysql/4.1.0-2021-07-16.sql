@@ -11,7 +11,6 @@ CREATE TABLE IF NOT EXISTS `#__guidedtours` (
   `ordering` int NOT NULL DEFAULT 0,
   `extensions` text NOT NULL,
   `url` varchar(255) NOT NULL,
-  `overlay` tinyint NOT NULL  DEFAULT 0,
   `created` datetime NOT NULL,
   `created_by` int NOT NULL DEFAULT 0,
   `modified` datetime NOT NULL,
@@ -52,6 +51,7 @@ CREATE TABLE IF NOT EXISTS `#__guidedtour_steps` (
   `modified` datetime NOT NULL,
   `modified_by` int unsigned NOT NULL DEFAULT 0,
   `state` tinyint NOT NULL DEFAULT '1',
+  `overlay` tinyint NOT NULL  DEFAULT 0,
   KEY `idx_tour` (`tour_id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 DEFAULT COLLATE=utf8mb4_unicode_ci;
 

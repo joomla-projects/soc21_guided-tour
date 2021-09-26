@@ -11,14 +11,11 @@ Joomla = window.Joomla || {};
                 var mainID = obj.findIndex(x => x.id === dataID);
                 sessionStorage.setItem("tourid", mainID);
                 var currentURL = window.location.href;
-
+                console.log("hehe");
                 if (currentURL != obj[mainID].url) {
                     window.location.href = obj[mainID].url;
                 }
-                var overlay = true;
-                if (obj[mainID].overlay == 0) {
-                    overlay = false;
-                }
+
                 const tour = new Shepherd.Tour({
                     defaultStepOptions: {
                         scrollTo: true,
@@ -31,7 +28,7 @@ Joomla = window.Joomla || {};
                         classes: 'class-1 class-2 shepherd-theme-arrows',
                         scrollTo: { behavior: 'smooth', block: 'center' }
                     },
-                    useModalOverlay: overlay,
+
                     keyboardNavigation: true,
                 });
 
@@ -89,7 +86,19 @@ Joomla = window.Joomla || {};
                                 return tour.cancel();
                             }
                         });
+                        buttons.push({
+                            text: 'Back',
+                            classes: 'shepherd-button-secondary',
+                            action: function() {
+                                return tour.back();
+                            }
+                        });
                     }
+                    // var overlay = false;
+                    // if (obj[mainID].steps[index].overlay == 0) {
+                    //     overlay = true;
+                    // }
+
                     tour.addStep({
                         title: obj[mainID].steps[index].title,
                         text: obj[mainID].steps[index].description,
@@ -98,6 +107,9 @@ Joomla = window.Joomla || {};
                             element: obj[mainID].steps[index].target,
                             on: obj[mainID].steps[index].position,
                         },
+
+                        useModalOverlay: true,
+
 
                         buttons: buttons,
                         id: obj[mainID].steps[index].id,
@@ -137,7 +149,7 @@ Joomla = window.Joomla || {};
                 classes: 'class-1 class-2 shepherd-theme-arrows',
                 scrollTo: { behavior: 'smooth', block: 'center' }
             },
-            useModalOverlay: true,
+
             keyboardNavigation: true,
         });
 
@@ -180,6 +192,7 @@ Joomla = window.Joomla || {};
                         element: obj[mainID].steps[index].target,
                         on: obj[mainID].steps[index].position,
                     },
+                    useModalOverlay: true,
                     buttons: buttons,
                     id: obj[mainID].steps[index].id,
                     arrow: true,
