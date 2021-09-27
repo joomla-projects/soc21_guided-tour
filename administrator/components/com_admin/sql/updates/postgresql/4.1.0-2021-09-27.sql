@@ -1,7 +1,7 @@
 --
 -- Table structure for table "#__guidedtours"
 --
-
+--
 CREATE TABLE IF NOT EXISTS "#__guidedtours"
 (
  `id` int NOT NULL AUTO_INCREMENT,
@@ -31,7 +31,6 @@ CREATE INDEX "#__guidedtours_idx_modified" ON "#__guidedtours" (`modified`);
 CREATE INDEX "#__guidedtours_idx_modified_by" ON "#__guidedtours" (`modified_by`);
 CREATE INDEX "#__guidedtours_idx_checked_out" ON "#__guidedtours" (`checked_out`);
 
-
 --
 -- Table structure for table "#__guidedtour_steps"
 --
@@ -53,5 +52,4 @@ CREATE TABLE IF NOT EXISTS "#__guidedtour_steps"
   `modified_by` int unsigned NOT NULL DEFAULT 0,
   `state` tinyint NOT NULL DEFAULT '1'   
 );
-
  CREATE INDEX "#__guidedtours_idx_tour_id" ON "#__guidedtour_steps" (`tour_id`);
