@@ -7,7 +7,7 @@
 			name="search"
 			type="text"
 			label="SEARCH"
-			description="COM_GUIDEDTOURS_STEP_FILTER_SEARCH_DESC"
+			description="COM_GUIDEDTOURS_FILTER_SEARCH_DESC"
 			hint="JSEARCH_FILTER"
 		/>
 
@@ -40,9 +40,7 @@
 			<option value="a.title ASC">JGLOBAL_TITLE_ASC</option>
 			<option value="a.title DESC">JGLOBAL_TITLE_DESC</option>
 			<option value="a.description DESC">JDESCRIPTION_DESC</option>
-			<option value="a.description ASC">JDESCRIPTION_ASC</option>			
-			<option value="steps DESC" requires="steps">JSTEP_DESC</option>
-			<option value="steps ASC" requires="steps">JSTEP_ASC</option>			
+			<option value="a.description ASC">JDESCRIPTION_ASC</option>						
 			<option value="a.ordering ASC">JGRID_HEADING_ORDERING_ASC</option>
 			<option value="a.ordering DESC">JGRID_HEADING_ORDERING_DESC</option>
 		</field>
