@@ -39,7 +39,7 @@ $this->useCoreUI = true;
 ?>
 
 <form action="<?php echo Route::_('index.php?option=com_guidedtours&view=step&layout=edit&id=' . (int) $this->item->id); ?>" method="post" name="adminForm" id="guidedtour-dates-form" class="form-validate">
-	<?php echo LayoutHelper::render('joomla.edit.title_alias', $this); ?>
+
 
 	<div>
 		<?php echo HTMLHelper::_('uitab.startTabSet', 'myTab', array('active' => 'details')); ?>
@@ -56,12 +56,9 @@ $this->useCoreUI = true;
 				<?php echo $this->form->renderField('tour_id'); ?>
 
 			</div>
-			<div class="col-md-3">
-				<div class="card card-light">
-					<div class="card-body">
-						<?php echo LayoutHelper::render('joomla.edit.global', $this); ?>
-					</div>
-				</div>
+
+			<div class="col-lg-3">
+				<?php echo LayoutHelper::render('joomla.edit.global', $this); ?>
 			</div>
 		</div>
 		<?php echo HTMLHelper::_('uitab.endTab'); ?>

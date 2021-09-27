@@ -97,15 +97,6 @@
 	/>
 
 	<field
-		name="access"
-		type="accesslevel"
-		label="JFIELD_ACCESS_LABEL"
-		filter="UINT"
-		validate="options"
-	/>
-
-
-	<field
 		name="created_user_id"
 		type="user"
 		label="JGLOBAL_FIELD_CREATED_BY_LABEL"
