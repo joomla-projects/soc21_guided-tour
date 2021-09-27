@@ -15,6 +15,10 @@ Joomla = window.Joomla || {};
                 if (currentURL != obj[mainID].url) {
                     window.location.href = obj[mainID].url;
                 }
+                var overlay = false;
+                if (obj[mainID].overlay == 1) {
+                    overlay = true;
+                }
 
                 const tour = new Shepherd.Tour({
                     defaultStepOptions: {
@@ -28,7 +32,7 @@ Joomla = window.Joomla || {};
                         classes: 'class-1 class-2 shepherd-theme-arrows',
                         scrollTo: { behavior: 'smooth', block: 'center' }
                     },
-
+                    useModalOverlay: overlay,
                     keyboardNavigation: true,
                 });
 
@@ -94,10 +98,6 @@ Joomla = window.Joomla || {};
                             }
                         });
                     }
-                    // var overlay = false;
-                    // if (obj[mainID].steps[index].overlay == 0) {
-                    //     overlay = true;
-                    // }
 
                     tour.addStep({
                         title: obj[mainID].steps[index].title,
@@ -108,7 +108,6 @@ Joomla = window.Joomla || {};
                             on: obj[mainID].steps[index].position,
                         },
 
-                        useModalOverlay: true,
 
 
                         buttons: buttons,
@@ -137,6 +136,10 @@ Joomla = window.Joomla || {};
         var newIndex = sessionStorage.getItem('stepID');
         var newId = sessionStorage.getItem('newstepID');
         newIndex = newIndex - 1;
+        var overlay = false;
+        if (obj[mainID].overlay == 1) {
+            overlay = true;
+        }
         const tour = new Shepherd.Tour({
             defaultStepOptions: {
                 scrollTo: true,
@@ -149,7 +152,7 @@ Joomla = window.Joomla || {};
                 classes: 'class-1 class-2 shepherd-theme-arrows',
                 scrollTo: { behavior: 'smooth', block: 'center' }
             },
-
+            useModalOverlay: overlay,
             keyboardNavigation: true,
         });
 
@@ -192,7 +195,7 @@ Joomla = window.Joomla || {};
                         element: obj[mainID].steps[index].target,
                         on: obj[mainID].steps[index].position,
                     },
-                    useModalOverlay: true,
+
                     buttons: buttons,
                     id: obj[mainID].steps[index].id,
                     arrow: true,

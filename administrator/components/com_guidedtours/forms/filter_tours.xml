@@ -1,45 +1,29 @@
 <?xml version="1.0" encoding="utf-8"?>
-<form addfieldprefix="Joomla\Component\Guidedtours\Administrator\Field">
+<form>
+
 	<fields name="filter">
+
 		<field
 			name="search"
 			type="text"
-			label="COM_GUIDEDTOURS_FILTER_SEARCH_LABEL"
-			description="COM_GUIDEDTOURS_FILTER_SEARCH_DESC"
-			inputmode="search"
+			label="SEARCH"
+			description="COM_GUIDEDTOURS_STEP_FILTER_SEARCH_DESC"
 			hint="JSEARCH_FILTER"
 		/>
+
 		<field
-			name="state"
-			type="taskState"
-			label="JSTATUS"
+			name="published"
+			type="status"
+			label="JOPTION_SELECT_PUBLISHED"
 			onchange="this.form.submit();"
-			validate="options"
 			>
 			<option value="">JOPTION_SELECT_PUBLISHED</option>
 		</field>
-		<field
-			name="type"
-			type="taskType"
-			label="COM_GUIDEDTOURS_HEADING_TASK_TYPE"
-			onchange="this.form.submit();"
-			>
-			<option value="">COM_GUIDEDTOURS_SELECT_TYPE</option>
-		</field>
-		<field
-			name="orphaned"
-			type="list"
-			label="COM_GUIDEDTOURS_FIELD_LABEL_SHOW_ORPHANED"
-			default="-1"
-			onchange="this.form.submit()"
-			>
-			<option value="-1">COM_GUIDEDTOURS_OPTION_ORPHANED_HIDE</option>
-			<option value="0">COM_GUIDEDTOURS_OPTION_ORPHANED_SHOW</option>
-			<option value="1">COM_GUIDEDTOURS_OPTION_ORPHANED_ONLY</option>
-		</field>
+
 	</fields>
 
 	<fields name="list">
+
 		<field
 			name="fullordering"
 			type="list"
@@ -56,14 +40,13 @@
 			<option value="a.title ASC">JGLOBAL_TITLE_ASC</option>
 			<option value="a.title DESC">JGLOBAL_TITLE_DESC</option>
 			<option value="a.description DESC">JDESCRIPTION_DESC</option>
-			<option value="a.description ASC">JDESCRIPTION_ASC</option>
-			
+			<option value="a.description ASC">JDESCRIPTION_ASC</option>			
 			<option value="steps DESC" requires="steps">JSTEP_DESC</option>
-			<option value="steps ASC" requires="steps">JSTEP_ASC</option>
-			
+			<option value="steps ASC" requires="steps">JSTEP_ASC</option>			
 			<option value="a.ordering ASC">JGRID_HEADING_ORDERING_ASC</option>
 			<option value="a.ordering DESC">JGRID_HEADING_ORDERING_DESC</option>
 		</field>
+
 		<field
 			name="limit"
 			type="limitbox"
