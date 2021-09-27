@@ -83,7 +83,7 @@ class PlgSystemTour extends CMSPlugin implements SubscriberInterface
 			$theCurrentExtension = $this->app->input->get('option');
 			$myTours->setState('list.extensions', $theCurrentExtension);
 
-			// $myTours->setState('filter.published', 1);
+			$myTours->setState('filter.published', 1);
 
 			$steps = $mySteps->getItems();
 			$tours = $myTours->getItems();

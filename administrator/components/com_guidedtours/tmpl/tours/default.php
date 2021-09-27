@@ -172,6 +172,7 @@ if ($saveOrder && !empty($this->items))
 								:
 									?>
 									<?php echo $this->escape($item->title); ?>
+
 								<?php endif; ?>
 
 								<span class="small">

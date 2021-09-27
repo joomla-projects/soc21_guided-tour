@@ -19,10 +19,6 @@
 		label="JFIELD_ASSET_ID_LABEL"
 	/>
 
-	
-
-	
-
 	<field
 		name="title"
 		type="text"
@@ -31,16 +27,6 @@
 		required="true"
 	/>
 
-	<field
-		name="alias"
-		type="text"
-		label="JFIELD_ALIAS_LABEL"
-		description="JFIELD_ALIAS_DESC"
-		size="45"
-		hint="JFIELD_ALIAS_PLACEHOLDER"
-	/>
-
-	
 
 	<field
 		name="description"

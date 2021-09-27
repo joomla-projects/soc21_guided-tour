@@ -1,22 +1,24 @@
 <?php
 
 /**
- * File Doc Comment_
- * PHP version 5
+ * @package     Joomla.Administrator
+ * @subpackage  com_banners
  *
- * @category  Component
- * @package   Joomla.Administrator
- * @author    Joomla! <admin@joomla.org>
- * @copyright (C) 2013 Open Source Matters, Inc. <https://www.joomla.org>
- * @license   GNU General Public License version 2 or later; see LICENSE.txt
- * @link      admin@joomla.org
+ * @copyright   (C) 2009 Open Source Matters, Inc. <https://www.joomla.org>
+ * @license     GNU General Public License version 2 or later; see LICENSE.txt
  */
+
 defined('_JEXEC') or die;
 
+use Joomla\CMS\Factory;
 use Joomla\CMS\HTML\HTMLHelper;
 use Joomla\CMS\Language\Text;
 use Joomla\CMS\Layout\LayoutHelper;
 use Joomla\CMS\Router\Route;
+
+$app = Factory::getApplication();
+$user = $app->getIdentity();
+$input = $app->input;
 
 HTMLHelper::_('behavior.formvalidator');
 HTMLHelper::_('behavior.keepalive');
@@ -38,6 +40,7 @@ HTMLHelper::_('behavior.keepalive');
 				<?php echo $this->form->renderField('url'); ?>
 				<?php echo $this->form->renderField('overlay'); ?>
 			</div>
+
 			<div class="col-md-3">
 				<div class="card card-light">
 					<div class="card-body">
@@ -47,6 +50,7 @@ HTMLHelper::_('behavior.keepalive');
 			</div>
 		</div>
 		<?php echo HTMLHelper::_('uitab.endTab'); ?>
+
 		<?php echo HTMLHelper::_('uitab.addTab', 'myTab', 'publishing', Text::_('JGLOBAL_FIELDSET_PUBLISHING')); ?>
 		<div class="row">
 			<div class="col-12 col-lg-8">
