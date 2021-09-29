@@ -142,7 +142,9 @@ class ToursModel extends ListModel
 		if (!empty($search))
 		{
 			$search = '%' . str_replace(' ', '%', trim($search)) . '%';
-			$query->where('(' . $db->quoteName('a.id') . ' LIKE :search1 OR ' . $db->quoteName('a.title') . ' LIKE :search2 OR ' . $db->quoteName('a.description') . ' LIKE :search3)')
+			$query->where('(' . $db->quoteName('a.id') . ' LIKE :search1 OR ' . $db->quoteName('a.title')
+				. ' LIKE :search2 OR ' . $db->quoteName('a.description') . ' LIKE :search3)'
+			)
 				->bind([':search1', ':search2', ':search3'], $search);
 		}
 
