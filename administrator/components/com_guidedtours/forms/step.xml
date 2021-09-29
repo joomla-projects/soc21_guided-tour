@@ -85,6 +85,21 @@
 	</field>
 
 	<field
+			name="state"
+			type="list"
+			label="JSTATUS"
+			class="form-select-color-state"
+			size="1"
+			default="1"
+			validate="options"
+			>
+			<option value="1">JPUBLISHED</option>
+			<option value="0">JUNPUBLISHED</option>
+			<option value="2">JARCHIVED</option>
+			<option value="-2">JTRASHED</option>
+		</field>
+
+	<field
 		name="checked_out"
 		type="hidden"
 		filter="unset"
