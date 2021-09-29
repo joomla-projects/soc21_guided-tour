@@ -42,7 +42,6 @@ class ToursModel extends ListModel
 				'id', 'a.id',
 				'title', 'a.title',
 				'description', 'a.description',
-				'alias', 'a.alias',
 				'published', 'a.published',
 				'ordering', 'a.ordering',
 				'extensions', 'a.extensions',

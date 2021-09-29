@@ -934,7 +934,6 @@ CREATE TABLE IF NOT EXISTS `#__guidedtour_steps` (
   `id` int NOT NULL AUTO_INCREMENT PRIMARY KEY,
   `tour_id` int NOT NULL DEFAULT 0,
   `title` varchar(255) NOT NULL,
-  `alias` varchar(400) CHARACTER SET utf8mb4 COLLATE utf8mb4_bin NOT NULL,
   `published` tinyint NOT NULL DEFAULT 0,
   `description` text NOT NULL,
   `ordering` int NOT NULL DEFAULT 0,

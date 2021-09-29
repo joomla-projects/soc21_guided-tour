@@ -40,7 +40,7 @@ $this->useCoreUI = true;
 
 <form action="<?php echo Route::_('index.php?option=com_guidedtours&view=step&layout=edit&id=' . (int) $this->item->id); ?>" method="post" name="adminForm" id="guidedtour-dates-form" class="form-validate">
 
-
+	<?php echo LayoutHelper::render('joomla.edit.title_alias', $this); ?>
 	<div>
 		<?php echo HTMLHelper::_('uitab.startTabSet', 'myTab', array('active' => 'details')); ?>
 

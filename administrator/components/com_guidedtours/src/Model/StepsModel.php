@@ -45,7 +45,6 @@ class StepsModel extends ListModel
 				'tour_id', 'a.tour_id',
 				'title', 'a.title',
 				'description', 'a.description',
-				'alias', 'a.alias',
 				'published', 'a.published',
 				'ordering', 'a.ordering',
 				'created_by', 'a.created_by',
