@@ -50,11 +50,26 @@ class StepsModel extends ListModel
 				'created_by', 'a.created_by',
 				'modified', 'a.modified',
 				'modified_by', 'a.modified_by',
-				'state', 'a.state',
 			);
 		}
 
 		parent::__construct($config);
+	}
+
+	/**
+	 * Method to get a table object, load it if necessary.
+	 *
+	 * @param   string  $type    The table name. Optional.
+	 * @param   string  $prefix  The class prefix. Optional.
+	 * @param   array   $config  Configuration array for model. Optional.
+	 *
+	 * @return  \Joomla\CMS\Table\Table  A JTable object
+	 *
+	 * @since  4.0.0
+	 */
+	public function getTable($type = 'Step', $prefix = 'Administrator', $config = array())
+	{
+		return parent::getTable($type, $prefix, $config);
 	}
 
 	/**
@@ -94,6 +109,22 @@ class StepsModel extends ListModel
 
 		// List state information.
 		parent::populateState($ordering, $direction);
+	}
+
+	/**
+	 * A protected method to get a set of ordering conditions.
+	 *
+	 * @param   object  $table  A record object.
+	 *
+	 * @return  array  An array of conditions to add to ordering queries.
+	 *
+	 * @since   4.0.0
+	 */
+	protected function getReorderConditions($table)
+	{
+		return [
+			$this->_db->quoteName('tour_id') . ' = ' . (int) $table->tour_id,
+		];
 	}
 
 	/**
@@ -165,12 +196,12 @@ class StepsModel extends ListModel
 
 		if (is_numeric($published))
 		{
-			$query->where($db->quoteName('a.state') . ' = :published');
+			$query->where($db->quoteName('a.published') . ' = :published');
 			$query->bind(':published', $published, ParameterType::INTEGER);
 		}
 		elseif ($published === '')
 		{
-			$query->where('(' . $db->quoteName('a.state') . ' = 0 OR ' . $db->quoteName('a.state') . ' = 1)');
+			$query->where('(' . $db->quoteName('a.published') . ' = 0 OR ' . $db->quoteName('a.published') . ' = 1)');
 		}
 
 		// Filter by search in title.
