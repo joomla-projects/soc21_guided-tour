@@ -126,7 +126,7 @@ class StepModel extends AdminModel
 			unset($data['rules']);
 		}
 
-		// Make sure we use the correct extension when editing an existing workflow
+		// Make sure we use the correct extension when editing an existing tour
 		$key = $table->getKeyName();
 		$pk  = (isset($data[$key])) ? $data[$key] : (int) $this->getState($this->getName() . '.id');
 
@@ -237,13 +237,13 @@ class StepModel extends AdminModel
 			$record->tour_id = $tourID;
 		}
 
-		// Check for existing workflow.
+		// Check for existing tour.
 		if (!empty($record->id))
 		{
 			return $user->authorise('core.edit.state', $extension . '.state.' . (int) $record->id);
 		}
 
-		// Default to component settings if workflow isn't known.
+		// Default to component settings if tour isn't known.
 		return $user->authorise('core.edit.state', $extension);
 	}
 
