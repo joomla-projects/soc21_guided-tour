@@ -9,9 +9,7 @@
 		readonly="true"
 		default="0"
 	/>
-
-
-
+	
 	<field
 		name="asset_id"
 		type="hidden"
@@ -26,7 +24,6 @@
 		size="40"
 		required="true"
 	/>
-
 
 	<field
 		name="description"
@@ -51,7 +48,6 @@
 		<option value="2">JARCHIVED</option>
 		<option value="-2">JTRASHED</option>
 	</field>
-
 
 	<field
 		name="checked_out"
@@ -114,8 +110,7 @@
 		label="JFIELD_LANGUAGE_LABEL"
 		>
 		<option value="*">JALL</option>
-	</field>
-	
+	</field>	
 	
 	<field
 		name="url"
@@ -137,6 +132,7 @@
 		component="com_guidedtours"
 		section="tour"
 	/>
+	
 	<field
 		name="overlay"
 		type="radio"
@@ -144,7 +140,7 @@
 		layout="joomla.form.field.radio.switcher"
 		default="0"
 		description="COM_GUIDEDTOURS_OVERLAY_DESC"
-	>
+		>
 		<option value="0">JNO</option>
 		<option value="1">JYES</option>
 	</field>
@@ -159,18 +155,15 @@
 		buttons="true"
 		hide="readmore,pagebreak"
 		default="*"
-	>
+		>
 	<option value="*">JALL</option>
 		</field>
-
-
 	<fieldset name="permissions" label="JCONFIG_PERMISSIONS_LABEL">
 		<field
 			name="asset_id"
 			type="hidden"
 			filter="unset"
-		/>
-		
+		/>		
 	</fieldset>
 
 </form>

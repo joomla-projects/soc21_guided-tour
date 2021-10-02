@@ -1,15 +1,10 @@
 <?php
 
 /**
- * File Doc Comment_
- * PHP version 5
- *
- * @category  Component
- * @package   Joomla.Administrator
- * @author    Joomla! <admin@joomla.org>
- * @copyright (C) 2013 Open Source Matters, Inc. <https://www.joomla.org>
- * @license   GNU General Public License version 2 or later; see LICENSE.txt
- * @link      admin@joomla.org
+ * @package       Joomla.Administrator
+ * @subpackage    com_guidedtours
+ * @copyright (C) 2021 Open Source Matters, Inc. <https://www.joomla.org>
+ * @license       GNU General Public License version 2 or later; see LICENSE.txt
  */
 
 namespace Joomla\Component\Guidedtours\Administrator\Table;
@@ -23,7 +18,7 @@ use Joomla\CMS\Factory;
 /**
  * Guidedtour_steps table
  *
- * @since 1.5
+ * @since __DEPLOY_VERSION__
  */
 class StepTable extends Table
 {
@@ -32,7 +27,7 @@ class StepTable extends Table
 	 *
 	 * @param   DatabaseDriver $db Database connector object
 	 *
-	 * @since 1.0
+	 * @since  __DEPLOY_VERSION__
 	 */
 	public function __construct(DatabaseDriver $db)
 	{
@@ -47,7 +42,8 @@ class StepTable extends Table
 	 * @return mixed  False on failure, positive integer on success.
 	 *
 	 * @see   Table::store()
-	 * @since 4.0.0
+	 * @since __DEPLOY_VERSION__
+	 * @since __DEPLOY_VERSION__
 	 */
 	public function store($updateNulls = true)
 	{

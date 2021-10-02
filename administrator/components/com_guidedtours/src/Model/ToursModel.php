@@ -1,12 +1,10 @@
 <?php
 
 /**
- * @package     Joomla.Administrator
- * @subpackage  com_guidedtours
- *
- * @copyright   (C) 2018 Open Source Matters, Inc. <https://www.joomla.org>
- * @license     GNU General Public License version 2 or later; see LICENSE.txt
- * @since       4.0.0
+ * @package       Joomla.Administrator
+ * @subpackage    com_guidedtours
+ * @copyright (C) 2021 Open Source Matters, Inc. <https://www.joomla.org>
+ * @license       GNU General Public License version 2 or later; see LICENSE.txt
  */
 
 namespace Joomla\Component\Guidedtours\Administrator\Model;
@@ -18,9 +16,9 @@ use Joomla\CMS\MVC\Model\ListModel;
 use Joomla\Database\ParameterType;
 
 /**
- * Model class for tours
+ * Model class for Tours
  *
- * @since  4.0.0
+ * @since  __DEPLOY_VERSION__
  */
 class ToursModel extends ListModel
 {
@@ -30,7 +28,7 @@ class ToursModel extends ListModel
 	 * @param   array  $config  An optional associative array of configuration settings.
 	 *
 	 * @see     JController
-	 * @since  4.0.0
+	 * @since   __DEPLOY_VERSION__
 	 */
 	public function __construct($config = array())
 	{
@@ -66,7 +64,7 @@ class ToursModel extends ListModel
 	 *
 	 * @return  void
 	 *
-	 * @since  4.0.0
+	 * @since  __DEPLOY_VERSION__
 	 */
 	protected function populateState($ordering = 'a.ordering', $direction = 'asc')
 	{
@@ -93,7 +91,7 @@ class ToursModel extends ListModel
 	 *
 	 * @return  \Joomla\CMS\Table\Table  A JTable object
 	 *
-	 * @since  4.0.0
+	 * @since  __DEPLOY_VERSION__
 	 */
 	public function getTable($type = 'Tour', $prefix = 'Administrator', $config = array())
 	{
@@ -127,7 +125,7 @@ class ToursModel extends ListModel
 	 *
 	 * @return  string  The query to database.
 	 *
-	 * @since  4.0.0
+	 * @since  __DEPLOY_VERSION__
 	 */
 	public function getListQuery()
 	{

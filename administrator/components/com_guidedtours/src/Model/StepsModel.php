@@ -1,15 +1,10 @@
 <?php
 
 /**
- * File Doc Comment_
- * PHP version 5
- *
- * @category  Component
- * @package   Joomla.Administrator
- * @author    Joomla! <admin@joomla.org>
- * @copyright (C) 2013 Open Source Matters, Inc. <https://www.joomla.org>
- * @license   GNU General Public License version 2 or later; see LICENSE.txt
- * @link      admin@joomla.org
+ * @package       Joomla.Administrator
+ * @subpackage    com_guidedtours
+ * @copyright (C) 2021 Open Source Matters, Inc. <https://www.joomla.org>
+ * @license       GNU General Public License version 2 or later; see LICENSE.txt
  */
 
 namespace Joomla\Component\Guidedtours\Administrator\Model;
@@ -24,7 +19,7 @@ use Joomla\Utilities\ArrayHelper;
 /**
  * Methods supporting a list of article records.
  *
- * @since 1.6
+ * @since __DEPLOY_VERSION__
  */
 class StepsModel extends ListModel
 {
@@ -33,7 +28,7 @@ class StepsModel extends ListModel
 	 *
 	 * @param   array $config An optional associative array of configuration settings.
 	 *
-	 * @since 1.6
+	 * @since __DEPLOY_VERSION__
 	 * @see   \Joomla\CMS\MVC\Controller\BaseController
 	 */
 	public function __construct($config = array())
@@ -65,7 +60,7 @@ class StepsModel extends ListModel
 	 *
 	 * @return  \Joomla\CMS\Table\Table  A JTable object
 	 *
-	 * @since  4.0.0
+	 * @since __DEPLOY_VERSION__
 	 */
 	public function getTable($type = 'Step', $prefix = 'Administrator', $config = array())
 	{
@@ -82,7 +77,7 @@ class StepsModel extends ListModel
 	 *
 	 * @return void
 	 *
-	 * @since 1.6
+	 * @since __DEPLOY_VERSION__
 	 */
 	protected function populateState($ordering = 'a.id', $direction = 'asc')
 	{
@@ -118,7 +113,7 @@ class StepsModel extends ListModel
 	 *
 	 * @return  array  An array of conditions to add to ordering queries.
 	 *
-	 * @since   4.0.0
+	 * @since   __DEPLOY_VERSION__
 	 */
 	protected function getReorderConditions($table)
 	{
@@ -138,7 +133,7 @@ class StepsModel extends ListModel
 	 *
 	 * @return string  A store id.
 	 *
-	 * @since 1.6
+	 * @since __DEPLOY_VERSION__
 	 */
 	protected function getStoreId($id = '')
 	{
@@ -154,7 +149,7 @@ class StepsModel extends ListModel
 	 *
 	 * @return \Joomla\Database\DatabaseQuery
 	 *
-	 * @since 1.6
+	 * @since __DEPLOY_VERSION__
 	 */
 	protected function getListQuery()
 	{
@@ -192,6 +187,7 @@ class StepsModel extends ListModel
 			$query->whereIn($db->quoteName('a.tour_id'), $tour_id);
 		}
 
+		// Published state
 		$published = (string) $this->getState('filter.published');
 
 		if (is_numeric($published))
@@ -228,7 +224,7 @@ class StepsModel extends ListModel
 	 *
 	 * @return mixed  An array of data items on success, false on failure.
 	 *
-	 * @since 4.0.0
+	 * @since __DEPLOY_VERSION__
 	 */
 	public function getItems()
 	{

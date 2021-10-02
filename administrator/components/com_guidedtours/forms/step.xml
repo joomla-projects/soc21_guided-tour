@@ -16,17 +16,17 @@
 	/>
 
 	<field
-					name="position"
-					type="list"
-					label="COM_GUIDEDTOURS_POSITION_LABEL"
-					description="COM_GUIDEDTOURS_POSITION_DESC"
-					validate="options"
-					>
-					<option value="bottom">COM_GUIDEDTOURS_FIELD_OPTION_BOTTOM</option>
-					<option value="top">COM_GUIDEDTOURS_FIELD_OPTION_TOP</option>
-					<option value="right">COM_GUIDEDTOURS_FIELD_OPTION_RIGHT</option>
-					<option value="left">COM_GUIDEDTOURS_FIELD_OPTION_LEFT</option>
-				</field>
+		name="position"
+		type="list"
+		label="COM_GUIDEDTOURS_POSITION_LABEL"
+		description="COM_GUIDEDTOURS_POSITION_DESC"
+		validate="options"
+		>
+		<option value="bottom">COM_GUIDEDTOURS_FIELD_OPTION_BOTTOM</option>
+		<option value="top">COM_GUIDEDTOURS_FIELD_OPTION_TOP</option>
+		<option value="right">COM_GUIDEDTOURS_FIELD_OPTION_RIGHT</option>
+		<option value="left">COM_GUIDEDTOURS_FIELD_OPTION_LEFT</option>
+	</field>>
 
 	<field
 		name="target"
@@ -36,12 +36,12 @@
 	/>
 	
 	<field
-			name="tour_id"
-			type="hidden"
-			label="COM_GUIDEDTOURS_TOURID_LABEL"
-			class="readonly"
-			readonly="true"
-		/>
+		name="tour_id"
+		type="hidden"
+		label="COM_GUIDEDTOURS_TOURID_LABEL"
+		class="readonly"
+		readonly="true"
+	/>
 
 	<field
 		name="asset_id"
@@ -49,8 +49,6 @@
 		filter="unset"
 		label="JFIELD_ASSET_ID_LABEL"
 	/>
-
-	
 
 	<field
 		name="title"
@@ -119,6 +117,7 @@
 		label="JGLOBAL_FIELD_MODIFIED_BY_LABEL"
 		validate="UserId"
 	/>
+	
 	<field
 		name="modified_time"
 		type="calendar"
@@ -134,8 +133,6 @@
 		>
 		<option value="*">JALL</option>
 	</field>
-
-	
 
 	<field
 		name="rules"
@@ -153,8 +150,7 @@
 			name="asset_id"
 			type="hidden"
 			filter="unset"
-		/>
-		
+		/>		
 	</fieldset>
 	
 </form>

@@ -1,15 +1,10 @@
 <?php
 
 /**
- * File Doc Comment_
- * PHP version 5
- *
- * @category  Component
- * @package   Joomla.Administrator
- * @author    Joomla! <admin@joomla.org>
- * @copyright (C) 2013 Open Source Matters, Inc. <https://www.joomla.org>
- * @license   GNU General Public License version 2 or later; see LICENSE.txt
- * @link      admin@joomla.org
+ * @package       Joomla.Administrator
+ * @subpackage    com_guidedtours
+ * @copyright (C) 2021 Open Source Matters, Inc. <https://www.joomla.org>
+ * @license       GNU General Public License version 2 or later; see LICENSE.txt
  */
 
 namespace Joomla\Component\Guidedtours\Administrator\Controller;
@@ -21,8 +16,9 @@ use Joomla\CMS\MVC\Controller\AdminController;
 /**
  * Guidedtours list controller class.
  *
- * @since 1.6
+ * @since _DEPLOY_VERSION_
  */
+
 class ToursController extends AdminController
 {
 	/**
@@ -34,7 +30,7 @@ class ToursController extends AdminController
 	 *
 	 * @return \Joomla\CMS\MVC\Model\BaseDatabaseModel
 	 *
-	 * @since 1.6
+	 * @since _DEPLOY_VERSION_
 	 */
 	public function getModel($name = 'Tour', $prefix = 'Administrator', $config = array('ignore_request' => true))
 	{

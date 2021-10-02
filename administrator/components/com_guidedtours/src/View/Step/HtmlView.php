@@ -1,16 +1,12 @@
 <?php
 
 /**
- * File Doc Comment_
- * PHP version 5
- *
- * @category  Component
- * @package   Joomla.Administrator
- * @author    Joomla! <admin@joomla.org>
- * @copyright (C) 2013 Open Source Matters, Inc. <https://www.joomla.org>
- * @license   GNU General Public License version 2 or later; see LICENSE.txt
- * @link      admin@joomla.org
+ * @package       Joomla.Administrator
+ * @subpackage    com_guidedtours
+ * @copyright (C) 2021 Open Source Matters, Inc. <https://www.joomla.org>
+ * @license       GNU General Public License version 2 or later; see LICENSE.txt
  */
+
 
 namespace Joomla\Component\Guidedtours\Administrator\View\Step;
 
@@ -25,9 +21,9 @@ use Joomla\CMS\Toolbar\Toolbar;
 use Joomla\CMS\Toolbar\ToolbarHelper;
 
 /**
- * View to edit an article.
+ * View to edit an Step
  *
- * @since 1.6
+ * @since __DEPLOY_VERSION__
  */
 class HtmlView extends BaseHtmlView
 {
@@ -67,7 +63,7 @@ class HtmlView extends BaseHtmlView
 	 * @return mixed  A string if successful, otherwise an Error object.
 	 *
 	 * @throws \Exception
-	 * @since  1.6
+	 * @since  __DEPLOY_VERSION__
 	 */
 	public function display($tpl = null)
 	{
@@ -91,7 +87,7 @@ class HtmlView extends BaseHtmlView
 	 * @return void
 	 *
 	 * @throws \Exception
-	 * @since  1.6
+	 * @since  __DEPLOY_VERSION__
 	 */
 	protected function addToolbar()
 	{

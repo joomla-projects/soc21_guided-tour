@@ -1,15 +1,10 @@
 <?php
 
 /**
- * File Doc Comment_
- * PHP version 5
- *
- * @category  Component
- * @package   Joomla.Administrator
- * @author    Joomla! <admin@joomla.org>
- * @copyright (C) 2013 Open Source Matters, Inc. <https://www.joomla.org>
- * @license   GNU General Public License version 2 or later; see LICENSE.txt
- * @link      admin@joomla.org
+ * @package       Joomla.Administrator
+ * @subpackage    com_guidedtours
+ * @copyright (C) 2021 Open Source Matters, Inc. <https://www.joomla.org>
+ * @license       GNU General Public License version 2 or later; see LICENSE.txt
  */
 
 namespace Joomla\Component\Guidedtours\Administrator\Model;
@@ -25,7 +20,7 @@ use Joomla\CMS\Table\Table;
 /**
  * Item Model for a single tour.
  *
- * @since 1.6
+ * @since __DEPLOY_VERSION__
  */
 
 class StepModel extends AdminModel
@@ -34,7 +29,7 @@ class StepModel extends AdminModel
 	 * The prefix to use with controller messages.
 	 *
 	 * @var   string
-	 * @since 1.6
+	 * @since __DEPLOY_VERSION__
 	 */
 	protected $text_prefix = 'COM_GUIDEDTOURS';
 
@@ -45,7 +40,7 @@ class StepModel extends AdminModel
 	 *
 	 * @return  boolean  True if allowed to delete the record. Defaults to the permission for the component.
 	 *
-	 * @since  4.0.0
+	 * @since  __DEPLOY_VERSION__
 	 */
 	protected function canDelete($record)
 	{
@@ -82,7 +77,7 @@ class StepModel extends AdminModel
 	 *
 	 * @return  void
 	 *
-	 * @since  4.0.0
+	 * @since  __DEPLOY_VERSION__
 	 */
 	public function populateState()
 	{
@@ -99,7 +94,7 @@ class StepModel extends AdminModel
 	 *
 	 * @return   boolean  True on success.
 	 *
-	 * @since  4.0.0
+	 * @since  __DEPLOY_VERSION__
 	 */
 	public function save($data)
 	{
@@ -166,7 +161,7 @@ class StepModel extends AdminModel
 	 *
 	 * @return  boolean  True on success.
 	 *
-	 * @since  4.0.0
+	 * @since  __DEPLOY_VERSION__
 	 */
 	public function setDefault($pk, $value = 1)
 	{
@@ -222,7 +217,7 @@ class StepModel extends AdminModel
 	 *
 	 * @return  boolean  True if allowed to change the state of the record. Defaults to the permission set in the component.
 	 *
-	 * @since   4.0.0
+	 * @since   __DEPLOY_VERSION__
 	 */
 	protected function canEditState($record)
 	{
@@ -256,7 +251,7 @@ class StepModel extends AdminModel
 	 *
 	 * @return Table  A Table object
 	 *
-	 * @since  3.0
+	 * @since  __DEPLOY_VERSION__
 	 * @throws \Exception
 	 */
 	public function getTable($name = '', $prefix = '', $options = array())
@@ -280,7 +275,7 @@ class StepModel extends AdminModel
 	 *
 	 * @return  boolean  True on success.
 	 *
-	 * @since  4.0.0
+	 * @since  __DEPLOY_VERSION__
 	 */
 	public function publish(&$pks, $value = 1)
 	{
@@ -296,9 +291,7 @@ class StepModel extends AdminModel
 			{
 				if ($table->load($pk) && $table->default)
 				{
-					// Prune items that you can't change.
 					$app->enqueueMessage(Text::_('COM_WORKFLOW_MSG_DISABLE_DEFAULT'), 'error');
-
 					unset($pks[$i]);
 				}
 			}
@@ -316,17 +309,13 @@ class StepModel extends AdminModel
 	 *
 	 * @return  void
 	 *
-	 * @since  4.0.0
+	 * @since  __DEPLOY_VERSION__
 	 */
 	protected function preprocessForm(Form $form, $data, $group = 'content')
 	{
 		$extension = Factory::getApplication()->input->get('extension');
-
 		$parts = explode('.', $extension);
-
 		$extension = array_shift($parts);
-
-		// Set the access control rules field component value.
 		$form->setFieldAttribute('rules', 'component', $extension);
 
 		parent::preprocessForm($form, $data, $group);
@@ -340,7 +329,7 @@ class StepModel extends AdminModel
 	 *
 	 * @return \JForm|boolean  A JForm object on success, false on failure
 	 *
-	 * @since  4.0.0
+	 * @since  __DEPLOY_VERSION__
 	 */
 	public function getForm($data = array(), $loadData = true)
 	{
@@ -388,7 +377,7 @@ class StepModel extends AdminModel
 	 *
 	 * @return mixed  The data for the form.
 	 *
-	 * @since  4.0.0
+	 * @since  __DEPLOY_VERSION__
 	 */
 	protected function loadFormData()
 	{

@@ -1,17 +1,12 @@
 <?php
 
 /**
- * File Doc Comment_
- * PHP version 5
- *
- * @category  Component
- * @package   Joomla.Administrator
- * @author    Joomla! <admin@joomla.org>
- * @copyright (C) 2013 Open Source Matters, Inc. <https://www.joomla.org>
- * @license   GNU General Public License version 2 or later; see LICENSE.txt
- * @link      admin@joomla.org
+ * @package       Joomla.Administrator
+ * @subpackage    com_guidedtours
+ * @copyright (C) 2021 Open Source Matters, Inc. <https://www.joomla.org>
+ * @license       GNU General Public License version 2 or later; see LICENSE.txt
  */
-// Restrict direct access
+
 defined('_JEXEC') or die;
 
 use Joomla\CMS\Factory;
@@ -60,7 +55,7 @@ if ($saveOrder && !empty($this->items))
 
 		<!-- If no steps -->
 		<?php if (empty($this->items))
-:
+		:
 			?>
 			<!-- No steps -->
 			<div class="alert alert-info">
@@ -71,7 +66,7 @@ if ($saveOrder && !empty($this->items))
 
 		<!-- If there are steps, we start with the table -->
 		<?php if (!empty($this->items))
-:
+		:
 			?>
 			<!-- Steps table starts here -->
 			<table class="table" id="categoryList">
@@ -109,12 +104,12 @@ if ($saveOrder && !empty($this->items))
 
 				<!-- Table body begins -->
 				<tbody <?php if ($saveOrder)
-	:
+				:
 					?> class="js-draggable" data-url="<?php echo $saveOrderingUrl; ?>" data-direction="<?php echo strtolower($listDirn); ?>" data-nested="true" <?php
 					   endif; ?>>
 					<?php
 					foreach ($this->items as $i => $item)
-	:
+					:
 						$canCreate = $user->authorise('core.create', 'com_guidedtours');
 						$canEdit = $user->authorise('core.edit', 'com_guidedtours');
 						$canChange = $user->authorise('core.edit.state', 'com_guidedtours');
@@ -133,11 +128,11 @@ if ($saveOrder && !empty($this->items))
 								$iconClass = '';
 
 								if (!$canChange)
-		{
+								{
 									$iconClass = ' inactive';
 								}
 								elseif (!$saveOrder)
-		{
+								{
 									$iconClass = ' inactive" title="' . Text::_('JORDERINGDISABLED');
 								}
 								?>
@@ -147,7 +142,7 @@ if ($saveOrder && !empty($this->items))
 								</span>
 
 								<?php if ($canChange && $saveOrder)
-		:
+								:
 									?>
 									<input type="text" class="hidden text-area-order" name="order[]" size="5" value="<?php echo $item->ordering; ?>">
 								<?php endif; ?>
@@ -161,24 +156,24 @@ if ($saveOrder && !empty($this->items))
 							<!-- Step name, edit link, and note (@todo: should it be moved?) -->
 							<th scope="row">
 								<?php if ($canEdit)
-		:
+								:
 									?>
 									<a href="<?php echo Route::_('index.php?option=com_guidedtours&task=step.edit&id=' . $item->id); ?>" title="<?php echo Text::_('JACTION_EDIT'); ?> <?php echo $this->escape($item->title); ?>"> <?php echo $this->escape($item->title); ?></a>
 								<?php else
 
-		:
+								:
 									?>
 									<?php echo $this->escape($item->title); ?>
 								<?php endif; ?>
 
 								<span class="small">
 									<?php if (empty($item->note))
-		:
+									:
 										?>
 										<?php echo Text::_('COM_GUIDEDTOURS_NO_NOTE'); ?>
 									<?php else
 
-		:
+									:
 										?>
 										<?php echo Text::sprintf('JGLOBAL_LIST_NOTE', $this->escape($item->note)); ?>
 									<?php endif; ?>
