@@ -10,10 +10,6 @@ Joomla = window.Joomla || {};
                 var dataID = this.getAttribute('data-id');
                 var mainID = obj.findIndex(x => x.id === dataID);
                 sessionStorage.setItem("tourid", mainID);
-                var currentURL = window.location.href;
-                if (currentURL != obj[mainID].url) {
-                    window.location.href = obj[mainID].url;
-                }
 
                 const tour = new Shepherd.Tour({
                     defaultStepOptions: {
@@ -31,6 +27,10 @@ Joomla = window.Joomla || {};
                     keyboardNavigation: true,
                 });
                 if (mainID) {
+                    var currentURL = window.location.href;
+                    if (currentURL != obj[mainID].url) {
+                        window.location.href = obj[mainID].url;
+                    }
                     tour.addStep({
                         title: obj[mainID].title,
                         text: obj[mainID].description,
