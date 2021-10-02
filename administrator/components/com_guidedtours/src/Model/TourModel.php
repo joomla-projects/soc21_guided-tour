@@ -106,7 +106,6 @@ class TourModel extends AdminModel
 
 			// Unpublish new copy
 			$data['published'] = 0;
-			$data['default'] = 0;
 		}
 
 		$result = parent::save($data);
@@ -125,7 +124,6 @@ class TourModel extends AdminModel
 
 			// ---changes
 			$table->published = 1;
-			$table->default = 1;
 
 			$table->store();
 		}
@@ -175,10 +173,6 @@ class TourModel extends AdminModel
 				$form->setFieldAttribute('published', 'required', 'false');
 				$form->setFieldAttribute('published', 'filter', 'unset');
 			}
-
-			$form->setFieldAttribute('default', 'disabled', 'true');
-			$form->setFieldAttribute('default', 'required', 'false');
-			$form->setFieldAttribute('default', 'filter', 'unset');
 		}
 
 		$form->setFieldAttribute('created', 'default', Factory::getDate()->format('Y-m-d H:i:s'));
