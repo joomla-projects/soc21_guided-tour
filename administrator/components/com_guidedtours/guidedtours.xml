@@ -7,6 +7,9 @@
 	<version>4.1.0</version>
 	<description>COM_GUIDEDTOURS_XML_DESCRIPTION</description>
 	<namespace path="src">Joomla\Component\Guidedtours</namespace>
+	<media destination="com_guidedtours" folder="media">
+		<folder>css</folder>
+	</media>
 	<administration>
 		<filename>access.xml</filename>
 		<filename>config.xml</filename>

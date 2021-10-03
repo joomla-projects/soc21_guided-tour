@@ -19,6 +19,11 @@ use Joomla\CMS\Toolbar\Toolbar;
 use Joomla\CMS\HTML\HTMLHelper;
 use Joomla\CMS\Uri\Uri;
 use Joomla\CMS\Factory;
+use Joomla\CMS\Helper\ContentHelper;
+use Joomla\CMS\Language\Text;
+use Joomla\CMS\MVC\View\GenericDataException;
+use Joomla\CMS\MVC\View\HtmlView as BaseHtmlView;
+use Joomla\CMS\Toolbar\ToolbarHelper;
 
 /**
  * PlgSystemTour
@@ -128,7 +133,7 @@ class PlgSystemTour extends CMSPlugin implements SubscriberInterface
 
 			foreach ($tours as $a)
 			{
-				$childBar->basicButton('tour')
+				$childBar->BasicButton('tour')
 					->text($a->title)
 					->attributes(['data-id' => $a->id])
 					->buttonClass('btn btn-primary');
@@ -150,28 +155,33 @@ class PlgSystemTour extends CMSPlugin implements SubscriberInterface
 		{
 			HTMLHelper::_(
 				'script',
-				Uri::root() . 'media/plg_system_tour/js/guide.js',
+				Uri::root() . 'build/media_source/plg_system_tour/js/guide.js',
 				array('version' => 'auto', 'relative' => true)
 			);
 
 			HTMLHelper::_(
 				'script',
-				Uri::root() . 'media/plg_system_tour/js/shepherd.min.js',
+				Uri::root() . 'build/media_source/plg_system_tour/js/shepherd.min.js',
 				array('version' => 'auto', 'relative' => true)
 			);
 			HTMLHelper::_(
 				'script',
-				Uri::root() . 'media/plg_system_tour/js/popper.min.js',
+				Uri::root() . 'build/media_source/plg_system_tour/js/popper.min.js',
 				array('version' => 'auto', 'relative' => true)
 			);
 			HTMLHelper::_(
 				'stylesheet',
-				Uri::root() . 'media/plg_system_tour/css/shepherd.css',
+				Uri::root() . 'build/media_source/plg_system_tour/css/shepherd.css',
 				array('version' => 'auto', 'relative' => true)
 			);
 			HTMLHelper::_(
 				'stylesheet',
-				Uri::root() . 'media/plg_system_tour/css/shepherd.min.css',
+				Uri::root() . 'build/media_source/plg_system_tour/css/shepherd.min.css',
+				array('version' => 'auto', 'relative' => true)
+			);
+			HTMLHelper::_(
+				'stylesheet',
+				Uri::root() . 'build/media_source/plg_system_tour/css/guide.css',
 				array('version' => 'auto', 'relative' => true)
 			);
 		}
