@@ -11,7 +11,6 @@ CREATE TABLE IF NOT EXISTS "#__guidedtours"
   `ordering` int NOT NULL DEFAULT 0,
   `extensions` text NOT NULL,
   `url` varchar(255) NOT NULL,
-  `overlay` tinyint NOT NULL  DEFAULT 0,
   `created` datetime NOT NULL,
   `created_by` int NOT NULL DEFAULT 0,
   `modified` datetime NOT NULL,
@@ -20,16 +19,8 @@ CREATE TABLE IF NOT EXISTS "#__guidedtours"
   `checked_out` int NOT NULL DEFAULT 0,
   `published` tinyint NOT NULL DEFAULT 0,
   `state` tinyint NOT NULL DEFAULT '1',
-    PRIMARY KEY ("id")
+  PRIMARY KEY ("id")
 );
-
-CREATE INDEX "#__guidedtours_idx_asset_id" ON "#__guidedtours" (`asset_id`);
-CREATE INDEX "#__guidedtours_idx_title" ON "#__guidedtours" (`title`(191));
-CREATE INDEX "#__guidedtours_idx_created" ON "#__guidedtours" (`created`);
-CREATE INDEX "#__guidedtours_idx_created_by" ON "#__guidedtours" (`created_by`);
-CREATE INDEX "#__guidedtours_idx_modified" ON "#__guidedtours" (`modified`);
-CREATE INDEX "#__guidedtours_idx_modified_by" ON "#__guidedtours" (`modified_by`);
-CREATE INDEX "#__guidedtours_idx_checked_out" ON "#__guidedtours" (`checked_out`);
 
 --
 -- Table structure for table "#__guidedtour_steps"

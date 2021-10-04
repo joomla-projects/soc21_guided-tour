@@ -11,20 +11,12 @@ Joomla = window.Joomla || {};
                 var mainID = obj.findIndex(x => x.id === dataID);
                 sessionStorage.setItem("tourid", mainID);
                 var currentURL = window.location.href;
-                console.log("hehe");
                 if (currentURL != obj[mainID].url) {
                     window.location.href = obj[mainID].url;
                 }
-                var overlay = false;
-                if (obj[mainID].overlay == 1) {
-                    overlay = true;
-                }
-
                 const tour = new Shepherd.Tour({
                     defaultStepOptions: {
                         scrollTo: true,
-                        modalOverlayOpeningPadding: 60,
-                        modalOverlayOpeningRadius: 15,
                         classes: 'shadow',
                         cancelIcon: {
                             enabled: true
@@ -32,7 +24,6 @@ Joomla = window.Joomla || {};
                         classes: 'class-1 class-2 shepherd-theme-arrows',
                         scrollTo: { behavior: 'smooth', block: 'center' }
                     },
-                    useModalOverlay: overlay,
                     keyboardNavigation: true,
                 });
 
@@ -136,15 +127,9 @@ Joomla = window.Joomla || {};
         var newIndex = sessionStorage.getItem('stepID');
         var newId = sessionStorage.getItem('newstepID');
         newIndex = newIndex - 1;
-        var overlay = false;
-        if (obj[mainID].overlay == 1) {
-            overlay = true;
-        }
         const tour = new Shepherd.Tour({
             defaultStepOptions: {
                 scrollTo: true,
-                modalOverlayOpeningPadding: 60,
-                modalOverlayOpeningRadius: 15,
                 classes: 'shadow',
                 cancelIcon: {
                     enabled: true
@@ -152,7 +137,6 @@ Joomla = window.Joomla || {};
                 classes: 'class-1 class-2 shepherd-theme-arrows',
                 scrollTo: { behavior: 'smooth', block: 'center' }
             },
-            useModalOverlay: overlay,
             keyboardNavigation: true,
         });
 
