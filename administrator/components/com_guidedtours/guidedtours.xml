@@ -15,7 +15,7 @@
 		<folder>services</folder>
 		<folder>src</folder>
 		<folder>tmpl</folder>
-		<languages folder="admin">
+		<languages folder="administrator">
 			<language tag="en-GB">language/en-GB/com_guidedtours.ini</language>
 			<language tag="en-GB">language/en-GB/com_guidedtours.sys.ini</language>
 		</languages>

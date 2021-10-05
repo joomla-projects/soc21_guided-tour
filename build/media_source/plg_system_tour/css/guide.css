@@ -1,22 +1,3 @@
-/* body::after {
-    opacity: 0;
+.subhead .btn {
+    margin: 0px 0px;
 }
-
-body.shepherd-active::after {
-    content: "";
-    display: block;
-    background-color: #fff;
-    opacity: 0.01;
-    position: fixed;
-    width: 100%;
-    height: 100%;
-    top: 0;
-    left: 0;
-    z-index: 1000000;
-}
-
-.shepherd-element.shepherd-open,
-.shepherd-target.shepherd-enabled {
-    z-index: 10000000;
-    position: relative;
-} */

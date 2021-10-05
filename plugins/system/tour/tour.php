@@ -1,16 +1,12 @@
 <?php
 
 /**
- * File Doc Comment_
- * PHP version 5
- *
- * @category  Component
- * @package   Joomla.Administrator
- * @author    Joomla! <admin@joomla.org>
- * @copyright (C) 2013 Open Source Matters, Inc. <https://www.joomla.org>
- * @license   GNU General Public License version 2 or later; see LICENSE.txt
- * @link      admin@joomla.org
+ * @package       Joomla.Administrator
+ * @subpackage    System.Tour
+ * @copyright (C) 2021 Open Source Matters, Inc. <https://www.joomla.org>
+ * @license       GNU General Public License version 2 or later; see LICENSE.txt
  */
+
 defined('_JEXEC') or die;
 
 use Joomla\CMS\Plugin\CMSPlugin;
@@ -128,7 +124,7 @@ class PlgSystemTour extends CMSPlugin implements SubscriberInterface
 
 			foreach ($tours as $a)
 			{
-				$childBar->CustomButton('tour')
+				$childBar->basicButton('tour')
 					->text($a->title)
 					->attributes(['data-id' => $a->id])
 					->buttonClass('btn btn-primary');
@@ -153,7 +149,16 @@ class PlgSystemTour extends CMSPlugin implements SubscriberInterface
 				Uri::root() . 'media/plg_system_tour/js/guide.js',
 				array('version' => 'auto', 'relative' => true)
 			);
-
+			HTMLHelper::_(
+				'script',
+				Uri::root() . 'media/plg_system_tour/js/popper.min.js',
+				array('version' => 'auto', 'relative' => true)
+			);
+			HTMLHelper::_(
+				'script',
+				Uri::root() . 'media/plg_system_tour/js/popper.min.js.map',
+				array('version' => 'auto', 'relative' => true)
+			);
 			HTMLHelper::_(
 				'script',
 				Uri::root() . 'media/plg_system_tour/js/shepherd.min.js',
@@ -161,7 +166,7 @@ class PlgSystemTour extends CMSPlugin implements SubscriberInterface
 			);
 			HTMLHelper::_(
 				'script',
-				Uri::root() . 'media/plg_system_tour/js/popper.min.js',
+				Uri::root() . 'media/plg_system_tour/js/shepherd.min.js.map',
 				array('version' => 'auto', 'relative' => true)
 			);
 			HTMLHelper::_(
@@ -172,6 +177,11 @@ class PlgSystemTour extends CMSPlugin implements SubscriberInterface
 			HTMLHelper::_(
 				'stylesheet',
 				Uri::root() . 'media/plg_system_tour/css/shepherd.min.css',
+				array('version' => 'auto', 'relative' => true)
+			);
+			HTMLHelper::_(
+				'stylesheet',
+				Uri::root() . 'media/plg_system_tour/css/guide.css',
 				array('version' => 'auto', 'relative' => true)
 			);
 		}

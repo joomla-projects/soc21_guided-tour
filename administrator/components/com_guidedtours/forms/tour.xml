@@ -156,8 +156,9 @@
 		hide="readmore,pagebreak"
 		default="*"
 		>
-	<option value="*">JALL</option>
-		</field>
+		<option value="*">JALL</option>
+	</field>
+	
 	<fieldset name="permissions" label="JCONFIG_PERMISSIONS_LABEL">
 		<field
 			name="asset_id"
