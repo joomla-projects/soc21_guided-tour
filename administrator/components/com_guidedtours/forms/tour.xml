@@ -53,6 +53,7 @@
 		name="checked_out"
 		type="hidden"
 		filter="unset"
+		default="0"
 	/>
 
 	<field

@@ -14,6 +14,10 @@ Joomla = window.Joomla || {};
                 if (currentURL != obj[mainID].url) {
                     window.location.href = obj[mainID].url;
                 }
+                var overlay = false;
+                if (obj[mainID].overlay == 1) {
+                    overlay = true;
+                }
                 const tour = new Shepherd.Tour({
                     defaultStepOptions: {
                         scrollTo: true,
@@ -25,6 +29,7 @@ Joomla = window.Joomla || {};
                         scrollTo: { behavior: 'smooth', block: 'center' }
                     },
                     keyboardNavigation: true,
+                    useModalOverlay: overlay,
                 });
 
                 // if (sessionStorage.getItem('tourid')) {
@@ -127,6 +132,10 @@ Joomla = window.Joomla || {};
         var newIndex = sessionStorage.getItem('stepID');
         var newId = sessionStorage.getItem('newstepID');
         newIndex = newIndex - 1;
+        var overlay = false;
+        if (obj[mainID].overlay == 1) {
+            overlay = true;
+        }
         const tour = new Shepherd.Tour({
             defaultStepOptions: {
                 scrollTo: true,
@@ -138,6 +147,7 @@ Joomla = window.Joomla || {};
                 scrollTo: { behavior: 'smooth', block: 'center' }
             },
             keyboardNavigation: true,
+            useModalOverlay: overlay,
         });
 
         if (mainID && newId) {

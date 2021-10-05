@@ -18,7 +18,6 @@ CREATE TABLE IF NOT EXISTS "#__guidedtours"
   `checked_out_time` datetime NOT NULL,
   `checked_out` int NOT NULL DEFAULT 0,
   `published` tinyint NOT NULL DEFAULT 0,
-  `state` tinyint NOT NULL DEFAULT '1',
   PRIMARY KEY ("id")
 );
 
@@ -40,7 +39,6 @@ CREATE TABLE IF NOT EXISTS "#__guidedtour_steps"
   `created` datetime NOT NULL,
   `created_by` int unsigned NOT NULL DEFAULT 0,
   `modified` datetime NOT NULL,
-  `modified_by` int unsigned NOT NULL DEFAULT 0,
-  `state` tinyint NOT NULL DEFAULT '1'   
+  `modified_by` int unsigned NOT NULL DEFAULT 0, 
 );
  CREATE INDEX "#__guidedtours_idx_tour_id" ON "#__guidedtour_steps" (`tour_id`);

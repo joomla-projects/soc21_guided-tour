@@ -26,6 +26,7 @@
 		<option value="top">COM_GUIDEDTOURS_FIELD_OPTION_TOP</option>
 		<option value="right">COM_GUIDEDTOURS_FIELD_OPTION_RIGHT</option>
 		<option value="left">COM_GUIDEDTOURS_FIELD_OPTION_LEFT</option>
+		<option value="">COM_GUIDEDTOURS_FIELD_OPTION_CENTER</option>
 	</field>>
 
 	<field
