@@ -11,6 +11,7 @@ CREATE TABLE IF NOT EXISTS "#__guidedtours"
   `ordering` int NOT NULL DEFAULT 0,
   `extensions` text NOT NULL,
   `url` varchar(255) NOT NULL,
+  `overlay` tinyint NOT NULL DEFAULT 0,
   `created` datetime NOT NULL,
   `created_by` int NOT NULL DEFAULT 0,
   `modified` datetime NOT NULL,
