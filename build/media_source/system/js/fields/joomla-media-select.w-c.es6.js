@@ -176,9 +176,9 @@ const insertAsImage = async (media, editor, fieldClass) => {
       }
 
       if (figCaption) {
-        imageElement = `<figure${figClasses}><img src="${Joomla.selectedMediaFile.url}"${classes}${isLazy}${alt}/><figcaption>${figCaption}</figcaption></figure>`;
+        imageElement = `<figure${figClasses}><img src="${Joomla.selectedMediaFile.url}"${classes}${isLazy}${alt} data-path="${Joomla.selectedMediaFile.path}"/><figcaption>${figCaption}</figcaption></figure>`;
       } else {
-        imageElement = `<img src="${Joomla.selectedMediaFile.url}"${classes}${isLazy}${alt}/>`;
+        imageElement = `<img src="${Joomla.selectedMediaFile.url}"${classes}${isLazy}${alt} data-path="${Joomla.selectedMediaFile.path}"/>`;
       }
 
       if (attribs) {
@@ -197,7 +197,7 @@ const insertAsImage = async (media, editor, fieldClass) => {
         }
       }
       editor.value = `${Joomla.selectedMediaFile.url}#joomlaImage://${media.path.replace(':', '')}?width=${Joomla.selectedMediaFile.width}&height=${Joomla.selectedMediaFile.height}`;
-      fieldClass.updatePreview(Joomla.selectedMediaFile.url);
+      fieldClass.updatePreview();
     }
   }
 };

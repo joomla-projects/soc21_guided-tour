@@ -1,5 +1,5 @@
 const { lstat, readFile, writeFile } = require('fs-extra');
-const { sep } = require('path');
+const { sep, basename } = require('path');
 const recursive = require('recursive-readdir');
 const { minify } = require('terser');
 
@@ -19,8 +19,13 @@ const folders = [
 let allFiles = [];
 
 const noMinified = [
+<<<<<<< HEAD
     'media/vendor/accessibility/js/accessibility.min.js',
     'media/vendor/short-and-sweet/js/short-and-sweet.min.js',
+=======
+  'accessibility.min.js',
+  'short-and-sweet.min.js',
+>>>>>>> d7f68c72d115d529e8141d4c2b89235df930d11c
 ];
 
 const alreadyMinified = [
@@ -47,6 +52,7 @@ const minifiedExists = async(file) => {
  *
  * @returns {Promise}
  */
+<<<<<<< HEAD
 const minifyJS = async(file) => {
     const needsDotJS = noMinified.includes(file.replace(`${RootPath}${sep}`, ''));
     if (file.endsWith('.min.js') && !needsDotJS) {
@@ -77,6 +83,39 @@ const minifyJS = async(file) => {
         newFile,
         minified, { encoding: 'utf8' },
     );
+=======
+const minifyJS = async (file) => {
+  const needsDotJS = noMinified.includes(basename(file));
+  if (file.endsWith('.min.js') && !needsDotJS) {
+    return;
+  }
+
+  // eslint-disable-next-line no-console
+  console.log(`Processing Vendor file: ${file}`);
+
+  let minified;
+  const fileExists = await minifiedExists(file);
+  if (!fileExists) {
+    return;
+  }
+
+  const content = await readFile(file, { encoding: 'utf8' });
+
+  const isMinified = alreadyMinified.includes(file.replace(`${RootPath}${sep}`, ''));
+  if (isMinified || needsDotJS) {
+    minified = content;
+  } else {
+    minified = (await minify(content, { sourceMap: false, format: { comments: false } })).code;
+  }
+
+  const newFile = needsDotJS ? file.replace('.min.js', '.js') : file.replace('.js', '.min.js');
+  // Write the file
+  await writeFile(
+    newFile,
+    minified,
+    { encoding: 'utf8', mode: 0o644 },
+  );
+>>>>>>> d7f68c72d115d529e8141d4c2b89235df930d11c
 };
 
 /**
