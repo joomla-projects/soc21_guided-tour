@@ -13,19 +13,12 @@ const folders = [
     'media/vendor/qrcode/js',
     'media/vendor/short-and-sweet/js',
     'media/vendor/webcomponentsjs/js',
-    'media/vendor/shepherdjs',
 ];
 
 let allFiles = [];
-
 const noMinified = [
-<<<<<<< HEAD
-    'media/vendor/accessibility/js/accessibility.min.js',
-    'media/vendor/short-and-sweet/js/short-and-sweet.min.js',
-=======
-  'accessibility.min.js',
-  'short-and-sweet.min.js',
->>>>>>> d7f68c72d115d529e8141d4c2b89235df930d11c
+    'accessibility.min.js',
+    'short-and-sweet.min.js',
 ];
 
 const alreadyMinified = [
@@ -52,9 +45,8 @@ const minifiedExists = async(file) => {
  *
  * @returns {Promise}
  */
-<<<<<<< HEAD
 const minifyJS = async(file) => {
-    const needsDotJS = noMinified.includes(file.replace(`${RootPath}${sep}`, ''));
+    const needsDotJS = noMinified.includes(basename(file));
     if (file.endsWith('.min.js') && !needsDotJS) {
         return;
     }
@@ -81,41 +73,8 @@ const minifyJS = async(file) => {
     // Write the file
     await writeFile(
         newFile,
-        minified, { encoding: 'utf8' },
+        minified, { encoding: 'utf8', mode: 0o644 },
     );
-=======
-const minifyJS = async (file) => {
-  const needsDotJS = noMinified.includes(basename(file));
-  if (file.endsWith('.min.js') && !needsDotJS) {
-    return;
-  }
-
-  // eslint-disable-next-line no-console
-  console.log(`Processing Vendor file: ${file}`);
-
-  let minified;
-  const fileExists = await minifiedExists(file);
-  if (!fileExists) {
-    return;
-  }
-
-  const content = await readFile(file, { encoding: 'utf8' });
-
-  const isMinified = alreadyMinified.includes(file.replace(`${RootPath}${sep}`, ''));
-  if (isMinified || needsDotJS) {
-    minified = content;
-  } else {
-    minified = (await minify(content, { sourceMap: false, format: { comments: false } })).code;
-  }
-
-  const newFile = needsDotJS ? file.replace('.min.js', '.js') : file.replace('.js', '.min.js');
-  // Write the file
-  await writeFile(
-    newFile,
-    minified,
-    { encoding: 'utf8', mode: 0o644 },
-  );
->>>>>>> d7f68c72d115d529e8141d4c2b89235df930d11c
 };
 
 /**

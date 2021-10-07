@@ -247,43 +247,6 @@
         "licenseFilename": "LICENSE"
       },
 
-      "shepherdjs": {
-        "name": "shepherdjs",
-        "js": {
-          "dist/shepherd.js": "js/shepherd.js",
-          "dist/shepherd.min.js": "js/shepherd.min.js"
-        },
-        "css": {
-          "dist/shepherd.css": "css/shepherd.css",
-          "dist/shepherd.min.css": "css/shepherd.min.css"
-        },
-        "provideAssets": [
-          {
-            "name": "shepherdjs",
-            "type": "style",
-            "uri": "shepherd.min.css"
-          },
-          {
-            "name": "shepherdjs",
-            "type": "script",
-            "uri": "shepherd.min.js",
-            "attributes": {
-              "defer": true
-            }
-          },
-          {
-            "name": "shepherdjs",
-            "type": "preset",
-            "dependencies": [
-              "shepherdjs#style",
-              "shepherdjs#script"
-            ]
-          }
-        ],
-        "dependencies": [],
-        "licenseFilename": "LICENSE"
-      },
-
       "choices.js": {
         "name": "choicesjs",
         "js": {
