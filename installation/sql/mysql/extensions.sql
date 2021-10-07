@@ -912,7 +912,7 @@ CREATE TABLE IF NOT EXISTS `#__guidedtours` (
 -- Dumping data for table `#__guidedtours`
 --
 INSERT INTO `#__guidedtours` (`id`, `asset_id`, `title`,`description`, `ordering`, `extensions`, `url`,`overlay`, `created`, `created_by`, `modified`, `modified_by`, `checked_out_time`, `checked_out`, `published`) VALUES
-(0, 0, 'How to create a Guided Tour in Joomla Backend?','<p>This Tour will show you that how you can create Guided Tour in Joomla Backend!</p>', 0, '[\"com_guidedtours\"]', 'administrator/index.php?option=com_guidedtours',1, '', 0, '', 0, '', 0, 1);
+(1, 91, 'How to create a Guided Tour in Joomla Backend?','<p>This Tour will show you that how you can create Guided Tour in Joomla Backend!</p>', 0, '[\"com_guidedtours\"]', 'administrator/index.php?option=com_guidedtours',1, '', 0, '', 0, '', 0, 1);
 
 -- --------------------------------------------------------
   
@@ -950,7 +950,7 @@ INSERT INTO `#__guidedtour_steps` (`id`, `tour_id`, `title`, `published`, `descr
 (6, 1, 'overlay', 1, '<p>Select if you want an overlay effect or not.</p>', 0, 1, 'bottom', '#jform_overlay1', '', 0, '2021-09-17 18:48:36', 0),
 (7, 1, 'save and close', 1, '', 0, 1, 'bottom', '#save-group-children-save',  '', 0, '2021-09-17 18:50:35', 0),
 (8, 1, 'Create steps for your Tour', 1, '<p>Click on steps icon in the right</p>', 0, 1, 'right', '.btn-info ','', 0, '2021-09-17 18:53:08', 0),
-(9, 1, 'Click here!', 1, '<p>Click here to create a new Step for your Tour</p>', 0, 1, 'bottom', '.button-new','', 0, '2021-09-17 18:55:27', 0, 1),
+(9, 1, 'Click here!', 1, '<p>Click here to create a new Step for your Tour</p>', 0, 1, 'bottom', '.button-new','', 0, '2021-09-17 18:55:27', 0),
 (10, 1, 'Add title for your Tour.', 1, '<p>Here you have to add the title of your Tour Step. </p>', 0, 1, 'bottom', '#jform_title', '', 0, '2021-09-17 18:56:31', 0),
 (11, 1, 'Add Content', 1, '<p>Add the content of your Tour here!</p>', 0, 1, 'bottom', '#details', '', 0, '2021-09-17 18:57:19', 0),
 (12, 1, 'Position ', 1, '<p>here add the position of the Step you want. e.g. right, left, top, bottom.</p>', 0, 1, 'bottom', '#jform_position', '', 0, '2021-09-17 18:58:54', 0),
