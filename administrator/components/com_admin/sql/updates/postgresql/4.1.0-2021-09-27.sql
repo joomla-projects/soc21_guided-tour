@@ -4,7 +4,7 @@
 --
 CREATE TABLE IF NOT EXISTS "#__guidedtours"
 (
- `id` int NOT NULL AUTO_INCREMENT,
+  `id` int NOT NULL AUTO_INCREMENT,
   `asset_id` int DEFAULT 0,
   `title` varchar(255) NOT NULL,
   `description` text NOT NULL,
@@ -28,7 +28,7 @@ CREATE TABLE IF NOT EXISTS "#__guidedtours"
 
 CREATE TABLE IF NOT EXISTS "#__guidedtour_steps"
 (
- `id` int NOT NULL AUTO_INCREMENT PRIMARY KEY,
+  `id` int NOT NULL AUTO_INCREMENT PRIMARY KEY,
   `tour_id` int NOT NULL DEFAULT 0,
   `title` varchar(255) NOT NULL,
   `published` tinyint NOT NULL DEFAULT 0,
