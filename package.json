@@ -33,7 +33,6 @@
     "dependencies": {
         "@claviska/jquery-minicolors": "^2.3.5",
         "@fortawesome/fontawesome-free": "^5.15.3",
-        "@popperjs/core": "^2.9.2",
         "@webcomponents/webcomponentsjs": "^2.5.0",
         "accessibility": "^3.0.10",
         "awesomplete": "1.1.5",
@@ -51,7 +50,6 @@
         "mark.js": "^8.11.1",
         "mediaelement": "^4.2.16",
         "metismenujs": "^1.2.1",
-        "popper.js": "^1.16.1",
         "punycode": "^2.1.1",
         "qrcode-generator": "^1.4.4",
         "roboto-fontface": "^0.10.0",

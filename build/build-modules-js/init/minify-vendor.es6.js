@@ -16,6 +16,7 @@ const folders = [
 ];
 
 let allFiles = [];
+
 const noMinified = [
     'accessibility.min.js',
     'short-and-sweet.min.js',
@@ -94,4 +95,4 @@ module.exports.minifyVendor = async() => {
     allFiles.map((file) => filesPromises.push(minifyJS(file)));
 
     return Promise.all(filesPromises);
-};
+}
