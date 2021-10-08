@@ -146,7 +146,7 @@ class PlgSystemTour extends CMSPlugin implements SubscriberInterface
 		{
 			HTMLHelper::_(
 				'script',
-				Uri::root() . 'media/plg_system_tour/js/guide.js',
+				Uri::root() . 'media/plg_system_tour/js/guide.es6.js',
 				array('version' => 'auto', 'relative' => true)
 			);
 			HTMLHelper::_(
@@ -171,17 +171,17 @@ class PlgSystemTour extends CMSPlugin implements SubscriberInterface
 			);
 			HTMLHelper::_(
 				'stylesheet',
-				Uri::root() . 'media/plg_system_tour/css/shepherd.css',
+				Uri::root() . 'media/plg_system_tour/scss/shepherd.scss',
 				array('version' => 'auto', 'relative' => true)
 			);
 			HTMLHelper::_(
 				'stylesheet',
-				Uri::root() . 'media/plg_system_tour/css/shepherd.min.css',
+				Uri::root() . 'media/plg_system_tour/scss/shepherd.min.scss',
 				array('version' => 'auto', 'relative' => true)
 			);
 			HTMLHelper::_(
 				'stylesheet',
-				Uri::root() . 'media/plg_system_tour/css/guide.css',
+				Uri::root() . 'media/plg_system_tour/scss/guide.scss',
 				array('version' => 'auto', 'relative' => true)
 			);
 		}
