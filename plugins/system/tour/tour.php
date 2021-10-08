@@ -146,7 +146,7 @@ class PlgSystemTour extends CMSPlugin implements SubscriberInterface
 		{
 			HTMLHelper::_(
 				'script',
-				Uri::root() . 'media/plg_system_tour/js/guide.es6.js',
+				Uri::root() . 'media/plg_system_tour/js/guide.js',
 				array('version' => 'auto', 'relative' => true)
 			);
 			HTMLHelper::_(
