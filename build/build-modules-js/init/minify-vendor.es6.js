@@ -95,4 +95,4 @@ module.exports.minifyVendor = async() => {
     allFiles.map((file) => filesPromises.push(minifyJS(file)));
 
     return Promise.all(filesPromises);
-}
+};

@@ -246,7 +246,6 @@
         "dependencies": [],
         "licenseFilename": "LICENSE"
       },
-
       "choices.js": {
         "name": "choicesjs",
         "js": {
