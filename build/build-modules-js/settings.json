@@ -40,6 +40,47 @@
         "dependencies": [],
         "licenseFilename": "LICENSE"
       },
+
+      
+      "shepherd": {
+        "name": "shepherd",
+        "js": {
+          "shepherd.js": "js/shepherd.js",
+          "shepherd.min.js": "js/shepherd.min.js"
+        },
+        "css": {
+          "shepherd.css": "css/shepherd.css"
+        },
+        "filesExtra": {
+          "shepherd.min.js.map": "js/shepherd.min.js.map",
+          "shepherd.css.map": "css/shepherd.css.map"
+        },
+        "provideAssets": [
+          {
+            "name": "shepherd",
+            "type": "style",
+            "uri": "shepherd.css"
+          },
+          {
+            "name": "shepherd",
+            "type": "script",
+            "uri": "shepherd.min.js",
+            "attributes": {
+              "defer": true
+            }
+          },
+          {
+            "name": "shepherd",
+            "type": "preset",
+            "dependencies": [
+              "shepherd#style",
+              "shepherd#script"
+            ]
+          }
+        ],
+        "dependencies": [],
+        "licenseFilename": "LICENSE"
+      },
       "bootstrap": {
         "name": "bootstrap",
         "css": {
