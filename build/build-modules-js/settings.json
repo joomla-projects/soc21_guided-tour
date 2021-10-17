@@ -39,30 +39,28 @@
         ],
         "dependencies": [],
         "licenseFilename": "LICENSE"
-      },
-
-      
-      "shepherd": {
-        "name": "shepherd",
+      },      
+      "shepherd.js": {
+        "name": "shepherdjs",
         "js": {
-          "shepherd.js": "js/shepherd.js",
-          "shepherd.min.js": "js/shepherd.min.js"
+          "dist/js/shepherd.js": "js/shepherd.js",
+          "dist/js/shepherd.min.js": "js/shepherd.min.js"
         },
         "css": {
-          "shepherd.css": "css/shepherd.css"
+          "dist/css/shepherd.css": "css/shepherd.css"
         },
         "filesExtra": {
-          "shepherd.min.js.map": "js/shepherd.min.js.map",
-          "shepherd.css.map": "css/shepherd.css.map"
+          "dist/js/shepherd.js.map": "js/shepherd.js.map",
+          "dist/js/shepherd.min.js.map": "js/shepherd.min.js.map"
         },
         "provideAssets": [
           {
-            "name": "shepherd",
+            "name": "shepherdjs",
             "type": "style",
             "uri": "shepherd.css"
           },
           {
-            "name": "shepherd",
+            "name": "shepherdjs",
             "type": "script",
             "uri": "shepherd.min.js",
             "attributes": {
@@ -70,11 +68,41 @@
             }
           },
           {
-            "name": "shepherd",
+            "name": "shepherdjs",
             "type": "preset",
             "dependencies": [
-              "shepherd#style",
-              "shepherd#script"
+              "shepherdjs#style",
+              "shepherdjs#script"
+            ]
+          }
+        ],
+        "dependencies": ["popperjs"],
+        "licenseFilename": "LICENSE"
+      },
+      "@popperjs/core": {
+        "name": "popperjs",
+        "js": {
+          "dist/cjs/popper.js": "cjs/popper.js",
+          "dist/umd/popper.min.js": "umd/popper.min.js"
+        },
+        "filesExtra": {
+          "dist/cjs/popper.js.map": "cjs/popper.js.map",
+          "dist/umd/popper.min.js.map": "umd/popper.min.js.map"
+        },
+        "provideAssets": [
+          {
+            "name": "popperjs",
+            "type": "script",
+            "uri": "popper.min.js",
+            "attributes": {
+              "defer": true
+            }
+          },
+          {
+            "name": "popperjs",
+            "type": "preset",
+            "dependencies": [
+              "shepherdjs#script"
             ]
           }
         ],

@@ -11,7 +11,6 @@ const folders = [
     'media/vendor/codemirror',
     'media/vendor/debugbar',
     'media/vendor/qrcode/js',
-    'media/vendor/shepherd',
     'media/vendor/short-and-sweet/js',
     'media/vendor/webcomponentsjs/js',
 ];
