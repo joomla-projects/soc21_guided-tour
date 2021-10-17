@@ -102,7 +102,7 @@
             "name": "popperjs",
             "type": "preset",
             "dependencies": [
-              "shepherdjs#script"
+              "popperjs#script"
             ]
           }
         ],
