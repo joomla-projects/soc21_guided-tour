@@ -15,7 +15,9 @@ use Joomla\CMS\Toolbar\Toolbar;
 use Joomla\CMS\HTML\HTMLHelper;
 use Joomla\CMS\Uri\Uri;
 use Joomla\CMS\Factory;
+use Joomla\CMS\Language\Text;
 
+HTMLHelper::_('behavior.multiselect', 'updateForm');
 /**
  * PlgSystemTour
  *
@@ -68,8 +70,7 @@ class PlgSystemTour extends CMSPlugin implements SubscriberInterface
 	public function onBeforeRender()
 	{
 		// Run in backend
-		if ($this->app->isClient('administrator'))
-		{
+		if ($this->app->isClient('administrator')) {
 			/**
 			 * Booting of the Component to get the data in JSON Format
 			 */
@@ -88,22 +89,18 @@ class PlgSystemTour extends CMSPlugin implements SubscriberInterface
 
 			$newsteps = [];
 
-			foreach ($steps as $step)
-			{
-				if (!isset($newsteps[$step->tour_id]))
-				{
+			foreach ($steps as $step) {
+				if (!isset($newsteps[$step->tour_id])) {
 					$newsteps[$step->tour_id] = [];
 				}
 
 				$newsteps[$step->tour_id][] = $step;
 			}
 
-			foreach ($tours as $tour)
-			{
+			foreach ($tours as $tour) {
 				$tour->steps = [];
 
-				if (isset($newsteps[$tour->id]))
-				{
+				if (isset($newsteps[$tour->id])) {
 					$tour->steps = $newsteps[$tour->id];
 				}
 			}
@@ -122,8 +119,7 @@ class PlgSystemTour extends CMSPlugin implements SubscriberInterface
 
 			$childBar = $dropdown->getChildToolbar();
 
-			foreach ($tours as $a)
-			{
+			foreach ($tours as $a) {
 				$childBar->basicButton('tour')
 					->text($a->title)
 					->attributes(['data-id' => $a->id])
@@ -142,41 +138,56 @@ class PlgSystemTour extends CMSPlugin implements SubscriberInterface
 	public function onBeforeCompileHead()
 	{
 
-		if ($this->app->isClient('administrator'))
-		{
+		if ($this->app->isClient('administrator')) {
 			HTMLHelper::_(
 				'script',
-				Uri::root() . 'media/plg_system_tour/js/guide.js',
+				Uri::root() . 'build/media_source/plg_system_tour/js/guide.js',
 				array('version' => 'auto', 'relative' => true)
 			);
 			HTMLHelper::_(
 				'script',
-				Uri::root() . 'media/plg_system_tour/js/popper.min.js',
+				Uri::root() . 'media/vendor/popperjs/cjs/popper.js',
 				array('version' => 'auto', 'relative' => true)
 			);
 			HTMLHelper::_(
 				'script',
-				Uri::root() . 'media/plg_system_tour/js/popper.min.js.map',
+				Uri::root() . 'media/vendor/popperjs/cjs/popper.js.map',
 				array('version' => 'auto', 'relative' => true)
 			);
 			HTMLHelper::_(
 				'script',
-				Uri::root() . 'media/plg_system_tour/js/shepherd.min.js',
+				Uri::root() . 'media/vendor/popperjs/umd/popper.min.map',
+				array('version' => 'auto', 'relative' => true)
+			);
+			HTMLHelper::_(
+				'script',
+				Uri::root() . 'media/vendor/popperjs/umd/popper.min.js.map',
+				array('version' => 'auto', 'relative' => true)
+			);
+
+			HTMLHelper::_(
+				'script',
+				Uri::root() . 'media/vendor/shepherdjs/dist/js/shepherd.js',
+				array('version' => 'auto', 'relative' => true)
+			);
+			HTMLHelper::_(
+				'script',
+				Uri::root() . 'media/vendor/shepherdjs/dist/js/shepherd.min.js',
+				array('version' => 'auto', 'relative' => true)
+			);
+			HTMLHelper::_(
+				'script',
+				Uri::root() . 'media/vendor/shepherdjs/js/shepherd.js.map',
+				array('version' => 'auto', 'relative' => true)
+			);
+			HTMLHelper::_(
+				'script',
+				Uri::root() . 'media/vendor/shepherdjs/js/shepherd.min.js.map',
 				array('version' => 'auto', 'relative' => true)
 			);
 			HTMLHelper::_(
 				'script',
 				Uri::root() . 'media/plg_system_tour/js/shepherd.min.js.map',
-				array('version' => 'auto', 'relative' => true)
-			);
-			HTMLHelper::_(
-				'stylesheet',
-				Uri::root() . 'media/plg_system_tour/css/shepherd.css',
-				array('version' => 'auto', 'relative' => true)
-			);
-			HTMLHelper::_(
-				'stylesheet',
-				Uri::root() . 'media/plg_system_tour/css/shepherd.min.css',
 				array('version' => 'auto', 'relative' => true)
 			);
 			HTMLHelper::_(

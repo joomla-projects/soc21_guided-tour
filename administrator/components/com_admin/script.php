@@ -1,4 +1,5 @@
 <?php
+
 /**
  * @package     Joomla.Administrator
  * @subpackage  com_admin
@@ -325,11 +326,9 @@ class JoomlaInstallerScript
 								'context'             => $row->context,
 								'group_id'            => $row->group_id,
 								'title'               => $oldField->fieldname,
-								'name'                => (
-									$fieldname_prefix
+								'name'                => ($fieldname_prefix
 									. $oldField->fieldname
-									. ($fieldname_suffix > 0 ? ('_' . $fieldname_suffix) : '')
-								),
+									. ($fieldname_suffix > 0 ? ('_' . $fieldname_suffix) : '')),
 								'label'               => $oldField->fieldname,
 								'default_value'       => $row->default_value,
 								'type'                => $oldField->fieldtype,
@@ -583,9 +582,10 @@ class JoomlaInstallerScript
 		{
 			$query->where(
 				'type=' . $db->quote($extension[0])
-				. ' AND element=' . $db->quote($extension[1])
-				. ' AND folder=' . $db->quote($extension[2])
-				. ' AND client_id=' . $extension[3], 'OR'
+					. ' AND element=' . $db->quote($extension[1])
+					. ' AND folder=' . $db->quote($extension[2])
+					. ' AND client_id=' . $extension[3],
+				'OR'
 			);
 		}
 
@@ -616,8 +616,8 @@ class JoomlaInstallerScript
 	/**
 	 * Delete files that should not exist
 	 *
-	 * @param bool  $dryRun          If set to true, will not actually delete files, but just report their status for use in CLI
-	 * @param bool  $suppressOutput   Set to true to suppress echoing any errors, and just return the $status array
+	 * @param   bool  $dryRun          If set to true, will not actually delete files, but just report their status for use in CLI
+	 * @param   bool  $suppressOutput   Set to true to suppress echoing any errors, and just return the $status array
 	 *
 	 * @return  array
 	 */
@@ -6106,6 +6106,12 @@ class JoomlaInstallerScript
 			'/media/com_joomlaupdate/js/update.js',
 			'/media/com_joomlaupdate/js/update.min.js',
 			'/media/com_joomlaupdate/js/update.min.js.gz',
+			// From 4.0.4 to 4.1
+			'/media/plg_system_tour/js/guide.js',
+			'/media/plg_system_tour/css/guide.css',
+			'/media/plg_system_tour/css/guide.min.css',
+			'/media/plg_system_tour/css/shepherd.css',
+			'/media/plg_system_tour/css/shepherd.min.css',
 		);
 
 		$folders = array(
@@ -7417,7 +7423,8 @@ class JoomlaInstallerScript
 		 * but an update has put the files back. In that case it exists even if they don't believe in it!
 		 */
 		if (!File::exists(JPATH_ROOT . '/administrator/components/com_search/search.php')
-			&& File::exists(JPATH_ROOT . '/administrator/manifests/packages/pkg_search.xml'))
+			&& File::exists(JPATH_ROOT . '/administrator/manifests/packages/pkg_search.xml')
+		)
 		{
 			File::delete(JPATH_ROOT . '/administrator/manifests/packages/pkg_search.xml');
 		}
@@ -7528,8 +7535,9 @@ class JoomlaInstallerScript
 		$converted = 5;
 
 		// Check conversion status in database
-		$db->setQuery('SELECT ' . $db->quoteName('converted')
-			. ' FROM ' . $db->quoteName('#__utf8_conversion')
+		$db->setQuery(
+			'SELECT ' . $db->quoteName('converted')
+				. ' FROM ' . $db->quoteName('#__utf8_conversion')
 		);
 
 		try
@@ -7649,8 +7657,9 @@ class JoomlaInstallerScript
 		// Set flag in database if the conversion status has changed.
 		if ($converted !== $convertedDB)
 		{
-			$db->setQuery('UPDATE ' . $db->quoteName('#__utf8_conversion')
-				. ' SET ' . $db->quoteName('converted') . ' = ' . $converted . ';'
+			$db->setQuery(
+				'UPDATE ' . $db->quoteName('#__utf8_conversion')
+					. ' SET ' . $db->quoteName('converted') . ' = ' . $converted . ';'
 			)->execute();
 		}
 	}
@@ -7689,7 +7698,8 @@ class JoomlaInstallerScript
 
 		try
 		{
-			$db->setQuery('DROP TABLE ' . $db->quoteName('#__utf8_conversion') . ';'
+			$db->setQuery(
+				'DROP TABLE ' . $db->quoteName('#__utf8_conversion') . ';'
 			)->execute();
 		}
 		catch (Exception $e)
