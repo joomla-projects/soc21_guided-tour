@@ -48,15 +48,12 @@ class JoomlaInstallerScript
 	 */
 	public function preflight($action, $installer)
 	{
-		if ($action === 'update')
-		{
+		if ($action === 'update') {
 			// Get the version we are updating from
-			if (!empty($installer->extension->manifest_cache))
-			{
+			if (!empty($installer->extension->manifest_cache)) {
 				$manifestValues = json_decode($installer->extension->manifest_cache, true);
 
-				if (array_key_exists('version', $manifestValues))
-				{
+				if (array_key_exists('version', $manifestValues)) {
 					$this->fromVersion = $manifestValues['version'];
 
 					return true;
@@ -83,12 +80,9 @@ class JoomlaInstallerScript
 
 		Log::addLogger($options, Log::INFO, array('Update', 'databasequery', 'jerror'));
 
-		try
-		{
+		try {
 			Log::add(Text::_('COM_JOOMLAUPDATE_UPDATE_LOG_DELETE_FILES'), Log::INFO, 'Update');
-		}
-		catch (RuntimeException $exception)
-		{
+		} catch (RuntimeException $exception) {
 			// Informational log only
 		}
 
@@ -117,8 +111,7 @@ class JoomlaInstallerScript
 	{
 		$db = Factory::getDbo();
 
-		try
-		{
+		try {
 			// Get the params for the stats plugin
 			$params = $db->setQuery(
 				$db->getQuery(true)
@@ -128,9 +121,7 @@ class JoomlaInstallerScript
 					->where($db->quoteName('folder') . ' = ' . $db->quote('system'))
 					->where($db->quoteName('element') . ' = ' . $db->quote('stats'))
 			)->loadResult();
-		}
-		catch (Exception $e)
-		{
+		} catch (Exception $e) {
 			echo Text::sprintf('JLIB_DATABASE_ERROR_FUNCTION_FAILED', $e->getCode(), $e->getMessage()) . '<br>';
 
 			return;
@@ -139,8 +130,7 @@ class JoomlaInstallerScript
 		$params = json_decode($params, true);
 
 		// Reset the last run parameter
-		if (isset($params['lastrun']))
-		{
+		if (isset($params['lastrun'])) {
 			$params['lastrun'] = '';
 		}
 
@@ -153,12 +143,9 @@ class JoomlaInstallerScript
 			->where($db->quoteName('folder') . ' = ' . $db->quote('system'))
 			->where($db->quoteName('element') . ' = ' . $db->quote('stats'));
 
-		try
-		{
+		try {
 			$db->setQuery($query)->execute();
-		}
-		catch (Exception $e)
-		{
+		} catch (Exception $e) {
 			echo Text::sprintf('JLIB_DATABASE_ERROR_FUNCTION_FAILED', $e->getCode(), $e->getMessage()) . '<br>';
 
 			return;
@@ -172,8 +159,7 @@ class JoomlaInstallerScript
 	 */
 	protected function updateDatabase()
 	{
-		if (Factory::getDbo()->getServerType() === 'mysql')
-		{
+		if (Factory::getDbo()->getServerType() === 'mysql') {
 			$this->updateDatabaseMysql();
 		}
 	}
@@ -189,32 +175,24 @@ class JoomlaInstallerScript
 
 		$db->setQuery('SHOW ENGINES');
 
-		try
-		{
+		try {
 			$results = $db->loadObjectList();
-		}
-		catch (Exception $e)
-		{
+		} catch (Exception $e) {
 			echo Text::sprintf('JLIB_DATABASE_ERROR_FUNCTION_FAILED', $e->getCode(), $e->getMessage()) . '<br>';
 
 			return;
 		}
 
-		foreach ($results as $result)
-		{
-			if ($result->Support != 'DEFAULT')
-			{
+		foreach ($results as $result) {
+			if ($result->Support != 'DEFAULT') {
 				continue;
 			}
 
 			$db->setQuery('ALTER TABLE #__update_sites_extensions ENGINE = ' . $result->Engine);
 
-			try
-			{
+			try {
 				$db->execute();
-			}
-			catch (Exception $e)
-			{
+			} catch (Exception $e) {
 				echo Text::sprintf('JLIB_DATABASE_ERROR_FUNCTION_FAILED', $e->getCode(), $e->getMessage()) . '<br>';
 
 				return;
@@ -246,16 +224,14 @@ class JoomlaInstallerScript
 		)->loadResult();
 
 		// Skip uninstalling when it doesn't exist
-		if (!$extensionId)
-		{
+		if (!$extensionId) {
 			return;
 		}
 
 		// Ensure the FieldsHelper class is loaded for the Repeatable fields plugin we're about to remove
 		\JLoader::register('FieldsHelper', JPATH_ADMINISTRATOR . '/components/com_fields/helpers/fields.php');
 
-		try
-		{
+		try {
 			$db->transactionStart();
 
 			// Get the FieldsModelField, we need it in a sec
@@ -271,11 +247,9 @@ class JoomlaInstallerScript
 			);
 
 			// Execute the query and iterate over the `repeatable` instances
-			foreach ($db->loadObjectList() as $row)
-			{
+			foreach ($db->loadObjectList() as $row) {
 				// Skip broken rows - just a security measure, should not happen
-				if (!isset($row->fieldparams) || !($oldFieldparams = json_decode($row->fieldparams)) || !is_object($oldFieldparams))
-				{
+				if (!isset($row->fieldparams) || !($oldFieldparams = json_decode($row->fieldparams)) || !is_object($oldFieldparams)) {
 					continue;
 				}
 
@@ -302,21 +276,18 @@ class JoomlaInstallerScript
 				$mediaFields = [];
 
 				// If this repeatable fields actually had child-fields (normally this is always the case)
-				if (isset($oldFieldparams->fields) && is_object($oldFieldparams->fields))
-				{
+				if (isset($oldFieldparams->fields) && is_object($oldFieldparams->fields)) {
 					// Small counter for the child-fields (aka sub fields)
 					$newFieldCount = 0;
 
 					// Iterate over the sub fields
-					foreach (get_object_vars($oldFieldparams->fields) as $oldField)
-					{
+					foreach (get_object_vars($oldFieldparams->fields) as $oldField) {
 						// Used for field name collision prevention
 						$fieldname_prefix = '';
 						$fieldname_suffix = 0;
 
 						// Try to save the new sub field in a loop because of field name collisions
-						while (true)
-						{
+						while (true) {
 							/**
 							 * We basically want to create a completely new custom fields instance for every sub field
 							 * of the `repeatable` instance. This is what we use $data for, we create a new custom field
@@ -341,13 +312,11 @@ class JoomlaInstallerScript
 							];
 
 							// `number` is not a valid custom field type, so use `text` instead.
-							if ($data['type'] == 'number')
-							{
+							if ($data['type'] == 'number') {
 								$data['type'] = 'text';
 							}
 
-							if ($data['type'] == 'media')
-							{
+							if ($data['type'] == 'media') {
 								$mediaFields[] = $oldField->fieldname;
 							}
 
@@ -356,20 +325,15 @@ class JoomlaInstallerScript
 							$fieldModel->setState('field.id', 0);
 
 							// If an error occurred when trying to save this.
-							if (!$fieldModel->save($data))
-							{
+							if (!$fieldModel->save($data)) {
 								// If the error is, that the name collided, increase the collision prevention
 								$error = $fieldModel->getError();
 
-								if ($error == 'COM_FIELDS_ERROR_UNIQUE_NAME')
-								{
+								if ($error == 'COM_FIELDS_ERROR_UNIQUE_NAME') {
 									// If this is the first time this error occurs, set only the prefix
-									if ($fieldname_prefix == '')
-									{
+									if ($fieldname_prefix == '') {
 										$fieldname_prefix = ($row->name . '_');
-									}
-									else
-									{
+									} else {
 										// Else increase the suffix
 										$fieldname_suffix++;
 									}
@@ -390,8 +354,7 @@ class JoomlaInstallerScript
 						$subfield_id = $fieldModel->getState('field.id');
 
 						// Really check that it is valid
-						if (!is_numeric($subfield_id) || $subfield_id < 1)
-						{
+						if (!is_numeric($subfield_id) || $subfield_id < 1) {
 							throw new \Exception('Something went wrong.');
 						}
 
@@ -423,11 +386,9 @@ class JoomlaInstallerScript
 					->where($db->quoteName('field_id') . ' = ' . $row->id);
 				$db->setQuery($query);
 
-				foreach ($db->loadObjectList() as $rowFieldValue)
-				{
+				foreach ($db->loadObjectList() as $rowFieldValue) {
 					// Do not do the version if no data is entered for the custom field this item
-					if (!$rowFieldValue->value)
-					{
+					if (!$rowFieldValue->value) {
 						continue;
 					}
 
@@ -444,32 +405,25 @@ class JoomlaInstallerScript
 					$fieldValue = json_decode($rowFieldValue->value, true);
 
 					// If data could not be decoded for some reason, ignore
-					if (!$fieldValue)
-					{
+					if (!$fieldValue) {
 						continue;
 					}
 
 					$rowIndex = 0;
 
-					foreach ($fieldValue as $rowKey => $rowValue)
-					{
+					foreach ($fieldValue as $rowKey => $rowValue) {
 						$rowKey                 = 'row' . ($rowIndex++);
 						$newFieldValue[$rowKey] = [];
 
-						foreach ($rowValue as $subFieldName => $subFieldValue)
-						{
+						foreach ($rowValue as $subFieldName => $subFieldValue) {
 							// This is a media field, so we need to convert data to new format required in Joomla! 4
-							if (in_array($subFieldName, $mediaFields))
-							{
+							if (in_array($subFieldName, $mediaFields)) {
 								$subFieldValue = ['imagefile' => $subFieldValue, 'alt_text' => ''];
 							}
 
-							if (isset($mapping[$subFieldName]))
-							{
+							if (isset($mapping[$subFieldName])) {
 								$newFieldValue[$rowKey][$mapping[$subFieldName]] = $subFieldValue;
-							}
-							else
-							{
+							} else {
 								// Not found, use the old key to avoid data lost
 								$newFieldValue[$subFieldName] = $subFieldValue;
 							}
@@ -499,9 +453,7 @@ class JoomlaInstallerScript
 			$installer->uninstall('plugin', $extensionId);
 
 			$db->transactionCommit();
-		}
-		catch (\Exception $e)
-		{
+		} catch (\Exception $e) {
 			$db->transactionRollback();
 			throw $e;
 		}
@@ -527,13 +479,11 @@ class JoomlaInstallerScript
 		)->loadResult();
 
 		// Skip uninstalling if it doesn't exist
-		if (!$extensionId)
-		{
+		if (!$extensionId) {
 			return;
 		}
 
-		try
-		{
+		try {
 			$db->transactionStart();
 
 			// Unprotect the plugin so we can uninstall it
@@ -549,9 +499,7 @@ class JoomlaInstallerScript
 			$installer->uninstall('plugin', $extensionId);
 
 			$db->transactionCommit();
-		}
-		catch (\Exception $e)
-		{
+		} catch (\Exception $e) {
 			$db->transactionRollback();
 			throw $e;
 		}
@@ -567,8 +515,7 @@ class JoomlaInstallerScript
 		$extensions = ExtensionHelper::getCoreExtensions();
 
 		// If we have the search package around, it may not have a manifest cache entry after upgrades from 3.x, so add it to the list
-		if (File::exists(JPATH_ROOT . '/administrator/manifests/packages/pkg_search.xml'))
-		{
+		if (File::exists(JPATH_ROOT . '/administrator/manifests/packages/pkg_search.xml')) {
 			$extensions[] = array('package', 'pkg_search', '', 0);
 		}
 
@@ -578,8 +525,7 @@ class JoomlaInstallerScript
 			->select('*')
 			->from('#__extensions');
 
-		foreach ($extensions as $extension)
-		{
+		foreach ($extensions as $extension) {
 			$query->where(
 				'type=' . $db->quote($extension[0])
 					. ' AND element=' . $db->quote($extension[1])
@@ -591,12 +537,9 @@ class JoomlaInstallerScript
 
 		$db->setQuery($query);
 
-		try
-		{
+		try {
 			$extensions = $db->loadObjectList();
-		}
-		catch (Exception $e)
-		{
+		} catch (Exception $e) {
 			echo Text::sprintf('JLIB_DATABASE_ERROR_FUNCTION_FAILED', $e->getCode(), $e->getMessage()) . '<br>';
 
 			return;
@@ -604,10 +547,8 @@ class JoomlaInstallerScript
 
 		$installer = new Installer;
 
-		foreach ($extensions as $extension)
-		{
-			if (!$installer->refreshManifestCache($extension->extension_id))
-			{
+		foreach ($extensions as $extension) {
+			if (!$installer->refreshManifestCache($extension->extension_id)) {
 				echo Text::sprintf('FILES_JOOMLA_ERROR_MANIFEST', $extension->type, $extension->element, $extension->name, $extension->client_id) . '<br>';
 			}
 		}
@@ -6106,12 +6047,6 @@ class JoomlaInstallerScript
 			'/media/com_joomlaupdate/js/update.js',
 			'/media/com_joomlaupdate/js/update.min.js',
 			'/media/com_joomlaupdate/js/update.min.js.gz',
-			// From 4.0.4 to 4.1
-			'/media/plg_system_tour/js/guide.js',
-			'/media/plg_system_tour/css/guide.css',
-			'/media/plg_system_tour/css/guide.min.css',
-			'/media/plg_system_tour/css/shepherd.css',
-			'/media/plg_system_tour/css/shepherd.min.css',
 		);
 
 		$folders = array(
@@ -7374,40 +7309,28 @@ class JoomlaInstallerScript
 		$status['files_checked'] = $files;
 		$status['folders_checked'] = $folders;
 
-		foreach ($files as $file)
-		{
-			if ($fileExists = File::exists(JPATH_ROOT . $file))
-			{
+		foreach ($files as $file) {
+			if ($fileExists = File::exists(JPATH_ROOT . $file)) {
 				$status['files_exist'][] = $file;
 
-				if ($dryRun === false)
-				{
-					if (File::delete(JPATH_ROOT . $file))
-					{
+				if ($dryRun === false) {
+					if (File::delete(JPATH_ROOT . $file)) {
 						$status['files_deleted'][] = $file;
-					}
-					else
-					{
+					} else {
 						$status['files_errors'][] = Text::sprintf('FILES_JOOMLA_ERROR_FILE_FOLDER', $file);
 					}
 				}
 			}
 		}
 
-		foreach ($folders as $folder)
-		{
-			if ($folderExists = Folder::exists(JPATH_ROOT . $folder))
-			{
+		foreach ($folders as $folder) {
+			if ($folderExists = Folder::exists(JPATH_ROOT . $folder)) {
 				$status['folders_exist'][] = $folder;
 
-				if ($dryRun === false)
-				{
-					if (Folder::delete(JPATH_ROOT . $folder))
-					{
+				if ($dryRun === false) {
+					if (Folder::delete(JPATH_ROOT . $folder)) {
 						$status['folders_deleted'][] = $folder;
-					}
-					else
-					{
+					} else {
 						$status['folders_errors'][] = Text::sprintf('FILES_JOOMLA_ERROR_FILE_FOLDER', $folder);
 					}
 				}
@@ -7422,20 +7345,18 @@ class JoomlaInstallerScript
 		 * We deliberately check for the presence of the files in case people have previously uninstalled their search extension
 		 * but an update has put the files back. In that case it exists even if they don't believe in it!
 		 */
-		if (!File::exists(JPATH_ROOT . '/administrator/components/com_search/search.php')
+		if (
+			!File::exists(JPATH_ROOT . '/administrator/components/com_search/search.php')
 			&& File::exists(JPATH_ROOT . '/administrator/manifests/packages/pkg_search.xml')
-		)
-		{
+		) {
 			File::delete(JPATH_ROOT . '/administrator/manifests/packages/pkg_search.xml');
 		}
 
-		if ($suppressOutput === false && \count($status['folders_errors']))
-		{
+		if ($suppressOutput === false && \count($status['folders_errors'])) {
 			echo implode('<br>', $status['folders_errors']);
 		}
 
-		if ($suppressOutput === false && \count($status['files_errors']))
-		{
+		if ($suppressOutput === false && \count($status['files_errors'])) {
 			echo implode('<br>', $status['files_errors']);
 		}
 
@@ -7458,13 +7379,11 @@ class JoomlaInstallerScript
 			// Components to be added here
 		);
 
-		foreach ($newComponents as $component)
-		{
+		foreach ($newComponents as $component) {
 			/** @var JTableAsset $asset */
 			$asset = Table::getInstance('Asset');
 
-			if ($asset->loadByName($component))
-			{
+			if ($asset->loadByName($component)) {
 				continue;
 			}
 
@@ -7474,8 +7393,7 @@ class JoomlaInstallerScript
 			$asset->title     = $component;
 			$asset->setLocation(1, 'last-child');
 
-			if (!$asset->store())
-			{
+			if (!$asset->store()) {
 				// Install failed, roll back changes
 				$installer->abort(Text::sprintf('JLIB_INSTALLER_ABORT_COMP_INSTALL_ROLLBACK', $asset->getError(true)));
 
@@ -7499,25 +7417,20 @@ class JoomlaInstallerScript
 	{
 		$db = Factory::getDbo();
 
-		if ($db->getServerType() !== 'mysql')
-		{
+		if ($db->getServerType() !== 'mysql') {
 			return;
 		}
 
 		// Check if the #__utf8_conversion table exists
 		$db->setQuery('SHOW TABLES LIKE ' . $db->quote($db->getPrefix() . 'utf8_conversion'));
 
-		try
-		{
+		try {
 			$rows = $db->loadRowList(0);
-		}
-		catch (Exception $e)
-		{
+		} catch (Exception $e) {
 			// Render the error message from the Exception object
 			Factory::getApplication()->enqueueMessage($e->getMessage(), 'error');
 
-			if ($doDbFixMsg)
-			{
+			if ($doDbFixMsg) {
 				// Show an error message telling to check database problems
 				Factory::getApplication()->enqueueMessage(Text::_('JLIB_DATABASE_ERROR_DATABASE_UPGRADE_FAILED'), 'error');
 			}
@@ -7526,8 +7439,7 @@ class JoomlaInstallerScript
 		}
 
 		// Nothing to do if the table doesn't exist because the CMS has never been updated from a pre-4.0 version
-		if (\count($rows) === 0)
-		{
+		if (\count($rows) === 0) {
 			return;
 		}
 
@@ -7540,17 +7452,13 @@ class JoomlaInstallerScript
 				. ' FROM ' . $db->quoteName('#__utf8_conversion')
 		);
 
-		try
-		{
+		try {
 			$convertedDB = $db->loadResult();
-		}
-		catch (Exception $e)
-		{
+		} catch (Exception $e) {
 			// Render the error message from the Exception object
 			Factory::getApplication()->enqueueMessage($e->getMessage(), 'error');
 
-			if ($doDbFixMsg)
-			{
+			if ($doDbFixMsg) {
 				// Show an error message telling to check database problems
 				Factory::getApplication()->enqueueMessage(Text::_('JLIB_DATABASE_ERROR_DATABASE_UPGRADE_FAILED'), 'error');
 			}
@@ -7559,33 +7467,25 @@ class JoomlaInstallerScript
 		}
 
 		// If conversion status from DB is equal to required final status, try to drop the #__utf8_conversion table
-		if ($convertedDB === $converted)
-		{
+		if ($convertedDB === $converted) {
 			$this->dropUtf8ConversionTable();
 
 			return;
 		}
 
 		// Perform the required conversions of core tables if not done already in a previous step
-		if ($convertedDB !== 99)
-		{
+		if ($convertedDB !== 99) {
 			$fileName1 = JPATH_ROOT . '/administrator/components/com_admin/sql/others/mysql/utf8mb4-conversion.sql';
 
-			if (is_file($fileName1))
-			{
+			if (is_file($fileName1)) {
 				$fileContents1 = @file_get_contents($fileName1);
 				$queries1      = $db->splitSql($fileContents1);
 
-				if (!empty($queries1))
-				{
-					foreach ($queries1 as $query1)
-					{
-						try
-						{
+				if (!empty($queries1)) {
+					foreach ($queries1 as $query1) {
+						try {
 							$db->setQuery($query1)->execute();
-						}
-						catch (Exception $e)
-						{
+						} catch (Exception $e) {
 							$converted = $convertedDB;
 
 							// Still render the error message from the Exception object
@@ -7597,39 +7497,30 @@ class JoomlaInstallerScript
 		}
 
 		// If no error before, perform the optional conversions of tables which might or might not exist
-		if ($converted === 5)
-		{
+		if ($converted === 5) {
 			$fileName2 = JPATH_ROOT . '/administrator/components/com_admin/sql/others/mysql/utf8mb4-conversion_optional.sql';
 
-			if (is_file($fileName2))
-			{
+			if (is_file($fileName2)) {
 				$fileContents2 = @file_get_contents($fileName2);
 				$queries2      = $db->splitSql($fileContents2);
 
-				if (!empty($queries2))
-				{
-					foreach ($queries2 as $query2)
-					{
+				if (!empty($queries2)) {
+					foreach ($queries2 as $query2) {
 						// Get table name from query
-						if (preg_match('/^ALTER\s+TABLE\s+([^\s]+)\s+/i', $query2, $matches) === 1)
-						{
+						if (preg_match('/^ALTER\s+TABLE\s+([^\s]+)\s+/i', $query2, $matches) === 1) {
 							$tableName = str_replace('`', '', $matches[1]);
 							$tableName = str_replace('#__', $db->getPrefix(), $tableName);
 
 							// Check if the table exists and if yes, run the query
-							try
-							{
+							try {
 								$db->setQuery('SHOW TABLES LIKE ' . $db->quote($tableName));
 
 								$rows = $db->loadRowList(0);
 
-								if (\count($rows) > 0)
-								{
+								if (\count($rows) > 0) {
 									$db->setQuery($query2)->execute();
 								}
-							}
-							catch (Exception $e)
-							{
+							} catch (Exception $e) {
 								$converted = 99;
 
 								// Still render the error message from the Exception object
@@ -7641,22 +7532,19 @@ class JoomlaInstallerScript
 			}
 		}
 
-		if ($doDbFixMsg && $converted !== 5)
-		{
+		if ($doDbFixMsg && $converted !== 5) {
 			// Show an error message telling to check database problems
 			Factory::getApplication()->enqueueMessage(Text::_('JLIB_DATABASE_ERROR_DATABASE_UPGRADE_FAILED'), 'error');
 		}
 
 		// If the conversion was successful try to drop the #__utf8_conversion table
-		if ($converted === 5 && $this->dropUtf8ConversionTable())
-		{
+		if ($converted === 5 && $this->dropUtf8ConversionTable()) {
 			// Table successfully dropped
 			return;
 		}
 
 		// Set flag in database if the conversion status has changed.
-		if ($converted !== $convertedDB)
-		{
+		if ($converted !== $convertedDB) {
 			$db->setQuery(
 				'UPDATE ' . $db->quoteName('#__utf8_conversion')
 					. ' SET ' . $db->quoteName('converted') . ' = ' . $converted . ';'
@@ -7696,14 +7584,11 @@ class JoomlaInstallerScript
 	{
 		$db = Factory::getDbo();
 
-		try
-		{
+		try {
 			$db->setQuery(
 				'DROP TABLE ' . $db->quoteName('#__utf8_conversion') . ';'
 			)->execute();
-		}
-		catch (Exception $e)
-		{
+		} catch (Exception $e) {
 			return false;
 		}
 
@@ -7722,13 +7607,11 @@ class JoomlaInstallerScript
 	 */
 	public function postflight($action, $installer)
 	{
-		if ($action !== 'update')
-		{
+		if ($action !== 'update') {
 			return true;
 		}
 
-		if (empty($this->fromVersion) || version_compare($this->fromVersion, '4.0.0', 'ge'))
-		{
+		if (empty($this->fromVersion) || version_compare($this->fromVersion, '4.0.0', 'ge')) {
 			return true;
 		}
 
@@ -7745,8 +7628,7 @@ class JoomlaInstallerScript
 
 		$menuItems = array_merge($contactItems, $finderItems);
 
-		foreach ($menuItems as $menuItem)
-		{
+		foreach ($menuItems as $menuItem) {
 			// Check an existing record
 			$keys = [
 				'menutype'  => $menuItem['menutype'],
@@ -7756,36 +7638,31 @@ class JoomlaInstallerScript
 				'client_id' => $menuItem['client_id'],
 			];
 
-			if ($tableItem->load($keys))
-			{
+			if ($tableItem->load($keys)) {
 				continue;
 			}
 
 			$newTableItem = new \Joomla\Component\Menus\Administrator\Table\MenuTable($db);
 
 			// Bind the data.
-			if (!$newTableItem->bind($menuItem))
-			{
+			if (!$newTableItem->bind($menuItem)) {
 				return false;
 			}
 
 			$newTableItem->setLocation($menuItem['parent_id'], 'last-child');
 
 			// Check the data.
-			if (!$newTableItem->check())
-			{
+			if (!$newTableItem->check()) {
 				return false;
 			}
 
 			// Store the data.
-			if (!$newTableItem->store())
-			{
+			if (!$newTableItem->store()) {
 				return false;
 			}
 
 			// Rebuild the tree path.
-			if (!$newTableItem->rebuildPath($newTableItem->id))
-			{
+			if (!$newTableItem->rebuildPath($newTableItem->id)) {
 				return false;
 			}
 		}
@@ -7813,8 +7690,7 @@ class JoomlaInstallerScript
 
 		$contactMenuitem = $tableItem->load($keys);
 
-		if (!$contactMenuitem)
-		{
+		if (!$contactMenuitem) {
 			return [];
 		}
 
@@ -7923,8 +7799,7 @@ class JoomlaInstallerScript
 
 		$finderMenuitem = $tableItem->load($keys);
 
-		if (!$finderMenuitem)
-		{
+		if (!$finderMenuitem) {
 			return [];
 		}
 
@@ -8114,18 +7989,14 @@ class JoomlaInstallerScript
 
 		$db->setQuery($query);
 
-		foreach ($contentTypes as $contentType)
-		{
+		foreach ($contentTypes as $contentType) {
 			list($component, $tableType) = explode('.', $contentType->type_alias);
 
 			// Special case for core table classes.
-			if ($contentType->type_alias === 'com_users.users' || $tableType === 'category')
-			{
+			if ($contentType->type_alias === 'com_users.users' || $tableType === 'category') {
 				$tablePrefix = 'Joomla\\CMS\Table\\';
 				$tableType   = ucfirst($tableType);
-			}
-			else
-			{
+			} else {
 				$tablePrefix = 'Joomla\\Component\\' . ucfirst(substr($component, 4)) . '\\Administrator\\Table\\';
 				$tableType   = ucfirst($tableType) . 'Table';
 			}
@@ -8140,8 +8011,7 @@ class JoomlaInstallerScript
 			$table->special->prefix = $tablePrefix;
 
 			// Some content types don't have this property.
-			if (!empty($table->common->prefix))
-			{
+			if (!empty($table->common->prefix)) {
 				$table->common->prefix  = 'Joomla\\CMS\\Table\\';
 			}
 
@@ -8169,13 +8039,11 @@ class JoomlaInstallerScript
 			'/media/vendor/skipto/js/skipTo.js' => '/media/vendor/skipto/js/skipto.js',
 		);
 
-		foreach ($files as $old => $expected)
-		{
+		foreach ($files as $old => $expected) {
 			$oldRealpath = realpath(JPATH_ROOT . $old);
 
 			// On Unix without incorrectly cased file.
-			if ($oldRealpath === false)
-			{
+			if ($oldRealpath === false) {
 				continue;
 			}
 
@@ -8185,8 +8053,7 @@ class JoomlaInstallerScript
 			$expectedBasename = basename($expected);
 
 			// On Windows or Unix with only the incorrectly cased file.
-			if ($newBasename !== $expectedBasename)
-			{
+			if ($newBasename !== $expectedBasename) {
 				// Rename the file.
 				File::move(JPATH_ROOT . $old, JPATH_ROOT . $old . '.tmp');
 				File::move(JPATH_ROOT . $old . '.tmp', JPATH_ROOT . $expected);
@@ -8195,21 +8062,16 @@ class JoomlaInstallerScript
 			}
 
 			// There might still be an incorrectly cased file on other OS than Windows.
-			if ($oldBasename === basename($old))
-			{
+			if ($oldBasename === basename($old)) {
 				// Check if case-insensitive file system, eg on OSX.
-				if (fileinode($oldRealpath) === fileinode($newRealpath))
-				{
+				if (fileinode($oldRealpath) === fileinode($newRealpath)) {
 					// Check deeper because even realpath or glob might not return the actual case.
-					if (!in_array($expectedBasename, scandir(dirname($newRealpath))))
-					{
+					if (!in_array($expectedBasename, scandir(dirname($newRealpath)))) {
 						// Rename the file.
 						File::move(JPATH_ROOT . $old, JPATH_ROOT . $old . '.tmp');
 						File::move(JPATH_ROOT . $old . '.tmp', JPATH_ROOT . $expected);
 					}
-				}
-				else
-				{
+				} else {
 					// On Unix with both files: Delete the incorrectly cased file.
 					File::delete(JPATH_ROOT . $old);
 				}

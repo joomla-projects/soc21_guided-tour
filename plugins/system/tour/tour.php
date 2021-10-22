@@ -141,30 +141,9 @@ class PlgSystemTour extends CMSPlugin implements SubscriberInterface
 		if ($this->app->isClient('administrator')) {
 			HTMLHelper::_(
 				'script',
-				Uri::root() . 'build/media_source/plg_system_tour/js/guide.js',
+				Uri::root() . 'media/plg_system_tour/js/guide.js',
 				array('version' => 'auto', 'relative' => true)
 			);
-			HTMLHelper::_(
-				'script',
-				Uri::root() . 'media/vendor/popperjs/cjs/popper.js',
-				array('version' => 'auto', 'relative' => true)
-			);
-			HTMLHelper::_(
-				'script',
-				Uri::root() . 'media/vendor/popperjs/cjs/popper.js.map',
-				array('version' => 'auto', 'relative' => true)
-			);
-			HTMLHelper::_(
-				'script',
-				Uri::root() . 'media/vendor/popperjs/umd/popper.min.map',
-				array('version' => 'auto', 'relative' => true)
-			);
-			HTMLHelper::_(
-				'script',
-				Uri::root() . 'media/vendor/popperjs/umd/popper.min.js.map',
-				array('version' => 'auto', 'relative' => true)
-			);
-
 			HTMLHelper::_(
 				'script',
 				Uri::root() . 'media/vendor/shepherdjs/dist/js/shepherd.js',
@@ -172,7 +151,7 @@ class PlgSystemTour extends CMSPlugin implements SubscriberInterface
 			);
 			HTMLHelper::_(
 				'script',
-				Uri::root() . 'media/vendor/shepherdjs/dist/js/shepherd.min.js',
+				Uri::root() . 'media/vendor/shepherdjs/js/shepherd.min.js',
 				array('version' => 'auto', 'relative' => true)
 			);
 			HTMLHelper::_(
@@ -183,11 +162,6 @@ class PlgSystemTour extends CMSPlugin implements SubscriberInterface
 			HTMLHelper::_(
 				'script',
 				Uri::root() . 'media/vendor/shepherdjs/js/shepherd.min.js.map',
-				array('version' => 'auto', 'relative' => true)
-			);
-			HTMLHelper::_(
-				'script',
-				Uri::root() . 'media/plg_system_tour/js/shepherd.min.js.map',
 				array('version' => 'auto', 'relative' => true)
 			);
 			HTMLHelper::_(
