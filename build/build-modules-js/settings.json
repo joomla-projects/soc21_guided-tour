@@ -685,8 +685,7 @@
           "dist/js/shepherd.min.js": "js/shepherd.min.js"
         },
         "css": {
-          "dist/css/shepherd.css": "css/shepherd.css",
-          "dist/css/shepherd.min.css": "css/shepherd.min.css"
+          "dist/css/shepherd.css": "css/shepherd.css"
         },
         "filesExtra": {
           "dist/js/shepherd.js.map": "js/shepherd.js.map",
