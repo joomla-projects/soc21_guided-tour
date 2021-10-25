@@ -13,9 +13,8 @@ use Joomla\CMS\Plugin\CMSPlugin;
 use Joomla\Event\SubscriberInterface;
 use Joomla\CMS\Toolbar\Toolbar;
 use Joomla\CMS\HTML\HTMLHelper;
-use Joomla\CMS\Uri\Uri;
 use Joomla\CMS\Factory;
-use Joomla\CMS\Language\Text;
+
 
 HTMLHelper::_('behavior.multiselect', 'updateForm');
 /**
@@ -139,40 +138,21 @@ class PlgSystemTour extends CMSPlugin implements SubscriberInterface
 	{
 
 		if ($this->app->isClient('administrator')) {
-			HTMLHelper::_(
-				'script',
-				Uri::root() . 'media/plg_system_tour/js/guide.js',
-				array('version' => 'auto', 'relative' => true)
+			$this->app->getDocument()->getWebAssetManager()
+				->usePreset('shepherdjs');
+
+			// Load required assets
+			$assets = $this->app->getDocument()->getWebAssetManager();
+			$assets->registerAndUseScript(
+				'plg_system_tour.script',
+				'plg_system_tour/guide.min.js',
+				[],
+				['defer' => true],
+				['core']
 			);
-			HTMLHelper::_(
-				'script',
-				Uri::root() . 'media/vendor/shepherdjs/js/shepherd.js',
-				array('version' => 'auto', 'relative' => true)
-			);
-			HTMLHelper::_(
-				'script',
-				Uri::root() . 'media/vendor/shepherdjs/js/shepherd.min.js',
-				array('version' => 'auto', 'relative' => true)
-			);
-			HTMLHelper::_(
-				'script',
-				Uri::root() . 'media/vendor/shepherdjs/js/shepherd.js.map',
-				array('version' => 'auto', 'relative' => true)
-			);
-			HTMLHelper::_(
-				'script',
-				Uri::root() . 'media/vendor/shepherdjs/js/shepherd.min.js.map',
-				array('version' => 'auto', 'relative' => true)
-			);
-			HTMLHelper::_(
-				'stylesheet',
-				Uri::root() . 'media/plg_system_tour/css/guide.css',
-				array('version' => 'auto', 'relative' => true)
-			);
-			HTMLHelper::_(
-				'stylesheet',
-				Uri::root() . 'media/vendor/shepherdjs/css/shepherd.css',
-				array('version' => 'auto', 'relative' => true)
+			$assets->registerAndUseStyle(
+				'plg_system_tour.style',
+				'plg_system_tour/guide.min.css'
 			);
 		}
 	}
