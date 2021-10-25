@@ -128,7 +128,7 @@ class PlgSystemTour extends CMSPlugin implements SubscriberInterface
 	}
 
 	/**
-	 * Listener for the `onBeforeCompileHead` event
+	 * Listener for `onBeforeCompileHead` event
 	 *
 	 * @return  void
 	 *
