@@ -69,7 +69,8 @@ class PlgSystemTour extends CMSPlugin implements SubscriberInterface
 	public function onBeforeRender()
 	{
 		// Run in backend
-		if ($this->app->isClient('administrator')) {
+		if ($this->app->isClient('administrator'))
+		{
 			/**
 			 * Booting of the Component to get the data in JSON Format
 			 */
@@ -88,18 +89,22 @@ class PlgSystemTour extends CMSPlugin implements SubscriberInterface
 
 			$newsteps = [];
 
-			foreach ($steps as $step) {
-				if (!isset($newsteps[$step->tour_id])) {
+			foreach ($steps as $step)
+			{
+				if (!isset($newsteps[$step->tour_id]))
+				{
 					$newsteps[$step->tour_id] = [];
 				}
 
 				$newsteps[$step->tour_id][] = $step;
 			}
 
-			foreach ($tours as $tour) {
+			foreach ($tours as $tour)
+			{
 				$tour->steps = [];
 
-				if (isset($newsteps[$tour->id])) {
+				if (isset($newsteps[$tour->id]))
+				{
 					$tour->steps = $newsteps[$tour->id];
 				}
 			}
@@ -118,7 +123,8 @@ class PlgSystemTour extends CMSPlugin implements SubscriberInterface
 
 			$childBar = $dropdown->getChildToolbar();
 
-			foreach ($tours as $a) {
+			foreach ($tours as $a)
+			{
 				$childBar->basicButton('tour')
 					->text($a->title)
 					->attributes(['data-id' => $a->id])
@@ -137,7 +143,8 @@ class PlgSystemTour extends CMSPlugin implements SubscriberInterface
 	public function onBeforeCompileHead()
 	{
 
-		if ($this->app->isClient('administrator')) {
+		if ($this->app->isClient('administrator'))
+		{
 			$this->app->getDocument()->getWebAssetManager()
 				->usePreset('shepherdjs');
 
