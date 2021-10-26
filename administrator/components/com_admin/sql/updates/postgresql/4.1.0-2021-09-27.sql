@@ -23,7 +23,7 @@ CREATE TABLE IF NOT EXISTS "#__guidedtours"
 );
 
 --
--- Table structure for table "#__guidedtour_steps"
+--  Table structure for table "#__guidedtour_steps"
 --
 
 CREATE TABLE IF NOT EXISTS "#__guidedtour_steps"
