@@ -921,19 +921,19 @@ INSERT INTO `#__guidedtours` (`id`, `asset_id`, `title`,`description`, `ordering
 --
 
 CREATE TABLE IF NOT EXISTS `#__guidedtour_steps` (
-  `id` int NOT NULL AUTO_INCREMENT PRIMARY KEY,
-  `tour_id` int NOT NULL DEFAULT 0,
-  `title` varchar(255) NOT NULL,
-  `published` tinyint NOT NULL DEFAULT 0,
-  `description` text NOT NULL,
-  `ordering` int NOT NULL DEFAULT 0,
-  `step-no` int NOT NULL DEFAULT 0,
-  `position` varchar(255) NOT NULL,
-  `target` varchar(255) NOT NULL,
+   `id` int(11) NOT NULL,
+  `tour_id` int(11) NOT NULL DEFAULT 0,
+  `title` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `published` tinyint(4) NOT NULL DEFAULT 0,
+  `description` text COLLATE utf8mb4_unicode_ci NOT NULL,
+  `ordering` int(11) NOT NULL DEFAULT 0,
+  `step-no` int(11) NOT NULL DEFAULT 0,
+  `position` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `target` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
   `created` datetime NOT NULL,
-  `created_by` int unsigned NOT NULL DEFAULT 0,
+  `created_by` int(10) UNSIGNED NOT NULL DEFAULT 0,
   `modified` datetime NOT NULL,
-  `modified_by` int unsigned NOT NULL DEFAULT 0,
+  `modified_by` int(10) UNSIGNED NOT NULL DEFAULT 0,
   KEY `idx_tour` (`tour_id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 DEFAULT COLLATE=utf8mb4_unicode_ci;
 
@@ -942,21 +942,21 @@ CREATE TABLE IF NOT EXISTS `#__guidedtour_steps` (
 --
 
 INSERT INTO `#__guidedtour_steps` (`id`, `tour_id`, `title`, `published`, `description`, `ordering`, `step-no`, `position`, `target`, `created`, `created_by`, `modified`, `modified_by`) VALUES
-(1, 1, 'Click here!', 1, '<p>This Tour will show you that how you can create a new Guided Tour in Joomla! Backend</p>', 0, 1, 'bottom', '.button-new', '', 0, '', 0),
-(2, 1, 'Add title for your Tour.', 1, '<p>Here you have to add the title of your Tour Step. </p>', 0, 1, 'bottom', '#jform_title', '', 0, '', 0),
-(3, 1, 'Add Content', 1, '<p>Add the content of your Tour here!</p>', 0, 1, 'bottom', '#details', '', 0, '', 0),
-(4, 1, 'plugin selector', 1, '<p>Select the extensions where you want to show your Tour. e.g If you are creating a tour which is only in \'Users\' extensions then select Users here.</p>', 0, 1, 'bottom', '.choices__inner', '', 0, '', 0),
-(5, 1, 'URL', 1, '<p>Add URL of the page from where you want to start your Tour. </p>', 0, 1, 'bottom', '#jform_url','', 0, '', 0),
-(6, 1, 'overlay', 1, '<p>Select if you want an overlay effect or not.</p>', 0, 1, 'bottom', '#jform_overlay1', '', 0, '', 0),
-(7, 1, 'save and close', 1, '', 0, 1, 'bottom', '#save-group-children-save',  '', 0, '', 0),
-(8, 1, 'Create steps for your Tour', 1, '<p>Click on steps icon in the right</p>', 0, 1, 'right', '.btn-info ','', 0, '', 0),
-(9, 1, 'Click here!', 1, '<p>Click here to create a new Step for your Tour</p>', 0, 1, 'bottom', '.button-new','', 0, '', 0),
-(10, 1, 'Add title for your Tour.', 1, '<p>Here you have to add the title of your Tour Step. </p>', 0, 1, 'bottom', '#jform_title', '', 0, '', 0),
-(11, 1, 'Add Content', 1, '<p>Add the content of your Tour here!</p>', 0, 1, 'bottom', '#details', '', 0, '', 0),
-(12, 1, 'Position ', 1, '<p>here add the position of the Step you want. e.g. right, left, top, bottom.</p>', 0, 1, 'bottom', '#jform_position', '', 0, '', 0),
-(13, 1, 'Target', 1, '<p>add the ID name or Class name of the element where you want to attach your Tour.</p>', 0, 1, 'bottom', '#jform_target', '', 0, '', 0),
-(14, 1, 'Multi-page', 1, '<p>Select this if the next step is on different page</p>', 0, 1, 'bottom', '#jform_multipage1', '', 0, '', 0),
-(15, 1, 'save and close', 1, '<p>save and close the step</p>', 0, 1, 'bottom', '#save-group-children-save','', 0, '', 0),
-(16, 1, 'Congratulations!!!',  1, '<p>You successfully created your first Guided Tour!</p>', 0, 1, 'bottom', '.hero-example','', 0, '', 0);
+(1, 1, 'Click here!', 1, '<p>This Tour will show you that how you can create a new Guided Tour in Joomla! Backend</p>', 0, 1, 'bottom', '.button-new', '0000-00-00 00:00:00', 0, '0000-00-00 00:00:00', 0),
+(2, 1, 'Add title for your Tour.', 1, '<p>Here you have to add the title of your Tour Step. </p>', 0, 1, 'bottom', '#jform_title', '0000-00-00 00:00:00', 0, '0000-00-00 00:00:00', 0),
+(3, 1, 'Add Content', 1, '<p>Add the content of your Tour here!</p>', 0, 1, 'bottom', '#details', '0000-00-00 00:00:00', 0, '0000-00-00 00:00:00', 0),
+(4, 1, 'plugin selector', 1, '<p>Select the extensions where you want to show your Tour. e.g If you are creating a tour which is only in \'Users\' extensions then select Users here.</p>', 0, 1, 'bottom', '.choices__inner', '0000-00-00 00:00:00', 0, '0000-00-00 00:00:00', 0),
+(5, 1, 'URL', 1, '<p>Add URL of the page from where you want to start your Tour. </p>', 0, 1, 'bottom', '#jform_url', '0000-00-00 00:00:00', 0, '0000-00-00 00:00:00', 0),
+(6, 1, 'overlay', 1, '<p>Select if you want an overlay effect or not.</p>', 0, 1, 'bottom', '#jform_overlay1', '0000-00-00 00:00:00', 0, '0000-00-00 00:00:00', 0),
+(7, 1, 'save and close', 1, '', 0, 1, 'bottom', '#save-group-children-save', '0000-00-00 00:00:00', 0, '0000-00-00 00:00:00', 0),
+(8, 1, 'Create steps for your Tour', 1, '<p>Click on steps icon in the right</p>', 0, 1, 'right', '.btn-info ', '0000-00-00 00:00:00', 0, '0000-00-00 00:00:00', 0),
+(9, 1, 'Click here!', 1, '<p>Click here to create a new Step for your Tour</p>', 0, 1, 'bottom', '.button-new', '0000-00-00 00:00:00', 0, '0000-00-00 00:00:00', 0),
+(10, 1, 'Add title for your Tour.', 1, '<p>Here you have to add the title of your Tour Step. </p>', 0, 1, 'bottom', '#jform_title', '0000-00-00 00:00:00', 0, '0000-00-00 00:00:00', 0),
+(11, 1, 'Add Content', 1, '<p>Add the content of your Tour here!</p>', 0, 1, 'bottom', '#details', '0000-00-00 00:00:00', 0, '0000-00-00 00:00:00', 0),
+(12, 1, 'Position ', 1, '<p>here add the position of the Step you want. e.g. right, left, top, bottom.</p>', 0, 1, 'bottom', '#jform_position', '0000-00-00 00:00:00', 0, '0000-00-00 00:00:00', 0),
+(13, 1, 'Target', 1, '<p>add the ID name or Class name of the element where you want to attach your Tour.</p>', 0, 1, 'bottom', '#jform_target', '0000-00-00 00:00:00', 0, '0000-00-00 00:00:00', 0),
+(14, 1, 'Multi-page', 1, '<p>Select this if the next step is on different page</p>', 0, 1, 'bottom', '#jform_multipage1', '0000-00-00 00:00:00', 0, '0000-00-00 00:00:00', 0),
+(15, 1, 'save and close', 1, '<p>save and close the step</p>', 0, 1, 'bottom', '#save-group-children-save', '0000-00-00 00:00:00', 0, '0000-00-00 00:00:00', 0),
+(16, 1, 'Congratulations!!!', 1, '<p>You successfully created your first Guided Tour!</p>', 0, 1, 'bottom', '.hero-example', '0000-00-00 00:00:00', 0, '0000-00-00 00:00:00', 0);
 
 -- --------------------------------------------------------

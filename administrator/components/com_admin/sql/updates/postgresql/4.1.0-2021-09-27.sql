@@ -28,18 +28,18 @@ CREATE TABLE IF NOT EXISTS "#__guidedtours"
 
 CREATE TABLE IF NOT EXISTS "#__guidedtour_steps"
 (
-  `id` int NOT NULL AUTO_INCREMENT PRIMARY KEY,
-  `tour_id` int NOT NULL DEFAULT 0,
-  `title` varchar(255) NOT NULL,
-  `published` tinyint NOT NULL DEFAULT 0,
-  `description` text NOT NULL,
-  `ordering` int NOT NULL DEFAULT 0,
-  `step-no` int NOT NULL DEFAULT 0,
-  `position` varchar(255) NOT NULL,
-  `target` varchar(255) NOT NULL,
+   `id` int(11) NOT NULL,
+  `tour_id` int(11) NOT NULL DEFAULT 0,
+  `title` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `published` tinyint(4) NOT NULL DEFAULT 0,
+  `description` text COLLATE utf8mb4_unicode_ci NOT NULL,
+  `ordering` int(11) NOT NULL DEFAULT 0,
+  `step-no` int(11) NOT NULL DEFAULT 0,
+  `position` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `target` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
   `created` datetime NOT NULL,
-  `created_by` int unsigned NOT NULL DEFAULT 0,
+  `created_by` int(10) UNSIGNED NOT NULL DEFAULT 0,
   `modified` datetime NOT NULL,
-  `modified_by` int unsigned NOT NULL DEFAULT 0, 
+  `modified_by` int(10) UNSIGNED NOT NULL DEFAULT 0, 
 );
  CREATE INDEX "#__guidedtours_idx_tour_id" ON "#__guidedtour_steps" (`tour_id`);
