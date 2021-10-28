@@ -346,7 +346,7 @@ class HtmlView extends BaseHtmlView
 			$item->text = $item->misc;
 		}
 
-		$app->triggerEvent('onContentPrepare', array ('com_contact.contact', &$item, &$this->params, $offset));
+		$app->triggerEvent('onContentPrepare', array ('com_contact.contact', &$item, &$item->params, $offset));
 
 		// Store the events for later
 		$item->event = new \stdClass;
@@ -386,9 +386,6 @@ class HtmlView extends BaseHtmlView
 		$this->user        = &$user;
 		$this->contacts    = &$contacts;
 		$this->contactUser = $contactUser;
-
-		$item->tags = new TagsHelper;
-		$item->tags->getItemTags('com_contact.contact', $this->item->id);
 
 		$model = $this->getModel();
 		$model->hit();
