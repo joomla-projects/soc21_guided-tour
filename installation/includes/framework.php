@@ -10,16 +10,16 @@
 
 defined('_JEXEC') or die;
 
-<<<<<<< feature-enhancement
+<< << << < feature - enhancement
 /*
  * Joomla system checks.
  */
 
 const JDEBUG = true;
-=======
+=== === =
 // Ensure sensible default for JDEBUG is set.
 const JDEBUG = false;
->>>>>>> dev
+>> >> >> > dev
 
 // Check if a configuration file already exists.
 if (file_exists(JPATH_CONFIGURATION . '/configuration.php')
