@@ -51,8 +51,9 @@ $tmpl    = $isModal || $this->input->get('tmpl', '', 'cmd') === 'component' ? '&
 
 		<?php echo LayoutHelper::render('joomla.edit.params', $this); ?>
 
-		<?php if ($user->authorise('core.admin', $this->extension)) : ?>
-
+		<?php if ($user->authorise('core.admin', $this->extension))
+		:
+			?>
 			<?php echo HTMLHelper::_('uitab.addTab', 'myTab', 'permissions', Text::_('COM_WORKFLOW_RULES_TAB')); ?>
 			<fieldset id="fieldset-rules" class="options-form">
 				<legend><?php echo Text::_('COM_WORKFLOW_RULES_TAB'); ?></legend>
