@@ -205,8 +205,27 @@ class StepsModel extends ListModel
 
 		if (!empty($search))
 		{
-			$search = $db->quote('%' . str_replace(' ', '%', $db->escape(trim($search), true) . '%'));
-			$query->where('(a.title LIKE ' . $search . ')');
+			if (stripos($search, 'id:') === 0)
+			{
+				$search = (int) substr($search, 3);
+				$query->where($db->quoteName('a.id') . ' = :search')
+					->bind(':search', $search, ParameterType::INTEGER);
+			}
+			elseif (stripos($search, 'description:') === 0)
+			{
+				$search = '%' . substr($search, 8) . '%';
+				$query->where('(' . $db->quoteName('a.description') . ' LIKE :search1)')
+					->bind([':search1'], $search);
+			}
+			else
+			{
+				$search = '%' . str_replace(' ', '%', trim($search)) . '%';
+				$query->where(
+					'(' . $db->quoteName('a.title') . ' LIKE :search1 OR ' . $db->quoteName('a.id') . ' LIKE :search2'
+						. ' OR ' . $db->quoteName('a.description') . ' LIKE :search3)'
+				)
+					->bind([':search1', ':search2', ':search3'], $search);
+			}
 		}
 
 		// Add the list ordering clause.

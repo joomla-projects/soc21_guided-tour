@@ -77,8 +77,7 @@ class PlgSystemTour extends CMSPlugin implements SubscriberInterface
 	public function onBeforeRender()
 	{
 		// Run in backend
-		if ($this->app->isClient('administrator'))
-		{
+		if ($this->app->isClient('administrator')) {
 			/**
 			 * Booting of the Component to get the data in JSON Format
 			 */
@@ -97,22 +96,18 @@ class PlgSystemTour extends CMSPlugin implements SubscriberInterface
 
 			$newsteps = [];
 
-			foreach ($steps as $step)
-			{
-				if (!isset($newsteps[$step->tour_id]))
-				{
+			foreach ($steps as $step) {
+				if (!isset($newsteps[$step->tour_id])) {
 					$newsteps[$step->tour_id] = [];
 				}
 
 				$newsteps[$step->tour_id][] = $step;
 			}
 
-			foreach ($tours as $tour)
-			{
+			foreach ($tours as $tour) {
 				$tour->steps = [];
 
-				if (isset($newsteps[$tour->id]))
-				{
+				if (isset($newsteps[$tour->id])) {
 					$tour->steps = $newsteps[$tour->id];
 				}
 			}
@@ -131,8 +126,7 @@ class PlgSystemTour extends CMSPlugin implements SubscriberInterface
 
 			$childBar = $dropdown->getChildToolbar();
 
-			foreach ($tours as $a)
-			{
+			foreach ($tours as $a) {
 				$childBar->BasicButton('tour')
 					->text($a->title)
 					->attributes(['data-id' => $a->id])
@@ -151,38 +145,22 @@ class PlgSystemTour extends CMSPlugin implements SubscriberInterface
 	public function onBeforeCompileHead()
 	{
 
-		if ($this->app->isClient('administrator'))
-		{
-			HTMLHelper::_(
-				'script',
-				Uri::root() . 'build/media_source/plg_system_tour/js/guide.js',
-				array('version' => 'auto', 'relative' => true)
-			);
+		if ($this->app->isClient('administrator')) {
+			$this->app->getDocument()->getWebAssetManager()
+				->usePreset('shepherdjs');
 
-			HTMLHelper::_(
-				'script',
-				Uri::root() . 'build/media_source/plg_system_tour/js/shepherd.min.js',
-				array('version' => 'auto', 'relative' => true)
+			// Load required assets
+			$assets = $this->app->getDocument()->getWebAssetManager();
+			$assets->registerAndUseScript(
+				'plg_system_tour.script',
+				'plg_system_tour/guide.min.js',
+				[],
+				['defer' => true],
+				['core']
 			);
-			HTMLHelper::_(
-				'script',
-				Uri::root() . 'build/media_source/plg_system_tour/js/popper.min.js',
-				array('version' => 'auto', 'relative' => true)
-			);
-			HTMLHelper::_(
-				'stylesheet',
-				Uri::root() . 'build/media_source/plg_system_tour/css/shepherd.css',
-				array('version' => 'auto', 'relative' => true)
-			);
-			HTMLHelper::_(
-				'stylesheet',
-				Uri::root() . 'build/media_source/plg_system_tour/css/shepherd.min.css',
-				array('version' => 'auto', 'relative' => true)
-			);
-			HTMLHelper::_(
-				'stylesheet',
-				Uri::root() . 'build/media_source/plg_system_tour/css/guide.css',
-				array('version' => 'auto', 'relative' => true)
+			$assets->registerAndUseStyle(
+				'plg_system_tour.style',
+				'plg_system_tour/guide.min.css'
 			);
 		}
 	}

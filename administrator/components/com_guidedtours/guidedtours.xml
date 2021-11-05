@@ -7,9 +7,6 @@
 	<version>4.1.0</version>
 	<description>COM_GUIDEDTOURS_XML_DESCRIPTION</description>
 	<namespace path="src">Joomla\Component\Guidedtours</namespace>
-	<media destination="com_guidedtours" folder="media">
-		<folder>css</folder>
-	</media>
 	<administration>
 		<filename>access.xml</filename>
 		<filename>config.xml</filename>
@@ -18,7 +15,7 @@
 		<folder>services</folder>
 		<folder>src</folder>
 		<folder>tmpl</folder>
-		<languages folder="admin">
+		<languages folder="administrator">
 			<language tag="en-GB">language/en-GB/com_guidedtours.ini</language>
 			<language tag="en-GB">language/en-GB/com_guidedtours.sys.ini</language>
 		</languages>
