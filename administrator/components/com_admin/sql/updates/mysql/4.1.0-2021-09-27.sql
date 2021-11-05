@@ -10,6 +10,7 @@ CREATE TABLE IF NOT EXISTS `#__guidedtours` (
   `ordering` int NOT NULL DEFAULT 0,
   `extensions` text NOT NULL,
   `url` varchar(255) NOT NULL,
+  `overlay` tinyint NOT NULL DEFAULT 0,
   `created` datetime NOT NULL,
   `created_by` int NOT NULL DEFAULT 0,
   `modified` datetime NOT NULL,
@@ -17,15 +18,7 @@ CREATE TABLE IF NOT EXISTS `#__guidedtours` (
   `checked_out_time` datetime NOT NULL,
   `checked_out` int NOT NULL DEFAULT 0,
   `published` tinyint NOT NULL DEFAULT 0,
-  `state` tinyint NOT NULL DEFAULT '1',
-  PRIMARY KEY (`id`),
-  KEY `idx_asset_id` (`asset_id`),
-  KEY `idx_title` (`title`(191)),
-  KEY `idx_created` (`created`),
-  KEY `idx_created_by` (`created_by`),
-  KEY `idx_modified` (`modified`),
-  KEY `idx_modified_by` (`modified_by`),
-  KEY `idx_checked_out` (`checked_out`)
+  PRIMARY KEY (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 DEFAULT COLLATE=utf8mb4_unicode_ci;
 
 -- --------------------------------------------------------
@@ -48,6 +41,5 @@ CREATE TABLE IF NOT EXISTS `#__guidedtour_steps` (
   `created_by` int unsigned NOT NULL DEFAULT 0,
   `modified` datetime NOT NULL,
   `modified_by` int unsigned NOT NULL DEFAULT 0,
-  `state` tinyint NOT NULL DEFAULT '1',
   KEY `idx_tour` (`tour_id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 DEFAULT COLLATE=utf8mb4_unicode_ci;
