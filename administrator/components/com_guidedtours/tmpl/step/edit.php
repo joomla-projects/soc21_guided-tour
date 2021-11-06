@@ -23,8 +23,7 @@ HTMLHelper::_('behavior.keepalive');
 $app = Factory::getApplication();
 $tour_id = $app->getUserState('com_guidedtours.tour_id');
 
-if (empty($tour_id))
-{
+if (empty($tour_id)) {
 	throw new GenericDataException("\nThe Tour id was not set!\n", 500);
 }
 
@@ -47,6 +46,7 @@ $this->useCoreUI = true;
 				<?php echo $this->form->renderField('step-no'); ?>
 				<?php echo $this->form->renderField('position'); ?>
 				<?php echo $this->form->renderField('target'); ?>
+				<?php echo $this->form->renderField('url'); ?>
 				<?php $this->form->setValue('tour_id', null, $tour_id); ?>
 				<?php echo $this->form->renderField('tour_id'); ?>
 

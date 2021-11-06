@@ -7,18 +7,16 @@ Joomla = window.Joomla || {};
         for (var i = 0; i < btnGoods.length; i++) {
             btnGoods[i].addEventListener("click", function() {
                 var dataID = this.getAttribute("data-id");
-                var mainID = obj.findIndex((x) => x.id === dataID);
+                var mainID = obj.findIndex((x) => x.id == dataID);
                 sessionStorage.setItem("tourid", mainID);
 
-                if (sessionStorage.getItem(mainID)) {
-                    var currentURL = window.location.href;
-                    if (currentURL != obj[mainID].url) {
-                        window.location.href = obj[mainID].url;
-                    }
-                    var overlay = false;
-                    if (obj[mainID].overlay == 1) {
-                        overlay = true;
-                    }
+                var currentURL = window.location.href;
+                if (currentURL != obj[mainID].url) {
+                    window.location.href = obj[mainID].url;
+                }
+                var overlay = true;
+                if (obj[mainID].overlay == 0) {
+                    overlay = false;
                 }
 
                 const tour = new Shepherd.Tour({
@@ -133,12 +131,12 @@ Joomla = window.Joomla || {};
         var newId = sessionStorage.getItem("newstepID");
         newIndex = newIndex - 1;
 
-        if (sessionStorage.getItem(mainID)) {
-            var overlay = false;
-            if (obj[mainID].overlay == 1) {
-                overlay = true;
-            }
+
+        var overlay = true;
+        if (obj[mainID].overlay == 0) {
+            overlay = false;
         }
+
         const tour = new Shepherd.Tour({
             defaultStepOptions: {
                 scrollTo: true,
