@@ -23,7 +23,8 @@ HTMLHelper::_('behavior.keepalive');
 $app = Factory::getApplication();
 $tour_id = $app->getUserState('com_guidedtours.tour_id');
 
-if (empty($tour_id)) {
+if (empty($tour_id))
+{
 	throw new GenericDataException("\nThe Tour id was not set!\n", 500);
 }
 
