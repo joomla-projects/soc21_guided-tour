@@ -163,7 +163,13 @@
 			link="index.php?option=com_redirect"
 			permission="core.manage;com_redirect"
 		/>
-
+		<menuitem
+			title="MOD_MENU_MANAGE_GUIDEDTOURS"
+			type="component"
+			element="com_guidedtours"
+			link="index.php?option=com_guidedtours"
+			permission="core.manage;com_guidedtours"
+		/>
 		<menuitem
 			title="MOD_MENU_EXTENSIONS_MODULE_MANAGER_SITE"
 			type="component"
